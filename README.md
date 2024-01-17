@@ -2,7 +2,7 @@
 Welcome to my personal portfolio website—a showcase of my diverse projects and skills. Explore to get a glimpse of my professional journey.
 
 
-And this arre just the simple Github markdowns
+And this are just the simple Github markdowns
 
 Certainly! Below are a few common GitHub Markdown examples:
 
