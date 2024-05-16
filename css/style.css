@@ -141,9 +141,10 @@ section{
 
 .logo{
     width: 7rem;
+    border-radius: 20%;
 }
 
-.experience-content{
+.experiences-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     justify-content: center;
@@ -151,7 +152,7 @@ section{
     margin-top: 2rem;
 }
 
-.experience-box{
+.experiences-box{
     padding: 20px;
     width: 260px;
     text-align: center;
@@ -160,26 +161,70 @@ section{
     box-shadow: 0 2px 7px rgba(14, 55, 54, 15%);
 }
 
-.experience-box h3{
+.experiences-box h3{
     font-size: 0.9rem;
     font-weight: 600;
     padding-top: 10px; 
 }
 
-.experience-box span{
+.experiences-box span{
     font-size: 0.8rem;
 }
 
-.experience-box:hover{
+.experiences-box:hover{
     background: #02225a;
 }
 
-.experience-box:hover h3{
+.experiences-box:hover h3{
     color: #FFFFFF;
 }
 
-.experience-box:hover span{
+.experiences-box:hover span{
     color: #22cf91;
+}
+
+/*==================Projects section=====================*/
+.projects-logo {
+    width: 7rem;
+    border-radius: 20%;
+}
+.projects-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.projects-box{
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    border-radius: 0.5rem;
+    border-bottom: 2px solid var(--main-color);
+    box-shadow: 0 2px 7px rgba(14, 55, 54, 15%);
+}
+
+.projects-box h3{
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding-top: 10px; 
+}
+
+.projects-box span{
+    font-size: 0.8rem;
+}
+
+.projects-box:hover{
+    background: #02225a;
+}
+
+.projects-box:hover h3{
+    color: #FFFFFF;
+}
+
+.projects-box:hover span{
+    color: #c9d03e;
 }
 
 /*==================Skills section=====================*/
