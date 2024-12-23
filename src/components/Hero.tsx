@@ -41,27 +41,43 @@ const Hero = () => {
               <br />
               <span className="text-foreground">Djossou</span>
             </h1>
-            <h2 className="text-2xl lg:text-3xl font-semibold text-muted-foreground">
-              An enthusiastic and passionate software engineer!
+            <h2 className="text-xl lg:text-2xl font-semibold text-muted-foreground">
+              Lead Mobile Engineer @EdoMatch 📲 • I Build Fast and Scalable Apps
+              with Flutter & Native iOS 🧱 • On-Device LLM & AI Integrator 🦾 •
+              Tech Speaker 📣 • Technical Writer 🖋️
             </h2>
           </div>
 
           <div className="space-y-4 max-w-2xl">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              I am a Lead Mobile Software Engineer at EdoMatch and a proud
-              Beninese 🇧🇯. I am passionate about building fast, scalable, and
-              beautiful mobile applications using Flutter and native iOS
-              technologies. With some years of experience, I specialize in
-              crafting high-performance, user-centered apps backed by clean
-              architecture and modern development practices.
+              I'm a passionate Mobile Software Engineer specialized in building
+              fast, scalable, and beautiful apps with Flutter and native
+              technologies.
             </p>
-            <div className="flex items-center gap-2 text-primary font-medium">
-              <span className="text-2xl">💡</span>
-              <span className="text-lg">
-                Lead Mobile Engineer specializing in Flutter & Dart with AI
-                Integration expertise
-              </span>
-            </div>
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              Currently Lead Mobile Engineer at EdoMatch, I drive the
+              development of intelligent, user-centered mobile applications,
+              working across:
+            </p>
+            <ul className="space-y-2 text-lg leading-relaxed text-muted-foreground list-disc list-inside">
+              <li>AI-powered features to enhance product capabilities,</li>
+              <li>
+                Clean backend integrations with RESTful APIs and AWS services,
+              </li>
+              <li>
+                Performance, accessibility, and maintainability at every level.
+              </li>
+            </ul>
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              With a strong focus on clean architecture and developer
+              productivity, I also mentor junior engineers and collaborate
+              closely with designers and product managers to bring ideas to
+              life.
+            </p>
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              Beyond code, I value clarity, problem-solving, and lifelong
+              learning. Let's build things that matter.
+            </p>
           </div>
 
           <div className="flex flex-wrap gap-4">
