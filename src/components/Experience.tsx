@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, ExternalLink, MapPin } from "lucide-react";
+import { useState } from "react";
 
 const experiences = [
   {
@@ -109,6 +110,12 @@ const experiences = [
 ];
 
 const Experience = () => {
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+
+  const handleImageError = (index: number) => {
+    setImageErrors((prev) => ({ ...prev, [index]: true }));
+  };
+
   return (
     <section id="experience" className="py-20 px-4">
       <div className="container mx-auto">
@@ -131,12 +138,19 @@ const Experience = () => {
             >
               <CardHeader>
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0">
-                    <img
-                      src={exp.logo}
-                      alt={`${exp.company} logo`}
-                      className="w-full h-full object-contain p-2"
-                    />
+                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0 flex items-center justify-center">
+                    {imageErrors[index] ? (
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs font-semibold">
+                        {exp.company.charAt(0)}
+                      </div>
+                    ) : (
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="w-full h-full object-contain p-2"
+                        onError={() => handleImageError(index)}
+                      />
+                    )}
                   </div>
                   <div className="flex-1 space-y-2">
                     <CardTitle className="text-xl lg:text-2xl text-foreground">
