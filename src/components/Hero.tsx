@@ -2,15 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
+// Import profile images
+import profile1 from "@/assets/profile-1.png";
+import profile2 from "@/assets/profile-2.png";
+import profile3 from "@/assets/profile-3.png";
+import profile4 from "@/assets/profile-4.png";
+import profile5 from "@/assets/profile-5.png";
+import profile6 from "@/assets/profile-6.png";
+
 const Hero = () => {
   // Profile images array
   const profileImages = [
-    "/src/assets/profile-1.png",
-    "/src/assets/profile-2.png",
-    "/src/assets/profile-3.png",
-    "/src/assets/profile-4.png",
-    "/src/assets/profile-5.png",
-    "/src/assets/profile-6.png",
+    profile1,
+    profile2,
+    profile3,
+    profile4,
+    profile5,
+    profile6,
   ];
 
   // Carousel state
