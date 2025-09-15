@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
+// import "./index.css"; // Temporarily disabled to test if CSS is causing issues
 
 try {
   const rootElement = document.getElementById("root");
