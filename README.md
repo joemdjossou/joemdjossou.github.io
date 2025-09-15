@@ -1,94 +1,139 @@
-# joemdjossou.github.io
-Welcome to my personal portfolio website—a showcase of my diverse projects and skills. Explore to get a glimpse of my professional journey.
+# Josué Djossou - Digital Portfolio
 
+A modern, responsive portfolio website showcasing my journey as a Mobile Application Developer specializing in Dart/Flutter & Firebase.
 
-And this are just the simple Github markdowns
+## 🚀 Live Demo
 
-Certainly! Below are a few common GitHub Markdown examples:
+Visit my portfolio: [https://joemdjossou.github.io](https://joemdjossou.github.io)
 
-### Headers:
+## 📋 About
 
-```markdown
-# Heading 1
-## Heading 2
-### Heading 3
+This portfolio showcases my professional experience, projects, skills, and educational background. Built with modern web technologies to provide a seamless user experience across all devices.
+
+## 🛠️ Technologies Used
+
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Build Tool**: Vite
+- **Package Manager**: Bun (recommended) or npm
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages
+
+## ✨ Features
+
+- 🎨 Modern, clean design with dark/light theme toggle
+- 📱 Fully responsive across all devices
+- ⚡ Fast loading with optimized performance
+- 🎯 Smooth scrolling navigation
+- 💼 Professional project showcase
+- 📧 Contact form integration
+- 🎓 Education and experience timeline
+
+## 🏃‍♂️ Quick Start
+
+### Prerequisites
+
+- Node.js (v18 or higher) OR Bun (recommended)
+- npm, yarn, or bun package manager
+
+### Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/joemdjossou/joemdjossou.github.io.git
 ```
 
-### Emphasis:
+2. Navigate to project directory
 
-```markdown
-*italic*
-**bold**
+```bash
+cd joemdjossou.github.io
 ```
 
-### Lists:
+3. Install dependencies
 
-#### Unordered List:
+**Using Bun (recommended):**
 
-```markdown
-- Item 1
-- Item 2
-  - Subitem 2.1
-  - Subitem 2.2
+```bash
+bun install
 ```
 
-#### Ordered List:
+**Using npm:**
 
-```markdown
-1. Item 1
-2. Item 2
-   1. Subitem 2.1
-   2. Subitem 2.2
+```bash
+npm install
 ```
 
-### Links:
+4. Start development server
 
-```markdown
-[GitHub](https://github.com/)
+**Using Bun:**
+
+```bash
+bun run dev
 ```
 
-### Images:
+**Using npm:**
 
-```markdown
-![Alt Text](image-url)
+```bash
+npm run dev
 ```
 
-### Code:
+5. Open your browser and visit `http://localhost:8080`
 
-Inline Code: 
+## 📝 Available Scripts
 
-```markdown
-`inline code`
+**With Bun:**
+
+- `bun run dev` - Start development server
+- `bun run build` - Build for production
+- `bun run preview` - Preview production build
+- `bun run lint` - Run ESLint
+- `bun run deploy` - Deploy to GitHub Pages
+
+**With npm:**
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run deploy` - Deploy to GitHub Pages
+
+## 🎯 Sections
+
+- **Hero** - Introduction and call-to-action
+- **Experience** - Professional work history
+- **Projects** - Showcase of mobile and web applications
+- **Skills** - Technical skills and expertise
+- **Education** - Academic background
+- **Contact** - Get in touch information
+
+## 🚀 Deployment
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions with Bun for faster builds and better dependency resolution.
+
+### Automatic Deployment
+
+- Push to `main` or `master` branch triggers automatic deployment
+- Built with Bun for optimal performance
+- Deployed to `https://joemdjossou.github.io`
+
+### Manual Deployment
+
+```bash
+bun run deploy
 ```
 
-Code Block:
+## 📧 Contact
 
-```markdown
-```python
-def hello_world():
-    print("Hello, World!")
-```
-```
+- **Email**: joemdjossou@gmail.com
+- **Phone**: +228 93 14 27 33
+- **GitHub**: [github.com/joemdjossou](https://github.com/joemdjossou)
+- **LinkedIn**: [linkedin.com/in/joemdjossou](https://linkedin.com/in/joemdjossou)
 
-### Blockquotes:
+## 📄 License
 
-```markdown
-> This is a blockquote.
-```
+This project is open source and available under the [MIT License](LICENSE).
 
-### Horizontal Line:
-
-```markdown
 ---
-```
 
-### Tables:
-
-```markdown
-| Header 1 | Header 2 |
-| ---------| ---------|
-| Cell 1.1  | Cell 1.2  |
-| Cell 2.1  | Cell 2.2  |
-```
-
-These are just basic examples. GitHub Markdown supports more features. Feel free to explore additional options in the [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/).
+Made with ❤️ by Josué Djossou using React, TypeScript, Tailwind CSS & Bun
