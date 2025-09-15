@@ -136,4 +136,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Made with ❤️ by Josué Djossou using React, TypeScript, Tailwind CSS & Bun
+Made by Josué Djossou using React, TypeScript, Tailwind CSS & Bun
