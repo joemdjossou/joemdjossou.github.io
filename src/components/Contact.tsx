@@ -13,9 +13,6 @@ import {
   Send,
 } from "lucide-react";
 
-// Import LinkedIn banner image
-import linkedinBanner from "@/assets/linkedin-banner.png";
-
 const Contact = () => {
   return (
     <section id="contact" className="py-20 px-4">
@@ -36,7 +33,7 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="relative">
                 <img
-                  src={linkedinBanner}
+                  src="/linkedin-banner.png"
                   alt="Josué Djossou workspace"
                   className="w-full h-64 object-cover rounded-2xl card-shadow"
                 />
