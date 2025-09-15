@@ -1,94 +1,96 @@
-# joemdjossou.github.io
-Welcome to my personal portfolio website—a showcase of my diverse projects and skills. Explore to get a glimpse of my professional journey.
+# Josué Djossou - Digital Portfolio
 
+A modern, responsive portfolio website showcasing my journey as a Mobile Application Developer specializing in Dart/Flutter & Firebase.
 
-And this are just the simple Github markdowns
+## 🚀 Live Demo
 
-Certainly! Below are a few common GitHub Markdown examples:
+Visit my portfolio: [https://joemdjossou.github.io](https://joemdjossou.github.io)
 
-### Headers:
+## 📋 About
 
-```markdown
-# Heading 1
-## Heading 2
-### Heading 3
+This portfolio showcases my professional experience, projects, skills, and educational background. Built with modern web technologies to provide a seamless user experience across all devices.
+
+## 🛠️ Technologies Used
+
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS + shadcn/ui components
+- **Build Tool**: Vite
+- **Icons**: Lucide React
+- **Deployment**: GitHub Pages
+
+## ✨ Features
+
+- 🎨 Modern, clean design with dark/light theme toggle
+- 📱 Fully responsive across all devices
+- ⚡ Fast loading with optimized performance
+- 🎯 Smooth scrolling navigation
+- 💼 Professional project showcase
+- 📧 Contact form integration
+- 🎓 Education and experience timeline
+
+## 🏃‍♂️ Quick Start
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/joemdjossou/joemdjossou.github.io.git
 ```
 
-### Emphasis:
+2. Navigate to project directory
 
-```markdown
-*italic*
-**bold**
+```bash
+cd joemdjossou.github.io
 ```
 
-### Lists:
+3. Install dependencies
 
-#### Unordered List:
-
-```markdown
-- Item 1
-- Item 2
-  - Subitem 2.1
-  - Subitem 2.2
+```bash
+npm install
 ```
 
-#### Ordered List:
+4. Start development server
 
-```markdown
-1. Item 1
-2. Item 2
-   1. Subitem 2.1
-   2. Subitem 2.2
+```bash
+npm run dev
 ```
 
-### Links:
+5. Open your browser and visit `http://localhost:8080`
 
-```markdown
-[GitHub](https://github.com/)
-```
+## 📝 Available Scripts
 
-### Images:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run deploy` - Deploy to GitHub Pages
 
-```markdown
-![Alt Text](image-url)
-```
+## 🎯 Sections
 
-### Code:
+- **Hero** - Introduction and call-to-action
+- **Experience** - Professional work history
+- **Projects** - Showcase of mobile and web applications
+- **Skills** - Technical skills and expertise
+- **Education** - Academic background
+- **Contact** - Get in touch information
 
-Inline Code: 
+## 📧 Contact
 
-```markdown
-`inline code`
-```
+- **Email**: joemdjossou@gmail.com
+- **Phone**: +228 93 14 27 33
+- **GitHub**: [github.com/joemdjossou](https://github.com/joemdjossou)
+- **LinkedIn**: [linkedin.com/in/joemdjossou](https://linkedin.com/in/joemdjossou)
 
-Code Block:
+## 📄 License
 
-```markdown
-```python
-def hello_world():
-    print("Hello, World!")
-```
-```
+This project is open source and available under the [MIT License](LICENSE).
 
-### Blockquotes:
-
-```markdown
-> This is a blockquote.
-```
-
-### Horizontal Line:
-
-```markdown
 ---
-```
 
-### Tables:
-
-```markdown
-| Header 1 | Header 2 |
-| ---------| ---------|
-| Cell 1.1  | Cell 1.2  |
-| Cell 2.1  | Cell 2.2  |
-```
-
-These are just basic examples. GitHub Markdown supports more features. Feel free to explore additional options in the [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/).
+Made with ❤️ by Josué Djossou using React & Tailwind CSS
