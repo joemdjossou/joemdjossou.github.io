@@ -142,7 +142,7 @@ const Skills = () => {
         <div className="text-center animate-scale-in">
           <div className="relative inline-block">
             <img
-              src="https://joemdjossou.github.io/images/skills1.png"
+              src="/skills1.png"
               alt="Skills illustration"
               className="w-full max-w-md h-auto rounded-2xl card-shadow hover-lift transition-smooth"
             />

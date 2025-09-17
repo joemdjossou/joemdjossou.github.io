@@ -121,7 +121,7 @@ const Education = () => {
         <div className="mt-16 text-center animate-scale-in">
           <div className="relative inline-block mb-8">
             <img
-              src="https://joemdjossou.github.io/images/education.png"
+              src="/education.png"
               alt="Education background"
               className="w-full max-w-md h-auto rounded-2xl card-shadow hover-lift transition-smooth"
             />
