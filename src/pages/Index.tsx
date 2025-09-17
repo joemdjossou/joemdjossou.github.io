@@ -2,6 +2,7 @@ import Experience from "@/components/Experience";
 import Hero from "@/components/Hero";
 import Navigation from "@/components/Navigation";
 import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
@@ -39,21 +40,28 @@ const Index = () => {
         <Experience />
       </div>
 
-      {/* Test Projects component */}
+      {/* Test Projects component - WORKING ✅ */}
+      <div
+        style={{ border: "1px solid green", margin: "10px 0", padding: "10px" }}
+      >
+        <h3 style={{ color: "#000" }}>✅ Projects Component: WORKING</h3>
+        <Projects />
+      </div>
+
+      {/* Test Contact component */}
       <div
         style={{
-          border: "1px solid red",
+          border: "1px solid purple",
           margin: "10px 0",
           padding: "10px",
         }}
       >
-        <h3 style={{ color: "#000" }}>🧪 Testing Projects Component:</h3>
-        <Projects />
+        <h3 style={{ color: "#000" }}>🧪 Testing Contact Component:</h3>
+        <Contact />
       </div>
 
       {/* Comment out remaining components */}
       {/* 
-      <Contact />
       <Footer /> 
       */}
     </div>
