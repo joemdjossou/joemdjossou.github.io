@@ -1,34 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Josué Djossou - Mobile App Developer | Flutter & Dart Specialist</title>
-    <meta name="description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. Computer Science graduate with expertise in mobile development, AI, and full-stack development." />
-    <meta name="author" content="Y. E. Josué Djossou" />
-    <meta name="keywords" content="mobile app developer, flutter developer, dart programming, firebase, mobile applications, software engineer, AI, full-stack development" />
-
-    <meta property="og:title" content="Josué Djossou - Mobile App Developer | Flutter & Dart Specialist" />
-    <meta property="og:description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. View my portfolio and projects." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.png">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josué Djossou - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 600px;
+        }
+        .status {
+            color: #28a745;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+        .error {
+            color: #dc3545;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .info {
+            color: #6c757d;
+            margin: 10px 0;
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 GitHub Pages Deployment Fix</h1>
+        
+        <div class="status">
+            ✅ GitHub Pages is now working!
+        </div>
+        
+        <div class="error">
+            ❌ React app deployment was broken
+        </div>
+        
+        <p class="info">This is a temporary fallback page while we fix the React app deployment.</p>
+        
+        <h2>Issue Identified:</h2>
+        <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+            <li>GitHub Pages source might not be set to "GitHub Actions"</li>
+            <li>Build artifacts might not be uploading correctly</li>
+            <li>Deployment workflow needs debugging</li>
+        </ul>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3>Next Steps:</h3>
+            <ol style="text-align: left;">
+                <li>Check GitHub repository settings</li>
+                <li>Verify Pages source is set to "GitHub Actions"</li>
+                <li>Review workflow logs for errors</li>
+                <li>Fix and redeploy React app</li>
+            </ol>
+        </div>
+        
+        <p class="info">🕐 Fallback deployed: <span id="timestamp"></span></p>
+        
+        <a href="https://github.com/joemdjossou/joemdjossou.github.io" class="btn">View Repository</a>
+        <a href="https://github.com/joemdjossou/joemdjossou.github.io/actions" class="btn">View Actions</a>
+    </div>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@joemdjossou" />
-    <meta name="twitter:image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
 </html>

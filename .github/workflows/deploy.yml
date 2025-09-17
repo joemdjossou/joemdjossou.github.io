@@ -34,6 +34,13 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: List build output
+        run: |
+          echo "=== Build output directory contents ==="
+          ls -la ./dist/
+          echo "=== index.html content preview ==="
+          head -10 ./dist/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
