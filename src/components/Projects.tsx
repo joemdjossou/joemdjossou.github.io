@@ -97,7 +97,7 @@ const projects: Project[] = [
     description:
       "A smart mobile platform designed for global shopping solutions. Built using agile methodology with weekly sprints focused on implementing use cases efficiently.",
     image:
-      "https://private-user-images.githubusercontent.com/123335804/489339419-212ffbe8-e016-4393-acea-1c9b94dc762c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTgwNjE0MjgsIm5iZiI6MTc1ODA2MTEyOCwicGF0aCI6Ii8xMjMzMzU4MDQvNDg5MzM5NDE5LTIxMmZmYmU4LWUwMTYtNDM5My1hY2VhLTFjOWI5NGRjNzYyYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTE2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkxNlQyMjE4NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04MWIzZGU3OTY4ODIwNGNiN2JhMzQyN2E4ZTEwOGEwNWI1ZjE5NzNhY2UzZjg3YjZjZTAyMmUyM2E0NmI3M2I3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.3imoeMY3_Jt1BNpR5SkpVCIVZ7nNByLuVOSEGluddWE",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/123335804/489339419-212ffbe8-e016-4393-acea-1c9b94dc762c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250917%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250917T005757Z&X-Amz-Expires=300&X-Amz-Signature=2d8a3b8ef2e0283767ac9f92c99bf4b1437ec5a299d383fabe0dc063534e9f44&X-Amz-SignedHeaders=host",
     period: "Mar 2025",
     technologies: [
       "Flutter",
@@ -147,7 +147,7 @@ const projects: Project[] = [
     description:
       "A classic Tic Tac Toe game app using Flutter/Dart that supports both light mode and dark mode with smooth animations.",
     image:
-      "https://private-user-images.githubusercontent.com/123335804/489351129-2e6dc72c-3be8-43b5-b17b-605b55d0a7c3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTgwNjE1NDksIm5iZiI6MTc1ODA2MTI0OSwicGF0aCI6Ii8xMjMzMzU4MDQvNDg5MzUxMTI5LTJlNmRjNzJjLTNiZTgtNDNiNS1iMTdiLTYwNWI1NWQwYTdjMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTE2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkxNlQyMjIwNDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01YTYwZmZlODBlODQ3MTc2NTc1MjJiNTkxNTFkNWM2M2U1Njk5YjZiMGE4MTE4MmI4MjFhMDVjOWIyOWM1YTQ0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.oK82WxoxQdLVo3hTo4Y2bMXdhmG0EPwyd4XryLyBHdQ",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/123335804/489351129-2e6dc72c-3be8-43b5-b17b-605b55d0a7c3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250917%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250917T011044Z&X-Amz-Expires=300&X-Amz-Signature=01f3cc96f6278dc78177707550d173605b78d970017bd5379a95275ab31fb561&X-Amz-SignedHeaders=host",
     period: "Feb 2024",
     technologies: ["Flutter", "Dart", "Game Development", "Dark/Light Mode"],
     links: {
