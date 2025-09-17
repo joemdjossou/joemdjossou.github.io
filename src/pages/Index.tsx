@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
 
 const Index = () => {
   return (
@@ -12,24 +13,29 @@ const Index = () => {
         Testing each component individually...
       </p>
 
-      {/* Test Navigation first */}
+      {/* Test Navigation - WORKING ✅ */}
       <div
-        style={{ border: "1px solid red", margin: "10px 0", padding: "10px" }}
+        style={{ border: "1px solid green", margin: "10px 0", padding: "10px" }}
       >
-        <h3 style={{ color: "#000" }}>Navigation Component:</h3>
+        <h3 style={{ color: "#000" }}>✅ Navigation Component: WORKING</h3>
         <Navigation />
       </div>
 
-      {/* Comment out all other components for now */}
-      {/* <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer /> */}
+      {/* Test Hero component */}
+      <div
+        style={{ border: "1px solid blue", margin: "10px 0", padding: "10px" }}
+      >
+        <h3 style={{ color: "#000" }}>🧪 Testing Hero Component:</h3>
+        <Hero />
+      </div>
+
+      {/* Comment out remaining components */}
+      {/* 
+      <Experience />
+      <Projects />
+      <Contact />
+      <Footer /> 
+      */}
     </div>
   );
 };
