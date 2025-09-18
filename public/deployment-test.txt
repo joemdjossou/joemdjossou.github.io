@@ -1,0 +1,4 @@
+Deployment Test - GitHub Pages Working
+Timestamp: 2025-09-18
+This file confirms that GitHub Pages deployment is successful.
+If you can access this file at /deployment-test.txt, then the deployment is working.
