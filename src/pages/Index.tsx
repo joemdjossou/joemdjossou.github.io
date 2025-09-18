@@ -24,13 +24,20 @@ const Index = () => {
         <h1 style={{ color: "#333", fontSize: "2.5rem", marginBottom: "20px" }}>
           🎉 React App Successfully Deployed!
         </h1>
-        <p style={{ color: "#28a745", fontSize: "1.3rem", marginBottom: "20px", fontWeight: "bold" }}>
+        <p
+          style={{
+            color: "#28a745",
+            fontSize: "1.3rem",
+            marginBottom: "20px",
+            fontWeight: "bold",
+          }}
+        >
           ✅ GitHub Pages + React is now working!
         </p>
         <p style={{ color: "#666", fontSize: "1rem", marginBottom: "10px" }}>
           🕐 Deployed: {new Date().toLocaleString()}
         </p>
-        
+
         <div
           style={{
             backgroundColor: "#f8f9fa",
@@ -42,7 +49,15 @@ const Index = () => {
           <h2 style={{ color: "#007bff", marginBottom: "15px" }}>
             ✅ All Systems Working:
           </h2>
-          <ul style={{ color: "#333", lineHeight: "1.8", textAlign: "left", listStyle: "none", padding: 0 }}>
+          <ul
+            style={{
+              color: "#333",
+              lineHeight: "1.8",
+              textAlign: "left",
+              listStyle: "none",
+              padding: 0,
+            }}
+          >
             <li>✅ GitHub Pages deployment</li>
             <li>✅ React app rendering</li>
             <li>✅ JavaScript execution</li>
@@ -50,7 +65,7 @@ const Index = () => {
             <li>✅ GitHub Actions workflow</li>
           </ul>
         </div>
-        
+
         <div
           style={{
             backgroundColor: "#d1ecf1",
@@ -63,7 +78,7 @@ const Index = () => {
             🚀 Ready to restore the full portfolio components!
           </strong>
         </div>
-        
+
         <p style={{ color: "#666", fontSize: "0.9rem", marginTop: "20px" }}>
           Josué Djossou - Mobile App Developer Portfolio
         </p>
