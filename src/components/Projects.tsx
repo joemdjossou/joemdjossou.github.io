@@ -96,8 +96,7 @@ const projects: Project[] = [
     title: "ShopNow Mobile",
     description:
       "A smart mobile platform designed for global shopping solutions. Built using agile methodology with weekly sprints focused on implementing use cases efficiently.",
-    image:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/123335804/489339419-212ffbe8-e016-4393-acea-1c9b94dc762c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250917%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250917T005757Z&X-Amz-Expires=300&X-Amz-Signature=2d8a3b8ef2e0283767ac9f92c99bf4b1437ec5a299d383fabe0dc063534e9f44&X-Amz-SignedHeaders=host",
+    image: "https://www.webfx.com/wp-content/uploads/2022/08/github-logo.png",
     period: "Mar 2025",
     technologies: [
       "Flutter",
@@ -146,8 +145,7 @@ const projects: Project[] = [
     title: "Tic Tac Toe Game",
     description:
       "A classic Tic Tac Toe game app using Flutter/Dart that supports both light mode and dark mode with smooth animations.",
-    image:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/123335804/489351129-2e6dc72c-3be8-43b5-b17b-605b55d0a7c3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250917%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250917T011044Z&X-Amz-Expires=300&X-Amz-Signature=01f3cc96f6278dc78177707550d173605b78d970017bd5379a95275ab31fb561&X-Amz-SignedHeaders=host",
+    image: "https://www.webfx.com/wp-content/uploads/2022/08/github-logo.png",
     period: "Feb 2024",
     technologies: ["Flutter", "Dart", "Game Development", "Dark/Light Mode"],
     links: {
