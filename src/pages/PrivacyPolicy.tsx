@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Mail, MapPin } from "lucide-react";
+import { ArrowLeft, Mail, MapPin, Languages } from "lucide-react";
 import React from "react";
 
 const PrivacyPolicy: React.FC = () => {
@@ -13,14 +13,24 @@ const PrivacyPolicy: React.FC = () => {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => window.history.back()}
-            className="mb-4 flex items-center gap-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </Button>
+          <div className="flex justify-between items-start mb-4">
+            <Button
+              variant="ghost"
+              onClick={() => window.history.back()}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => window.location.hash = 'hymnes-app-privacy-policy-fr'}
+              className="flex items-center gap-2"
+            >
+              <Languages className="h-4 w-4" />
+              Français
+            </Button>
+          </div>
           <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
             Privacy Policy
           </h1>

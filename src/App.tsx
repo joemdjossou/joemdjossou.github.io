@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import Index from "./pages/Index";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import PrivacyPolicyFR from "./pages/PrivacyPolicyFR";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,8 @@ const App = () => {
     const hash = window.location.hash.slice(1);
     if (hash === 'hymnes-app-privacy-policy') {
       setCurrentPage('privacy');
+    } else if (hash === 'hymnes-app-privacy-policy-fr') {
+      setCurrentPage('privacy-fr');
     } else {
       setCurrentPage('home');
     }
@@ -25,6 +28,8 @@ const App = () => {
       const newHash = window.location.hash.slice(1);
       if (newHash === 'hymnes-app-privacy-policy') {
         setCurrentPage('privacy');
+      } else if (newHash === 'hymnes-app-privacy-policy-fr') {
+        setCurrentPage('privacy-fr');
       } else {
         setCurrentPage('home');
       }
@@ -39,7 +44,9 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {currentPage === 'privacy' ? <PrivacyPolicy /> : <Index />}
+        {currentPage === 'privacy' ? <PrivacyPolicy /> : 
+         currentPage === 'privacy-fr' ? <PrivacyPolicyFR /> : 
+         <Index />}
       </TooltipProvider>
     </QueryClientProvider>
   );
