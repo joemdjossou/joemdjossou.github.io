@@ -3,15 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Josué Djossou - Mobile App Developer | Flutter & Dart Specialist</title>
-    <meta name="description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. Computer Science graduate with expertise in mobile development, AI, and full-stack development." />
+    
+    <!-- Dynamic meta tags - will be updated by script -->
+    <title id="page-title">Josué Djossou - Mobile App Developer | Flutter & Dart Specialist</title>
+    <meta name="description" id="page-description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. Computer Science graduate with expertise in mobile development, AI, and full-stack development." />
     <meta name="author" content="Y. E. Josué Djossou" />
-    <meta name="keywords" content="mobile app developer, flutter developer, dart programming, firebase, mobile applications, software engineer, AI, full-stack development" />
+    <meta name="keywords" id="page-keywords" content="mobile app developer, flutter developer, dart programming, firebase, mobile applications, software engineer, AI, full-stack development" />
 
-    <meta property="og:title" content="Josué Djossou - Mobile App Developer | Flutter & Dart Specialist" />
-    <meta property="og:description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. View my portfolio and projects." />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
+    <meta property="og:url" id="og-url" content="https://joemdjossou.github.io" />
+    <meta property="og:title" id="og-title" content="Josué Djossou - Mobile App Developer | Flutter & Dart Specialist" />
+    <meta property="og:description" id="og-description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. View my portfolio and projects." />
+    <meta property="og:image" id="og-image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Josué Djossou Portfolio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@joemdjossou" />
+    <meta name="twitter:creator" content="@joemdjossou" />
+    <meta name="twitter:url" id="twitter-url" content="https://joemdjossou.github.io" />
+    <meta name="twitter:title" id="twitter-title" content="Josué Djossou - Mobile App Developer | Flutter & Dart Specialist" />
+    <meta name="twitter:description" id="twitter-description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. View my portfolio and projects." />
+    <meta name="twitter:image" id="twitter-image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -22,9 +38,83 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@joemdjossou" />
-    <meta name="twitter:image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
+    <!-- Dynamic Meta Tag Updater -->
+    <script>
+      (function() {
+        const updateMetaTags = () => {
+          const hash = window.location.hash;
+          
+          // Define page metadata based on hash
+          const pageMetadata = {
+            '#hymnes-app': {
+              title: 'Hymnes et Louanges Adventiste - Mobile App',
+              description: 'Discover Adventist Hymns & Praises app - Access 654 hymns with lyrics, audio playback (SATB), musical scores, and hymn stories. Available on iOS and Android. Download now!',
+              keywords: 'hymnes adventiste, adventist hymns, louanges, SATB, soprano alto tenor bass, hymnal app, cantiques adventistes, spiritual songs, worship app, christian hymns',
+              image: 'https://joemdjossou.github.io/hymnes-images/en/01.png',
+              url: 'https://joemdjossou.github.io/#hymnes-app'
+            },
+            '#hymnes-app-privacy-policy': {
+              title: 'Privacy Policy - Hymnes et Louanges Adventiste',
+              description: 'Privacy Policy for Hymnes et Louanges Adventiste mobile application. Learn how we protect your data and respect your privacy.',
+              keywords: 'privacy policy, hymnes adventiste, data protection, privacy',
+              image: 'https://joemdjossou.github.io/hymnes-images/en/01.png',
+              url: 'https://joemdjossou.github.io/#hymnes-app-privacy-policy'
+            },
+            '#hymnes-app-privacy-policy-fr': {
+              title: 'Politique de Confidentialité - Hymnes et Louanges Adventiste',
+              description: 'Politique de confidentialité pour l\'application mobile Hymnes et Louanges Adventiste. Découvrez comment nous protégeons vos données.',
+              keywords: 'politique de confidentialité, hymnes adventiste, protection des données',
+              image: 'https://joemdjossou.github.io/hymnes-images/fr/01.png',
+              url: 'https://joemdjossou.github.io/#hymnes-app-privacy-policy-fr'
+            },
+            'default': {
+              title: 'Josué Djossou - Mobile App Developer | Flutter & Dart Specialist',
+              description: 'Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. Computer Science graduate with expertise in mobile development, AI, and full-stack development.',
+              keywords: 'mobile app developer, flutter developer, dart programming, firebase, mobile applications, software engineer, AI, full-stack development',
+              image: 'https://joemdjossou.github.io/joemdjossouBG.png',
+              url: 'https://joemdjossou.github.io'
+            }
+          };
+
+          const metadata = pageMetadata[hash] || pageMetadata['default'];
+
+          // Update document title
+          document.getElementById('page-title').textContent = metadata.title;
+          document.title = metadata.title;
+
+          // Update meta tags
+          const updateTag = (id, attr, value) => {
+            const element = document.getElementById(id);
+            if (element) element.setAttribute(attr, value);
+          };
+
+          updateTag('page-description', 'content', metadata.description);
+          updateTag('page-keywords', 'content', metadata.keywords);
+          
+          // Open Graph
+          updateTag('og-url', 'content', metadata.url);
+          updateTag('og-title', 'content', metadata.title);
+          updateTag('og-description', 'content', metadata.description);
+          updateTag('og-image', 'content', metadata.image);
+          
+          // Twitter
+          updateTag('twitter-url', 'content', metadata.url);
+          updateTag('twitter-title', 'content', metadata.title);
+          updateTag('twitter-description', 'content', metadata.description);
+          updateTag('twitter-image', 'content', metadata.image);
+        };
+
+        // Update on page load
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', updateMetaTags);
+        } else {
+          updateMetaTags();
+        }
+
+        // Update on hash change
+        window.addEventListener('hashchange', updateMetaTags);
+      })();
+    </script>
     <script type="module" crossorigin src="/assets/index-CpfIzHK9.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-CtfgnI_C.js">
     <link rel="modulepreload" crossorigin href="/assets/ui-DVbvXKBX.js">
