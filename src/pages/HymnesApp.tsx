@@ -403,7 +403,7 @@ const HymnesApp: React.FC = () => {
                 <Download className="h-6 w-6 text-[#3b6e4a] dark:text-[#e8b923]" />
                 <div>
                   <div className="text-2xl font-bold text-[#2d5f3f] dark:text-[#e8b923]">
-                    1000+
+                    4000+
                   </div>
                   <div className="text-sm text-[#5a5a5a] dark:text-[#c4b8a0]">
                     {t.downloads}
