@@ -48,11 +48,12 @@ const Hero = () => {
 
           <div className="space-y-4 max-w-2xl">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Highly specialized mobile software engineer with over 5 years of
-              experience developing and maintaining production processes by
-              applying new technologies. I create high-performance, user-centric
-              mobile applications using Flutter & Dart with a focus on
-              scalability and innovation.
+              I am a Lead Mobile Software Engineer at EdoMatch and a proud
+              Beninese 🇧🇯. I am passionate about building fast, scalable, and
+              beautiful mobile applications using Flutter and native iOS
+              technologies. With some years of experience, I specialize in
+              crafting high-performance, user-centered apps backed by clean
+              architecture and modern development practices.
             </p>
             <div className="flex items-center gap-2 text-primary font-medium">
               <span className="text-2xl">💡</span>

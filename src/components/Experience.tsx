@@ -6,8 +6,8 @@ const experiences = [
   {
     title: "Lead Mobile Engineer",
     company: "EdoMatch",
-    logo: "https://media.licdn.com/dms/image/v2/D4E0BAQHZVYj9fmy0vg/company-logo_200_200/company-logo_200_200/0/1728218178696/edo_match_logo?e=1760572800&v=beta&t=vHTPn2JPVKV9Cf8e20vJOLV8hPnfcaOMqmDBkLpYKcQ",
-    location: "Lomé, Togo",
+    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQF8Nxsq-_LbkA/company-logo_200_200/B4DZpJsHzmG8AI-/0/1762172898892/edomatch_logo?e=1764201600&v=beta&t=xUUAfxkvW9EtpLZpDbEmBCdaMQuzDkJvB0QcM_iW4-A",
+    location: "Remote",
     period: "02/2025 - Present",
     description:
       "Leading mobile engineering team to develop high-performance, user-centric mobile applications using Flutter & Dart.",
@@ -30,8 +30,8 @@ const experiences = [
   {
     title: "Senior Mobile Engineer",
     company: "01Supplies",
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQHBngAJQ7hd4A/company-logo_100_100/company-logo_100_100/0/1733267444196?e=1760572800&v=beta&t=AOVJQNcRlDhydgYfcII2obbH4et7ayJHGxyB8f8Rq9w",
-    location: "Lomé, Togo",
+    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQHBngAJQ7hd4A/company-logo_100_100/company-logo_100_100/0/1733267444196?e=1764201600&v=beta&t=Pf7ASyDs4BHEximmtkuW1foi0mksv0XdO5hGHVe7m1o",
+    location: "Remote",
     period: "10/2024 - 02/2025",
     description:
       "Led the development, testing, and deployment of 3 high-performance mobile applications, ensuring seamless functionality across iOS and Android platforms.",
@@ -45,7 +45,7 @@ const experiences = [
   {
     title: "Mobile Application Developer (Freelance)",
     company: "Upwork",
-    logo: "https://media.licdn.com/dms/image/v2/D560BAQFHVb6ZSCipCw/company-logo_200_200/company-logo_200_200/0/1727104517379/upwork_logo?e=1760572800&v=beta&t=ivoWw-0-mYrA0Pmb1iVA-1qUHmE5c3UNAXqs6os5Cgg",
+    logo: "https://media.licdn.com/dms/image/v2/D560BAQFHVb6ZSCipCw/company-logo_200_200/company-logo_200_200/0/1727104517379/upwork_logo?e=1764201600&v=beta&t=7EH22LJHWOAg4TcBdMtM32XTAUG7o80mrzkdGPcCqys",
     location: "Remote",
     period: "11/2020 - 10/2024",
     description:
@@ -66,7 +66,7 @@ const experiences = [
   {
     title: "Mobile Developer",
     company: "Babcock University Computer Club",
-    logo: "https://media.licdn.com/dms/image/v2/C560BAQE5iQFVan0Rfw/company-logo_200_200/company-logo_200_200/0/1630611374757?e=1760572800&v=beta&t=KnPK_3_KSZB_FORXhNQrxkvkhdkMvqngGINlmJQ7H-w",
+    logo: "https://media.licdn.com/dms/image/v2/C560BAQE5iQFVan0Rfw/company-logo_200_200/company-logo_200_200/0/1630611374757?e=1764201600&v=beta&t=evidodas8bA8oOsUgGf0XyWr581DAR3G5fSQTRwQmik",
     location: "Ilishan-Remo, Nigeria",
     period: "11/2023 - 05/2024",
     description:
@@ -81,7 +81,7 @@ const experiences = [
   {
     title: "Mobile Application Developer",
     company: "Google Developer Student Clubs Babcock",
-    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEOP2zOrjI63g/company-logo_200_200/company-logo_200_200/0/1663074680407?e=1760572800&v=beta&t=VCHDV7p_pQroPHD7l34uPhCYe27QTIrv0dD1Y6Q4-sk",
+    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEOP2zOrjI63g/company-logo_200_200/company-logo_200_200/0/1663074680407?e=1764201600&v=beta&t=mQQxTW8xwkyyCvZuP432LC3udd9JNsS0wPK4c2TirQ0",
     location: "Ilishan-Remo, Nigeria",
     period: "09/2023 - 05/2024",
     description:

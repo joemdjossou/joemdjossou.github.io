@@ -55,6 +55,9 @@ const projects: Project[] = [
     technologies: ["Flutter", "Dart", "Clean Architecture", "Code Test"],
     links: {
       github: "https://github.com/joemdjossou/hymnms",
+      website: "#hymnes-app",
+      appstore: "https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258",
+      playstore: "https://play.google.com/store/apps/details?id=com.joemdjossou.hymnes&pcampaignid=web_share",
     },
     featured: true,
     status: "1 Star",

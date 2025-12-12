@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Mail, MapPin, Languages } from "lucide-react";
+import { ArrowLeft, Languages, Mail, MapPin } from "lucide-react";
 import React from "react";
 
 const PrivacyPolicy: React.FC = () => {
@@ -24,7 +24,9 @@ const PrivacyPolicy: React.FC = () => {
             </Button>
             <Button
               variant="outline"
-              onClick={() => window.location.hash = 'hymnes-app-privacy-policy-fr'}
+              onClick={() =>
+                (window.location.hash = "hymnes-app-privacy-policy-fr")
+              }
               className="flex items-center gap-2"
             >
               <Languages className="h-4 w-4" />
