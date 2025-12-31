@@ -15,6 +15,8 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Include JPG files (both uppercase and lowercase) as assets
+  assetsInclude: ["**/*.JPG", "**/*.jpg", "**/*.jpeg", "**/*.JPEG"],
   // Optimize for Bun compatibility
   optimizeDeps: {
     include: ["react", "react-dom"],

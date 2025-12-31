@@ -7,6 +7,7 @@ import HymnesApp from "./pages/HymnesApp";
 import Index from "./pages/Index";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PrivacyPolicyFR from "./pages/PrivacyPolicyFR";
+import Proposal from "./pages/Proposal";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,8 @@ const App = () => {
       setCurrentPage("privacy");
     } else if (hash === "hymnes-app-privacy-policy-fr") {
       setCurrentPage("privacy-fr");
+    } else if (hash === "edikan") {
+      setCurrentPage("proposal");
     } else {
       setCurrentPage("home");
     }
@@ -35,6 +38,8 @@ const App = () => {
         setCurrentPage("privacy");
       } else if (newHash === "hymnes-app-privacy-policy-fr") {
         setCurrentPage("privacy-fr");
+      } else if (newHash === "edikan") {
+        setCurrentPage("proposal");
       } else {
         setCurrentPage("home");
       }
@@ -55,6 +60,8 @@ const App = () => {
           <PrivacyPolicy />
         ) : currentPage === "privacy-fr" ? (
           <PrivacyPolicyFR />
+        ) : currentPage === "proposal" ? (
+          <Proposal />
         ) : (
           <Index />
         )}
