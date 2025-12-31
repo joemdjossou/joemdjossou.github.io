@@ -162,22 +162,38 @@ const Proposal = () => {
   useEffect(() => {
     if (!showLockScreen) return;
 
-    const handleKeyPress = (e: KeyboardEvent) => {
-      // Only accept numeric keys
-      if (e.key >= "0" && e.key <= "9") {
-        const newInput = passwordInput + e.key;
-        setPasswordInput(newInput);
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement> | string) => {
+      let value: string;
+      if (typeof e === "string") {
+        value = e;
+      } else {
+        value = e.target.value;
+      }
 
-        // Check if password is correct
-        if (newInput === "2023") {
-          setShowLockScreen(false);
+      // Only keep numeric characters
+      const numericValue = value.replace(/\D/g, "");
+
+      // Limit to 4 digits
+      const limitedValue = numericValue.slice(0, 4);
+      setPasswordInput(limitedValue);
+
+      // Check if password is correct
+      if (limitedValue === "2023") {
+        setShowLockScreen(false);
+        setPasswordInput("");
+      } else if (limitedValue.length >= 4 && limitedValue !== "2023") {
+        // Reset if wrong (after 4 digits)
+        setTimeout(() => {
           setPasswordInput("");
-        } else if (newInput.length >= 4) {
-          // Reset if wrong (after 4 digits)
-          setPasswordInput("");
-        }
+        }, 500);
+      }
+    };
+
+    // Also handle keyboard events for desktop
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key >= "0" && e.key <= "9") {
+        handleInput(passwordInput + e.key);
       } else if (e.key === "Backspace") {
-        // Allow backspace to delete
         setPasswordInput((prev) => prev.slice(0, -1));
       }
     };
@@ -198,8 +214,50 @@ const Proposal = () => {
               </span>
             </h1>
             {/* Password input display */}
-            <div className="mb-6">
-              <div className="flex justify-center gap-4">
+            <div className="mb-6 relative">
+              {/* Hidden input field for mobile keyboard */}
+              <input
+                type="tel"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                value={passwordInput}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, "").slice(0, 4);
+                  setPasswordInput(value);
+                  if (value === "2023") {
+                    setShowLockScreen(false);
+                    setPasswordInput("");
+                  } else if (value.length >= 4 && value !== "2023") {
+                    setTimeout(() => {
+                      setPasswordInput("");
+                    }, 500);
+                  }
+                }}
+                autoFocus
+                className="absolute opacity-0 pointer-events-none w-0 h-0"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: "1px",
+                  height: "1px",
+                }}
+              />
+              <div
+                className="flex justify-center gap-4 cursor-pointer"
+                onClick={() => {
+                  // Focus the hidden input when circles are clicked
+                  const input = document.querySelector(
+                    'input[type="tel"]'
+                  ) as HTMLInputElement;
+                  if (input) {
+                    input.focus();
+                    // On mobile, trigger click to open keyboard
+                    setTimeout(() => {
+                      input.click();
+                    }, 100);
+                  }
+                }}
+              >
                 {[0, 1, 2, 3].map((index) => (
                   <div
                     key={index}
