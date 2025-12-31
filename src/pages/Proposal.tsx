@@ -158,41 +158,31 @@ const Proposal = () => {
 
   const isLastSlide = currentSlide === slides.length - 1;
 
-  // Handle password input
+  // Handle password input - only keyboard events when input is not focused
   useEffect(() => {
     if (!showLockScreen) return;
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement> | string) => {
-      let value: string;
-      if (typeof e === "string") {
-        value = e;
-      } else {
-        value = e.target.value;
-      }
-
-      // Only keep numeric characters
-      const numericValue = value.replace(/\D/g, "");
-
-      // Limit to 4 digits
-      const limitedValue = numericValue.slice(0, 4);
-      setPasswordInput(limitedValue);
-
-      // Check if password is correct
-      if (limitedValue === "2023") {
-        setShowLockScreen(false);
-        setPasswordInput("");
-      } else if (limitedValue.length >= 4 && limitedValue !== "2023") {
-        // Reset if wrong (after 4 digits)
-        setTimeout(() => {
-          setPasswordInput("");
-        }, 500);
-      }
-    };
-
-    // Also handle keyboard events for desktop
+    // Handle keyboard events for desktop (only when input is not focused)
     const handleKeyPress = (e: KeyboardEvent) => {
+      const input = document.querySelector('input[type="tel"]') as HTMLInputElement;
+      // Only handle keyboard events if input is not focused (to avoid duplication)
+      if (input && document.activeElement === input) {
+        return; // Let the onChange handler handle it
+      }
+
       if (e.key >= "0" && e.key <= "9") {
-        handleInput(passwordInput + e.key);
+        const newInput = passwordInput + e.key;
+        const limitedValue = newInput.slice(0, 4);
+        setPasswordInput(limitedValue);
+
+        if (limitedValue === "2023") {
+          setShowLockScreen(false);
+          setPasswordInput("");
+        } else if (limitedValue.length >= 4 && limitedValue !== "2023") {
+          setTimeout(() => {
+            setPasswordInput("");
+          }, 500);
+        }
       } else if (e.key === "Backspace") {
         setPasswordInput((prev) => prev.slice(0, -1));
       }
