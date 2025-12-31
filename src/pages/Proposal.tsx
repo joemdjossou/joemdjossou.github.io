@@ -164,7 +164,9 @@ const Proposal = () => {
 
     // Handle keyboard events for desktop (only when input is not focused)
     const handleKeyPress = (e: KeyboardEvent) => {
-      const input = document.querySelector('input[type="tel"]') as HTMLInputElement;
+      const input = document.querySelector(
+        'input[type="tel"]'
+      ) as HTMLInputElement;
       // Only handle keyboard events if input is not focused (to avoid duplication)
       if (input && document.activeElement === input) {
         return; // Let the onChange handler handle it
