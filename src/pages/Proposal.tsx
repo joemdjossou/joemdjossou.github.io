@@ -5,6 +5,7 @@ import edikan4 from "@/assets/edikan/4.JPG";
 import edikan5 from "@/assets/edikan/5.jpg";
 import edikan6 from "@/assets/edikan/6.JPG";
 import edikanVideo from "@/assets/edikan/video/video.mp4";
+import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
 import { ArrowLeft, ArrowRight, Heart, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -16,6 +17,19 @@ interface Slide {
   emoji?: string;
   image?: string; // Optional image path
 }
+
+// EmailJS Configuration
+// To set up email notifications:
+// 1. Go to https://www.emailjs.com/ and create a free account
+// 2. Create an email service (Gmail, Outlook, etc.)
+// 3. Create an email template with these variables: {{to_email}}, {{subject}}, {{message}}
+// 4. Get your Service ID, Template ID, and Public Key from EmailJS dashboard
+// 5. Replace the values below with your actual credentials
+const EMAILJS_CONFIG = {
+  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
+  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
+  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "",
+};
 
 const Proposal = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -103,6 +117,10 @@ const Proposal = () => {
 
   const handleYes = () => {
     setShowConfetti(true);
+
+    // Send email notification
+    sendEmailNotification();
+
     // Epic confetti celebration
     const duration = 8000;
     const animationEnd = Date.now() + duration;
@@ -154,6 +172,48 @@ const Proposal = () => {
         shapes: ["circle"],
       });
     }, 500);
+  };
+
+  // Email notification function
+  const sendEmailNotification = async () => {
+    try {
+      // Skip if credentials are not configured
+      if (
+        !EMAILJS_CONFIG.SERVICE_ID ||
+        !EMAILJS_CONFIG.TEMPLATE_ID ||
+        !EMAILJS_CONFIG.PUBLIC_KEY
+      ) {
+        console.log(
+          "EmailJS credentials not configured. Skipping email notification."
+        );
+        console.log(
+          "To enable email notifications, set up EmailJS at https://www.emailjs.com/"
+        );
+        return;
+      }
+
+      // Initialize EmailJS
+      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+
+      // Prepare email template parameters
+      const templateParams = {
+        to_email: "joemdjossou@gmail.com",
+        subject: "🎉 She Said YES!",
+        message: `Edikan said YES to your proposal! 💕\n\nTime: ${new Date().toLocaleString()}\n\nCongratulations! 🎊`,
+        reply_to: "joemdjossou@gmail.com",
+      };
+
+      // Send email
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams
+      );
+      console.log("Email notification sent successfully!");
+    } catch (error) {
+      console.error("Failed to send email notification:", error);
+      // Don't show error to user - fail silently
+    }
   };
 
   const isLastSlide = currentSlide === slides.length - 1;
