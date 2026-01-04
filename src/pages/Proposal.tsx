@@ -26,9 +26,9 @@ interface Slide {
 // 4. Get your Service ID, Template ID, and Public Key from EmailJS dashboard
 // 5. Replace the values below with your actual credentials
 const EMAILJS_CONFIG = {
-  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
-  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
-  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "",
+  SERVICE_ID: "service_5sm6ty3",
+  TEMPLATE_ID: "template_ig30hd9",
+  PUBLIC_KEY: "BT-KILiYJbOCIsOuE",
 };
 
 const Proposal = () => {
@@ -192,26 +192,47 @@ const Proposal = () => {
         return;
       }
 
-      // Initialize EmailJS
+      console.log("Sending email notification...");
+      console.log("Service ID:", EMAILJS_CONFIG.SERVICE_ID);
+      console.log("Template ID:", EMAILJS_CONFIG.TEMPLATE_ID);
+      console.log("Public Key:", EMAILJS_CONFIG.PUBLIC_KEY);
+
+      // Initialize EmailJS (only needs to be done once, but safe to call multiple times)
+      if (!emailjs.init) {
+        console.error("EmailJS not loaded properly");
+        return;
+      }
       emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 
       // Prepare email template parameters
+      // IMPORTANT: EmailJS requires the recipient email to be in a variable called "user_email"
+      // In your EmailJS template, set the "To Email" field to: {{user_email}}
       const templateParams = {
-        to_email: "joemdjossou@gmail.com",
+        user_email: "joemdjossou@gmail.com", // EmailJS expects this specific variable name
+        from_name: "Proposal Page",
         subject: "🎉 She Said YES!",
         message: `Edikan said YES to your proposal! 💕\n\nTime: ${new Date().toLocaleString()}\n\nCongratulations! 🎊`,
         reply_to: "joemdjossou@gmail.com",
       };
 
+      console.log("Template params:", templateParams);
+
       // Send email
-      await emailjs.send(
+      const response = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         templateParams
       );
-      console.log("Email notification sent successfully!");
+
+      console.log("Email notification sent successfully!", response);
+      console.log("Response status:", response.status);
+      console.log("Response text:", response.text);
     } catch (error) {
       console.error("Failed to send email notification:", error);
+      console.error("Error details:", {
+        message: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+      });
       // Don't show error to user - fail silently
     }
   };
