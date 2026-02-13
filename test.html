@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: #28a745;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .info {
+            color: #17a2b8;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 GitHub Pages Test</h1>
+        <p class="success">✅ If you see this, GitHub Pages is working!</p>
+        <p class="info">📁 This is a static HTML file served directly from the public folder</p>
+        <p class="info">🕐 Test performed at: <span id="timestamp"></span></p>
+        <p class="info">🌐 URL: https://joemdjossou.github.io/test.html</p>
+        
+        <h2>Diagnosis:</h2>
+        <ul>
+            <li>✅ GitHub Pages deployment: WORKING</li>
+            <li>✅ Static file serving: WORKING</li>
+            <li>❌ React app: NOT WORKING</li>
+        </ul>
+        
+        <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+            <strong>Conclusion:</strong> The issue is with the React build/bundle, not GitHub Pages itself.
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
