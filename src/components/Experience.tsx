@@ -7,13 +7,13 @@ const experiences = [
   {
     title: "Lead Mobile Engineer",
     company: "EdoMatch",
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQF8Nxsq-_LbkA/company-logo_200_200/B4DZpJsHzmG8AI-/0/1762172898892/edomatch_logo?e=1764201600&v=beta&t=xUUAfxkvW9EtpLZpDbEmBCdaMQuzDkJvB0QcM_iW4-A",
-    location: "Remote",
+    logo: "https://www.edomatch.com/images/logo/logo.png?image_process=quality,Q_80",
+    location: "Hybrid",
     period: "02/2025 - Present",
     description:
       "Leading mobile engineering team to develop high-performance, user-centric mobile applications using Flutter & Dart.",
     tasks: [
-      "Improved user retention by 39% and gained 73% more users on the mobile application with a total of 50,000+ users",
+      "Improved user retention by 104% and gained 107% more users on the mobile application with a total of 70,000+ users",
       "Design and develop high-performance, user-centric mobile applications using Flutter & Dart",
       "Optimize apps for speed, scalability, and accessibility while implementing modern UI/UX designs",
       "Research and integrate AI-powered features to enhance user experience and innovation",
@@ -31,7 +31,7 @@ const experiences = [
   {
     title: "Senior Mobile Engineer",
     company: "01Supplies",
-    logo: "https://media.licdn.com/dms/image/v2/D4D0BAQHBngAJQ7hd4A/company-logo_100_100/company-logo_100_100/0/1733267444196?e=1764201600&v=beta&t=Pf7ASyDs4BHEximmtkuW1foi0mksv0XdO5hGHVe7m1o",
+    logo: "https://01supplies.s3.eu-north-1.amazonaws.com/live/01supplies/store/642929bc6677c8f59009d5a0/site_logo.png",
     location: "Remote",
     period: "10/2024 - 02/2025",
     description:
@@ -46,7 +46,7 @@ const experiences = [
   {
     title: "Mobile Application Developer (Freelance)",
     company: "Upwork",
-    logo: "https://media.licdn.com/dms/image/v2/D560BAQFHVb6ZSCipCw/company-logo_200_200/company-logo_200_200/0/1727104517379/upwork_logo?e=1764201600&v=beta&t=7EH22LJHWOAg4TcBdMtM32XTAUG7o80mrzkdGPcCqys",
+    logo: "https://i0.wp.com/www.jenmatos.com/wp-content/uploads/2025/01/upwork-square-black.png",
     location: "Remote",
     period: "11/2020 - 10/2024",
     description:
@@ -67,7 +67,7 @@ const experiences = [
   {
     title: "Mobile Developer",
     company: "Babcock University Computer Club",
-    logo: "https://media.licdn.com/dms/image/v2/C560BAQE5iQFVan0Rfw/company-logo_200_200/company-logo_200_200/0/1630611374757?e=1764201600&v=beta&t=evidodas8bA8oOsUgGf0XyWr581DAR3G5fSQTRwQmik",
+    logo: "https://media.licdn.com/dms/image/v2/C560BAQE5iQFVan0Rfw/company-logo_200_200/company-logo_200_200/0/1630611374757?e=1772668800&v=beta&t=8KbL9cC-e0chxgPVcRHBLunwuoG9rA_5NAEWTrTcANk",
     location: "Ilishan-Remo, Nigeria",
     period: "11/2023 - 05/2024",
     description:
@@ -82,7 +82,7 @@ const experiences = [
   {
     title: "Mobile Application Developer",
     company: "Google Developer Student Clubs Babcock",
-    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEOP2zOrjI63g/company-logo_200_200/company-logo_200_200/0/1663074680407?e=1764201600&v=beta&t=mQQxTW8xwkyyCvZuP432LC3udd9JNsS0wPK4c2TirQ0",
+    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEOP2zOrjI63g/company-logo_200_200/company-logo_200_200/0/1663074680407?e=1772668800&v=beta&t=XWQ3p6gWecl-6_GerNof41vSM2istQxoQ7MHq1L0NXQ",
     location: "Ilishan-Remo, Nigeria",
     period: "09/2023 - 05/2024",
     description:
@@ -117,93 +117,105 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">Experiences</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My professional journey and work experiences in mobile application
-            development
+    <section id="experience" className="py-16 md:py-24 px-4 bg-secondary/30">
+      <div className="container mx-auto max-w-6xl">
+        <div className="mb-12 md:mb-16 animate-fade-in">
+          <p className="section-label mb-2">Career</p>
+          <h2 className="section-heading mb-4">Experience</h2>
+          <p className="text-muted-foreground max-w-xl">
+            Mobile engineering and leadership across startups and teams.
           </p>
         </div>
 
-        <div className="space-y-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className="card-shadow hover-lift transition-smooth animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="card-shadow hover-lift transition-smooth animate-slide-up border border-border rounded-xl flex flex-col h-full"
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                  <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted flex-shrink-0 flex items-center justify-center">
+              <CardHeader className="pb-2">
+                <div className="flex gap-3 items-start">
+                  <div className="w-12 h-12 rounded-lg overflow-hidden bg-muted flex-shrink-0 flex items-center justify-center">
                     {imageErrors[index] ? (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs font-semibold">
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm font-semibold">
                         {exp.company.charAt(0)}
                       </div>
                     ) : (
                       <img
                         src={exp.logo}
                         alt={`${exp.company} logo`}
-                        className="w-full h-full object-contain p-2"
+                        className="w-full h-full object-contain p-1.5"
                         onError={() => handleImageError(index)}
                       />
                     )}
                   </div>
-                  <div className="flex-1 space-y-2">
-                    <CardTitle className="text-xl lg:text-2xl text-foreground">
+                  <div className="flex-1 min-w-0 space-y-1">
+                    <CardTitle className="text-lg font-semibold text-foreground leading-tight">
                       {exp.title}
                     </CardTitle>
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="font-medium">{exp.company}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>{exp.location}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{exp.period}</span>
-                      </div>
+                    <div className="flex items-center gap-1 text-muted-foreground text-sm">
+                      <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                      <span className="truncate font-medium">
+                        {exp.company}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        {exp.location}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {exp.period}
+                      </span>
                     </div>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
+              <CardContent className="space-y-3 flex-1 flex flex-col pt-0">
+                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
                   {exp.description}
                 </p>
 
-                {exp.tasks && (
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-foreground">
-                      Key Responsibilities:
+                {exp.tasks && exp.tasks.length > 0 && (
+                  <div className="space-y-1.5 flex-1">
+                    <h4 className="font-semibold text-foreground text-sm">
+                      Key Responsibilities
                     </h4>
-                    <ul className="space-y-1 text-muted-foreground">
-                      {exp.tasks.map((task, taskIndex) => (
+                    <ul className="space-y-1 text-muted-foreground text-sm">
+                      {exp.tasks.slice(0, 3).map((task, taskIndex) => (
                         <li key={taskIndex} className="flex items-start gap-2">
-                          <span className="text-primary mt-1.5 text-xs">▪</span>
-                          <span>{task}</span>
+                          <span className="text-primary mt-1 text-xs shrink-0">
+                            ▪
+                          </span>
+                          <span className="line-clamp-2">{task}</span>
                         </li>
                       ))}
+                      {exp.tasks.length > 3 && (
+                        <li className="text-muted-foreground/80 text-xs">
+                          +{exp.tasks.length - 3} more
+                        </li>
+                      )}
                     </ul>
                   </div>
                 )}
 
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {exp.skills.map((skill, skillIndex) => (
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {exp.skills.slice(0, 5).map((skill, skillIndex) => (
                     <Badge
                       key={skillIndex}
                       variant="secondary"
-                      className="hover-lift"
+                      className="text-xs hover-lift"
                     >
                       {skill}
                     </Badge>
                   ))}
+                  {exp.skills.length > 5 && (
+                    <Badge variant="secondary" className="text-xs">
+                      +{exp.skills.length - 5}
+                    </Badge>
+                  )}
                 </div>
               </CardContent>
             </Card>

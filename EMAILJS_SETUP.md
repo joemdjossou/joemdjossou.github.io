@@ -13,7 +13,7 @@ This guide will help you set up email notifications for when someone clicks "Yes
 2. Click **Add New Service**
 3. Choose your email provider (Gmail, Outlook, etc.)
 4. Follow the setup instructions for your provider
-5. Copy the **Service ID** (e.g., `service_xxxxx`)
+5. Copy the **Service ID** (e.g., `service_5sm6ty3`)
 
 ## Step 3: Create Email Template
 
@@ -36,12 +36,12 @@ Sent from Proposal Page
    - `{{message}}` - email message
    - `{{reply_to}}` - reply-to email (optional)
 
-5. Copy the **Template ID** (e.g., `template_xxxxx`)
+5. Copy the **Template ID** (e.g., `template_ig30hd9`)
 
 ## Step 4: Get Public Key
 
 1. Go to **Account** → **General** in EmailJS dashboard
-2. Copy your **Public Key** (e.g., `xxxxxxxxxxxxx`)
+2. Copy your **Public Key** (e.g., `BT-KILiYJbOCIsOuE`)
 
 ## Step 5: Configure in Your Project
 

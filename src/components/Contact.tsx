@@ -3,31 +3,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  ExternalLink,
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-} from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">Contact</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Let's collaborate and bring your mobile app ideas to life. Get in
-            touch for project discussions or opportunities.
+    <section id="contact" className="py-16 md:py-24 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="mb-12 md:mb-16 animate-fade-in">
+          <p className="section-label mb-2">Let's connect</p>
+          <h2 className="section-heading mb-4">Contact</h2>
+          <p className="text-muted-foreground max-w-xl">
+            Open to project discussions, talks, and new opportunities.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8 animate-slide-up">
             <div className="space-y-6">
@@ -40,9 +30,9 @@ const Contact = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl" />
               </div>
 
-              <Card className="card-shadow hover-lift transition-smooth">
+              <Card className="card-shadow hover-lift transition-smooth border border-border rounded-xl">
                 <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                  <h3 className="text-xl font-bold text-foreground mb-4">
                     Josué Emmanuel Yaovi Djossou
                   </h3>
                   <div className="space-y-4">
@@ -85,34 +75,43 @@ const Contact = () => {
                       <Button
                         variant="outline"
                         size="icon"
-                        className="hover-lift"
+                        className="rounded-lg hover-lift"
+                        asChild
                       >
-                        <Github className="w-5 h-5" />
+                        <a
+                          href="https://github.com/joemdjossou"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="GitHub"
+                        >
+                          <Github className="w-5 h-5" />
+                        </a>
                       </Button>
                       <Button
                         variant="outline"
                         size="icon"
-                        className="hover-lift"
+                        className="rounded-lg hover-lift"
+                        asChild
                       >
-                        <Linkedin className="w-5 h-5" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="hover-lift"
-                      >
-                        <ExternalLink className="w-5 h-5" />
+                        <a
+                          href="https://www.linkedin.com/in/joemdjossou"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="LinkedIn"
+                        >
+                          <Linkedin className="w-5 h-5" />
+                        </a>
                       </Button>
                     </div>
                   </div>
 
                   <Button
-                    className="w-full mt-6 gradient-primary text-white hover-lift"
+                    className="w-full mt-6 gradient-primary text-primary-foreground hover:opacity-90 hover-lift rounded-lg"
                     asChild
                   >
                     <a href="mailto:joemdjossou@outlook.com">
                       <Mail className="w-5 h-5 mr-2" />
-                      Send Email
+                      Send email
                     </a>
                   </Button>
                 </CardContent>
@@ -122,10 +121,10 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            <Card className="card-shadow hover-lift transition-smooth">
+            <Card className="card-shadow hover-lift transition-smooth border border-border rounded-xl">
               <CardHeader>
-                <CardTitle className="text-2xl text-foreground">
-                  Send me a message
+                <CardTitle className="text-xl text-foreground">
+                  Send a message
                 </CardTitle>
                 <p className="text-muted-foreground">
                   If you prefer, you can also contact me using the form below!
@@ -167,9 +166,9 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button className="w-full gradient-primary text-white hover-lift">
-                  <Send className="w-5 h-5 mr-2" />
-                  Send Message
+                <Button className="w-full gradient-primary text-primary-foreground hover:opacity-90 hover-lift rounded-lg">
+                  <Send className="w-4 h-4 mr-2" />
+                  Send message
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
@@ -181,45 +180,24 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Call to action */}
-        <div className="text-center mt-16 animate-fade-in">
-          <Card className="max-w-2xl mx-auto card-shadow hover-lift transition-smooth gradient-primary text-white">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-4">
-                Ready to Start Your Next Project?
-              </h3>
-              <p className="mb-6 opacity-90">
-                Let's work together to create amazing mobile applications that
-                solve real-world problems and delight users.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="hover-lift"
-                  asChild
-                >
-                  <a
-                    href="https://drive.google.com/file/d/15BxF9MYqgrbqbv1n_2ob3ybty83kgjM_/view?usp=drivesdk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download Resume
-                  </a>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="bg-white/10 border-white/20 text-white hover:bg-white/20 hover-lift"
-                  asChild
-                >
-                  <a href="mailto:joemdjossou@outlook.com">
-                    Start a Conversation
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="mt-12 text-center">
+          <p className="text-sm text-muted-foreground mb-4">
+            Prefer email?{" "}
+            <a
+              href="mailto:joemdjossou@outlook.com"
+              className="text-primary hover:underline"
+            >
+              joemdjossou@outlook.com
+            </a>
+          </p>
+          <Button variant="outline" className="rounded-lg hover-lift" asChild>
+            <a
+              href="/resume.pdf"
+              download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
+            >
+              Download resume
+            </a>
+          </Button>
         </div>
       </div>
     </section>

@@ -49,7 +49,7 @@ const HymnesApp: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
-        prevIndex === appScreenshots.length - 1 ? 0 : prevIndex + 1
+        prevIndex === appScreenshots.length - 1 ? 0 : prevIndex + 1,
       );
     }, 4000);
 
@@ -58,13 +58,13 @@ const HymnesApp: React.FC = () => {
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === appScreenshots.length - 1 ? 0 : prevIndex + 1
+      prevIndex === appScreenshots.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? appScreenshots.length - 1 : prevIndex - 1
+      prevIndex === 0 ? appScreenshots.length - 1 : prevIndex - 1,
     );
   };
 
@@ -299,7 +299,7 @@ const HymnesApp: React.FC = () => {
             <Button
               variant="ghost"
               onClick={() => (window.location.hash = "")}
-              className="flex items-center gap-2 text-[#3b6e4a] dark:text-[#e8b923] hover:text-[#2d5f3f] dark:hover:text-[#f4c430]"
+              className="flex items-center gap-2 text-[#3b6e4a] dark:text-[#ffffff] hover:text-[#2d5f3f] dark:hover:text-[#ffffff]"
             >
               <ArrowLeft className="h-4 w-4" />
               {t.backHome}
@@ -307,7 +307,7 @@ const HymnesApp: React.FC = () => {
             <Button
               variant="outline"
               onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
-              className="flex items-center gap-2 border-[#3b6e4a] text-[#3b6e4a] hover:bg-[#3b6e4a] hover:text-white dark:border-[#e8b923] dark:text-[#e8b923] dark:hover:bg-[#e8b923] dark:hover:text-[#1a2e1a]"
+              className="flex items-center gap-2 border-[#3b6e4a] text-[#3b6e4a] hover:bg-[#3b6e4a] hover:text-white dark:border-[#ffffff] dark:text-[#ffffff] dark:hover:bg-[#ffffff] dark:hover:text-[#1a2e1a]"
             >
               <Languages className="h-4 w-4" />
               {language === "fr" ? "English" : "Français"}
@@ -320,9 +320,9 @@ const HymnesApp: React.FC = () => {
       <section className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 bg-[#e8b923]/20 dark:bg-[#e8b923]/10 px-4 py-2 rounded-full">
-              <Star className="h-4 w-4 text-[#e8b923]" />
-              <span className="text-sm font-medium text-[#3b6e4a] dark:text-[#e8b923]">
+            <div className="inline-flex items-center gap-2 bg-[#ffffff]/20 dark:bg-[#ffffff]/10 px-4 py-2 rounded-full">
+              <Star className="h-4 w-4 text-[#ffffff]" />
+              <span className="text-sm font-medium text-[#3b6e4a] dark:text-[#ffffff]">
                 {language === "fr" ? "Maintenant disponible" : "Now Available"}
               </span>
             </div>
@@ -389,9 +389,9 @@ const HymnesApp: React.FC = () => {
             {/* Stats */}
             <div className="flex flex-wrap gap-8 pt-4">
               <div className="flex items-center gap-3">
-                <Star className="h-6 w-6 text-[#e8b923] fill-[#e8b923]" />
+                <Star className="h-6 w-6 text-[#ffffff] fill-[#ffffff]" />
                 <div>
-                  <div className="text-2xl font-bold text-[#2d5f3f] dark:text-[#e8b923]">
+                  <div className="text-2xl font-bold text-[#2d5f3f] dark:text-[#ffffff]">
                     4.9
                   </div>
                   <div className="text-sm text-[#5a5a5a] dark:text-[#c4b8a0]">
@@ -400,10 +400,10 @@ const HymnesApp: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Download className="h-6 w-6 text-[#3b6e4a] dark:text-[#e8b923]" />
+                <Download className="h-6 w-6 text-[#3b6e4a] dark:text-[#ffffff]" />
                 <div>
-                  <div className="text-2xl font-bold text-[#2d5f3f] dark:text-[#e8b923]">
-                    4000+
+                  <div className="text-2xl font-bold text-[#2d5f3f] dark:text-[#ffffff]">
+                    8,000+
                   </div>
                   <div className="text-sm text-[#5a5a5a] dark:text-[#c4b8a0]">
                     {t.downloads}
@@ -416,8 +416,8 @@ const HymnesApp: React.FC = () => {
           {/* App Screenshot Carousel */}
           <div className="relative">
             <div className="relative mx-auto max-w-md">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#e8b923] to-[#3b6e4a] rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
-              <div className="relative rounded-3xl shadow-2xl border-4 border-[#3b6e4a] dark:border-[#e8b923] overflow-hidden bg-black">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#ffffff] to-[#3b6e4a] rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
+              <div className="relative rounded-3xl shadow-2xl border-4 border-[#3b6e4a] dark:border-[#ffffff] overflow-hidden bg-black">
                 <img
                   src={appScreenshots[currentImageIndex]}
                   alt={`Hymnes et Louanges App Screenshot ${
@@ -429,14 +429,14 @@ const HymnesApp: React.FC = () => {
                 {/* Carousel Controls */}
                 <button
                   onClick={prevImage}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#3b6e4a]/80 dark:bg-[#e8b923]/80 hover:bg-[#3b6e4a] dark:hover:bg-[#e8b923] text-white dark:text-[#1a2e1a] rounded-full p-2 transition-all"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#3b6e4a]/80 dark:bg-[#ffffff]/80 hover:bg-[#3b6e4a] dark:hover:bg-[#ffffff] text-white dark:text-[#1a2e1a] rounded-full p-2 transition-all"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
                 <button
                   onClick={nextImage}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#3b6e4a]/80 dark:bg-[#e8b923]/80 hover:bg-[#3b6e4a] dark:hover:bg-[#e8b923] text-white dark:text-[#1a2e1a] rounded-full p-2 transition-all"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#3b6e4a]/80 dark:bg-[#ffffff]/80 hover:bg-[#3b6e4a] dark:hover:bg-[#ffffff] text-white dark:text-[#1a2e1a] rounded-full p-2 transition-all"
                   aria-label="Next image"
                 >
                   <ChevronRight className="h-6 w-6" />
@@ -450,7 +450,7 @@ const HymnesApp: React.FC = () => {
                       onClick={() => setCurrentImageIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all ${
                         index === currentImageIndex
-                          ? "bg-[#e8b923] w-6"
+                          ? "bg-[#ffffff] w-6"
                           : "bg-white/50"
                       }`}
                       aria-label={`Go to image ${index + 1}`}
@@ -467,7 +467,7 @@ const HymnesApp: React.FC = () => {
           <Button
             variant="ghost"
             onClick={scrollToFeatures}
-            className="text-[#3b6e4a] dark:text-[#e8b923] hover:text-[#2d5f3f] dark:hover:text-[#f4c430]"
+            className="text-[#3b6e4a] dark:text-[#ffffff] hover:text-[#2d5f3f] dark:hover:text-[#ffffff]"
           >
             {language === "fr"
               ? "Découvrir les fonctionnalités"
@@ -496,10 +496,10 @@ const HymnesApp: React.FC = () => {
       >
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2d5f3f] dark:text-[#e8b923] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2d5f3f] dark:text-[#ffffff] mb-4">
               {t.features}
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#e8b923] to-[#3b6e4a] mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#ffffff] to-[#3b6e4a] mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -508,13 +508,13 @@ const HymnesApp: React.FC = () => {
               return (
                 <Card
                   key={index}
-                  className="bg-[#f5f1e8] dark:bg-[#1a2e1a] border-[#3b6e4a]/20 dark:border-[#e8b923]/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="bg-[#f5f1e8] dark:bg-[#1a2e1a] border-[#3b6e4a]/20 dark:border-[#ffffff]/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <CardContent className="p-6 space-y-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#3b6e4a] to-[#2d5f3f] dark:from-[#e8b923] dark:to-[#d4a420] flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#3b6e4a] to-[#2d5f3f] dark:from-[#ffffff] dark:to-[#f0f0f0] flex items-center justify-center">
                       <Icon className="h-6 w-6 text-white dark:text-[#1a2e1a]" />
                     </div>
-                    <h3 className="text-xl font-semibold text-[#2d5f3f] dark:text-[#e8b923]">
+                    <h3 className="text-xl font-semibold text-[#2d5f3f] dark:text-[#ffffff]">
                       {feature.title}
                     </h3>
                     <p className="text-[#5a5a5a] dark:text-[#c4b8a0]">
@@ -532,7 +532,7 @@ const HymnesApp: React.FC = () => {
       <section className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2d5f3f] dark:text-[#e8b923] mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2d5f3f] dark:text-[#ffffff] mb-6">
               {t.whyChoose}
             </h2>
             <div className="space-y-4">
@@ -541,7 +541,7 @@ const HymnesApp: React.FC = () => {
                   key={index}
                   className="flex items-start gap-3 p-4 rounded-lg bg-white/50 dark:bg-[#1a2e1a]/50"
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#3b6e4a] dark:bg-[#e8b923] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full bg-[#3b6e4a] dark:bg-[#ffffff] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Check className="h-4 w-4 text-white dark:text-[#1a2e1a]" />
                   </div>
                   <p className="text-lg text-[#5a5a5a] dark:text-[#c4b8a0]">
@@ -552,7 +552,7 @@ const HymnesApp: React.FC = () => {
             </div>
           </div>
 
-          <Card className="bg-gradient-to-br from-[#3b6e4a] to-[#2d5f3f] dark:from-[#e8b923] dark:to-[#d4a420] border-none shadow-2xl">
+          <Card className="bg-gradient-to-br from-[#3b6e4a] to-[#2d5f3f] dark:from-[#ffffff] dark:to-[#f0f0f0] border-none shadow-2xl">
             <CardContent className="p-8 space-y-6">
               <h3 className="text-2xl font-bold text-white dark:text-[#1a2e1a]">
                 {t.about}
@@ -568,7 +568,7 @@ const HymnesApp: React.FC = () => {
                       ? "hymnes-app-privacy-policy-fr"
                       : "hymnes-app-privacy-policy")
                 }
-                className="w-full bg-white dark:bg-[#1a2e1a] text-[#3b6e4a] dark:text-[#e8b923] hover:bg-white/90 dark:hover:bg-[#0d1a0d]"
+                className="w-full bg-white dark:bg-[#1a2e1a] text-[#3b6e4a] dark:text-[#ffffff] hover:bg-white/90 dark:hover:bg-[#0d1a0d]"
               >
                 <Shield className="mr-2 h-4 w-4" />
                 {t.privacyLink}
@@ -582,43 +582,43 @@ const HymnesApp: React.FC = () => {
       <section className="bg-white/50 dark:bg-[#0d1a0d]/50 py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2d5f3f] dark:text-[#e8b923] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2d5f3f] dark:text-[#ffffff] mb-4">
               {t.reviews}
             </h2>
             <p className="text-xl text-[#5a5a5a] dark:text-[#c4b8a0]">
               {t.reviewsSubtitle}
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#e8b923] to-[#3b6e4a] mx-auto rounded-full mt-4"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#ffffff] to-[#3b6e4a] mx-auto rounded-full mt-4"></div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="bg-[#f5f1e8] dark:bg-[#1a2e1a] border-[#3b6e4a]/20 dark:border-[#e8b923]/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="bg-[#f5f1e8] dark:bg-[#1a2e1a] border-[#3b6e4a]/20 dark:border-[#ffffff]/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-2">
-                    <span className="text-4xl text-[#e8b923]">"</span>
+                    <span className="text-4xl text-[#ffffff]">"</span>
                     <p className="text-[#5a5a5a] dark:text-[#c4b8a0] leading-relaxed pt-2">
                       {testimonial.text}
                     </p>
                   </div>
-                  <div className="flex items-center gap-3 pt-2 border-t border-[#3b6e4a]/10 dark:border-[#e8b923]/10">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#3b6e4a] to-[#2d5f3f] dark:from-[#e8b923] dark:to-[#d4a420] flex items-center justify-center">
+                  <div className="flex items-center gap-3 pt-2 border-t border-[#3b6e4a]/10 dark:border-[#ffffff]/10">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#3b6e4a] to-[#2d5f3f] dark:from-[#ffffff] dark:to-[#f0f0f0] flex items-center justify-center">
                       <span className="text-white dark:text-[#1a2e1a] font-bold text-lg">
                         {testimonial.author.charAt(0)}
                       </span>
                     </div>
                     <div>
-                      <p className="font-semibold text-[#2d5f3f] dark:text-[#e8b923]">
+                      <p className="font-semibold text-[#2d5f3f] dark:text-[#ffffff]">
                         {testimonial.author}
                       </p>
                       <div className="flex gap-1">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className="h-3 w-3 text-[#e8b923] fill-[#e8b923]"
+                            className="h-3 w-3 text-[#ffffff] fill-[#ffffff]"
                           />
                         ))}
                       </div>
@@ -644,7 +644,7 @@ const HymnesApp: React.FC = () => {
               >
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto bg-[#3b6e4a] hover:bg-[#2d5f3f] text-white dark:bg-[#e8b923] dark:hover:bg-[#d4a420] dark:text-[#1a2e1a] shadow-lg"
+                  className="w-full sm:w-auto bg-[#3b6e4a] hover:bg-[#2d5f3f] text-white dark:bg-[#ffffff] dark:hover:bg-[#f0f0f0] dark:text-[#1a2e1a] shadow-lg"
                 >
                   <Download className="mr-2 h-5 w-5" />
                   {language === "fr"
@@ -658,7 +658,7 @@ const HymnesApp: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#3b6e4a] to-[#2d5f3f] dark:from-[#e8b923] dark:to-[#d4a420] py-16">
+      <section className="bg-gradient-to-r from-[#3b6e4a] to-[#2d5f3f] dark:from-[#ffffff] dark:to-[#f0f0f0] py-16">
         <div className="container mx-auto px-4 text-center max-w-7xl">
           <h2 className="text-3xl md:text-4xl font-bold text-white dark:text-[#1a2e1a] mb-4">
             {language === "fr"
@@ -723,7 +723,7 @@ const HymnesApp: React.FC = () => {
       <footer className="bg-[#2d5f3f] dark:bg-[#0d1a0d] py-8">
         <div className="container mx-auto px-4 text-center max-w-7xl">
           <p className="text-white/80 dark:text-[#c4b8a0]">
-            © 2025 JOEMDJOSSOU.{" "}
+            © {new Date().getFullYear()} JOEMDJOSSOU.{" "}
             {language === "fr"
               ? "Tous droits réservés."
               : "All rights reserved."}
@@ -736,5 +736,5 @@ const HymnesApp: React.FC = () => {
 
 export default HymnesApp;
 
-/// soiiisvii 
-/// Commit 
+/// soiiisvii
+/// Commit

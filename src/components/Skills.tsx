@@ -81,24 +81,22 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">Skills</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My technical expertise and professional capabilities across various
-            domains
+    <section id="skills" className="py-16 md:py-24 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="mb-12 md:mb-16 animate-fade-in">
+          <p className="section-label mb-2">Expertise</p>
+          <h2 className="section-heading mb-4">Skills</h2>
+          <p className="text-muted-foreground max-w-xl">
+            Technical and leadership capabilities across mobile, backend, and tools.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+        <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
           {skillCategories.map((category, categoryIndex) => (
             <Card
               key={categoryIndex}
-              className="card-shadow hover-lift transition-smooth animate-slide-up"
-              style={{ animationDelay: `${categoryIndex * 0.1}s` }}
+              className="card-shadow hover-lift transition-smooth animate-slide-up border border-border rounded-xl"
+              style={{ animationDelay: `${categoryIndex * 0.05}s` }}
             >
               <CardHeader>
                 <CardTitle className="text-xl text-foreground">
@@ -138,87 +136,24 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Skills illustration */}
-        <div className="text-center animate-scale-in">
-          <div className="relative inline-block">
-            <img
-              src="/skills1.png"
-              alt="Skills illustration"
-              className="w-full max-w-md h-auto rounded-2xl card-shadow hover-lift transition-smooth"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent rounded-2xl" />
-          </div>
-        </div>
-
-        {/* Skills highlights */}
-        <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto mt-12">
-          <Card className="text-center card-shadow hover-lift transition-smooth animate-fade-in">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 mx-auto mb-4 gradient-primary rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">95%</span>
+        {/* Skills highlights - compact */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-10">
+          {[
+            { label: "Flutter", value: "95%", cls: "gradient-primary" },
+            { label: "Leadership", value: "88%", cls: "gradient-accent" },
+            { label: "CI/CD & DevOps", value: "85%", cls: "bg-primary/80" },
+            { label: "AI Integration", value: "78%", cls: "bg-accent/80" },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="text-center p-4 rounded-xl border border-border bg-card card-shadow hover-lift transition-smooth"
+            >
+              <div className={`w-10 h-10 mx-auto mb-2 ${item.cls} rounded-lg flex items-center justify-center`}>
+                <span className="text-white font-bold text-sm">{item.value}</span>
               </div>
-              <h3 className="font-bold text-lg text-foreground mb-2">
-                Flutter Expertise
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Advanced proficiency in Flutter framework for cross-platform
-                mobile development
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card
-            className="text-center card-shadow hover-lift transition-smooth animate-fade-in"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <CardContent className="p-6">
-              <div className="w-12 h-12 mx-auto mb-4 gradient-accent rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">88%</span>
-              </div>
-              <h3 className="font-bold text-lg text-foreground mb-2">
-                Team Leadership
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Leading mobile engineering teams and mentoring junior developers
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card
-            className="text-center card-shadow hover-lift transition-smooth animate-fade-in"
-            style={{ animationDelay: "0.2s" }}
-          >
-            <CardContent className="p-6">
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">85%</span>
-              </div>
-              <h3 className="font-bold text-lg text-foreground mb-2">
-                CI/CD & DevOps
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Expert in automated deployment pipelines and development
-                operations
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card
-            className="text-center card-shadow hover-lift transition-smooth animate-fade-in"
-            style={{ animationDelay: "0.3s" }}
-          >
-            <CardContent className="p-6">
-              <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">78%</span>
-              </div>
-              <h3 className="font-bold text-lg text-foreground mb-2">
-                AI Integration
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Implementing AI-powered features and natural language processing
-                in apps
-              </p>
-            </CardContent>
-          </Card>
+              <p className="text-sm font-medium text-foreground">{item.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

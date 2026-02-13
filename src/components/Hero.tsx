@@ -1,174 +1,149 @@
 import { Button } from "@/components/ui/button";
-import { Download, ExternalLink, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
-  // Profile images array - using public folder paths
-  const profileImages = [
-    "/profile-1.png",
-    "/profile-2.png",
-    "/profile-3.png",
-    "/profile-4.png",
-    "/profile-5.png",
-    "/profile-6.png",
-  ];
-
-  // Carousel state
+  const profileImages = ["/profile-1.jpg", "/setup.jpg"];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Auto-slide effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === profileImages.length - 1 ? 0 : prevIndex + 1
+      setCurrentImageIndex((prev) =>
+        prev === profileImages.length - 1 ? 0 : prev + 1,
       );
-    }, 5000); // 5 seconds
-
+    }, 5000);
     return () => clearInterval(interval);
   }, [profileImages.length]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center hero-gradient px-4 py-20">
-      <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
-        <div className="space-y-8 animate-fade-in">
-          <div className="space-y-4">
-            <p className="text-muted-foreground text-lg font-medium">
-              Hello, my name is
-            </p>
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-              <span className="text-gradient">Y. E. Josué</span>
-              <br />
-              <span className="text-foreground">Djossou</span>
-            </h1>
-            <h2 className="text-xl lg:text-2xl font-semibold text-muted-foreground">
-              Lead Mobile Engineer @EdoMatch 📲 • I Build Fast and Scalable Apps
-              with Flutter & Native iOS 🧱 • On-Device LLM & AI Integrator 🦾 •
-              Tech Speaker 📣 • Technical Writer 🖋️
-            </h2>
-          </div>
-
-          <div className="space-y-4 max-w-2xl">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm a passionate Mobile Software Engineer specialized in building
-              fast, scalable, and beautiful apps with Flutter and native
-              technologies.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Currently Lead Mobile Engineer at EdoMatch, I drive the
-              development of intelligent, user-centered mobile applications,
-              working across:
-            </p>
-            <ul className="space-y-2 text-lg leading-relaxed text-muted-foreground list-disc list-inside">
-              <li>AI-powered features to enhance product capabilities,</li>
-              <li>
-                Clean backend integrations with RESTful APIs and AWS services,
-              </li>
-              <li>
-                Performance, accessibility, and maintainability at every level.
-              </li>
-            </ul>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              With a strong focus on clean architecture and developer
-              productivity, I also mentor junior engineers and collaborate
-              closely with designers and product managers to bring ideas to
-              life.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Beyond code, I value clarity, problem-solving, and lifelong
-              learning. Let's build things that matter.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            <Button
-              size="lg"
-              className="gradient-primary text-white font-semibold hover-lift"
-              asChild
-            >
-              <a
-                href="/resume.pdf"
-                download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
-              </a>
-            </Button>
-            <Button variant="outline" size="lg" className="hover-lift" asChild>
-              <a href="#contact">
-                <Mail className="w-5 h-5 mr-2" />
-                Contact Me
-              </a>
-            </Button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-4 pt-4">
-            <Button variant="ghost" size="icon" className="hover-lift">
-              <Github className="w-5 h-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover-lift">
-              <Linkedin className="w-5 h-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="hover-lift">
-              <ExternalLink className="w-5 h-5" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Profile Image Carousel */}
-        <div className="relative animate-scale-in">
-          <div className="relative overflow-hidden rounded-3xl card-shadow hover-lift">
-            {/* Carousel Container */}
-            <div className="relative w-full h-[600px]">
-              {profileImages.map((imagePath, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${
-                    index === currentImageIndex
-                      ? "opacity-100 translate-x-0 scale-100"
-                      : index ===
-                        (currentImageIndex - 1 + profileImages.length) %
-                          profileImages.length
-                      ? "opacity-0 -translate-x-full scale-95"
-                      : "opacity-0 translate-x-full scale-95"
-                  }`}
-                >
-                  <img
-                    src={imagePath}
-                    alt={`Josué Djossou - Profile ${index + 1}`}
-                    className="w-full h-full object-cover rounded-3xl"
-                  />
-                  {/* Card overlay effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-3xl" />
-                </div>
-              ))}
-            </div>
-
-            {/* Navigation dots */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {profileImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentImageIndex
-                      ? "bg-primary scale-125"
-                      : "bg-white/50 hover:bg-white/75"
-                  }`}
-                  aria-label={`Go to profile image ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Floating elements */}
-          <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-full animate-float" />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Full-width carousel background - object-cover to respect ratio */}
+      <div className="absolute inset-0 w-full">
+        {profileImages.map((path, i) => (
           <div
-            className="absolute -bottom-6 -left-6 w-16 h-16 bg-primary/20 rounded-full animate-float"
-            style={{ animationDelay: "1s" }}
-          />
+            key={i}
+            className={`absolute inset-0 transition-all duration-700 ease-out ${
+              i === currentImageIndex
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-105 pointer-events-none"
+            }`}
+          >
+            <img
+              src={path}
+              alt=""
+              className="w-full h-full object-cover"
+              role="presentation"
+            />
+          </div>
+        ))}
+        {/* Gradient overlay so text stays readable */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40"
+          aria-hidden
+        />
+      </div>
+
+      {/* Content on top of the image */}
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <div className="max-w-2xl ml-8 sm:ml-12 lg:ml-20 mr-auto text-left">
+          <div className="space-y-8 animate-fade-in">
+            <p className="section-label">Hello, I'm</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-foreground drop-shadow-sm">
+              Emmanuel Josué
+              <br />
+              <span className="text-gradient">Djossou</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed">
+              Lead Mobile Engineer @EdoMatch 📲 • 📊100K+ downloads & 📲75K+
+              users across the apps I have built • On-Device LLM & AI Integrator
+              🦾 • Tech Speaker 📣 • Technical Writter 🖋️
+            </p>
+            <p className="text-muted-foreground max-w-xl">
+              Passionate about clean architecture, mentoring, and bringing ideas
+              to life with designers and product teams. Let's build something
+              great.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                size="lg"
+                className="gradient-primary text-primary-foreground font-semibold hover:opacity-90 hover-lift rounded-lg"
+                asChild
+              >
+                <a
+                  href="/resume.pdf"
+                  download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Resume
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-lg hover-lift bg-background/80 backdrop-blur-sm border-foreground/20"
+                onClick={() => {
+                  document
+                    .querySelector("#contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                Get in touch
+              </Button>
+            </div>
+            <div className="flex items-center gap-4 pt-2">
+              <a
+                href="https://github.com/joemdjossou"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-smooth p-2 rounded-lg hover:bg-secondary/80"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/joemdjossou"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-smooth p-2 rounded-lg hover:bg-secondary/80"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Carousel dots - positioned over the image */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+        {profileImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentImageIndex(i)}
+            className={`h-2 rounded-full transition-smooth ${
+              i === currentImageIndex
+                ? "bg-primary w-6"
+                : "w-2 bg-foreground/40 hover:bg-foreground/60"
+            }`}
+            aria-label={`Image ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-float">
+        <button
+          onClick={() =>
+            document
+              .querySelector("#projects")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+          className="p-2 rounded-full border border-border bg-background/80 backdrop-blur-sm text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-smooth"
+          aria-label="Scroll to projects"
+        >
+          <ArrowDown className="w-5 h-5" />
+        </button>
       </div>
     </section>
   );

@@ -1,616 +1,424 @@
 import edikan1 from "@/assets/edikan/1.JPG";
-import edikan2 from "@/assets/edikan/2.JPG";
 import edikan3 from "@/assets/edikan/3.JPG";
 import edikan4 from "@/assets/edikan/4.JPG";
 import edikan5 from "@/assets/edikan/5.jpg";
 import edikan6 from "@/assets/edikan/6.JPG";
-import edikanVideo from "@/assets/edikan/video/video.mp4";
-import emailjs from "@emailjs/browser";
-import confetti from "canvas-confetti";
-import { ArrowLeft, ArrowRight, Heart, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
-
-interface Slide {
-  title: string;
-  content: string;
-  gradient: string;
-  emoji?: string;
-  image?: string; // Optional image path
-}
-
-// EmailJS Configuration
-// To set up email notifications:
-// 1. Go to https://www.emailjs.com/ and create a free account
-// 2. Create an email service (Gmail, Outlook, etc.)
-// 3. Create an email template with these variables: {{to_email}}, {{subject}}, {{message}}
-// 4. Get your Service ID, Template ID, and Public Key from EmailJS dashboard
-// 5. Replace the values below with your actual credentials
-const EMAILJS_CONFIG = {
-  SERVICE_ID: "service_5sm6ty3",
-  TEMPLATE_ID: "template_ig30hd9",
-  PUBLIC_KEY: "BT-KILiYJbOCIsOuE",
-};
+import spotifyLogo from "@/assets/edikan/spotify.png";
+import valPicture from "@/assets/edikan/val_picture.jpg";
+import valVideo from "@/assets/edikan/video/1_val.mp4";
+import { ArrowRight, Heart, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Proposal = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [noClickCount, setNoClickCount] = useState(0);
-  const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
-  const [yesButtonScale, setYesButtonScale] = useState(1);
-  const [showFunnyMessage, setShowFunnyMessage] = useState(false);
-  const [showLockScreen, setShowLockScreen] = useState(true);
-  const [passwordInput, setPasswordInput] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const slides: Slide[] = [
-    {
-      title: "September 2023",
-      content:
-        "It all started in September 2023... When I first met you, Edikan, I had no idea that you would become the most important person in my life. That moment changed everything.",
-      gradient: "from-pink-200 via-rose-200 to-pink-300",
-      image: edikan1,
-    },
-    {
-      title: "The Beginning",
-      content:
-        "From our first conversation, I knew there was something special about you. Your smile, your laughter, your way of seeing the world... You captured my heart without even trying.",
-      gradient: "from-purple-200 via-pink-200 to-rose-200",
-      image: edikan2,
-    },
-    {
-      title: "The Highs",
-      content:
-        "We've shared so many beautiful moments together. Every laugh, every smile, every late-night conversation... These are the memories I treasure most. You've brought so much joy and light into my life.",
-      gradient: "from-yellow-200 via-orange-200 to-pink-200",
-      image: edikan3,
-    },
-    {
-      title: "The Lows",
-      content:
-        "We've also faced challenges together, I made mistakes but you were always there. Actually I made you go through difficult times, I've seen your strength, your resilience, and your kind heart. These moments have only made me realize how much you mean to me and how much I want to be there for you, always.",
-      gradient: "from-blue-200 via-indigo-200 to-purple-200",
-      image: edikan4,
-    },
-    {
-      title: "Growing Together",
-      content:
-        "Through it all, we've grown. We've learned about each other, supported each other, and built something beautiful together. You've shown me what it means to care deeply, to love without even forcing it, and to be truly present.",
-      gradient: "from-green-200 via-teal-200 to-cyan-200",
-      image: edikan5,
-    },
-    {
-      title: "You Are The One I Want",
-      content:
-        "Edikan, you are my best friend, my confidant, my peace. You make me want to be a better person. You make every day brighter just by being in it. I am recurrently told that I am brilliant, but the most brillant thing I have ever done is loving you.",
-      gradient: "from-pink-300 via-rose-300 to-red-300",
-      image: edikan6,
-    },
-    {
-      title: "Will You Be My Girlfriend?",
-      content:
-        "Edikan, I've been thinking about this for a while, and I can't enter this new year without making this official, making it official with you. <<< I’ve loved you since I can’t remember when, and I want to love you till I can’t forget how. I want to be yours, and I want you to be mine. >>> Will you be my girlfriend? ",
-      gradient: "from-red-300 via-pink-400 to-rose-400",
-      emoji: "💕",
-      // image: "/proposal-images/proposal.jpg",
-    },
-  ];
-
-  const nextSlide = () => {
-    if (currentSlide < slides.length - 1) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(currentSlide + 1);
-        setIsTransitioning(false);
-      }, 300);
-    }
+  const scrollToClosing = () => {
+    document.getElementById("closing")?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentSlide(currentSlide - 1);
-        setIsTransitioning(false);
-      }, 300);
-    }
+  const scrollToStory = () => {
+    document
+      .getElementById("our-story")
+      ?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
-
-  const handleYes = () => {
-    setShowConfetti(true);
-
-    // Send email notification
-    sendEmailNotification();
-
-    // Epic confetti celebration
-    const duration = 8000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-    function randomInRange(min: number, max: number) {
-      return Math.random() * (max - min) + min;
-    }
-
-    const interval = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
-      const particleCount = 50 * (timeLeft / duration);
-
-      // Left side
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ["#FF69B4", "#FF1493", "#FFB6C1", "#FFC0CB", "#FF69B4"],
-      });
-      // Right side
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ["#FF69B4", "#FF1493", "#FFB6C1", "#FFC0CB", "#FF69B4"],
-      });
-      // Center
-      confetti({
-        ...defaults,
-        particleCount: particleCount / 2,
-        origin: { x: 0.5, y: 0.5 },
-        colors: ["#FF69B4", "#FF1493", "#FFB6C1", "#FFC0CB", "#FF69B4"],
-      });
-    }, 250);
-
-    // Heart-shaped confetti
-    setTimeout(() => {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ["#FF69B4", "#FF1493", "#FFB6C1"],
-        shapes: ["circle"],
-      });
-    }, 500);
+  const scrollToVideo = () => {
+    document
+      .getElementById("for-you-video")
+      ?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
-
-  // Email notification function
-  const sendEmailNotification = async () => {
-    try {
-      // Skip if credentials are not configured
-      if (
-        !EMAILJS_CONFIG.SERVICE_ID ||
-        !EMAILJS_CONFIG.TEMPLATE_ID ||
-        !EMAILJS_CONFIG.PUBLIC_KEY
-      ) {
-        console.log(
-          "EmailJS credentials not configured. Skipping email notification."
-        );
-        console.log(
-          "To enable email notifications, set up EmailJS at https://www.emailjs.com/"
-        );
-        return;
-      }
-
-      console.log("Sending email notification...");
-      console.log("Service ID:", EMAILJS_CONFIG.SERVICE_ID);
-      console.log("Template ID:", EMAILJS_CONFIG.TEMPLATE_ID);
-      console.log("Public Key:", EMAILJS_CONFIG.PUBLIC_KEY);
-
-      // Initialize EmailJS (only needs to be done once, but safe to call multiple times)
-      if (!emailjs.init) {
-        console.error("EmailJS not loaded properly");
-        return;
-      }
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-
-      // Prepare email template parameters
-      // IMPORTANT: EmailJS requires the recipient email to be in a variable called "user_email"
-      // In your EmailJS template, set the "To Email" field to: {{user_email}}
-      const templateParams = {
-        user_email: "joemdjossou@gmail.com", // EmailJS expects this specific variable name
-        from_name: "Proposal Page",
-        subject: "🎉 She Said YES!",
-        message: `Edikan said YES to your proposal! 💕\n\nTime: ${new Date().toLocaleString()}\n\nCongratulations! 🎊`,
-        reply_to: "joemdjossou@gmail.com",
-      };
-
-      console.log("Template params:", templateParams);
-
-      // Send email
-      const response = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams
-      );
-
-      console.log("Email notification sent successfully!", response);
-      console.log("Response status:", response.status);
-      console.log("Response text:", response.text);
-    } catch (error) {
-      console.error("Failed to send email notification:", error);
-      console.error("Error details:", {
-        message: error instanceof Error ? error.message : String(error),
-        stack: error instanceof Error ? error.stack : undefined,
-      });
-      // Don't show error to user - fail silently
-    }
-  };
-
-  const isLastSlide = currentSlide === slides.length - 1;
-
-  // Handle password input - only keyboard events when input is not focused
-  useEffect(() => {
-    if (!showLockScreen) return;
-
-    // Handle keyboard events for desktop (only when input is not focused)
-    const handleKeyPress = (e: KeyboardEvent) => {
-      const input = document.querySelector(
-        'input[type="tel"]'
-      ) as HTMLInputElement;
-      // Only handle keyboard events if input is not focused (to avoid duplication)
-      if (input && document.activeElement === input) {
-        return; // Let the onChange handler handle it
-      }
-
-      if (e.key >= "0" && e.key <= "9") {
-        const newInput = passwordInput + e.key;
-        const limitedValue = newInput.slice(0, 4);
-        setPasswordInput(limitedValue);
-
-        if (limitedValue === "2023") {
-          setShowLockScreen(false);
-          setPasswordInput("");
-        } else if (limitedValue.length >= 4 && limitedValue !== "2023") {
-          setTimeout(() => {
-            setPasswordInput("");
-          }, 500);
-        }
-      } else if (e.key === "Backspace") {
-        setPasswordInput((prev) => prev.slice(0, -1));
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [passwordInput, showLockScreen]);
 
   return (
-    <div className="min-h-screen overflow-hidden relative">
-      {/* Lock Screen */}
-      {showLockScreen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-pink-300 via-rose-300 to-red-300">
-          <div className="text-center animate-fade-in">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 text-white drop-shadow-2xl">
-              <span className="bg-gradient-to-r from-white via-pink-100 to-white bg-clip-text text-transparent">
-                The year everything started
-              </span>
-            </h1>
-            {/* Password input display */}
-            <div className="mb-6 relative">
-              {/* Hidden input field for mobile keyboard */}
-              <input
-                type="tel"
-                inputMode="numeric"
-                pattern="[0-9]*"
-                value={passwordInput}
-                onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, "").slice(0, 4);
-                  setPasswordInput(value);
-                  if (value === "2023") {
-                    setShowLockScreen(false);
-                    setPasswordInput("");
-                  } else if (value.length >= 4 && value !== "2023") {
-                    setTimeout(() => {
-                      setPasswordInput("");
-                    }, 500);
-                  }
-                }}
-                autoFocus
-                className="absolute opacity-0 pointer-events-none w-0 h-0"
-                style={{
-                  position: "absolute",
-                  left: "-9999px",
-                  width: "1px",
-                  height: "1px",
-                }}
-              />
-              <div
-                className="flex justify-center gap-4 cursor-pointer"
-                onClick={() => {
-                  // Focus the hidden input when circles are clicked
-                  const input = document.querySelector(
-                    'input[type="tel"]'
-                  ) as HTMLInputElement;
-                  if (input) {
-                    input.focus();
-                    // On mobile, trigger click to open keyboard
-                    setTimeout(() => {
-                      input.click();
-                    }, 100);
-                  }
-                }}
-              >
-                {[0, 1, 2, 3].map((index) => (
-                  <div
-                    key={index}
-                    className={`w-16 h-16 md:w-20 md:h-20 rounded-full border-4 flex items-center justify-center text-3xl md:text-4xl font-bold transition-all duration-300 ${
-                      index < passwordInput.length
-                        ? "bg-white text-pink-600 border-white scale-110"
-                        : "bg-white/20 text-white/50 border-white/50"
-                    }`}
-                  >
-                    {index < passwordInput.length ? passwordInput[index] : "•"}
-                  </div>
-                ))}
-              </div>
-            </div>
-            {passwordInput.length > 0 &&
-              passwordInput !== "2023" &&
-              passwordInput.length >= 4 && (
-                <p className="text-lg text-white/70 mt-4 animate-shake">
-                  Wrong password, try again...
-                </p>
+    <div className="min-h-screen bg-[#fdf2f8] text-[#4c0519]">
+      {/* Header - Bloom style */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-rose-200/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg text-rose-800 hover:bg-rose-50"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
               )}
+            </button>
+            <nav className="hidden md:flex items-center gap-8">
+              <button
+                onClick={scrollToStory}
+                className="text-sm font-medium text-rose-800 hover:text-rose-600 transition-colors"
+              >
+                Our Story
+              </button>
+              <button
+                onClick={scrollToStory}
+                className="text-sm font-medium text-rose-800 hover:text-rose-600 transition-colors"
+              >
+                Moments
+              </button>
+            </nav>
+            <div className="flex items-center gap-2 font-semibold text-xl text-rose-900">
+              <span className="relative">For Edikan</span>
+              <Heart className="w-5 h-5 text-rose-500 fill-rose-500" />
+            </div>
+            <nav className="hidden md:flex items-center gap-8">
+              <button
+                onClick={scrollToStory}
+                className="text-sm font-medium text-rose-800 hover:text-rose-600 transition-colors"
+              >
+                About Us
+              </button>
+              <button
+                onClick={scrollToVideo}
+                className="bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+              >
+                Watch video
+              </button>
+            </nav>
+            <div className="md:hidden">
+              <button
+                onClick={scrollToVideo}
+                className="bg-rose-500 hover:bg-rose-600 text-white text-sm font-semibold px-4 py-2 rounded-full"
+              >
+                Watch video
+              </button>
+            </div>
           </div>
         </div>
-      )}
-
-      {/* Animated background gradient */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].gradient} transition-all duration-1000 ease-in-out`}
-      />
-
-      {/* Floating hearts animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-pink-300/30 animate-float-heart"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-              fontSize: `${20 + Math.random() * 30}px`,
-            }}
-          >
-            💖
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-rose-100 bg-white py-4 px-4 space-y-2">
+            <button
+              onClick={scrollToStory}
+              className="block w-full text-left py-2 text-rose-800 font-medium"
+            >
+              Our Story
+            </button>
+            <button
+              onClick={scrollToStory}
+              className="block w-full text-left py-2 text-rose-800 font-medium"
+            >
+              Moments
+            </button>
+            <button
+              onClick={scrollToStory}
+              className="block w-full text-left py-2 text-rose-800 font-medium"
+            >
+              About Us
+            </button>
           </div>
-        ))}
-      </div>
+        )}
+      </header>
 
-      {/* Particle effect overlay */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="particles"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div className="max-w-5xl w-full">
-          {/* Main slide container with glassmorphism */}
-          <div
-            className={`bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-12 lg:p-16 text-center relative overflow-hidden border border-white/20 transition-all duration-500 ${
-              isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
-          >
-            {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-pink-200/50 to-transparent rounded-br-full blur-2xl"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-rose-200/50 to-transparent rounded-tl-full blur-2xl"></div>
-
-            {/* Image container (if image exists) */}
-            {slides[currentSlide].image && (
-              <div className="mb-8 relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-400/20 to-rose-400/20 rounded-3xl blur-2xl transform scale-110"></div>
-                <img
-                  src={slides[currentSlide].image}
-                  alt={slides[currentSlide].title}
-                  className="relative w-full max-w-lg mx-auto h-80 md:h-96 object-cover rounded-3xl shadow-2xl border-4 border-white/50 animate-float-emoji"
-                />
-              </div>
-            )}
-
-            {/* Emoji decoration with animation (only if no image) */}
-            {!slides[currentSlide].image && slides[currentSlide].emoji && (
-              <div className="text-9xl md:text-[12rem] mb-8 animate-float-emoji relative z-10">
-                {slides[currentSlide].emoji}
-              </div>
-            )}
-
-            {/* Title with gradient text */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-8 relative z-10">
-              <span className="bg-gradient-to-r from-pink-600 via-rose-600 to-red-600 bg-clip-text text-transparent animate-gradient">
-                {slides[currentSlide].title}
-              </span>
-            </h1>
-
-            {/* Content with beautiful typography */}
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-800 leading-relaxed mb-10 font-medium relative z-10 max-w-3xl mx-auto">
-              {slides[currentSlide].content}
+      {/* Hero - soft pink, warm welcome + your photo with rose */}
+      <section className="relative bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100 py-16 md:py-24 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 md:gap-12 items-center">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start gap-4">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+              <img
+                src={edikan1}
+                alt="Edikan"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-xs uppercase tracking-widest text-rose-600 font-semibold">
+              Me & You 🎶
             </p>
+            <div className="text-5xl opacity-80">💕</div>
+          </div>
+          <div className="md:col-span-1 text-center md:text-left space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-rose-900 leading-tight">
+              My Love, My Edikan...
+            </h1>
+            <p className="text-lg md:text-xl text-rose-800/90 max-w-md mx-auto md:mx-0">
+              It still feels like a dream that it started with “Congrats Edi.” Who
+              knew the person I was cheering for would turn out to be the
+              one I choose, again and again, every day?
+            </p>
+            <button
+              onClick={scrollToStory}
+              className="inline-flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+            >
+              Start here
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="md:col-span-1 flex flex-col items-center md:items-end">
+            <span className="text-xs uppercase tracking-widest text-rose-600 font-semibold mb-2">
+              For you,
+            </span>
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white max-w-xs">
+              <img
+                src={valPicture}
+                alt="For you"
+                className="w-full aspect-[3/4] object-cover"
+              />
+            </div>
+            <p className="text-sm text-rose-700 mt-2 font-medium">
+              One rose, one heart.
+            </p>
+          </div>
+        </div>
+      </section>
 
-            {/* Funny message overlay */}
-            {showFunnyMessage && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in">
-                <div className="bg-gradient-to-br from-white via-pink-50 to-rose-50 rounded-3xl p-10 md:p-14 text-center max-w-lg mx-4 shadow-2xl border-4 border-pink-200 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-pink-200/30 rounded-bl-full blur-3xl"></div>
-                  <div className="absolute bottom-0 left-0 w-40 h-40 bg-rose-200/30 rounded-tr-full blur-3xl"></div>
-                  <div className="text-6xl mb-6 relative z-10">😂💔</div>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4 relative z-10">
-                    wow this is crazy😂💔
-                  </h2>
-                  <p className="text-xl md:text-2xl text-gray-700 mb-6 leading-relaxed relative z-10 font-medium">
-                    Happy new year bestie we are both single😂
-                  </p>
+      {/* Section: Hand picked for my heart-picked person - wide card */}
+      <section id="our-story" className="py-16 md:py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-xl border border-rose-100 overflow-hidden">
+            <div className="grid md:grid-cols-3 gap-0">
+              <div className="p-6 md:p-8 flex flex-col justify-center bg-rose-50/50">
+                <span className="text-xs uppercase tracking-widest text-rose-600 font-semibold mb-2">
+                  Our story
+                </span>
+                <p className="text-rose-800 font-medium">Today</p>
+                <p className="text-sm text-rose-700 mt-1">
+                  When everything continues.
+                </p>
+                <div className="mt-6 rounded-xl overflow-hidden max-w-[200px]">
+                  <img
+                    src={edikan3}
+                    alt=""
+                    className="w-full aspect-square object-cover"
+                  />
                 </div>
               </div>
-            )}
-
-            {/* Proposal buttons (only on last slide) */}
-            {isLastSlide && (
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12 relative z-10 min-h-[120px]">
+              <div className="p-6 md:p-8 flex items-center justify-center bg-gradient-to-b from-rose-100/50 to-white">
+                <img
+                  src={edikan4}
+                  alt="Us"
+                  className="rounded-2xl shadow-lg max-h-[400px] w-auto object-cover"
+                />
+              </div>
+              <div className="p-6 md:p-8 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-rose-900 mb-4">
+                  You’re the one I chose to love.
+                </h2>
+                <p className="text-rose-800 leading-relaxed mb-6">
+                  So much laughter — all those “😂😂😂” — but beneath the jokes,
+                  something true was taking root. The late-night conversations, the “Have you eaten?”, the
+                  “Pray for meeee,” the staircase waits, the 7AM
+                  rants… love was taking shape without fanfare.
+                </p>
+                <p className="text-rose-700 text-sm mb-6">
+                  Keep scrolling—there’s more I want to say.
+                </p>
                 <button
-                  onClick={handleYes}
-                  style={{
-                    transform: `scale(${yesButtonScale})`,
-                    transition: "transform 0.3s ease-out",
-                  }}
-                  className="group relative px-10 py-5 bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 text-white text-2xl font-bold rounded-full shadow-2xl hover:shadow-pink-500/50 flex items-center gap-3 overflow-hidden"
+                  onClick={() =>
+                    document
+                      .getElementById("moments")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="inline-flex items-center gap-2 text-rose-600 font-semibold hover:text-rose-700"
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-pink-600 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  <Heart className="w-7 h-7 fill-white relative z-10 animate-pulse" />
-                  <span className="relative z-10">
-                    Yes, I'll be your girlfriend!
-                  </span>
-                  <Sparkles className="w-6 h-6 relative z-10 animate-spin-slow" />
-                </button>
-                <button
-                  onClick={() => {
-                    const newCount = noClickCount + 1;
-                    setNoClickCount(newCount);
-
-                    // Make Yes button bigger
-                    setYesButtonScale(1 + newCount * 0.15);
-
-                    // Move No button to random position
-                    const maxX = window.innerWidth > 768 ? 200 : 150;
-                    const maxY = 100;
-                    setNoButtonPosition({
-                      x: (Math.random() - 0.5) * maxX,
-                      y: (Math.random() - 0.5) * maxY,
-                    });
-
-                    // Show funny message after 6 clicks
-                    if (newCount >= 6) {
-                      setShowFunnyMessage(true);
-                      setTimeout(() => {
-                        setNoClickCount(0);
-                        setNoButtonPosition({ x: 0, y: 0 });
-                        setYesButtonScale(1);
-                        setShowFunnyMessage(false);
-                      }, 4000);
-                    }
-                  }}
-                  style={{
-                    transform: `translate(${noButtonPosition.x}px, ${
-                      noButtonPosition.y
-                    }px) scale(${Math.max(0.7, 1 - noClickCount * 0.1)})`,
-                    transition: "transform 0.3s ease-out",
-                  }}
-                  className="px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-700 text-lg font-semibold rounded-full hover:bg-white hover:shadow-lg border border-gray-200 relative cursor-pointer"
-                >
-                  {noClickCount === 0
-                    ? "No I don't want"
-                    : noClickCount === 1
-                    ? "Wait, are you sure? 😅"
-                    : noClickCount === 2
-                    ? "Come on, think about it! 😊"
-                    : noClickCount === 3
-                    ? "Please reconsider! 🥺"
-                    : noClickCount === 4
-                    ? "You're breaking my heart 💔"
-                    : noClickCount === 5
-                    ? "Okay, let's try again..."
-                    : "wow this is crazy😂💔"}
+                  Keep reading
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            )}
-
-            {/* Navigation dots with improved design */}
-            <div className="flex justify-center gap-3 mt-12 relative z-10">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setIsTransitioning(true);
-                    setTimeout(() => {
-                      setCurrentSlide(index);
-                      setIsTransitioning(false);
-                    }, 300);
-                  }}
-                  className={`transition-all duration-500 rounded-full ${
-                    index === currentSlide
-                      ? "w-12 h-3 bg-gradient-to-r from-pink-500 to-rose-500 shadow-lg scale-110"
-                      : "w-3 h-3 bg-gray-300 hover:bg-gray-400 hover:scale-125"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
             </div>
           </div>
-
-          {/* Navigation arrows with enhanced design */}
-          <div className="flex justify-between items-center mt-8">
-            <button
-              onClick={prevSlide}
-              disabled={currentSlide === 0}
-              className={`p-5 rounded-full bg-white/90 backdrop-blur-md shadow-xl transition-all duration-300 ${
-                currentSlide === 0
-                  ? "opacity-30 cursor-not-allowed"
-                  : "hover:bg-white hover:scale-110 hover:shadow-2xl active:scale-95"
-              }`}
-              aria-label="Previous slide"
-            >
-              <ArrowLeft className="w-7 h-7 text-gray-700" />
-            </button>
-
-            {!isLastSlide && (
-              <button
-                onClick={nextSlide}
-                className="p-5 rounded-full bg-white/90 backdrop-blur-md shadow-xl hover:bg-white hover:scale-110 hover:shadow-2xl active:scale-95 transition-all duration-300 group"
-                aria-label="Next slide"
-              >
-                <ArrowRight className="w-7 h-7 text-gray-700 group-hover:translate-x-1 transition-transform" />
-              </button>
-            )}
-          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Success message with enhanced design */}
-      {showConfetti && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto p-4">
-          <div className="bg-gradient-to-br from-white via-pink-50 to-rose-50 rounded-3xl p-10 md:p-14 text-center max-w-2xl mx-4 shadow-2xl border-4 border-pink-200 relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-pink-200/30 rounded-bl-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-rose-200/30 rounded-tr-full blur-3xl"></div>
-
-            <div className="text-8xl mb-6 animate-bounce relative z-10">🎉</div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-6 relative z-10">
-              <span className="bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                Yayyy! 🎊
-              </span>
+      {/* Section: Two-column - Why you? + Blooms recall */}
+      <section id="moments" className="py-16 md:py-24 px-4 bg-white">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-rose-900">
+              You show you care in the little things.
             </h2>
-            <p className="text-2xl text-gray-700 mb-8 leading-relaxed relative z-10 font-medium">
-              Oh boy! I didn't know you were this romantic!😂 I love you! 💕
+            <p className="text-rose-700 text-sm"></p>
+            <p className="text-rose-800 leading-relaxed text-lg">
+              You fret when I skip meals. You miss me out loud. You pray for me.
+              You’re there. You love me. I want you to know I notice every bit
+              of it.
             </p>
-
-            {/* Video */}
-            <div className="mb-8 relative z-10">
-              <video
-                src={edikanVideo}
-                controls
-                autoPlay
-                loop
-                className="w-full max-w-md mx-auto rounded-2xl shadow-xl border-4 border-pink-200"
-              >
-                Your browser does not support the video tag.
-              </video>
+            <div className="rounded-2xl overflow-hidden shadow-lg aspect-square max-w-sm">
+              <img
+                src={edikan5}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </div>
-
-            <button
-              onClick={() => {
-                setShowConfetti(false);
-                setCurrentSlide(0);
-                setIsTransitioning(true);
-                setTimeout(() => setIsTransitioning(false), 300);
-              }}
-              className="px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-lg font-semibold rounded-full hover:from-pink-600 hover:to-rose-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 relative z-10"
-            >
-              Close
-            </button>
+            <p className="text-sm italic text-rose-700">— I notice it all.</p>
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-rose-900">
+              You’re the one on my mind.
+            </h2>
+            <p className="text-rose-700 text-sm">
+              Through every up and down — you’re still the one.
+            </p>
+            <p className="text-rose-800 leading-relaxed">
+              You make me gentler, more deliberate, more disciplined, more
+              thankful. Loving you is both calm and fierce at the same time.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-rose-100 rounded-2xl p-4 border border-rose-200">
+                <p className="text-sm font-semibold text-rose-900 mb-2">
+                  Your heart
+                </p>
+                <p className="text-xs text-rose-700 line-clamp-2">
+                  Your joy, your strength, your faith.
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-4 border border-rose-200 shadow">
+                <p className="text-sm font-semibold text-rose-900 mb-2">
+                  Your mind
+                </p>
+                <p className="text-xs text-rose-700">
+                  One of the smartest choices I've made is loving you on purpose.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={edikan6}
+                alt=""
+                className="w-full aspect-[4/3] object-cover"
+              />
+            </div>
           </div>
         </div>
-      )}
+      </section>
+
+      {/* Section: Made with love */}
+      <section className="py-16 md:py-24 px-4 bg-rose-50/50">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-rose-900 mb-4">
+            Today I'm celebrating us.
+          </h2>
+          <p className="text-lg text-rose-800 max-w-2xl mx-auto mb-4">
+            Your heart, your joy, your strength, your faith, your beautiful
+            mind. Choosing to love you on purpose is one of the best things
+            I’ve ever done — and you know I’ve said it before.
+          </p>
+          <p className="text-lg text-rose-800 max-w-2xl mx-auto mb-8 font-medium italic">
+            Je t’aime pour tout ce que tu es, tout ce que tu as été, et tout ce
+            que tu seras.
+          </p>
+          <p className="text-rose-700 max-w-xl mx-auto mb-8">
+            You push me to be better. You light up every day. I hope that comes
+            through in every word here.
+          </p>
+          <button
+            onClick={scrollToVideo}
+            className="inline-flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-semibold px-6 py-3 rounded-full transition-colors"
+          >
+            Keep scrolling — there’s something at the bottom
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </section>
+
+      {/* Section: Our Spotify playlist */}
+      <section className="py-16 md:py-24 px-4 bg-white">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-rose-900 mb-4">
+            Our soundtrack.
+          </h2>
+          <p className="text-rose-800 leading-relaxed mb-6">
+            These are the songs that remind me of you. Put them on whenever you
+            need to feel close, or when you just want to smile.
+          </p>
+          <a
+            href="https://open.spotify.com/playlist/5iZ2PlKDp5euBjvYivwHHQ?si=IRcC8bkSQhmzYS-cqv6tNA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all shadow-lg overflow-hidden border-0 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1DB954] hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+            style={{
+              background:
+                "linear-gradient(135deg, #1DB954 0%, #1ed760 50%, #1DB954 100%)",
+              backgroundSize: "200% 200%",
+              color: "white",
+            }}
+          >
+            <img
+              src={spotifyLogo}
+              alt="Spotify"
+              className="w-8 h-8 rounded-full object-cover flex-shrink-0 ring-2 ring-white/30"
+            />
+            <span className="font-semibold">
+              Listen to our playlist on Spotify
+            </span>
+          </a>
+        </div>
+      </section>
+
+      {/* Section: Video */}
+      <section
+        id="for-you-video"
+        className="py-16 md:py-24 px-4 bg-gradient-to-b from-rose-100 to-rose-200"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-rose-900 mb-4">
+            One more thing.
+          </h2>
+          <p className="text-lg text-rose-800 max-w-2xl mx-auto mb-8">
+            I recorded this for you. Watch it whenever you’re ready—then you’ll
+            know everything I’ve been trying to say.
+          </p>
+          <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-black">
+            <video
+              src={valVideo}
+              controls
+              className="w-full aspect-video object-contain"
+              poster={valPicture}
+              preload="metadata"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p className="text-rose-700 mt-6 text-sm">
+            When you’re done, scroll down to the end.
+          </p>
+          <button
+            onClick={scrollToClosing}
+            className="mt-6 inline-flex items-center gap-2 text-rose-600 font-semibold hover:text-rose-700"
+          >
+            Take me to the end
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </section>
+
+      {/* Closing - Happy Valentine's */}
+      <section
+        id="closing"
+        className="py-16 md:py-24 px-4 bg-gradient-to-br from-rose-200 via-pink-200 to-rose-300"
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="bg-white/90 backdrop-blur rounded-3xl shadow-2xl p-8 md:p-12 border border-rose-200/50">
+            <span className="text-6xl md:text-8xl block mb-6">❤️</span>
+            <p className="text-lg md:text-xl text-rose-800 leading-relaxed mb-6 font-medium italic">
+              Je t'aime pour tout ce que tu es,
+              <br />
+              tout ce que tu as été,
+              <br />
+              et tout ce que tu seras.
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-rose-900 mb-6">
+              Happy Valentine's Day, my baby girl ❤️
+            </h2>
+            <p className="text-xl text-rose-800 font-semibold">Your King.</p>
+            <p className="text-lg text-rose-700 mt-2">E.J</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-rose-900 text-rose-100 py-12 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="font-semibold text-xl flex items-center justify-center gap-2">
+            Made with love for Edikan{" "}
+            <Heart className="w-5 h-5 fill-rose-400 text-rose-400" />
+          </p>
+          <p className="mt-4 text-rose-200/80 text-sm">
+            © {new Date().getFullYear()} — E.E
+          </p>
+        </div>
+      </footer>
 
       <style>{`
         @keyframes fade-in {

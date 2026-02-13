@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, ExternalLink, Github, Play } from "lucide-react";
+import { ExternalLink, Github, Play } from "lucide-react";
 
 // Type definitions
 interface ProjectLinks {
@@ -25,6 +25,24 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Hymnes et Louanges",
+    description:
+      "A beautiful application for hymns with MIDI audio playback capabilities, featuring a modern clean architecture and elegant Forest Green, Gold, and White design theme.",
+    image: "https://github.com/joemdjossou/hymnes/raw/joemfixings/hymnes.png",
+    period: "Jan 2025 - Nov 2025",
+    technologies: ["Flutter", "Dart", "Clean Architecture", "Code Test"],
+    links: {
+      github: "https://github.com/joemdjossou/hymnms",
+      website: "#hymnes-app",
+      appstore:
+        "https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258",
+      playstore:
+        "https://play.google.com/store/apps/details?id=com.joemdjossou.hymnes&pcampaignid=web_share",
+    },
+    featured: true,
+    status: "1 Star",
+  },
+  {
     title: "StudyStats",
     description:
       "A group project that maximizes the students potential and simplify GPA tracking with the premier GPA analysis tool. From comprehensive GPA tracking to in-depth performance analysis and goal setting, Study Stats does the job.",
@@ -45,22 +63,6 @@ const projects: Project[] = [
     },
     featured: true,
     status: "",
-  },
-  {
-    title: "Hymnes et Louanges",
-    description:
-      "A beautiful application for hymns with MIDI audio playback capabilities, featuring a modern clean architecture and elegant Forest Green, Gold, and White design theme.",
-    image: "https://github.com/joemdjossou/hymnes/raw/joemfixings/hymnes.png",
-    period: "Jan 2025",
-    technologies: ["Flutter", "Dart", "Clean Architecture", "Code Test"],
-    links: {
-      github: "https://github.com/joemdjossou/hymnms",
-      website: "#hymnes-app",
-      appstore: "https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258",
-      playstore: "https://play.google.com/store/apps/details?id=com.joemdjossou.hymnes&pcampaignid=web_share",
-    },
-    featured: true,
-    status: "1 Star",
   },
   {
     title: "Affection Alerts",
@@ -187,258 +189,234 @@ const projects: Project[] = [
   },
 ];
 
+const featuredList = projects.filter((p) => p.featured);
+const heroProject = featuredList[0];
+const restFeatured = featuredList.slice(1, 6);
+
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 px-4 bg-secondary/50">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-gradient">GitHub & Live Projects</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real projects from my GitHub repositories showcasing Mobile, AI,
-            Data Science, and Web applications built with Flutter, React,
-            Python, and modern technologies
+    <section id="projects" className="py-16 md:py-24 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="mb-12 md:mb-16 animate-fade-in">
+          <p className="section-label mb-2">Work</p>
+          <h2 className="section-heading mb-4">Selected projects</h2>
+          <p className="text-muted-foreground max-w-xl">
+            Mobile, AI, and web applications built with Flutter, React, and
+            modern tools.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-12">
-          {projects
-            .filter((p) => p.featured)
-            .map((project, index) => (
-              <Card
-                key={index}
-                className="card-shadow hover-lift transition-smooth animate-slide-up overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Hero project */}
+        {heroProject &&
+          (() => {
+            const heroHref =
+              heroProject.links.website ||
+              heroProject.links.playstore ||
+              heroProject.links.github ||
+              "#";
+            const isExternal =
+              typeof heroHref === "string" && !heroHref.startsWith("#");
+            return (
+              <a
+                href={heroHref}
+                {...(isExternal
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="block group mb-12 md:mb-16 animate-slide-up rounded-2xl overflow-hidden bg-card border border-border card-shadow hover-lift"
               >
-                <div className="aspect-video overflow-hidden">
+                <div className="aspect-[16/9] overflow-hidden">
                   <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    src={heroProject.image}
+                    alt={heroProject.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <CardHeader>
-                  <div className="flex justify-between items-start gap-4">
-                    <CardTitle className="text-xl lg:text-2xl text-foreground">
-                      {project.title}
-                    </CardTitle>
-                    <div className="flex items-center gap-1 text-muted-foreground text-sm">
-                      <Calendar className="w-4 h-4" />
-                      <span>{project.period}</span>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <Badge
-                        key={techIndex}
-                        variant="outline"
-                        className="hover-lift"
-                      >
-                        {tech}
-                      </Badge>
+                <div className="p-6 md:p-8">
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <span>{heroProject.period}</span>
+                    {heroProject.technologies.slice(0, 3).map((t, i) => (
+                      <span key={i}>· {t}</span>
                     ))}
                   </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-smooth">
+                    {heroProject.title}
+                  </h3>
+                  <p className="text-muted-foreground max-w-2xl">
+                    {heroProject.description}
+                  </p>
+                </div>
+              </a>
+            );
+          })()}
 
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    {project.links.github && (
-                      <Button
-                        variant="default"
-                        size="sm"
-                        className="gradient-primary text-white hover-lift"
-                        asChild
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {restFeatured.map((project, index) => (
+            <Card
+              key={index}
+              className="card-shadow hover-lift transition-smooth animate-slide-up overflow-hidden border border-border rounded-xl"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardHeader className="pb-2">
+                <div className="flex items-start justify-between gap-2">
+                  <CardTitle className="text-lg font-semibold text-foreground">
+                    {project.title}
+                  </CardTitle>
+                  <span className="text-xs text-muted-foreground shrink-0">
+                    {project.period}
+                  </span>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3 pt-0">
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 4).map((tech, i) => (
+                    <Badge
+                      key={i}
+                      variant="secondary"
+                      className="text-xs font-normal"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {project.links.github && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 rounded-lg"
+                      asChild
+                    >
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="w-4 h-4 mr-2" />
-                          View Code
-                        </a>
-                      </Button>
-                    )}
-                    {project.links.playstore && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover-lift"
-                        asChild
+                        <Github className="w-4 h-4 mr-1" /> Code
+                      </a>
+                    </Button>
+                  )}
+                  {project.links.playstore && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 rounded-lg"
+                      asChild
+                    >
+                      <a
+                        href={project.links.playstore}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={project.links.playstore}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Play className="w-4 h-4 mr-2" />
-                          Play Store
-                        </a>
-                      </Button>
-                    )}
-                    {project.links.appstore && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover-lift"
-                        asChild
+                        <Play className="w-4 h-4 mr-1" /> Play
+                      </a>
+                    </Button>
+                  )}
+                  {project.links.appstore && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 rounded-lg"
+                      asChild
+                    >
+                      <a
+                        href={project.links.appstore}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={project.links.appstore}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          App Store
-                        </a>
-                      </Button>
-                    )}
-                    {project.links.website && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover-lift"
-                        asChild
+                        <ExternalLink className="w-4 h-4 mr-1" /> App Store
+                      </a>
+                    </Button>
+                  )}
+                  {project.links.website && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 rounded-lg"
+                      asChild
+                    >
+                      <a
+                        href={project.links.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={project.links.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          View Website
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                        <ExternalLink className="w-4 h-4 mr-1" /> Site
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        {/* Non-featured projects */}
-        <div className="max-w-4xl mx-auto space-y-6">
+        {/* Other projects - compact list */}
+        <div className="space-y-4 w-full">
+          <p className="section-label">More</p>
           {projects
             .filter((p) => !p.featured)
             .map((project, index) => (
-              <Card
+              <div
                 key={index}
-                className="card-shadow hover-lift transition-smooth animate-slide-up"
+                className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-xl border border-border bg-card/50 hover-lift transition-smooth"
               >
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row gap-4 items-start">
-                    <div className="w-20 h-20 rounded-lg overflow-hidden bg-muted flex-shrink-0">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      <CardTitle className="text-xl text-foreground">
-                        {project.title}
-                      </CardTitle>
-                      <div className="flex items-center gap-1 text-muted-foreground text-sm">
-                        <Calendar className="w-4 h-4" />
-                        <span>{project.period}</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">
+                <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted shrink-0">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold text-foreground">
+                    {project.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground line-clamp-1">
                     {project.description}
                   </p>
-
-                  <div className="flex justify-between items-center">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={techIndex}
-                          variant="secondary"
-                          className="hover-lift"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    {project.links.github && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover-lift"
-                        asChild
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  {project.links.github && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 rounded-lg"
+                      asChild
+                    >
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <a
-                          href={project.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                    )}
-                    {project.links.website && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="hover-lift"
-                        asChild
-                      >
-                        <a
-                          href={project.links.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          View
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                        <Github className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </div>
             ))}
         </div>
 
-        {/* Other projects section */}
-        <div className="text-center mt-16 animate-fade-in">
-          <Card className="card-shadow hover-lift transition-smooth max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Github className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-foreground">
-                More Projects Available
-              </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Explore my GitHub repositories for additional projects including
-                both mobile and web-based applications. My goal is to build as
-                many end-to-end Flutter projects as possible to learn and
-                contribute to society.
-              </p>
-              <Button
-                className="gradient-primary text-white hover-lift"
-                asChild
-              >
-                <a
-                  href="https://github.com/joemdjossou?tab=repositories"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="w-5 h-5 mr-2" />
-                  View All Repositories
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
+        <div className="mt-12 text-center">
+          <Button variant="outline" className="rounded-lg hover-lift" asChild>
+            <a
+              href="https://github.com/joemdjossou?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="w-4 h-4 mr-2" />
+              All repositories
+            </a>
+          </Button>
         </div>
       </div>
     </section>

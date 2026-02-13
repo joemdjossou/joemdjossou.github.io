@@ -37,7 +37,7 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border card-shadow"
+          ? "bg-background/90 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -47,19 +47,19 @@ const Navigation = () => {
           <div className="flex items-center">
             <button
               onClick={() => scrollToSection("#home")}
-              className="text-2xl font-bold text-gradient hover:scale-105 transition-transform"
+              className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition-smooth"
             >
-              JOEMDJOSSOU
+              EJ
             </button>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-primary transition-colors hover:scale-105"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth"
               >
                 {item.name}
               </button>
@@ -67,9 +67,14 @@ const Navigation = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Button variant="outline" size="sm" className="hover-lift" asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hover-lift rounded-lg"
+              asChild
+            >
               <a
                 href="/resume.pdf"
                 download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
@@ -79,7 +84,8 @@ const Navigation = () => {
               </a>
             </Button>
             <Button
-              className="gradient-primary text-white hover-lift"
+              size="sm"
+              className="gradient-primary text-primary-foreground hover:opacity-90 hover-lift rounded-lg"
               onClick={() => scrollToSection("#contact")}
             >
               Contact
