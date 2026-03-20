@@ -222,3 +222,65 @@ const INJECTED_STYLES = `
   }
 
 `;
+
+export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement> {
+  brandName?: string;
+  tagline1?: string;
+  tagline2?: string;
+  cardHeading?: string;
+  cardDescription?: React.ReactNode;
+  ctaHeading?: string;
+  ctaDescription?: string;
+  appStoreHref?: string;
+  playStoreHref?: string;
+  /** Localized phone chrome + list copy (drives FR/EN toggle from the parent). */
+  phoneScreen?: CinematicPhoneScreenContent;
+  phoneAvatarLabel?: string;
+  badge1Emoji?: string;
+  badge1Title?: string;
+  badge1Subtitle?: string;
+  badge2Emoji?: string;
+  badge2Title?: string;
+  badge2Subtitle?: string;
+  /** Flanking glass feature tiles (left of headline). */
+  heroFloatingLeft?: React.ReactNode;
+  /** Flanking glass feature tiles (right of headline). */
+  heroFloatingRight?: React.ReactNode;
+  /** Merged app preview (e.g. screenshot carousel) under the taglines. */
+  heroPreviewSlot?: React.ReactNode;
+  /** Extra glass content on the “card” beat (why choose + about). */
+  cardContextSlot?: React.ReactNode;
+  /** Testimonials / social proof on the download CTA beat. */
+  ctaTestimonialsSlot?: React.ReactNode;
+  /** Bumps GSAP rebuild when locale changes (do not pass unstable JSX deps). */
+  localeKey?: string;
+}
+
+export function CinematicHero({
+  brandName = "Sobers",
+  tagline1 = "Track the journey,",
+  tagline2 = "not just the days.",
+  cardHeading = "Accountability, redefined.",
+  cardDescription = (
+    <>
+      <span className="text-white font-semibold">Sobers</span> empowers sponsors
+      and sponsees in 12-step recovery programs with structured accountability,
+      precise sobriety tracking, and beautiful visual timelines.
+    </>
+  ),
+  ctaHeading = "Start your recovery.",
+  ctaDescription = "Join thousands of others in the 12-step program and take control of your timeline today.",
+  appStoreHref = "#",
+  playStoreHref = "#",
+  phoneScreen: phoneScreenProp,
+  phoneAvatarLabel = "HL",
+  badge1Emoji = "🔥",
+  badge1Title = "1 Year Streak",
+  badge1Subtitle = "Milestone unlocked",
+  badge2Emoji = "🤝",
+  badge2Title = "Sponsor Update",
+  badge2Subtitle = "Shared successfully",
+  heroFloatingLeft,
+  heroFloatingRight,
+  heroPreviewSlot,
+  cardContextSlot,
