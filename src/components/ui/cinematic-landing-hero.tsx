@@ -284,3 +284,65 @@ export function CinematicHero({
   heroFloatingRight,
   heroPreviewSlot,
   cardContextSlot,
+  ctaTestimonialsSlot,
+  localeKey = "",
+  className,
+  ...props
+}: CinematicHeroProps) {
+  const phoneScreen = phoneScreenProp ?? DEFAULT_PHONE_SCREEN;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mainCardRef = useRef<HTMLDivElement>(null);
+  const mockupRef = useRef<HTMLDivElement>(null);
+  const requestRef = useRef<number>(0);
+
+  useEffect(() => {
+    let xTo: ReturnType<typeof gsap.quickTo> | null = null;
+    let yTo: ReturnType<typeof gsap.quickTo> | null = null;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (window.scrollY > window.innerHeight * 2) return;
+
+      cancelAnimationFrame(requestRef.current);
+
+      requestRef.current = requestAnimationFrame(() => {
+        if (!mainCardRef.current || !mockupRef.current) return;
+
+        const rect = mainCardRef.current.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        mainCardRef.current.style.setProperty("--mouse-x", `${mouseX}px`);
+        mainCardRef.current.style.setProperty("--mouse-y", `${mouseY}px`);
+
+        const xVal = (e.clientX / window.innerWidth - 0.5) * 2;
+        const yVal = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        if (!xTo || !yTo) {
+          xTo = gsap.quickTo(mockupRef.current, "rotationY", {
+            duration: 0.5,
+            ease: "power3.out",
+          });
+          yTo = gsap.quickTo(mockupRef.current, "rotationX", {
+            duration: 0.5,
+            ease: "power3.out",
+          });
+        }
+        xTo(xVal * 12);
+        yTo(-yVal * 12);
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(requestRef.current);
+      xTo = null;
+      yTo = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+
+    const scrollTopHard = () => {
+      document.documentElement.scrollTop = 0;
