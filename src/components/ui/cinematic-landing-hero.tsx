@@ -346,3 +346,65 @@ export function CinematicHero({
 
     const scrollTopHard = () => {
       document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+    };
+
+    scrollTopHard();
+
+    const ctx = gsap.context(() => {
+      gsap.set(".text-track", {
+        autoAlpha: 0,
+        y: 60,
+        scale: 0.85,
+        filter: "blur(20px)",
+        rotationX: -20,
+      });
+      gsap.set(".text-days", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
+      gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
+      gsap.set(
+        [
+          ".card-left-text",
+          ".card-right-text",
+          ".mockup-scroll-wrapper",
+          ".floating-badge",
+          ".phone-widget",
+        ],
+        { autoAlpha: 0 },
+      );
+      gsap.set(".cta-wrapper", {
+        autoAlpha: 0,
+        scale: 0.8,
+        filter: "blur(30px)",
+      });
+      gsap.set(".hero-floating-col", {
+        autoAlpha: 0,
+        y: 36,
+        scale: 0.92,
+      });
+      gsap.set(".hero-preview-slot", {
+        autoAlpha: 0,
+        y: 28,
+        scale: 0.96,
+      });
+      gsap.set(".card-glass-panel", { autoAlpha: 0, y: 24 });
+
+      const introTl = gsap.timeline({ delay: 0.3 });
+      introTl
+        .to(".text-track", {
+          duration: 1.8,
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          rotationX: 0,
+          ease: "expo.out",
+        })
+        .to(
+          ".text-days",
+          {
+            duration: 1.4,
+            clipPath: "inset(0 0% 0 0)",
+            ease: "power4.inOut",
+          },
+          "-=1.0",
