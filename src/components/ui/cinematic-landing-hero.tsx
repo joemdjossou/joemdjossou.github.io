@@ -408,3 +408,65 @@ export function CinematicHero({
             ease: "power4.inOut",
           },
           "-=1.0",
+        )
+        .to(
+          ".hero-floating-col",
+          {
+            duration: 1.2,
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            stagger: 0.12,
+            ease: "back.out(1.15)",
+          },
+          "-=0.9",
+        )
+        .to(
+          ".hero-preview-slot",
+          {
+            duration: 1.15,
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            ease: "expo.out",
+          },
+          "-=0.85",
+        );
+
+      const scrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=7200",
+          pin: true,
+          pinSpacing: true,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      scrollTl
+        .to(
+          [".hero-intro-burst", ".bg-grid-theme"],
+          {
+            scale: 1.15,
+            filter: "blur(20px)",
+            opacity: 0.2,
+            ease: "power2.inOut",
+            duration: 2,
+          },
+          0,
+        )
+        .to(".main-card", { y: 0, ease: "power3.inOut", duration: 2 }, 0)
+        .to(".main-card", {
+          width: "100%",
+          height: "100%",
+          borderRadius: "0px",
+          ease: "power3.inOut",
+          duration: 1.5,
+        })
+        .fromTo(
+          ".mockup-scroll-wrapper",
+          {
+            y: 300,
