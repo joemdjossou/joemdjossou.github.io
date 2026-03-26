@@ -470,3 +470,65 @@ export function CinematicHero({
           ".mockup-scroll-wrapper",
           {
             y: 300,
+            z: -500,
+            rotationX: 50,
+            rotationY: -30,
+            autoAlpha: 0,
+            scale: 0.6,
+          },
+          {
+            y: 0,
+            z: 0,
+            rotationX: 0,
+            rotationY: 0,
+            autoAlpha: 1,
+            scale: 1,
+            ease: "expo.out",
+            duration: 2.5,
+          },
+          "-=0.8",
+        )
+        .fromTo(
+          ".phone-widget",
+          { y: 40, autoAlpha: 0, scale: 0.95 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            scale: 1,
+            stagger: 0.15,
+            ease: "back.out(1.2)",
+            duration: 1.5,
+          },
+          "-=1.5",
+        )
+        .to(
+          ".phone-stat-primary-val",
+          {
+            innerHTML: phoneScreen.statPrimaryEnd,
+            snap: { innerHTML: 1 },
+            duration: 2,
+            ease: "expo.out",
+          },
+          "-=1.2",
+        )
+        .to(
+          ".phone-stat-secondary-val",
+          {
+            innerHTML: phoneScreen.statSecondaryEnd,
+            snap: { innerHTML: 1 },
+            duration: 2,
+            ease: "expo.out",
+          },
+          "-=2.0",
+        )
+        .fromTo(
+          ".floating-badge",
+          {
+            y: 100,
+            autoAlpha: 0,
+            scale: 0.7,
+            rotationZ: -10,
+          },
+          {
+            y: 0,
+            autoAlpha: 1,
