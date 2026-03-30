@@ -594,3 +594,65 @@ export function CinematicHero({
             ease: "expo.inOut",
             duration: 1.8,
           },
+          "pullback",
+        )
+        .to(
+          ".cta-wrapper",
+          {
+            scale: 1,
+            filter: "blur(0px)",
+            ease: "expo.inOut",
+            duration: 1.8,
+          },
+          "pullback",
+        )
+        .to(".main-card", {
+          y: -window.innerHeight - 300,
+          ease: "power3.in",
+          duration: 1.5,
+        });
+    }, containerRef);
+
+    let raf2 = 0;
+    const refreshId = requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+      raf2 = requestAnimationFrame(() => ScrollTrigger.refresh());
+    });
+
+    const onResize = () => {
+      ScrollTrigger.refresh();
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(refreshId);
+      cancelAnimationFrame(raf2);
+      window.removeEventListener("resize", onResize);
+      ctx.revert();
+      scrollTopHard();
+    };
+  }, [phoneScreen, localeKey]);
+
+  return (
+    <div
+      ref={containerRef}
+      className={cn(
+        "relative w-screen h-screen overflow-hidden flex items-center justify-center bg-background text-foreground font-sans antialiased",
+        className,
+      )}
+      style={{ perspective: "1500px" }}
+      {...props}
+    >
+      <style dangerouslySetInnerHTML={{ __html: INJECTED_STYLES }} />
+      <div className="film-grain" aria-hidden="true" />
+      <div
+        className="bg-grid-theme absolute inset-0 z-0 pointer-events-none opacity-50"
+        aria-hidden="true"
+      />
+
+      <div className="hero-intro-burst absolute z-10 inset-0 flex items-center justify-center pointer-events-none">
+        <div className="relative w-full max-w-[1500px] mx-auto px-3 sm:px-5 flex flex-col items-center justify-center min-h-[100dvh] py-8">
+          <div className="flex w-full flex-col items-center justify-center gap-[clamp(1.5rem,3.5vw,3rem)] lg:flex-row">
+            {heroFloatingLeft ? (
+              <div className="hero-floating-col hidden lg:flex flex-col shrink-0 order-2 lg:order-1 pointer-events-auto w-[min(100%,clamp(10.5rem,15.25vw,19rem))] gap-[clamp(0.75rem,1.4vw,1.35rem)] [transform:perspective(1200px)_rotateY(8deg)]">
+                {heroFloatingLeft}
