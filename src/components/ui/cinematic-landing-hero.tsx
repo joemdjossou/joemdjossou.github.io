@@ -656,3 +656,65 @@ export function CinematicHero({
             {heroFloatingLeft ? (
               <div className="hero-floating-col hidden lg:flex flex-col shrink-0 order-2 lg:order-1 pointer-events-auto w-[min(100%,clamp(10.5rem,15.25vw,19rem))] gap-[clamp(0.75rem,1.4vw,1.35rem)] [transform:perspective(1200px)_rotateY(8deg)]">
                 {heroFloatingLeft}
+              </div>
+            ) : null}
+
+            <div className="hero-text-wrapper flex flex-col items-center text-center order-1 lg:order-2 w-full max-w-4xl mx-auto px-2 will-change-transform transform-style-3d">
+              <h1 className="text-track gsap-reveal text-3d-matte text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-bold tracking-tight mb-2">
+                {tagline1}
+              </h1>
+              <h1 className="text-days gsap-reveal text-silver-matte text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tighter">
+                {tagline2}
+              </h1>
+              {heroPreviewSlot ? (
+                <div className="hero-preview-slot mt-[clamp(1.25rem,3vw,2.75rem)] w-full max-w-[min(96vw,clamp(22rem,40vw,40rem))] mx-auto pointer-events-auto overflow-visible px-[clamp(0.25rem,1.5vw,0.5rem)]">
+                  {heroPreviewSlot}
+                </div>
+              ) : null}
+            </div>
+
+            {heroFloatingRight ? (
+              <div className="hero-floating-col hidden lg:flex flex-col shrink-0 order-3 pointer-events-auto w-[min(100%,clamp(10.5rem,15.25vw,19rem))] gap-[clamp(0.75rem,1.4vw,1.35rem)] [transform:perspective(1200px)_rotateY(-8deg)]">
+                {heroFloatingRight}
+              </div>
+            ) : null}
+          </div>
+
+          {heroFloatingLeft || heroFloatingRight ? (
+            <div className="lg:hidden mt-[clamp(1.5rem,4vw,2.5rem)] flex flex-row gap-[clamp(0.75rem,3vw,1.25rem)] overflow-x-auto max-w-[100vw] px-[clamp(0.75rem,3vw,1.25rem)] pb-2 pointer-events-auto justify-center">
+              {heroFloatingLeft}
+              {heroFloatingRight}
+            </div>
+          ) : null}
+        </div>
+      </div>
+
+      <div className="cta-wrapper absolute z-10 flex h-[100dvh] max-h-[100dvh] w-screen flex-col items-center justify-end overflow-hidden px-[clamp(1rem,4vw,1.75rem)] pb-[clamp(1.5rem,8dvh,4.5rem)] pt-[clamp(2.5rem,9dvh,5.5rem)] text-center gsap-reveal pointer-events-auto will-change-transform">
+        <h2 className="text-silver-matte mb-[clamp(1rem,3.5dvh,2rem)] shrink-0 px-2 text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+          {ctaHeading}
+        </h2>
+        <p className="text-muted-foreground mx-auto mb-[clamp(1.5rem,4.5dvh,3rem)] max-w-xl shrink-0 px-2 text-lg font-light leading-relaxed md:text-xl">
+          {ctaDescription}
+        </p>
+        <div className="flex shrink-0 flex-col gap-6 sm:flex-row sm:gap-8">
+          <a
+            href={appStoreHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download on the App Store"
+            className="btn-modern-light flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] group focus:outline-none focus:ring-2 focus:ring-[#3b6e4a] focus:ring-offset-2"
+          >
+            <svg
+              className="w-8 h-8 transition-transform group-hover:scale-105"
+              fill="currentColor"
+              viewBox="0 0 384 512"
+              aria-hidden="true"
+            >
+              <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+            </svg>
+            <div className="text-left">
+              <div className="text-[10px] font-bold tracking-wider text-neutral-500 uppercase mb-[-2px]">
+                Download on the
+              </div>
+              <div className="text-xl font-bold leading-none tracking-tight">
+                App Store
