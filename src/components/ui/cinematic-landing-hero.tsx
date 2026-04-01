@@ -718,3 +718,65 @@ export function CinematicHero({
               </div>
               <div className="text-xl font-bold leading-none tracking-tight">
                 App Store
+              </div>
+            </div>
+          </a>
+          <a
+            href={playStoreHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get it on Google Play"
+            className="btn-modern-dark flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] group focus:outline-none focus:ring-2 focus:ring-[#3b6e4a] focus:ring-offset-2 focus:ring-offset-background"
+          >
+            <svg
+              className="w-7 h-7 transition-transform group-hover:scale-105"
+              fill="currentColor"
+              viewBox="0 0 512 512"
+              aria-hidden="true"
+            >
+              <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+            </svg>
+            <div className="text-left">
+              <div className="text-[10px] font-bold tracking-wider text-neutral-400 uppercase mb-[-2px]">
+                Get it on
+              </div>
+              <div className="text-xl font-bold leading-none tracking-tight">
+                Google Play
+              </div>
+            </div>
+          </a>
+        </div>
+        {ctaTestimonialsSlot ? (
+          <div
+            className="mt-[clamp(2rem,8dvh,5rem)] w-[calc(100%+2*clamp(1rem,4vw,1.75rem))] max-w-none shrink-0 self-center -mx-[clamp(1rem,4vw,1.75rem)]"
+          >
+            {ctaTestimonialsSlot}
+          </div>
+        ) : null}
+      </div>
+
+      <div
+        className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
+        style={{ perspective: "1500px" }}
+      >
+        <div
+          ref={mainCardRef}
+          className="main-card premium-depth-card relative overflow-hidden gsap-reveal flex items-center justify-center pointer-events-auto w-[92vw] md:w-[85vw] h-[92vh] md:h-[85vh] rounded-[32px] md:rounded-[40px]"
+        >
+          <div className="card-sheen" aria-hidden="true" />
+
+          <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
+            <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
+              <h2 className="text-6xl md:text-[6rem] lg:text-[8rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
+                {brandName}
+              </h2>
+            </div>
+
+            <div
+              className="mockup-scroll-wrapper order-2 lg:order-2 relative w-full h-[380px] lg:h-[600px] flex items-center justify-center z-10"
+              style={{ perspective: "1000px" }}
+            >
+              <div className="relative w-full h-full flex items-center justify-center transform scale-[0.65] md:scale-[0.85] lg:scale-100">
+                <div
+                  ref={mockupRef}
+                  className="relative w-[280px] h-[580px] rounded-[3rem] iphone-bezel flex flex-col will-change-transform transform-style-3d"
