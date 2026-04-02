@@ -780,3 +780,65 @@ export function CinematicHero({
                 <div
                   ref={mockupRef}
                   className="relative w-[280px] h-[580px] rounded-[3rem] iphone-bezel flex flex-col will-change-transform transform-style-3d"
+                >
+                  <div
+                    className="absolute top-[120px] -left-[3px] w-[3px] h-[25px] hardware-btn rounded-l-md z-0"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute top-[160px] -left-[3px] w-[3px] h-[45px] hardware-btn rounded-l-md z-0"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute top-[220px] -left-[3px] w-[3px] h-[45px] hardware-btn rounded-l-md z-0"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute top-[170px] -right-[3px] w-[3px] h-[70px] hardware-btn rounded-r-md z-0 scale-x-[-1]"
+                    aria-hidden="true"
+                  />
+
+                  <div className="absolute inset-[7px] bg-gradient-to-b from-[#fefdfb] via-[#faf7f0] to-[#f0ebe3] rounded-[2.5rem] overflow-hidden shadow-[inset_0_0_12px_rgba(45,95,63,0.06)] text-[#1a2e1a] z-10 flex flex-col">
+                    <div
+                      className="absolute inset-0 pointer-events-none z-40 opacity-[0.35] bg-gradient-to-br from-white/50 to-transparent"
+                      aria-hidden="true"
+                    />
+
+                    <div className="absolute top-[5px] left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-[#2a2a2a] rounded-full z-50 flex items-center justify-end px-3 shadow-[inset_0_-1px_2px_rgba(255,255,255,0.08)]">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#3b6e4a] shadow-[0_0_8px_rgba(59,110,74,0.85)] animate-pulse" />
+                    </div>
+
+                    <div className="relative w-full h-full min-h-0 pt-11 px-3 pb-6 flex flex-col z-10">
+                      <div className="phone-widget flex justify-between items-start gap-2 mb-3">
+                        <div className="flex flex-col min-w-0">
+                          <span className="text-[11px] text-[#5a5a5a] font-medium leading-tight">
+                            {phoneScreen.welcomeLabel}
+                          </span>
+                          <span className="text-lg font-bold tracking-tight text-[#3b6e4a] leading-snug truncate">
+                            {phoneScreen.userDisplayName}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          <button
+                            type="button"
+                            className="w-8 h-8 rounded-full bg-white border border-[#3b6e4a]/20 flex items-center justify-center text-[#3b6e4a] shadow-sm"
+                            aria-hidden="true"
+                            tabIndex={-1}
+                          >
+                            <TrendingUp className="w-3.5 h-3.5" strokeWidth={2.25} />
+                          </button>
+                          <div className="w-9 h-9 rounded-full bg-[#3b6e4a] text-white flex items-center justify-center font-bold text-xs border-2 border-[#2d5f3f]/30 shadow-md">
+                            {phoneAvatarLabel}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="phone-widget flex gap-2 mb-3">
+                        <div className="flex-1 rounded-2xl bg-white/90 border border-[#3b6e4a]/12 p-2.5 shadow-sm">
+                          <div className="flex items-center gap-2 mb-1">
+                            <div className="w-7 h-7 rounded-lg bg-[#3b6e4a]/12 flex items-center justify-center text-[#3b6e4a]">
+                              <Music2 className="w-3.5 h-3.5" strokeWidth={2.2} />
+                            </div>
+                            <span className="phone-stat-primary-val text-xl font-extrabold tabular-nums text-[#1a2e1a] leading-none">
+                              0
+                            </span>
