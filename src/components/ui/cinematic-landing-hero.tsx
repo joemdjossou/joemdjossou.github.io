@@ -842,3 +842,65 @@ export function CinematicHero({
                             <span className="phone-stat-primary-val text-xl font-extrabold tabular-nums text-[#1a2e1a] leading-none">
                               0
                             </span>
+                          </div>
+                          <p className="text-[9px] leading-tight text-[#5a5a5a] font-medium">
+                            {phoneScreen.statPrimaryLabel}
+                          </p>
+                        </div>
+                        <div className="flex-1 rounded-2xl bg-white/90 border border-[#3b6e4a]/12 p-2.5 shadow-sm">
+                          <div className="flex items-center gap-2 mb-1">
+                            <div className="w-7 h-7 rounded-lg bg-[#3b6e4a]/12 flex items-center justify-center text-[#3b6e4a]">
+                              <Heart className="w-3.5 h-3.5" strokeWidth={2.2} />
+                            </div>
+                            <span className="phone-stat-secondary-val text-xl font-extrabold tabular-nums text-[#1a2e1a] leading-none">
+                              0
+                            </span>
+                          </div>
+                          <p className="text-[9px] leading-tight text-[#5a5a5a] font-medium">
+                            {phoneScreen.statSecondaryLabel}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="phone-widget mb-3">
+                        <div className="flex items-center gap-2 rounded-full bg-white/95 border border-[#3b6e4a]/15 px-3 py-2 shadow-sm">
+                          <div className="w-7 h-7 rounded-full bg-[#3b6e4a] flex items-center justify-center text-white shrink-0">
+                            <Search className="w-3.5 h-3.5" strokeWidth={2.5} />
+                          </div>
+                          <span className="text-[11px] text-[#888] truncate">
+                            {phoneScreen.searchPlaceholder}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="phone-widget flex-1 min-h-0 flex flex-col gap-1.5 overflow-y-auto pr-0.5 -mr-0.5">
+                        {phoneScreen.hymns.slice(0, 3).map((h) => (
+                          <div
+                            key={h.num}
+                            className="rounded-2xl bg-white/95 border border-[#3b6e4a]/10 p-2 flex gap-2 shadow-sm"
+                          >
+                            <div className="w-9 h-9 rounded-xl bg-[#e8dcc8]/60 flex items-center justify-center text-sm font-bold text-[#2d5f3f] shrink-0">
+                              {h.num}
+                            </div>
+                            <div className="min-w-0 flex-1 py-0.5">
+                              <p className="text-[11px] font-semibold text-[#1a2e1a] leading-snug line-clamp-2">
+                                {h.title}
+                              </p>
+                              <p className="text-[9px] text-[#5a5a5a] mt-0.5 truncate">
+                                {h.author}
+                              </p>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                <span className="text-[8px] font-semibold px-1.5 py-0.5 rounded-md bg-[#3b6e4a]/15 text-[#2d5f3f]">
+                                  {h.tagTempo}
+                                </span>
+                                <span className="text-[8px] font-semibold px-1.5 py-0.5 rounded-md bg-[#f5e6a8]/90 text-[#5c4d1a]">
+                                  {h.tagCategory}
+                                </span>
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              className="shrink-0 w-7 h-7 rounded-full border border-[#3b6e4a]/15 flex items-center justify-center text-[#3b6e4a]/50"
+                              aria-hidden="true"
+                              tabIndex={-1}
+                            >
