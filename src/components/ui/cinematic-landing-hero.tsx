@@ -904,3 +904,65 @@ export function CinematicHero({
                               aria-hidden="true"
                               tabIndex={-1}
                             >
+                              <Heart className="w-3 h-3" strokeWidth={2} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[4px] bg-[#1a2e1a]/15 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="floating-badge absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-b from-[#3b6e4a]/35 to-[#1a2e1a]/40 flex items-center justify-center border border-[#3b6e4a]/40 shadow-inner">
+                    <span className="text-base lg:text-xl drop-shadow-lg" aria-hidden="true">
+                      {badge1Emoji}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.92),0_2px_12px_rgba(0,0,0,0.65)]">
+                      {badge1Title}
+                    </p>
+                    <p className="text-[#a3c4b0]/75 text-[10px] lg:text-xs font-medium [text-shadow:0_1px_2px_rgba(0,0,0,0.88),0_2px_10px_rgba(0,0,0,0.55)]">
+                      {badge1Subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="floating-badge absolute flex bottom-12 lg:bottom-20 right-[-15px] lg:right-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-b from-[#2d5f3f]/40 to-[#0d1a0d]/50 flex items-center justify-center border border-[#5a7d66]/35 shadow-inner">
+                    <span className="text-base lg:text-lg drop-shadow-lg" aria-hidden="true">
+                      {badge2Emoji}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.92),0_2px_12px_rgba(0,0,0,0.65)]">
+                      {badge2Title}
+                    </p>
+                    <p className="text-[#a3c4b0]/75 text-[10px] lg:text-xs font-medium [text-shadow:0_1px_2px_rgba(0,0,0,0.88),0_2px_10px_rgba(0,0,0,0.55)]">
+                      {badge2Subtitle}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0">
+              <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-4 tracking-tight">
+                {cardHeading}
+              </h3>
+              <p className="hidden md:block text-[#c8dcc8]/85 text-sm md:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none mb-4">
+                {cardDescription}
+              </p>
+              {cardContextSlot ? (
+                <div className="mt-2 space-y-3 max-w-lg mx-auto lg:mx-0">{cardContextSlot}</div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
