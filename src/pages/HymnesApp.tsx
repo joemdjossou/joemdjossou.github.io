@@ -130,3 +130,69 @@ const HymnesApp: React.FC = () => {
         },
         {
           icon: Moon,
+          title: "Mode sombre/clair",
+          description: "Choisissez entre mode clair et mode sombre",
+        },
+        {
+          icon: Globe,
+          title: "Multilingue",
+          description:
+            "Sélectionnez la langue de l'application (Français ou Anglais)",
+        },
+        {
+          icon: Volume2,
+          title: "Audio SATB",
+          description:
+            "Écoutez la musique complète ou chaque voix séparément : soprano, alto, ténor, basse",
+        },
+        {
+          icon: Music,
+          title: "Partition musicale",
+          description: "Visualisez la partition musicale complète",
+        },
+        {
+          icon: BookOpen,
+          title: "Histoire des hymnes",
+          description: "Découvrez l'histoire derrière certains hymnes",
+        },
+      ],
+      whyChoose: "Pourquoi choisir Hymnes et Louanges ?",
+      whyPoints: [
+        "Interface moderne et intuitive",
+        "Fonctionne hors ligne",
+        "Mises à jour régulières",
+        "Aucune publicité intrusive",
+        "Gratuit et accessible à tous",
+      ],
+      about: "À propos de l'application",
+      aboutText:
+        "Hymnes et Louanges Adventiste est conçu pour enrichir vos moments de culte personnel, de prière en groupe ou de service religieux. Avec ses fonctionnalités complètes et son design élégant, cette application devient votre compagnon idéal pour la louange.",
+      privacyLink: "Politique de confidentialité",
+      backHome: "Retour à l'accueil",
+      cinematic: {
+        tagline1: "Louez avec clarté,",
+        tagline2: "partout avec vous.",
+        brandName: "Chantez!",
+        cardHeading: "La louange, réimaginée.",
+        cardBody:
+          "réunit paroles, partitions, audio SATB et recherche intelligente pour vos moments de culte et de prière.",
+        ctaHeading: "Prêt à commencer votre voyage de louange ?",
+        ctaDescription:
+          "Téléchargez l'application dès maintenant et découvrez une nouvelle façon d'adorer.",
+        phone: {
+          welcomeLabel: "Bienvenue",
+          userDisplayName: "Invité",
+          statPrimaryEnd: 654,
+          statPrimaryLabel: "cantiques · Français",
+          statSecondaryEnd: 17,
+          statSecondaryLabel: "Favoris",
+          searchPlaceholder: "Rechercher un cantique...",
+          hymns: [
+            {
+              num: "1",
+              title: "Vous, qui sur la terre habitez",
+              author: "TH. DE BEZE",
+              tagTempo: "Animé",
+              tagCategory: "PSAUMES",
+            },
+            {
