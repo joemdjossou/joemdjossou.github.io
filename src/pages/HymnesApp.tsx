@@ -196,3 +196,69 @@ const HymnesApp: React.FC = () => {
               tagCategory: "PSAUMES",
             },
             {
+              num: "2",
+              title: "Les cieux, en chaque lieu",
+              author: "CL. MAROT",
+              tagTempo: "Andante",
+              tagCategory: "PSAUMES",
+            },
+            {
+              num: "3",
+              title: "Dieu me conduit",
+              author: "CL. MAROT",
+              tagTempo: "Moderato",
+              tagCategory: "PSAUMES",
+            },
+          ],
+        },
+        badge1Title: "10k+ téléchargements",
+        badge1Subtitle: "Communauté mondiale",
+        badge2Title: "Audio & partitions",
+        badge2Subtitle: "SATB & recherche",
+      },
+      ratings: "Note moyenne",
+      downloads: "Téléchargements",
+      reviews: "Ce que disent les utilisateurs",
+      reviewsSubtitle: "Découvrez les retours de notre communauté",
+      testimonials: [
+        {
+          text: "J'ai téléchargé l'application ce matin et je l'ai utilisé toute la journée. C'est du bon travail que tu as fait. C'était soft, bien présenté et bien fourni. Félicitations",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Je viens de voir et télécharger ton application et c'est vraiment vraiment bien",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "C'est magnifique 👍",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Coucou mais ton application c'est une pepiteeeeeee",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Jusqu'à je peux avoir l'alto des cantiques sans galère",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "J'ai testé beaucoup d'applis (gratuites) Hymnes et louanges sur mon iPhone. Mais je n'ai toujours pas un bon rendu. Ça fait que j'ai jusqu'à 3 applications HL dans mon portable. Mais de tous les trois, je vote pour la tienne. Ça sent une concentration pour le job et en plus c'est gratuit (pour le moment 😊)",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Sans vous mentir je suis vraiment surprise hier lorsque j'avais finalement téléchargé l'application, c'était que de l'émerveillement. Vraiment gloire à Dieu et félicitations à vous. Que Dieu continue par bénir vos projets. Sinon c'est bien, j'aime toujours féliciter l'excellence",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Tu as créé une dinguerie 🔥🔥. En tout cas merci beaucoup",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Interface fluide et les partitions sont super lisibles sur téléphone.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Enfin une appli où je retrouve mes cantiques préférés en quelques secondes.",
+          author: "Utilisateur anonyme",
+        },
+        {
