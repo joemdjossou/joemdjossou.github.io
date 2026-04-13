@@ -1,35 +1,27 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Download, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+
+const navItems = [
+  { name: "Home", href: "#home" },
+  { name: "Work", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Education", href: "#education" },
-    { name: "Contact", href: "#contact" },
-  ];
-
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
   };
 
@@ -37,114 +29,65 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border"
+          ? "bg-background/96 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection("#home")}
-              className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition-smooth"
-            >
-              EJ
-            </button>
-          </div>
+      <div className="px-6 md:px-10 lg:px-14">
+        <div className="flex items-center justify-between h-14">
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth"
-              >
-                {item.name}
-              </button>
+          {/* Brand mark */}
+          <button
+            onClick={() => scrollToSection("#home")}
+            className="text-sm font-bold tracking-[0.05em] text-foreground hover:text-muted-foreground transition-smooth"
+          >
+            EJ.
+          </button>
+
+          {/* Desktop — dot-separated nav */}
+          <div className="hidden md:flex items-center gap-0">
+            {navItems.map((item, i) => (
+              <span key={item.name} className="flex items-center">
+                <button
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-xs font-medium text-muted-foreground hover:text-foreground transition-smooth px-3 py-1"
+                >
+                  {item.name}
+                </button>
+                {i < navItems.length - 1 && (
+                  <span className="text-border text-xs select-none">·</span>
+                )}
+              </span>
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right */}
+          <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hover-lift rounded-lg"
-              asChild
-            >
-              <a
-                href="/resume.pdf"
-                download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Resume
-              </a>
-            </Button>
-            <Button
-              size="sm"
-              className="gradient-primary text-primary-foreground hover:opacity-90 hover-lift rounded-lg"
-              onClick={() => scrollToSection("#contact")}
-            >
-              Contact
-            </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
+          {/* Mobile */}
+          <div className="md:hidden flex items-center gap-1">
             <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              className="hover-lift"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-lg border border-border rounded-lg mt-2 p-4 card-shadow animate-scale-in">
-            <div className="space-y-4">
+          <div className="md:hidden bg-background border border-border mt-2 p-6 animate-scale-in">
+            <div className="space-y-5">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left text-muted-foreground hover:text-primary transition-colors py-2"
+                  className="block w-full text-left text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground hover:text-foreground transition-smooth py-1"
                 >
-                  {item.name}
+                  {item.name} .
                 </button>
               ))}
-              <div className="pt-4 border-t border-border space-y-3">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full hover-lift"
-                  asChild
-                >
-                  <a
-                    href="/resume.pdf"
-                    download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download Resume
-                  </a>
-                </Button>
-                <Button
-                  className="w-full gradient-primary text-white hover-lift"
-                  onClick={() => scrollToSection("#contact")}
-                >
-                  Contact Me
-                </Button>
-              </div>
             </div>
           </div>
         )}

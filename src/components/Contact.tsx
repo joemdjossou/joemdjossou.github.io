@@ -1,203 +1,167 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { useState } from "react";
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent("Inquiry from portfolio");
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.location.href = `mailto:joemdjossou@outlook.com?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
+
   return (
-    <section id="contact" className="py-16 md:py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mb-12 md:mb-16 animate-fade-in">
-          <p className="section-label mb-2">Let's connect</p>
-          <h2 className="section-heading mb-4">Contact</h2>
-          <p className="text-muted-foreground max-w-xl">
-            Open to project discussions, talks, and new opportunities.
+    <section id="contact" className="px-6 md:px-10 lg:px-14 py-20 md:py-28">
+
+      {/* / label */}
+      <p className="section-label mb-8">Inquiries</p>
+
+      {/* Split headline */}
+      <h2
+        className="font-bold leading-[0.88] tracking-tight text-foreground mb-16"
+        style={{ fontSize: "clamp(3rem, 9vw, 11rem)" }}
+      >
+        Let's
+        <br />
+        <span className="text-muted-foreground">Connect.</span>
+      </h2>
+
+      <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+        {/* Left — info */}
+        <div className="space-y-10">
+          <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
+            Open to project discussions, speaking opportunities, and new roles.
+            I typically respond within 24 hours.
           </p>
-        </div>
 
-        <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-          {/* Contact Information */}
-          <div className="space-y-8 animate-slide-up">
-            <div className="space-y-6">
-              <div className="relative">
-                <img
-                  src="/linkedin-banner.png"
-                  alt="Josué Djossou workspace"
-                  className="w-full h-64 object-cover rounded-2xl card-shadow"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl" />
-              </div>
-
-              <Card className="card-shadow hover-lift transition-smooth border border-border rounded-xl">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    Josué Emmanuel Yaovi Djossou
-                  </h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Phone className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-medium">Phone</p>
-                        <p className="text-sm">+228 93 14 27 33</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Mail className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-medium">Email</p>
-                        <p className="text-sm">joemdjossou@outlook.com</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3 text-muted-foreground">
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                        <MapPin className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-medium">Location</p>
-                        <p className="text-sm">Available for Remote Work</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 pt-6 border-t border-border">
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Connect with me:
-                    </p>
-                    <div className="flex gap-3">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="rounded-lg hover-lift"
-                        asChild
-                      >
-                        <a
-                          href="https://github.com/joemdjossou"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="GitHub"
-                        >
-                          <Github className="w-5 h-5" />
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="rounded-lg hover-lift"
-                        asChild
-                      >
-                        <a
-                          href="https://www.linkedin.com/in/joemdjossou"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="LinkedIn"
-                        >
-                          <Linkedin className="w-5 h-5" />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-
-                  <Button
-                    className="w-full mt-6 gradient-primary text-primary-foreground hover:opacity-90 hover-lift rounded-lg"
-                    asChild
-                  >
-                    <a href="mailto:joemdjossou@outlook.com">
-                      <Mail className="w-5 h-5 mr-2" />
-                      Send email
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            <Card className="card-shadow hover-lift transition-smooth border border-border rounded-xl">
-              <CardHeader>
-                <CardTitle className="text-xl text-foreground">
-                  Send a message
-                </CardTitle>
-                <p className="text-muted-foreground">
-                  If you prefer, you can also contact me using the form below!
-                  I'll get back to you as soon as possible.
-                </p>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="Your first name" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Your last name" />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" placeholder="What's this about?" />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell me about your project or how I can help you..."
-                    rows={6}
-                  />
-                </div>
-
-                <Button className="w-full gradient-primary text-primary-foreground hover:opacity-90 hover-lift rounded-lg">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send message
-                </Button>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  I typically respond within 24 hours. Looking forward to
-                  hearing from you!
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground mb-4">
-            Prefer email?{" "}
+          <div className="space-y-4">
             <a
               href="mailto:joemdjossou@outlook.com"
-              className="text-primary hover:underline"
+              className="flex items-center justify-between group border-b border-border py-4 hover:border-foreground/40 transition-smooth"
             >
-              joemdjossou@outlook.com
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-1">Email</p>
+                <p className="text-sm text-foreground">joemdjossou@outlook.com</p>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-foreground transition-smooth" />
             </a>
-          </p>
-          <Button variant="outline" className="rounded-lg hover-lift" asChild>
+
+            <a
+              href="https://github.com/joemdjossou"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between group border-b border-border py-4 hover:border-foreground/40 transition-smooth"
+            >
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-1">GitHub</p>
+                <p className="text-sm text-foreground flex items-center gap-2">
+                  <Github className="w-4 h-4" /> joemdjossou
+                </p>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-foreground transition-smooth" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/joemdjossou"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between group border-b border-border py-4 hover:border-foreground/40 transition-smooth"
+            >
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-1">LinkedIn</p>
+                <p className="text-sm text-foreground flex items-center gap-2">
+                  <Linkedin className="w-4 h-4" /> joemdjossou
+                </p>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-foreground transition-smooth" />
+            </a>
+
             <a
               href="/resume.pdf"
               download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
+              className="flex items-center justify-between group border-b border-border py-4 hover:border-foreground/40 transition-smooth"
             >
-              Download resume
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-1">Resume</p>
+                <p className="text-sm text-foreground">Download PDF</p>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-foreground transition-smooth" />
             </a>
-          </Button>
+          </div>
+        </div>
+
+        {/* Right — form */}
+        <div>
+          {sent ? (
+            <div className="flex flex-col items-start justify-center h-full space-y-4 py-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                / Message sent
+              </p>
+              <p className="text-2xl font-bold text-foreground">
+                Thank you. Talk soon.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="space-y-1">
+                <label className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground block mb-2">
+                  Full Name
+                </label>
+                <Input
+                  placeholder="Your full name"
+                  className="rounded-none border-0 border-b border-border bg-transparent px-0 text-sm focus-visible:ring-0 focus-visible:border-foreground/60 placeholder:text-muted-foreground/40 transition-smooth"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  required
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground block mb-2">
+                  Email Address
+                </label>
+                <Input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="rounded-none border-0 border-b border-border bg-transparent px-0 text-sm focus-visible:ring-0 focus-visible:border-foreground/60 placeholder:text-muted-foreground/40 transition-smooth"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground block mb-2">
+                  Project Details
+                </label>
+                <Textarea
+                  placeholder="Tell me about your project or how I can help..."
+                  className="rounded-none border-0 border-b border-border bg-transparent px-0 text-sm focus-visible:ring-0 focus-visible:border-foreground/60 placeholder:text-muted-foreground/40 transition-smooth resize-none"
+                  rows={5}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  required
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="gradient-primary text-primary-foreground rounded-none text-xs font-semibold uppercase tracking-[0.18em] px-8 py-5 hover:opacity-90 hover-lift"
+              >
+                Send Inquiry
+                <ArrowUpRight className="w-3.5 h-3.5 ml-2" />
+              </Button>
+            </form>
+          )}
         </div>
       </div>
     </section>

@@ -2,104 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Modern Portfolio Design System - Dribbble-inspired, 8pt grid */
+/* Zonski-inspired Portfolio Design System — dark-first, editorial, monochromatic */
 
 @layer base {
   :root {
-    --background: 220 20% 98%;
-    --foreground: 220 20% 12%;
+    /* Light mode — neutral editorial */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 7%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 12%;
+    --card-foreground: 0 0% 7%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 12%;
+    --popover-foreground: 0 0% 7%;
 
-    --primary: 217 91% 58%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 91% 68%;
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 0 0% 20%;
 
-    --secondary: 220 15% 94%;
-    --secondary-foreground: 220 20% 12%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 7%;
 
-    --muted: 220 12% 92%;
-    --muted-foreground: 220 10% 42%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 42%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 7%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 12% 88%;
-    --input: 220 12% 88%;
-    --ring: 217 91% 58%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 7%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    /* Design tokens - neutrals + blue theme */
-    --hero-bg: linear-gradient(160deg, hsl(220 25% 97%) 0%, hsl(217 30% 94%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 58%), hsl(217 91% 68%));
-    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%), hsl(199 89% 58%));
-    --card-shadow: 0 1px 3px hsl(220 20% 12% / 0.06);
-    --card-shadow-hover: 0 12px 40px -8px hsl(220 20% 12% / 0.12);
+    --hero-bg: hsl(0 0% 98%);
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 7%), hsl(0 0% 20%));
+    --gradient-accent: linear-gradient(135deg, hsl(0 0% 20%), hsl(0 0% 35%));
+    --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.06);
+    --card-shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.12);
 
     --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
 
     --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    /* 8pt grid */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-10: 2.5rem;
-    --space-12: 3rem;
-    --space-16: 4rem;
-    --space-20: 5rem;
-    --space-24: 6rem;
   }
 
   .dark {
-    --background: 220 25% 6%;
-    --foreground: 220 15% 95%;
+    /* Dark mode — Zonski underground: near-black bg, near-white fg, zero blue */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 94%;
 
-    --card: 220 20% 9%;
-    --card-foreground: 220 15% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 94%;
 
-    --popover: 220 20% 9%;
-    --popover-foreground: 220 15% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 94%;
 
-    --primary: 217 91% 62%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 91% 72%;
+    --primary: 0 0% 94%;
+    --primary-foreground: 0 0% 5%;
+    --primary-glow: 0 0% 100%;
 
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 220 15% 95%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 94%;
 
-    --muted: 220 20% 14%;
-    --muted-foreground: 220 8% 65%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 48%;
 
-    --accent: 199 89% 55%;
-    --accent-foreground: 220 25% 6%;
+    --accent: 0 0% 17%;
+    --accent-foreground: 0 0% 94%;
 
-    --destructive: 0 84% 65%;
+    --destructive: 0 72% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 217 91% 62%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 0% 94%;
 
-    --hero-bg: linear-gradient(160deg, hsl(220 25% 8%) 0%, hsl(217 28% 6%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 62%), hsl(217 91% 72%));
-    --gradient-accent: linear-gradient(135deg, hsl(199 89% 55%), hsl(199 89% 65%));
-    --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.2);
-    --card-shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.35);
+    --hero-bg: hsl(0 0% 5%);
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 94%), hsl(0 0% 80%));
+    --gradient-accent: linear-gradient(135deg, hsl(0 0% 80%), hsl(0 0% 65%));
+    --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.5);
+    --card-shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.7);
   }
 }
 
@@ -148,11 +135,11 @@
   }
 
   .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
+    animation: fade-in 0.6s ease-out forwards;
   }
 
   .animate-slide-up {
-    animation: slide-up 0.5s ease-out forwards;
+    animation: slide-up 0.6s ease-out forwards;
   }
 
   .animate-scale-in {
@@ -164,62 +151,54 @@
   }
   .hover-lift:hover {
     transform: translateY(-2px);
-    box-shadow: var(--card-shadow-hover);
   }
 
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
+  /* Zonski-style section label: "/ WORKS" */
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground;
+  }
+  .section-label::before {
+    content: "/ ";
   }
 
   .section-heading {
     @apply text-3xl md:text-4xl font-bold text-foreground;
   }
-  .section-label {
-    @apply text-sm font-medium uppercase tracking-widest text-primary;
+
+  /* Marquee */
+  .marquee-track {
+    @apply flex whitespace-nowrap;
+    animation: marquee-scroll 28s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
   }
 }
 
 @layer utilities {
   @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.98);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
   }
 
   @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
   }
 
   .animate-float {

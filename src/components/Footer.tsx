@@ -1,78 +1,55 @@
-import { Github, Linkedin, Mail } from "lucide-react";
-
-const footerLinks = [
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
-];
+import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="border-t border-border bg-card/50 py-10 px-4">
-      <div className="container mx-auto max-w-5xl">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div className="flex items-center gap-6">
-            <span className="text-sm font-semibold text-foreground">Josué Djossou</span>
-            <nav className="flex flex-wrap gap-x-6 gap-y-1">
-              {footerLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => scrollTo(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-smooth"
-                >
-                  {link.name}
-                </button>
-              ))}
-            </nav>
-          </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/joemdjossou"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-smooth p-2 rounded-lg hover:bg-secondary"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/joemdjossou"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-smooth p-2 rounded-lg hover:bg-secondary"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:joemdjossou@gmail.com"
-              className="text-muted-foreground hover:text-foreground transition-smooth p-2 rounded-lg hover:bg-secondary"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-        <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <p className="text-xs text-muted-foreground">
-            © {currentYear} Josué Djossou. Built with React & Tailwind.
-          </p>
+    <footer className="border-t border-border px-6 md:px-10 lg:px-14 py-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        {/* Brand */}
+        <button
+          onClick={scrollToTop}
+          className="text-sm font-bold tracking-[0.05em] text-foreground hover:text-muted-foreground transition-smooth text-left"
+        >
+          EJ.
+        </button>
+
+        {/* Copyright */}
+        <p className="text-xs text-muted-foreground/50 order-last sm:order-none">
+          © {currentYear} Josué Djossou
+        </p>
+
+        {/* Links */}
+        <div className="flex items-center gap-5">
+          <a
+            href="https://github.com/joemdjossou"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground/50 hover:text-foreground transition-smooth"
+            aria-label="GitHub"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/joemdjossou"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground/50 hover:text-foreground transition-smooth"
+            aria-label="LinkedIn"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
           <a
             href="https://github.com/joemdjossou/joemdjossou.github.io"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-muted-foreground hover:text-foreground transition-smooth"
+            className="text-xs text-muted-foreground/50 hover:text-foreground transition-smooth tracking-[0.08em]"
           >
-            View source
+            Source
           </a>
         </div>
       </div>
