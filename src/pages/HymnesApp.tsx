@@ -262,3 +262,69 @@ const HymnesApp: React.FC = () => {
           author: "Utilisateur anonyme",
         },
         {
+          text: "Le mode sombre est parfait pour les cultes du soir et les veillées.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Merci pour l'audio SATB — ça m'aide énormément aux répétitions du chœur.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Je l'utilise tous les dimanches, elle est devenue indispensable pour moi.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Hors ligne ça fonctionne nickel chez nous quand le réseau est capricieux.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Bravo pour le travail : design soigné et contenu vraiment complet.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "La recherche par paroles m'a déjà sorti d'embarras plusieurs fois.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Une application bénie, merci pour ce service à la communauté.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Ma grand-mère adore : le texte est bien lisible sans lunettes.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Avoir les quatre voix séparément, c'est exactement ce qu'il me fallait.",
+          author: "Utilisateur anonyme",
+        },
+        {
+          text: "Simple, gratuit et efficace — je recommande à toute notre chorale.",
+          author: "Utilisateur anonyme",
+        },
+      ],
+    },
+    en: {
+      title: "Hymnes et Louanges Adventiste",
+      subtitle: "Easily access hymns with lyrics, audio and voices (SATB)",
+      description:
+        "The app that makes your moments of praise even simpler and more inspiring. Discover a new way to worship with modern and intuitive features.",
+      downloadNow: "Download Now",
+      availableOn: "Available on",
+      features: "Main Features",
+      featuresList: [
+        {
+          icon: Search,
+          title: "Smart Search",
+          description: "Search hymns by number, title, author, or lyrics",
+        },
+        {
+          icon: Cloud,
+          title: "Cloud Backup",
+          description: "Save your hymns locally or in the cloud",
+        },
+        {
+          icon: Filter,
+          title: "Advanced Filtering",
+          description: "Filter hymns by theme or sub-theme",
+        },
+        {
