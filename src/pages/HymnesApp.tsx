@@ -328,3 +328,70 @@ const HymnesApp: React.FC = () => {
           description: "Filter hymns by theme or sub-theme",
         },
         {
+          icon: Moon,
+          title: "Dark/Light Mode",
+          description: "Choose between light mode and dark mode",
+        },
+        {
+          icon: Globe,
+          title: "Multilingual",
+          description: "Select the app language (French or English)",
+        },
+        {
+          icon: Volume2,
+          title: "SATB Audio",
+          description:
+            "Listen to the full song or individual voices: soprano, alto, tenor, bass",
+        },
+        {
+          icon: Music,
+          title: "Musical Score",
+          description: "View the complete musical score",
+        },
+        {
+          icon: BookOpen,
+          title: "Hymn History",
+          description: "Learn the story behind selected hymns",
+        },
+      ],
+      whyChoose: "Why Choose Hymns & Praises?",
+      whyPoints: [
+        "Modern and intuitive interface",
+        "Works offline",
+        "Regular updates",
+        "No intrusive ads",
+        "Free and accessible to all",
+      ],
+      about: "About the App",
+      aboutText:
+        "Adventist Hymns & Praises is designed to enrich your personal worship, prayer groups, or religious services. With its comprehensive features and elegant design, this app becomes your ideal companion for praise.",
+      privacyLink: "Privacy Policy",
+      backHome: "Back to Home",
+      cinematic: {
+        tagline1: "Praise with clarity,",
+        tagline2: "anywhere you go.",
+        brandName: "Praise!",
+        cardHeading: "Worship, reimagined.",
+        cardBody:
+          "brings lyrics, scores, SATB audio, and smart search together for church, small group, or quiet time.",
+        ctaHeading: "Ready to start your praise journey?",
+        ctaDescription:
+          "Download the app now and discover a new way to worship.",
+        phone: {
+          welcomeLabel: "Welcome",
+          userDisplayName: "Guest",
+          statPrimaryEnd: 654,
+          statPrimaryLabel: "hymns · English",
+          statSecondaryEnd: 17,
+          statSecondaryLabel: "Favorites",
+          searchPlaceholder: "Search hymns...",
+          hymns: [
+            {
+              num: "1",
+              title: "You who dwell on earth",
+              author: "T. DE BÈZE",
+              tagTempo: "Lively",
+              tagCategory: "PSALMS",
+            },
+            {
+              num: "2",
