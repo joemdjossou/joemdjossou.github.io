@@ -395,3 +395,69 @@ const HymnesApp: React.FC = () => {
             },
             {
               num: "2",
+              title: "The heavens in every place",
+              author: "C. MAROT",
+              tagTempo: "Andante",
+              tagCategory: "PSALMS",
+            },
+            {
+              num: "3",
+              title: "God guides me",
+              author: "C. MAROT",
+              tagTempo: "Moderato",
+              tagCategory: "PSALMS",
+            },
+          ],
+        },
+        badge1Title: "10k+ downloads",
+        badge1Subtitle: "Global community",
+        badge2Title: "Audio & scores",
+        badge2Subtitle: "SATB & search",
+      },
+      ratings: "Average Rating",
+      downloads: "Downloads",
+      reviews: "What Users Are Saying",
+      reviewsSubtitle: "Hear from our community",
+      testimonials: [
+        {
+          text: "I downloaded the app this morning and used it all day. You did great work. It was smooth, well-presented, and comprehensive. Congratulations",
+          author: "Anonymous User",
+        },
+        {
+          text: "I just saw and downloaded your app and it's really really good",
+          author: "Anonymous User",
+        },
+        {
+          text: "It's magnificent 👍",
+          author: "Anonymous User",
+        },
+        {
+          text: "Your app is a gem!",
+          author: "Anonymous User",
+        },
+        {
+          text: "Now I can finally get the alto parts of hymns without any hassle",
+          author: "Anonymous User",
+        },
+        {
+          text: "I've tested many free hymns and praises apps on my iPhone. But I've never had a good experience. I had up to 3 HL apps on my phone. But of all three, I vote for yours. It shows dedication to the work and it's free (for now 😊)",
+          author: "Anonymous User",
+        },
+        {
+          text: "I won't lie, I was truly amazed yesterday when I finally downloaded the app, it was pure wonder. Truly glory to God and congratulations to you. May God continue to bless your projects. It's excellent, I always love celebrating excellence",
+          author: "Anonymous User",
+        },
+        {
+          text: "You created something amazing 🔥🔥. In any case, thank you very much",
+          author: "Anonymous User",
+        },
+        {
+          text: "We're ranked 4th in religious books, we can aim for 1st place 🔥✅",
+          author: "Anonymous User",
+        },
+        {
+          text: "Smooth interface and the musical scores are easy to read on my phone.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Finally an app where I find my favorite hymns in just a few seconds.",
