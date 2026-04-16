@@ -461,3 +461,69 @@ const HymnesApp: React.FC = () => {
         },
         {
           text: "Finally an app where I find my favorite hymns in just a few seconds.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Dark mode is perfect for evening worship and late-night practice.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Thank you for the SATB audio — it helps so much at choir rehearsal.",
+          author: "Anonymous User",
+        },
+        {
+          text: "I use it every Sunday now; I wouldn't want to be without it.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Offline mode works great at our church when the signal is weak.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Really polished work — thoughtful design and genuinely complete content.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Searching by lyrics has gotten me out of a pinch more than once.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Such a blessing of an app — thank you for serving the community.",
+          author: "Anonymous User",
+        },
+        {
+          text: "My grandmother loves how readable the text is without squinting.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Having all four vocal parts separately is exactly what I needed.",
+          author: "Anonymous User",
+        },
+        {
+          text: "Simple, free, and effective — I've been telling everyone in our choir.",
+          author: "Anonymous User",
+        },
+      ],
+    },
+  };
+
+  const t = content[language];
+
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === "fr" ? "en" : "fr"));
+  };
+
+  /**
+   * `content` is recreated every render; without this, `cinematic.phone` is a new object every time
+   * (e.g. carousel tick) and CinematicHero's GSAP effect re-runs → scrollTopHard() → page jumps to top.
+   */
+  const cinematicPhoneScreen = useMemo(
+    () => content[language].cinematic.phone,
+    [language],
+  );
+
+  /** Only when locale changes — not on every re-render. */
+  useLayoutEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
