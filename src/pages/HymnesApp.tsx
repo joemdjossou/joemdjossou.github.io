@@ -527,3 +527,69 @@ const HymnesApp: React.FC = () => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     window.scrollTo(0, 0);
+  }, [language]);
+
+  const cinematic = t.cinematic;
+
+  const heroFloatingLeft = useMemo(() => {
+    const loc = content[language];
+    const mid = Math.ceil(loc.featuresList.length / 2);
+    return (
+      <div
+        className="flex max-h-[min(72vh,38rem)] w-full min-w-0 shrink-0 flex-col gap-[clamp(0.65rem,1.6vw,1.1rem)] overflow-y-auto overflow-x-hidden pr-0.5 [scrollbar-width:thin]"
+        onWheel={forwardWheelToViewportScroll}
+      >
+        {loc.featuresList.slice(0, mid).map((feature, index) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={`hero-fl-${feature.title}-${index}`}
+              className="hero-glass-panel rounded-[clamp(0.875rem,1.6vw,1.125rem)] p-[clamp(0.65rem,1.85vw,1.25rem)] text-left shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5"
+            >
+              <div className="flex items-start gap-[clamp(0.5rem,1.3vw,0.9rem)]">
+                <div className="flex h-[clamp(2.35rem,5vw,3rem)] w-[clamp(2.35rem,5vw,3rem)] shrink-0 items-center justify-center rounded-[clamp(0.45rem,1vw,0.75rem)] border border-white/20 bg-white/15">
+                  <Icon
+                    className="text-white h-[clamp(1rem,2.35vw,1.45rem)] w-[clamp(1rem,2.35vw,1.45rem)]"
+                    strokeWidth={2}
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-semibold leading-snug text-white text-[clamp(0.78rem,1.15vw,1.05rem)]">
+                    {feature.title}
+                  </p>
+                  <p className="mt-[clamp(0.25rem,0.8vw,0.45rem)] leading-relaxed text-white/78 line-clamp-4 text-[clamp(0.65rem,0.95vw,0.82rem)]">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }, [language]);
+
+  const heroFloatingRight = useMemo(() => {
+    const loc = content[language];
+    const mid = Math.ceil(loc.featuresList.length / 2);
+    return (
+      <div
+        className="flex max-h-[min(72vh,38rem)] w-full min-w-0 shrink-0 flex-col gap-[clamp(0.65rem,1.6vw,1.1rem)] overflow-y-auto overflow-x-hidden pr-0.5 [scrollbar-width:thin]"
+        onWheel={forwardWheelToViewportScroll}
+      >
+        {loc.featuresList.slice(mid).map((feature, index) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={`hero-fr-${feature.title}-${index}`}
+              className="hero-glass-panel rounded-[clamp(0.875rem,1.6vw,1.125rem)] p-[clamp(0.65rem,1.85vw,1.25rem)] text-left shadow-lg transition-transform duration-300 hover:scale-[1.02] hover:-translate-y-0.5"
+            >
+              <div className="flex items-start gap-[clamp(0.5rem,1.3vw,0.9rem)]">
+                <div className="flex h-[clamp(2.35rem,5vw,3rem)] w-[clamp(2.35rem,5vw,3rem)] shrink-0 items-center justify-center rounded-[clamp(0.45rem,1vw,0.75rem)] border border-white/20 bg-white/15">
+                  <Icon
+                    className="text-white h-[clamp(1rem,2.35vw,1.45rem)] w-[clamp(1rem,2.35vw,1.45rem)]"
+                    strokeWidth={2}
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-semibold leading-snug text-white text-[clamp(0.78rem,1.15vw,1.05rem)]">
