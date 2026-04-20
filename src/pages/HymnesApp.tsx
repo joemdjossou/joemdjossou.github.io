@@ -593,3 +593,69 @@ const HymnesApp: React.FC = () => {
                 </div>
                 <div className="min-w-0">
                   <p className="font-semibold leading-snug text-white text-[clamp(0.78rem,1.15vw,1.05rem)]">
+                    {feature.title}
+                  </p>
+                  <p className="mt-[clamp(0.25rem,0.8vw,0.45rem)] leading-relaxed text-white/78 line-clamp-4 text-[clamp(0.65rem,0.95vw,0.82rem)]">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }, [language]);
+
+  const cardContextSlot = useMemo(() => {
+    const loc = content[language];
+    return (
+      <>
+        <div className="card-glass-panel rounded-2xl p-4">
+          <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#a3c4b0] mb-3">
+            {loc.whyChoose}
+          </p>
+          <ul className="space-y-2">
+            {loc.whyPoints.map((point, i) => (
+              <li key={i} className="flex gap-2 text-xs sm:text-sm text-[#e8f0ea]">
+                <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-[#7fb89a] mt-0.5" />
+                <span className="leading-snug">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="card-glass-panel rounded-2xl p-4">
+          <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#a3c4b0] mb-2">
+            {loc.about}
+          </p>
+          <p className="text-xs sm:text-sm text-[#d5e5da] leading-relaxed">{loc.aboutText}</p>
+          <Button
+            variant="secondary"
+            size="sm"
+            className="mt-3 w-full bg-white/95 text-[#2d5f3f] hover:bg-white border-0 shadow-md"
+            onClick={() =>
+              (window.location.hash =
+                language === "fr"
+                  ? "hymnes-app-privacy-policy-fr"
+                  : "hymnes-app-privacy-policy")
+            }
+          >
+            <Shield className="mr-2 h-3.5 w-3.5" />
+            {loc.privacyLink}
+          </Button>
+        </div>
+      </>
+    );
+  }, [language]);
+
+  const ctaTestimonialsSlot = useMemo(() => {
+    const loc = content[language];
+    return (
+      <div className="flex w-full max-w-none flex-col gap-3 text-left sm:gap-4">
+        <div className="shrink-0 px-[clamp(1rem,4vw,1.75rem)] text-center lg:text-left">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground sm:text-xs">
+            {loc.reviews}
+          </p>
+          <p className="mx-auto mt-1 max-w-xl text-sm text-muted-foreground/90 lg:mx-0">
+            {loc.reviewsSubtitle}
+          </p>
