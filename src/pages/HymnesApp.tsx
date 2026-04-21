@@ -659,3 +659,69 @@ const HymnesApp: React.FC = () => {
           <p className="mx-auto mt-1 max-w-xl text-sm text-muted-foreground/90 lg:mx-0">
             {loc.reviewsSubtitle}
           </p>
+        </div>
+        <div
+          role="list"
+          aria-label={loc.reviews}
+          className="flex w-full snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-visible pb-2 [scrollbar-width:thin]"
+          onWheel={testimonialsHorizontalWheel}
+        >
+          {loc.testimonials.map((ti, i) => (
+            <div
+              key={`${language}-review-${i}`}
+              role="listitem"
+              className="hero-glass-panel w-[min(85vw,300px)] shrink-0 snap-start rounded-2xl bg-background/25 p-3 dark:bg-background/15 sm:w-[min(72vw,320px)] sm:p-4"
+            >
+              <p className="text-xs leading-snug text-foreground/90 line-clamp-6 sm:text-sm">
+                &ldquo;{ti.text}&rdquo;
+              </p>
+              <p className="mt-2 text-[10px] font-medium text-muted-foreground sm:text-xs">
+                {ti.author}
+              </p>
+              <div className="mt-1.5 flex gap-0.5">
+                {[...Array(5)].map((_, si) => (
+                  <Star
+                    key={si}
+                    className="h-2.5 w-2.5 text-amber-500 fill-amber-500/90 sm:h-3 sm:w-3"
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }, [language]);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f1e8] to-[#e8dcc8] dark:from-[#1a2e1a] dark:to-[#0d1a0d]">
+      {/* Header — above cinematic hero */}
+      <header
+        className={cn(
+          "sticky top-0 z-[60] border-b border-white/10 bg-black/25 backdrop-blur-md transition-transform duration-300 ease-out will-change-transform",
+          headerHidden ? "-translate-y-full pointer-events-none" : "translate-y-0",
+        )}
+      >
+        <div className="container mx-auto px-4 py-4 max-w-7xl">
+          <div className="flex justify-between items-center">
+            <Button
+              variant="ghost"
+              onClick={() => (window.location.hash = "")}
+              className="flex items-center gap-2 text-white hover:text-white/90 hover:bg-white/10"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {t.backHome}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 border-white/30 text-white hover:bg-white/10 hover:text-white"
+            >
+              <Languages className="h-4 w-4" />
+              {language === "fr" ? "English" : "Français"}
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Cinematic hero — avoid overflow-x-hidden here: it breaks ScrollTrigger pin/spacer
