@@ -725,3 +725,70 @@ const HymnesApp: React.FC = () => {
       </header>
 
       {/* Cinematic hero — avoid overflow-x-hidden here: it breaks ScrollTrigger pin/spacer
+          math on tall pin distances when little content sits below the hero (desktop). */}
+      <div className="w-full min-h-screen bg-background">
+        <CinematicHero
+          localeKey={language}
+          brandName={cinematic.brandName}
+          tagline1={cinematic.tagline1}
+          tagline2={cinematic.tagline2}
+          cardHeading={cinematic.cardHeading}
+          cardDescription={
+            <>
+              <span className="text-white font-semibold">{t.title}</span>{" "}
+              {cinematic.cardBody}
+            </>
+          }
+          ctaHeading={cinematic.ctaHeading}
+          ctaDescription={cinematic.ctaDescription}
+          appStoreHref="https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258"
+          playStoreHref="https://play.google.com/store/apps/details?id=com.joemdjossou.hymnes&pcampaignid=web_share"
+          phoneScreen={cinematicPhoneScreen}
+          phoneAvatarLabel="HL"
+          badge1Emoji="🎵"
+          badge1Title={cinematic.badge1Title}
+          badge1Subtitle={cinematic.badge1Subtitle}
+          badge2Emoji="📖"
+          badge2Title={cinematic.badge2Title}
+          badge2Subtitle={cinematic.badge2Subtitle}
+          heroFloatingLeft={heroFloatingLeft}
+          heroFloatingRight={heroFloatingRight}
+          cardContextSlot={cardContextSlot}
+          ctaTestimonialsSlot={ctaTestimonialsSlot}
+          heroPreviewSlot={
+            <div
+              role="region"
+              aria-roledescription="carousel"
+              aria-label={
+                language === "fr"
+                  ? "Aperçu des captures d'écran"
+                  : "Screenshot preview"
+              }
+              className="relative w-full"
+            >
+              <AppPreviewCardStack
+                items={previewStackItems}
+                autoAdvanceMs={4000}
+                className="w-full"
+              />
+            </div>
+          }
+        />
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-[#2d5f3f] dark:bg-[#0d1a0d] py-8">
+        <div className="container mx-auto px-4 text-center max-w-7xl">
+          <p className="text-white/80 dark:text-[#c4b8a0]">
+            © {new Date().getFullYear()} JOEMDJOSSOU.{" "}
+            {language === "fr"
+              ? "Tous droits réservés."
+              : "All rights reserved."}
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default HymnesApp;
