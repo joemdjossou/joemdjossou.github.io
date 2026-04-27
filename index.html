@@ -29,10 +29,10 @@
     <meta name="twitter:description" id="twitter-description" content="Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. View my portfolio and projects." />
     <meta name="twitter:image" id="twitter-image" content="https://joemdjossou.github.io/joemdjossouBG.png" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <!-- Favicon (href updated per route in script below) -->
+    <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link id="apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,33 +46,50 @@
           
           // Define page metadata based on hash
           const pageMetadata = {
+            '#hymnes-app/download': {
+              title: 'Download - Hymnes et Louanges Adventiste',
+              description: 'Get Hymnes et Louanges Adventiste on the App Store or Google Play. Opens the right store on your phone automatically.',
+              keywords: 'hymnes adventiste, download, app store, google play, android, ios, adventist hymns',
+              image: 'https://joemdjossou.github.io/hymnes-app-icon.jpg',
+              url: 'https://joemdjossou.github.io/#hymnes-app/download',
+              faviconHref: '/hymnes-app-icon.jpg',
+              faviconType: 'image/jpeg'
+            },
             '#hymnes-app': {
               title: 'Hymnes et Louanges Adventiste - Mobile App',
               description: 'Discover Adventist Hymns & Praises app - Access 654 hymns with lyrics, audio playback (SATB), musical scores, and hymn stories. Available on iOS and Android. Download now!',
               keywords: 'hymnes adventiste, adventist hymns, louanges, SATB, soprano alto tenor bass, hymnal app, cantiques adventistes, spiritual songs, worship app, christian hymns',
-              image: 'https://joemdjossou.github.io/hymnes-images/en/01.png',
-              url: 'https://joemdjossou.github.io/#hymnes-app'
+              image: 'https://joemdjossou.github.io/hymnes-app-icon.jpg',
+              url: 'https://joemdjossou.github.io/#hymnes-app',
+              faviconHref: '/hymnes-app-icon.jpg',
+              faviconType: 'image/jpeg'
             },
             '#hymnes-app-privacy-policy': {
               title: 'Privacy Policy - Hymnes et Louanges Adventiste',
               description: 'Privacy Policy for Hymnes et Louanges Adventiste mobile application. Learn how we protect your data and respect your privacy.',
               keywords: 'privacy policy, hymnes adventiste, data protection, privacy',
-              image: 'https://joemdjossou.github.io/hymnes-images/en/01.png',
-              url: 'https://joemdjossou.github.io/#hymnes-app-privacy-policy'
+              image: 'https://joemdjossou.github.io/hymnes-app-icon.jpg',
+              url: 'https://joemdjossou.github.io/#hymnes-app-privacy-policy',
+              faviconHref: '/hymnes-app-icon.jpg',
+              faviconType: 'image/jpeg'
             },
             '#hymnes-app-privacy-policy-fr': {
               title: 'Politique de Confidentialité - Hymnes et Louanges Adventiste',
               description: 'Politique de confidentialité pour l\'application mobile Hymnes et Louanges Adventiste. Découvrez comment nous protégeons vos données.',
               keywords: 'politique de confidentialité, hymnes adventiste, protection des données',
-              image: 'https://joemdjossou.github.io/hymnes-images/fr/01.png',
-              url: 'https://joemdjossou.github.io/#hymnes-app-privacy-policy-fr'
+              image: 'https://joemdjossou.github.io/hymnes-app-icon.jpg',
+              url: 'https://joemdjossou.github.io/#hymnes-app-privacy-policy-fr',
+              faviconHref: '/hymnes-app-icon.jpg',
+              faviconType: 'image/jpeg'
             },
             'default': {
               title: 'Josué Djossou - Mobile App Developer | Flutter & Dart Specialist',
               description: 'Passionate Mobile Application Developer specializing in Dart/Flutter & Firebase. Computer Science graduate with expertise in mobile development, AI, and full-stack development.',
               keywords: 'mobile app developer, flutter developer, dart programming, firebase, mobile applications, software engineer, AI, full-stack development',
               image: 'https://joemdjossou.github.io/joemdjossouBG.png',
-              url: 'https://joemdjossou.github.io'
+              url: 'https://joemdjossou.github.io',
+              faviconHref: null,
+              faviconType: null
             }
           };
 
@@ -102,6 +119,23 @@
           updateTag('twitter-title', 'content', metadata.title);
           updateTag('twitter-description', 'content', metadata.description);
           updateTag('twitter-image', 'content', metadata.image);
+
+          // Tab / PWA icons: Hymnes routes use app icon; otherwise portfolio favicons
+          const setLink = (id, href, type) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.setAttribute('href', href);
+            if (type) el.setAttribute('type', type);
+          };
+          if (metadata.faviconHref) {
+            setLink('favicon-32', metadata.faviconHref, metadata.faviconType);
+            setLink('favicon-192', metadata.faviconHref, metadata.faviconType);
+            setLink('apple-touch-icon', metadata.faviconHref, metadata.faviconType);
+          } else {
+            setLink('favicon-32', '/favicon.png', 'image/png');
+            setLink('favicon-192', '/favicon-192.png', 'image/png');
+            setLink('apple-touch-icon', '/apple-touch-icon.png', 'image/png');
+          }
         };
 
         // Update on page load

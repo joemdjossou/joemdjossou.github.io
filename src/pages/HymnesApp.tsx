@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
-import { AppPreviewCardStack } from "@/components/ui/testimonial-cards";
+import { HymnesHeroPhonePreview } from "@/components/hymnes/HymnesHeroPhonePreview";
+import {
+  HYMNES_APP_ICON_SRC,
+  HYMNES_APP_STORE_URL,
+  HYMNES_PLAY_STORE_URL,
+} from "@/constants/hymnes-brand";
 import { cn } from "@/lib/utils";
 import {
   ArrowLeft,
@@ -73,33 +78,6 @@ const HymnesApp: React.FC = () => {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const appScreenshots = useMemo(() => {
-    const langPath = language === "fr" ? "fr" : "en";
-    return [
-      `/hymnes-images/${langPath}/01.png`,
-      `/hymnes-images/${langPath}/02.png`,
-      `/hymnes-images/${langPath}/03.png`,
-      `/hymnes-images/${langPath}/04.png`,
-      `/hymnes-images/${langPath}/05.png`,
-      `/hymnes-images/${langPath}/06.png`,
-      `/hymnes-images/${langPath}/07.png`,
-      `/hymnes-images/${langPath}/08.png`,
-    ];
-  }, [language]);
-
-  const previewStackItems = useMemo(
-    () =>
-      appScreenshots.map((src, i) => ({
-        id: `${language}-${i}-${src}`,
-        src,
-        alt:
-          language === "fr"
-            ? `Capture d'écran ${i + 1}`
-            : `App screenshot ${i + 1}`,
-      })),
-    [appScreenshots, language],
-  );
 
   const content = {
     fr: {
@@ -530,6 +508,7 @@ const HymnesApp: React.FC = () => {
   }, [language]);
 
   const cinematic = t.cinematic;
+  const phoneAvatarLabel = "HL";
 
   const heroFloatingLeft = useMemo(() => {
     const loc = content[language];
@@ -702,23 +681,35 @@ const HymnesApp: React.FC = () => {
           headerHidden ? "-translate-y-full pointer-events-none" : "translate-y-0",
         )}
       >
-        <div className="container mx-auto px-4 py-4 max-w-7xl">
-          <div className="flex justify-between items-center">
+        <div className="container mx-auto px-4 py-3 max-w-7xl">
+          <div className="flex items-center justify-between gap-3">
             <Button
               variant="ghost"
               onClick={() => (window.location.hash = "")}
-              className="flex items-center gap-2 text-white hover:text-white/90 hover:bg-white/10"
+              className="shrink-0 flex items-center gap-2 text-white hover:text-white/90 hover:bg-white/10"
             >
               <ArrowLeft className="h-4 w-4" />
-              {t.backHome}
+              <span className="hidden sm:inline">{t.backHome}</span>
             </Button>
+            <div className="flex min-w-0 flex-1 items-center justify-center gap-2 sm:gap-2.5">
+              <img
+                src={HYMNES_APP_ICON_SRC}
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 shrink-0 rounded-[0.65rem] object-cover shadow-md ring-1 ring-white/25"
+              />
+              <span className="truncate text-center text-sm font-semibold tracking-tight text-white sm:text-base">
+                {t.title}
+              </span>
+            </div>
             <Button
               variant="outline"
               onClick={toggleLanguage}
-              className="flex items-center gap-2 border-white/30 text-white hover:bg-white/10 hover:text-white"
+              className="shrink-0 flex items-center gap-2 border-white/30 text-white hover:bg-white/10 hover:text-white"
             >
               <Languages className="h-4 w-4" />
-              {language === "fr" ? "English" : "Français"}
+              <span className="hidden sm:inline">{language === "fr" ? "English" : "Français"}</span>
             </Button>
           </div>
         </div>
@@ -741,10 +732,10 @@ const HymnesApp: React.FC = () => {
           }
           ctaHeading={cinematic.ctaHeading}
           ctaDescription={cinematic.ctaDescription}
-          appStoreHref="https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258"
-          playStoreHref="https://play.google.com/store/apps/details?id=com.joemdjossou.hymnes&pcampaignid=web_share"
+          appStoreHref={HYMNES_APP_STORE_URL}
+          playStoreHref={HYMNES_PLAY_STORE_URL}
           phoneScreen={cinematicPhoneScreen}
-          phoneAvatarLabel="HL"
+          phoneAvatarLabel={phoneAvatarLabel}
           badge1Emoji="🎵"
           badge1Title={cinematic.badge1Title}
           badge1Subtitle={cinematic.badge1Subtitle}
@@ -758,17 +749,16 @@ const HymnesApp: React.FC = () => {
           heroPreviewSlot={
             <div
               role="region"
-              aria-roledescription="carousel"
               aria-label={
                 language === "fr"
-                  ? "Aperçu des captures d'écran"
-                  : "Screenshot preview"
+                  ? "Aperçu de l'application"
+                  : "In-app preview"
               }
               className="relative w-full"
             >
-              <AppPreviewCardStack
-                items={previewStackItems}
-                autoAdvanceMs={4000}
+              <HymnesHeroPhonePreview
+                screen={cinematicPhoneScreen}
+                phoneAvatarLabel={phoneAvatarLabel}
                 className="w-full"
               />
             </div>

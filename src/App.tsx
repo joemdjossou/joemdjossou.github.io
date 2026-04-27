@@ -4,10 +4,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import HymnesApp from "./pages/HymnesApp";
+import HymnesAppDownload from "./pages/HymnesAppDownload";
 import Index from "./pages/Index";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PrivacyPolicyFR from "./pages/PrivacyPolicyFR";
-import Proposal from "./pages/Proposal";
 
 const queryClient = new QueryClient();
 
@@ -17,14 +17,14 @@ const App = () => {
   useEffect(() => {
     // Check URL hash for routing
     const hash = window.location.hash.slice(1);
-    if (hash === "hymnes-app") {
+    if (hash === "hymnes-app/download") {
+      setCurrentPage("hymnes-app-download");
+    } else if (hash === "hymnes-app") {
       setCurrentPage("hymnes-app");
     } else if (hash === "hymnes-app-privacy-policy") {
       setCurrentPage("privacy");
     } else if (hash === "hymnes-app-privacy-policy-fr") {
       setCurrentPage("privacy-fr");
-    } else if (hash === "edikan") {
-      setCurrentPage("proposal");
     } else {
       setCurrentPage("home");
     }
@@ -32,14 +32,14 @@ const App = () => {
     // Listen for hash changes
     const handleHashChange = () => {
       const newHash = window.location.hash.slice(1);
-      if (newHash === "hymnes-app") {
+      if (newHash === "hymnes-app/download") {
+        setCurrentPage("hymnes-app-download");
+      } else if (newHash === "hymnes-app") {
         setCurrentPage("hymnes-app");
       } else if (newHash === "hymnes-app-privacy-policy") {
         setCurrentPage("privacy");
       } else if (newHash === "hymnes-app-privacy-policy-fr") {
         setCurrentPage("privacy-fr");
-      } else if (newHash === "edikan") {
-        setCurrentPage("proposal");
       } else {
         setCurrentPage("home");
       }
@@ -54,14 +54,14 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {currentPage === "hymnes-app" ? (
+        {currentPage === "hymnes-app-download" ? (
+          <HymnesAppDownload />
+        ) : currentPage === "hymnes-app" ? (
           <HymnesApp />
         ) : currentPage === "privacy" ? (
           <PrivacyPolicy />
         ) : currentPage === "privacy-fr" ? (
           <PrivacyPolicyFR />
-        ) : currentPage === "proposal" ? (
-          <Proposal />
         ) : (
           <Index />
         )}

@@ -174,6 +174,8 @@ export type AppPreviewCardStackProps = {
   /** Hint below the stack (e.g. swipe instructions). */
   hint?: React.ReactNode;
   showDots?: boolean;
+  /** Forest-green bezel and glass overlay to match the Hymnes app chrome. */
+  variant?: "default" | "hymnes";
 };
 
 /**
@@ -186,6 +188,7 @@ export function AppPreviewCardStack({
   className,
   hint,
   showDots = false,
+  variant = "default",
 }: AppPreviewCardStackProps) {
   const n = items.length;
   const [base, setBase] = React.useState(0);
@@ -210,23 +213,36 @@ export function AppPreviewCardStack({
 
   const slots: StackPosition[] = ["front", "middle", "back"];
 
+  const stack = (
+    <div className="relative mx-auto h-[min(68vh,clamp(24rem,52vmin,40rem))] w-[min(92vw,clamp(16rem,28vw,25rem))] max-w-full">
+      {[0, 1, 2].map((slotIdx) => {
+        const item = items[(base + slotIdx) % n]!;
+        const position = slots[slotIdx]!;
+        return (
+          <ScreenshotStackCard
+            key={slotIdx}
+            imageSrc={item.src}
+            alt={item.alt}
+            position={position}
+            onAdvance={handleAdvance}
+            variant={variant}
+          />
+        );
+      })}
+    </div>
+  );
+
   return (
     <div className={className}>
-      <div className="relative mx-auto h-[min(68vh,clamp(24rem,52vmin,40rem))] w-[min(92vw,clamp(16rem,28vw,25rem))] max-w-full">
-        {[0, 1, 2].map((slotIdx) => {
-          const item = items[(base + slotIdx) % n]!;
-          const position = slots[slotIdx]!;
-          return (
-            <ScreenshotStackCard
-              key={slotIdx}
-              imageSrc={item.src}
-              alt={item.alt}
-              position={position}
-              onAdvance={handleAdvance}
-            />
-          );
-        })}
-      </div>
+      {variant === "hymnes" ? (
+        <div className="mx-auto w-[min(92vw,clamp(16rem,28vw,25rem))] max-w-full rounded-[1.85rem] bg-gradient-to-b from-[#3b6e4a] via-[#1a2e1a] to-[#0d1a0d] p-[5px] shadow-[0_28px_64px_rgba(0,0,0,0.5)] ring-1 ring-white/15">
+          <div className="rounded-[1.55rem] bg-[#0d1a0d]/35 p-1.5 ring-1 ring-[#3b6e4a]/25">
+            {stack}
+          </div>
+        </div>
+      ) : (
+        stack
+      )}
       {showDots ? (
         <div
           className="mt-4 flex justify-center gap-1.5"
@@ -258,6 +274,7 @@ type ScreenshotStackCardProps = {
   alt: string;
   position: StackPosition;
   onAdvance: () => void;
+  variant?: "default" | "hymnes";
 };
 
 function ScreenshotStackCard({
@@ -265,6 +282,7 @@ function ScreenshotStackCard({
   alt,
   position,
   onAdvance,
+  variant = "default",
 }: ScreenshotStackCardProps) {
   const isFront = position === "front";
 
@@ -296,12 +314,18 @@ function ScreenshotStackCard({
         }
       }}
       transition={{ duration: 0.35 }}
-      className={`absolute left-0 top-0 overflow-hidden rounded-2xl border border-white/25 bg-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-md ${
-        isFront ? "cursor-grab active:cursor-grabbing" : ""
-      } h-full w-full`}
+      className={`absolute left-0 top-0 overflow-hidden backdrop-blur-md ${
+        variant === "hymnes"
+          ? "rounded-[1.35rem] border-2 border-[#2d5f3f]/50 bg-[#1a2e1a]/20 shadow-[0_22px_50px_rgba(13,26,13,0.55),inset_0_1px_0_rgba(255,255,255,0.1)]"
+          : "rounded-2xl border border-white/25 bg-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
+      } ${isFront ? "cursor-grab active:cursor-grabbing" : ""} h-full w-full`}
     >
       <div
-        className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-[#1a2e1a]/55 via-transparent to-[#3b6e4a]/15"
+        className={`pointer-events-none absolute inset-0 z-10 ${
+          variant === "hymnes"
+            ? "bg-gradient-to-t from-[#0d1a0d]/65 via-transparent to-[#3b6e4a]/20"
+            : "bg-gradient-to-t from-[#1a2e1a]/55 via-transparent to-[#3b6e4a]/15"
+        }`}
         aria-hidden="true"
       />
       <img

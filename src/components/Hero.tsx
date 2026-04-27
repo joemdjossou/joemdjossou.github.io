@@ -39,7 +39,7 @@ const shippedApps = [
   {
     name: "Hymnes et Louanges",
     shortName: "Hymnes",
-    icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/db/86/cd/db86cd77-0039-9045-0e87-01a62e8f15be/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+    icon: "/hymnes-app-icon.jpg",
     appStore:
       "https://apps.apple.com/ng/app/hymnes-et-louanges-adventiste/id6753330258",
     playStore:
