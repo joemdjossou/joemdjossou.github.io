@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { name: "Home", href: "#home" },
-  { name: "Work", href: "#projects" },
-  { name: "Experience", href: "#experience" },
+  { name: "Work", href: "#work" },
+  { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -35,13 +35,13 @@ const Navigation = () => {
     >
       <div className="px-6 md:px-10 lg:px-14">
         <div className="flex items-center justify-between h-14">
-
           {/* Brand mark */}
           <button
             onClick={() => scrollToSection("#home")}
-            className="text-sm font-bold tracking-[0.05em] text-foreground hover:text-muted-foreground transition-smooth"
+            className="group flex items-center gap-2 text-sm font-bold tracking-[0.05em] text-foreground transition-smooth"
           >
-            EJ.
+            <span className="w-2 h-2 rounded-full bg-primary shrink-0 group-hover:scale-125 transition-smooth" />
+            <span className="group-hover:text-primary transition-smooth">EJ.</span>
           </button>
 
           {/* Desktop — dot-separated nav */}
@@ -50,7 +50,7 @@ const Navigation = () => {
               <span key={item.name} className="flex items-center">
                 <button
                   onClick={() => scrollToSection(item.href)}
-                  className="text-xs font-medium text-muted-foreground hover:text-foreground transition-smooth px-3 py-1"
+                  className="text-xs font-medium text-muted-foreground hover:text-primary transition-smooth px-3 py-1"
                 >
                   {item.name}
                 </button>
@@ -83,7 +83,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground hover:text-foreground transition-smooth py-1"
+                  className="block w-full text-left text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-smooth py-1"
                 >
                   {item.name} .
                 </button>

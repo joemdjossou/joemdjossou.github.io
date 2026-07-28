@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Zonski-inspired Portfolio Design System — dark-first, editorial, monochromatic */
+/* thony32-inspired portfolio — dark-first, editorial, royal-blue accent */
 
 @layer base {
   :root {
-    /* Light mode — neutral editorial */
+    /* Light mode — neutral editorial with royal-blue accent */
     --background: 0 0% 98%;
     --foreground: 0 0% 7%;
 
@@ -16,9 +16,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    --primary: 0 0% 7%;
-    --primary-foreground: 0 0% 98%;
-    --primary-glow: 0 0% 20%;
+    /* Royal blue */
+    --primary: 226 71% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 226 90% 66%;
 
     --secondary: 0 0% 94%;
     --secondary-foreground: 0 0% 7%;
@@ -26,33 +27,34 @@
     --muted: 0 0% 92%;
     --muted-foreground: 0 0% 42%;
 
-    --accent: 0 0% 90%;
-    --accent-foreground: 0 0% 7%;
+    --accent: 226 71% 52%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 88%;
     --input: 0 0% 88%;
-    --ring: 0 0% 7%;
+    --ring: 226 71% 52%;
 
     --radius: 0.25rem;
 
     --hero-bg: hsl(0 0% 98%);
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 7%), hsl(0 0% 20%));
-    --gradient-accent: linear-gradient(135deg, hsl(0 0% 20%), hsl(0 0% 35%));
+    --gradient-primary: linear-gradient(135deg, hsl(226 71% 52%), hsl(226 84% 62%));
+    --gradient-accent: linear-gradient(135deg, hsl(226 84% 62%), hsl(214 90% 60%));
     --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.06);
-    --card-shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.12);
+    --card-shadow-hover: 0 12px 40px -8px hsl(226 71% 52% / 0.22);
 
-    --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-heading: 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Geist', 'Inter', system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
 
     --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .dark {
-    /* Dark mode — Zonski underground: near-black bg, near-white fg, zero blue */
+    /* Dark mode — near-black bg, near-white fg, royal-blue accent */
     --background: 0 0% 5%;
     --foreground: 0 0% 94%;
 
@@ -62,31 +64,32 @@
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 94%;
 
-    --primary: 0 0% 94%;
-    --primary-foreground: 0 0% 5%;
-    --primary-glow: 0 0% 100%;
+    /* Royal blue — brighter on dark */
+    --primary: 225 83% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 225 95% 74%;
 
     --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 94%;
 
     --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 48%;
+    --muted-foreground: 0 0% 52%;
 
-    --accent: 0 0% 17%;
-    --accent-foreground: 0 0% 94%;
+    --accent: 225 83% 65%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 16%;
     --input: 0 0% 16%;
-    --ring: 0 0% 94%;
+    --ring: 225 83% 65%;
 
     --hero-bg: hsl(0 0% 5%);
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 94%), hsl(0 0% 80%));
-    --gradient-accent: linear-gradient(135deg, hsl(0 0% 80%), hsl(0 0% 65%));
+    --gradient-primary: linear-gradient(135deg, hsl(225 83% 62%), hsl(225 90% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(225 90% 70%), hsl(210 92% 66%));
     --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.5);
-    --card-shadow-hover: 0 12px 40px -8px hsl(0 0% 0% / 0.7);
+    --card-shadow-hover: 0 12px 40px -8px hsl(225 83% 55% / 0.4);
   }
 }
 
@@ -102,6 +105,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.85);
+    color: hsl(var(--primary-foreground));
   }
 }
 
@@ -134,6 +142,10 @@
     transition: var(--transition-bounce);
   }
 
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
@@ -153,16 +165,36 @@
     transform: translateY(-2px);
   }
 
-  /* Zonski-style section label: "/ WORKS" */
+  /* thony32-style section label: "/ WORKS" in accent blue */
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground;
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-primary font-mono;
   }
   .section-label::before {
     content: "/ ";
+    @apply text-primary/60;
   }
 
   .section-heading {
     @apply text-3xl md:text-4xl font-bold text-foreground;
+  }
+
+  /* Giant translucent watermark word behind section headers */
+  .giant-word {
+    @apply pointer-events-none select-none font-bold uppercase tracking-tighter leading-none;
+    font-size: clamp(4rem, 16vw, 13rem);
+    color: hsl(var(--primary) / 0.05);
+  }
+
+  /* Underline-on-hover accent link */
+  .accent-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-smooth;
+  }
+  .accent-link::after {
+    content: "";
+    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-primary transition-all duration-300;
+  }
+  .accent-link:hover::after {
+    @apply w-full;
   }
 
   /* Marquee */
