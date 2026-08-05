@@ -1,3 +1,4 @@
+import { navigateTo } from "@/lib/navigate";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Languages, Mail, MapPin } from "lucide-react";
@@ -13,7 +14,7 @@ const PrivacyPolicy: React.FC = () => {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex justify-between items-start mb-4">
+          <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
             <Button
               variant="ghost"
               onClick={() => window.history.back()}
@@ -22,22 +23,49 @@ const PrivacyPolicy: React.FC = () => {
               <ArrowLeft className="h-4 w-4" />
               Back
             </Button>
-            <Button
-              variant="outline"
-              onClick={() =>
-                (window.location.hash = "hymnes-app-privacy-policy-fr")
-              }
-              className="flex items-center gap-2"
-            >
-              <Languages className="h-4 w-4" />
-              Français
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="outline"
+                onClick={() =>
+                  navigateTo("/hymnes-app/privacy-policy-fr")
+                }
+                className="flex items-center gap-2"
+              >
+                <Languages className="h-4 w-4" />
+                FR
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  navigateTo("/hymnes-app/privacy-policy-es")
+                }
+              >
+                ES
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  navigateTo("/hymnes-app/privacy-policy-pt")
+                }
+              >
+                PT
+              </Button>
+            </div>
           </div>
           <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
             Privacy Policy
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
-            Hymnes et Louanges Adventiste - Last updated October 07, 2025
+            Hymnes et Louanges Adventiste - Last updated August 4, 2026
+          </p>
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
+            View our{" "}
+            <a
+              href="/hymnes-app/terms-of-service"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              Terms of Service
+            </a>
           </p>
         </div>
 
@@ -105,10 +133,11 @@ const PrivacyPolicy: React.FC = () => {
                   What personal information do we process?
                 </h4>
                 <p>
-                  When you visit, use, or navigate our Services, we may process
-                  personal information depending on how you interact with us and
-                  the Services, the choices you make, and the products and
-                  features you use.
+                  We collect the data types listed in our{" "}
+                  <strong>Google Play Data Safety Summary</strong> below—including
+                  email, name, user IDs, app interactions, feedback, crash logs,
+                  diagnostics, and device identifiers. Some data is collected even
+                  if you do not create an account.
                 </p>
               </div>
 
@@ -132,8 +161,21 @@ const PrivacyPolicy: React.FC = () => {
                 </h4>
                 <p>
                   <strong>
-                    We do not collect any information from third parties.
-                  </strong>
+                    We do not sell your personal information or share it with
+                    third parties for their own purposes.
+                  </strong>{" "}
+                  Collected data is used only for the purposes described in this
+                  notice (account management, analytics, app functionality, and
+                  crash reporting). If you leave a voluntary tip, we receive
+                  transaction information from Apple, Google, and RevenueCat —
+                  never your payment card details. See{" "}
+                  <a
+                    href="#purchases-and-donations"
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    Purchases, Tips and Donations
+                  </a>
+                  .
                 </p>
               </div>
 
@@ -157,8 +199,15 @@ const PrivacyPolicy: React.FC = () => {
                   information?
                 </h4>
                 <p>
-                  We may share information in specific situations and with
-                  specific third parties.
+                  <strong>
+                    We do not sell your personal information or share it with
+                    third parties for their own purposes.
+                  </strong>{" "}
+                  Data is collected and processed by us to operate the app, run
+                  analytics, deliver push notifications, and report crashes. We
+                  use service providers acting on our behalf — including
+                  RevenueCat for in-app purchase management, and Apple and
+                  Google as the payment processors for tips.
                 </p>
               </div>
 
@@ -168,7 +217,11 @@ const PrivacyPolicy: React.FC = () => {
                 </h4>
                 <p>
                   We have adequate organizational and technical processes and
-                  procedures in place to protect your personal information.
+                  procedures in place to protect your personal information.{" "}
+                  <strong>
+                    All data transmitted off your device is encrypted in transit
+                    using HTTPS/TLS.
+                  </strong>{" "}
                   However, no electronic transmission over the internet or
                   information storage technology can be guaranteed to be 100%
                   secure, so we cannot promise or guarantee that hackers,
@@ -194,13 +247,212 @@ const PrivacyPolicy: React.FC = () => {
                   How do you exercise your rights?
                 </h4>
                 <p>
-                  The easiest way to exercise your rights is by submitting a
-                  data subject access request, or by contacting us. We will
-                  consider and act upon any request in accordance with
-                  applicable data protection laws.
+                  The easiest way to exercise your rights is by deleting your
+                  account in the app (see Section 13) or contacting us.{" "}
+                  <strong>Account and data deletion is available.</strong> We will
+                  consider and act upon any request in accordance with applicable
+                  data protection laws.
                 </p>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Google Play Data Safety Summary */}
+        <Card className="mb-8" id="data-safety-summary">
+          <CardHeader>
+            <CardTitle className="text-2xl text-slate-900 dark:text-slate-100">
+              Google Play Data Safety Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+            <p>
+              This summary matches our Google Play Data safety declaration for{" "}
+              <strong>Hymnes et Louanges Adventiste</strong>.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-slate-300 dark:border-slate-600 text-sm">
+                <thead>
+                  <tr className="bg-slate-100 dark:bg-slate-800">
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-left">
+                      Data type
+                    </th>
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Collected
+                    </th>
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Shared
+                    </th>
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-left">
+                      Purpose
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Email address
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Account management, Analytics
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Name
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Account management, Analytics
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      User IDs
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Account management, Analytics
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      App interactions
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Analytics
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Other user-generated content (feedback text)
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      App functionality
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Crash logs
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Crash reporting / Diagnostics
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Diagnostics
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Analytics, Crash reporting
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Device or other IDs
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Yes
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      No
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Analytics, App functionality (push)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul className="list-disc pl-6 space-y-2 mt-4">
+              <li>
+                <strong>Encrypted in transit:</strong> Yes — all data sent off
+                your device uses HTTPS/TLS.
+              </li>
+              <li>
+                <strong>Data deletion available:</strong> Yes — you can delete
+                your account in the app (see Section 13).
+              </li>
+              <li>
+                <strong>Data sold:</strong> No — we do not sell your personal
+                information.
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* Purchases, Tips and Donations */}
+        <Card className="mb-8" id="purchases-and-donations">
+          <CardHeader>
+            <CardTitle className="text-2xl text-slate-900 dark:text-slate-100">
+              Purchases, Tips and Donations
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+            <p>
+              <strong>In Short:</strong> The app is free. If you choose to leave a voluntary tip, the payment is processed by Apple or Google — we never receive your card details.
+            </p>
+            <p>Hymnes et Louanges Adventiste includes an optional “tip jar” that lets you support development. Tipping is entirely voluntary and unlocks no features. All charges are made by the App Store (Apple) or Google Play (Google) to your store account, under their own terms and privacy policies.</p>
+            <p>We use RevenueCat, Inc. as a service provider to manage and validate in-app purchases. To do this, the following purchase-related information is processed:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>A pseudonymous app user ID (and, if you are signed in, your account user ID) used to associate a purchase with your installation of the app</li>
+              <li>Store transaction identifiers, product identifier, and purchase, renewal, or refund timestamps</li>
+              <li>Purchase amount, currency, and store country</li>
+              <li>Device platform, app version, and country/region inferred from the store</li>
+            </ul>
+            <p>We do not receive or store your credit or debit card number, bank details, CVV, or billing address. Those are handled solely by Apple or Google.</p>
+            <p>We use this information only to validate and record contributions, provide customer support, prevent fraud and abuse, and meet our accounting and tax obligations. Where the GDPR or UK GDPR applies, our legal bases are performance of a contract and compliance with a legal obligation. Purchase records are not used for advertising and are not sold.</p>
+            <p>Transaction records are retained for as long as required by applicable accounting and tax law, which may be longer than the retention periods described elsewhere in this notice, and may survive deletion of your account. See the privacy policies of Apple, Google, and RevenueCat for how they process payment data as independent controllers.</p>
+            <p>
+              For the terms that apply to tips and donations, including refunds, see our{" "}
+              <a
+                href="/hymnes-app/terms-of-service"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                Terms of Service
+              </a>
+              .
+            </p>
           </CardContent>
         </Card>
 
@@ -228,6 +480,7 @@ const PrivacyPolicy: React.FC = () => {
               <li>Do Other Regions Have Specific Privacy Rights?</li>
               <li>Do We Make Updates To This Notice?</li>
               <li>How Can You Contact Us About This Notice?</li>
+              <li>Delete Your Account</li>
               <li>
                 How Can You Review, Update, Or Delete The Data We Collect From
                 You?
@@ -251,14 +504,44 @@ const PrivacyPolicy: React.FC = () => {
                   Personal information you disclose to us
                 </h4>
                 <p className="mb-2">
-                  <strong>In Short:</strong> We collect personal information
-                  that you provide to us.
+                  <strong>In Short:</strong> We collect the data types listed in
+                  our Google Play Data Safety Summary. We do not sell or share
+                  your personal information with third parties.
                 </p>
                 <p>
-                  We collect personal information that you voluntarily provide
-                  to us when you express an interest in obtaining information
-                  about us or our products and Services, when you participate in
-                  activities on the Services, or otherwise when you contact us.
+                  We collect personal information when you create an account
+                  (email and password), sign in with Google or Apple, update your
+                  profile, submit feedback, or use the app.
+                </p>
+                <p className="mt-2">
+                  <strong>Personal info — email address, name, user IDs:</strong>{" "}
+                  collected for account management and analytics when you have an
+                  account or use sign-in.
+                </p>
+                <p className="mt-2">
+                  <strong>App interactions:</strong> hymns viewed, audio played,
+                  favorites, navigation, and related usage events—for analytics,
+                  including before you sign in.
+                </p>
+                <p className="mt-2">
+                  <strong>Other user-generated content:</strong> feedback text you
+                  submit in Settings—for app functionality and support.
+                </p>
+                <p className="mt-2">
+                  <strong>Crash logs and diagnostics:</strong> error reports,
+                  device/OS/app version, and stability data—for crash reporting
+                  and analytics.
+                </p>
+                <p className="mt-2">
+                  <strong>Device or other IDs:</strong> analytics and push
+                  notification identifiers—for analytics and app functionality
+                  (push).
+                </p>
+                <p className="mt-2">
+                  <strong>Optional location (device only):</strong> If you enable
+                  Sabbath sunset reminders, the app may use GPS to calculate
+                  local sunset times. These coordinates are stored on your
+                  device only and are not transmitted to our servers.
                 </p>
                 <p className="mt-2">
                   <strong>Sensitive Information.</strong> We do not process
@@ -294,12 +577,26 @@ const PrivacyPolicy: React.FC = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>
-                    To save or protect an individual's vital interest.
-                  </strong>{" "}
-                  We may process your information when necessary to save or
-                  protect an individual's vital interest, such as to prevent
-                  harm.
+                  <strong>Account management</strong> — create and manage your
+                  account, sync favorites, and deliver push notifications.
+                </li>
+                <li>
+                  <strong>Analytics</strong> — understand how the app is used and
+                  improve features (email, name, user IDs, app interactions,
+                  diagnostics, device IDs).
+                </li>
+                <li>
+                  <strong>App functionality</strong> — process feedback you
+                  submit and operate core app features (including push via device
+                  IDs).
+                </li>
+                <li>
+                  <strong>Crash reporting / diagnostics</strong> — detect,
+                  diagnose, and fix crashes and stability issues.
+                </li>
+                <li>
+                  <strong>For security, fraud prevention, and compliance</strong>{" "}
+                  with applicable law.
                 </li>
               </ul>
             </CardContent>
@@ -439,23 +736,31 @@ const PrivacyPolicy: React.FC = () => {
             </CardHeader>
             <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
               <p>
-                <strong>In Short:</strong> We may share information in specific
-                situations described in this section and/or with the following
-                third parties.
+                <strong>In Short:</strong> We do not sell your personal
+                information or share it with third parties for their own
+                purposes. We do use service providers that process data on our
+                behalf.
               </p>
               <p>
-                We may need to share your personal information in the following
-                situations:
+                The data types in our Google Play Data Safety Summary are
+                collected by us and used only for the purposes described in this
+                notice. We do not sell your personal information or share it
+                with third parties for their own purposes.
               </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Business Transfers.</strong> We may share or transfer
-                  your information in connection with, or during negotiations
-                  of, any merger, sale of company assets, financing, or
-                  acquisition of all or a portion of our business to another
-                  company.
-                </li>
-              </ul>
+              <p>
+                We rely on service providers (processors) to operate the app,
+                including providers for authentication and cloud sync, analytics
+                and crash reporting, push notifications, and{" "}
+                <strong>RevenueCat, Inc.</strong> for in-app purchase
+                management. <strong>Apple</strong> and <strong>Google</strong>{" "}
+                act as the payment processors for any tip you choose to leave
+                and process that transaction under their own privacy policies.
+              </p>
+              <p>
+                We may transfer information only in connection with a business
+                transaction (such as a merger or acquisition), as required by
+                law, or with your consent.
+              </p>
             </CardContent>
           </Card>
 
@@ -487,6 +792,29 @@ const PrivacyPolicy: React.FC = () => {
                 isolate it from any further processing until deletion is
                 possible.
               </p>
+              <ul className="list-disc pl-6 space-y-2 mt-2">
+                <li>
+                  <strong>Account and profile data:</strong> deleted when you
+                  delete your account through the in-app flow described below.
+                </li>
+                <li>
+                  <strong>Cloud favorites and hymn history:</strong> removed
+                  when you delete your account; residual copies in backups may
+                  persist for a limited period.
+                </li>
+                <li>
+                  <strong>Analytics and crash reports:</strong> may be retained
+                  according to our retention policies, typically up to 90 days.
+                </li>
+                <li>
+                  <strong>Feedback already submitted:</strong> may be retained for
+                  support and quality purposes.
+                </li>
+                <li>
+                  <strong>Local cache and search history on device:</strong> can
+                  be cleared in Settings → Storage without deleting your account.
+                </li>
+              </ul>
             </CardContent>
           </Card>
 
@@ -506,8 +834,8 @@ const PrivacyPolicy: React.FC = () => {
               <p>
                 We have implemented appropriate and reasonable technical and
                 organizational security measures designed to protect the
-                security of any personal information we process. However,
-                despite our safeguards and efforts to secure your information,
+                security of any personal information we process.                 Data in transit is encrypted using HTTPS/TLS. However, despite our safeguards and
+                efforts to secure your information,
                 no electronic transmission over the Internet or information
                 storage technology can be guaranteed to be 100% secure, so we
                 cannot promise or guarantee that hackers, cybercriminals, or
@@ -683,8 +1011,8 @@ const PrivacyPolicy: React.FC = () => {
                           personal identifier, online identifier, Internet
                           Protocol address, email address, and account name
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NO
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          YES
                         </td>
                       </tr>
                       <tr>
@@ -696,8 +1024,8 @@ const PrivacyPolicy: React.FC = () => {
                           Name, contact information, education, employment,
                           employment history, and financial information
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NO
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          YES
                         </td>
                       </tr>
                       <tr>
@@ -722,8 +1050,12 @@ const PrivacyPolicy: React.FC = () => {
                           Transaction information, purchase history, financial
                           details, and payment information
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NO
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          YES
+                          <span className="block font-normal text-xs">
+                            Tip/donation transaction records only — no card or
+                            bank details
+                          </span>
                         </td>
                       </tr>
                       <tr>
@@ -746,8 +1078,8 @@ const PrivacyPolicy: React.FC = () => {
                           interest data, and interactions with our and other
                           websites, applications, systems, and advertisements
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NO
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          YES
                         </td>
                       </tr>
                       <tr>
@@ -849,7 +1181,11 @@ const PrivacyPolicy: React.FC = () => {
               </p>
               <p>
                 <strong>
-                  Category H - As long as the user has an account with us
+                  Category A and B — As long as the user has an account with us,
+                  or as retained by analytics/crash providers per their policies.
+                  Category D — Tip/donation transaction records, for as long as
+                  required by applicable accounting and tax law. Category F —
+                  Per PostHog retention settings.
                 </strong>
               </p>
 
@@ -1052,11 +1388,67 @@ const PrivacyPolicy: React.FC = () => {
             </CardContent>
           </Card>
 
-          {/* Section 13 */}
+          {/* Section 13 - Delete Account */}
+          <Card id="delete-account">
+            <CardHeader>
+              <CardTitle className="text-xl text-slate-900 dark:text-slate-100">
+                13. Delete Your Account
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+              <p>
+                <strong>In Short:</strong> You can delete your account directly in
+                the app. This page documents the steps for Google Play and other
+                store requirements.
+              </p>
+              <p>
+                To delete your <strong>Hymnes et Louanges Adventiste</strong>{" "}
+                account and associated data:
+              </p>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>Open <strong>Hymnes et Louanges Adventiste</strong></li>
+                <li>Go to <strong>Settings</strong> (Paramètres)</li>
+                <li>Open the <strong>Account</strong> section</li>
+                <li>
+                  Tap <strong>Delete Account</strong> /{" "}
+                  <strong>Supprimer le compte</strong>
+                </li>
+                <li>Confirm in the dialog</li>
+              </ol>
+              <p>
+                <strong>What is deleted:</strong> your Firebase authentication
+                account, profile information, cloud-synced favorites, and hymn
+                history tied to your account.
+              </p>
+              <p>
+                <strong>What may be retained:</strong> analytics events and
+                crash reports already collected (typically up to 90 days per
+                retention policies); feedback you previously submitted; and
+                residual backup copies for a limited period. Local-only data
+                (cached hymns, on-device search history, optional Sabbath
+                reminder coordinates) can be cleared separately in{" "}
+                <strong>Settings → Storage</strong> without deleting your account.
+              </p>
+              <p>
+                There is no separate in-app option to delete only analytics or
+                cloud favorites without deleting your entire account. You may
+                also contact us at{" "}
+                <a
+                  href="mailto:joemdjossou@outlook.com"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  joemdjossou@outlook.com
+                </a>{" "}
+                for assistance.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Section 14 */}
           <Card>
             <CardHeader>
               <CardTitle className="text-xl text-slate-900 dark:text-slate-100">
-                13. How Can You Review, Update, Or Delete The Data We Collect
+                14. How Can You Review, Update, Or Delete The Data We Collect
                 From You?
               </CardTitle>
             </CardHeader>
@@ -1069,9 +1461,19 @@ const PrivacyPolicy: React.FC = () => {
                 personal information. You may also have the right to withdraw
                 your consent to our processing of your personal information.
                 These rights may be limited in some circumstances by applicable
-                law. To request to review, update, or delete your personal
-                information, please fill out and submit a data subject access
-                request.
+                law.
+              </p>
+              <p>
+                The easiest way to delete your account is through the in-app
+                steps in <strong>Section 13 (Delete Your Account)</strong> above.
+                To request review, correction, or deletion of other data, email{" "}
+                <a
+                  href="mailto:joemdjossou@outlook.com"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  joemdjossou@outlook.com
+                </a>
+                .
               </p>
             </CardContent>
           </Card>

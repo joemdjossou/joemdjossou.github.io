@@ -9,7 +9,9 @@ import Index from "./pages/Index";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import PrivacyPolicyES from "./pages/PrivacyPolicyES";
 import PrivacyPolicyFR from "./pages/PrivacyPolicyFR";
+import { navigateTo } from "@/lib/navigate";
 import PrivacyPolicyPT from "./pages/PrivacyPolicyPT";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -17,19 +19,43 @@ type Page =
   | "home"
   | "hymnes-app"
   | "hymnes-app-download"
+  | "terms"
   | "privacy"
   | "privacy-fr"
   | "privacy-es"
   | "privacy-pt";
 
 /**
- * Canonical clean paths (no leading slash) → Page.
- * These are the URLs the browser bar should show.
+ * Canonical clean path for each page — the URL the address bar should show.
+ * The legal pages live under /hymnes-app/… because those are the URLs
+ * declared to Apple App Review and Google Play.
+ */
+const PAGE_TO_PATH: Record<Page, string> = {
+  home: "",
+  "hymnes-app": "hymnes-app",
+  "hymnes-app-download": "hymnes-app/download",
+  terms: "hymnes-app/terms-of-service",
+  privacy: "hymnes-app/privacy-policy",
+  "privacy-fr": "hymnes-app/privacy-policy-fr",
+  "privacy-es": "hymnes-app/privacy-policy-es",
+  "privacy-pt": "hymnes-app/privacy-policy-pt",
+};
+
+/**
+ * Every clean path we answer on (canonical + legacy aliases) → Page.
+ * Aliases still render the page; the address bar is rewritten to canonical.
  */
 const PATH_TO_PAGE: Record<string, Page> = {
   "": "home",
-  "hymnes-app/download": "hymnes-app-download",
   "hymnes-app": "hymnes-app",
+  "hymnes-app/download": "hymnes-app-download",
+  "hymnes-app/terms-of-service": "terms",
+  "hymnes-app/privacy-policy": "privacy",
+  "hymnes-app/privacy-policy-fr": "privacy-fr",
+  "hymnes-app/privacy-policy-es": "privacy-es",
+  "hymnes-app/privacy-policy-pt": "privacy-pt",
+  // Legacy top-level paths (still linked from the stores / older builds).
+  "terms-of-service": "terms",
   "privacy-policy": "privacy",
   "privacy-policy-fr": "privacy-fr",
   "privacy-policy-es": "privacy-es",
@@ -37,21 +63,23 @@ const PATH_TO_PAGE: Record<string, Page> = {
 };
 
 /**
- * Any hash spelling (legacy or new) → its canonical clean path.
+ * Any hash spelling (legacy or new) → Page.
  * Keeps every historical #hash link working while redirecting the
- * address bar to the hash-free path.
+ * address bar to the hash-free canonical path.
  */
-const HASH_TO_PATH: Record<string, string> = {
-  "hymnes-app/download": "hymnes-app/download",
+const HASH_TO_PAGE: Record<string, Page> = {
   "hymnes-app": "hymnes-app",
-  "hymnes-app-privacy-policy": "privacy-policy",
-  "hymnes-app-privacy-policy-fr": "privacy-policy-fr",
-  "hymnes-app-privacy-policy-es": "privacy-policy-es",
-  "hymnes-app-privacy-policy-pt": "privacy-policy-pt",
-  "privacy-policy": "privacy-policy",
-  "privacy-policy-fr": "privacy-policy-fr",
-  "privacy-policy-es": "privacy-policy-es",
-  "privacy-policy-pt": "privacy-policy-pt",
+  "hymnes-app/download": "hymnes-app-download",
+  "hymnes-app-terms-of-service": "terms",
+  "hymnes-app-privacy-policy": "privacy",
+  "hymnes-app-privacy-policy-fr": "privacy-fr",
+  "hymnes-app-privacy-policy-es": "privacy-es",
+  "hymnes-app-privacy-policy-pt": "privacy-pt",
+  "terms-of-service": "terms",
+  "privacy-policy": "privacy",
+  "privacy-policy-fr": "privacy-fr",
+  "privacy-policy-es": "privacy-es",
+  "privacy-policy-pt": "privacy-pt",
 };
 
 const trim = (s: string) => s.replace(/^\/+|\/+$/g, "");
@@ -64,20 +92,29 @@ export const CLEAN_ROUTES = new Set(
 /**
  * Resolve the current URL to a page + the canonical path it should show.
  * Precedence: an explicit clean path wins; otherwise fall back to the hash.
+ * A hash that is not a route (e.g. `#purchases-and-donations`) is an in-page
+ * anchor and is preserved so browser anchor scrolling keeps working.
  */
 function resolve(): { page: Page; canonicalPath: string } {
+  const rawHash = trim(window.location.hash.replace(/^#\/?/, ""));
+  const routeHash = rawHash ? HASH_TO_PAGE[rawHash] : undefined;
+  const anchor = rawHash && !routeHash ? "#" + rawHash : "";
+
+  const canonical = (page: Page) => ({
+    page,
+    canonicalPath: "/" + PAGE_TO_PATH[page] + anchor,
+  });
+
   const path = trim(window.location.pathname);
   if (path && PATH_TO_PAGE[path]) {
-    return { page: PATH_TO_PAGE[path], canonicalPath: "/" + path };
+    return canonical(PATH_TO_PAGE[path]);
   }
 
-  const rawHash = trim(window.location.hash.replace(/^#\/?/, ""));
-  if (rawHash && HASH_TO_PATH[rawHash]) {
-    const clean = HASH_TO_PATH[rawHash];
-    return { page: PATH_TO_PAGE[clean], canonicalPath: "/" + clean };
+  if (routeHash) {
+    return { page: routeHash, canonicalPath: "/" + PAGE_TO_PATH[routeHash] };
   }
 
-  return { page: "home", canonicalPath: "/" };
+  return canonical("home");
 }
 
 const App = () => {
@@ -109,12 +146,11 @@ const App = () => {
       const href = anchor.getAttribute("href") || "";
       if (anchor.target === "_blank" || anchor.hasAttribute("download")) return;
 
-      // Clean route like "/hymnes-app"
+      // Clean route like "/hymnes-app". navigateTo fires `popstate`, which both
+      // re-syncs this component and lets index.html refresh the page metadata.
       if (href.startsWith("/") && CLEAN_ROUTES.has(trim(href))) {
         e.preventDefault();
-        window.history.pushState(null, "", href);
-        window.scrollTo(0, 0);
-        sync();
+        navigateTo(href);
       }
     };
     document.addEventListener("click", onClick);
@@ -135,6 +171,8 @@ const App = () => {
           <HymnesAppDownload />
         ) : currentPage === "hymnes-app" ? (
           <HymnesApp />
+        ) : currentPage === "terms" ? (
+          <TermsOfService />
         ) : currentPage === "privacy" ? (
           <PrivacyPolicy />
         ) : currentPage === "privacy-fr" ? (

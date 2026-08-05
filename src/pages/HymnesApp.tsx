@@ -1,17 +1,19 @@
+import { HymnesHeroPhonePreview } from "@/components/hymnes/HymnesHeroPhonePreview";
 import { Button } from "@/components/ui/button";
 import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
-import { HymnesHeroPhonePreview } from "@/components/hymnes/HymnesHeroPhonePreview";
 import {
   HYMNES_APP_ICON_SRC,
   HYMNES_APP_STORE_URL,
   HYMNES_PLAY_STORE_URL,
 } from "@/constants/hymnes-brand";
+import { navigateTo } from "@/lib/navigate";
 import { cn } from "@/lib/utils";
 import {
   ArrowLeft,
   BookOpen,
   Check,
   Cloud,
+  FileText,
   Filter,
   Globe,
   Languages,
@@ -146,6 +148,7 @@ const HymnesApp: React.FC = () => {
       aboutText:
         "Hymnes et Louanges Adventiste est conçu pour enrichir vos moments de culte personnel, de prière en groupe ou de service religieux. Avec ses fonctionnalités complètes et son design élégant, cette application devient votre compagnon idéal pour la louange.",
       privacyLink: "Politique de confidentialité",
+      termsLink: "Conditions d'utilisation",
       backHome: "Retour à l'accueil",
       cinematic: {
         tagline1: "Louez avec clarté,",
@@ -344,6 +347,7 @@ const HymnesApp: React.FC = () => {
       aboutText:
         "Adventist Hymns & Praises is designed to enrich your personal worship, prayer groups, or religious services. With its comprehensive features and elegant design, this app becomes your ideal companion for praise.",
       privacyLink: "Privacy Policy",
+      termsLink: "Terms of Service",
       backHome: "Back to Home",
       cinematic: {
         tagline1: "Praise with clarity,",
@@ -613,14 +617,24 @@ const HymnesApp: React.FC = () => {
             size="sm"
             className="mt-3 w-full bg-white/95 text-[#2d5f3f] hover:bg-white border-0 shadow-md"
             onClick={() =>
-              (window.location.hash =
+              navigateTo(
                 language === "fr"
-                  ? "hymnes-app-privacy-policy-fr"
-                  : "hymnes-app-privacy-policy")
+                  ? "/hymnes-app/privacy-policy-fr"
+                  : "/hymnes-app/privacy-policy"
+              )
             }
           >
             <Shield className="mr-2 h-3.5 w-3.5" />
             {loc.privacyLink}
+          </Button>
+          <Button
+            variant="secondary"
+            size="sm"
+            className="mt-2 w-full bg-white/95 text-[#2d5f3f] hover:bg-white border-0 shadow-md"
+            onClick={() => navigateTo("/hymnes-app/terms-of-service")}
+          >
+            <FileText className="mr-2 h-3.5 w-3.5" />
+            {loc.termsLink}
           </Button>
         </div>
       </>

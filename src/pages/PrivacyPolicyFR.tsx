@@ -1,3 +1,4 @@
+import { navigateTo } from "@/lib/navigate";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Languages, Mail, MapPin } from "lucide-react";
@@ -13,7 +14,7 @@ const PrivacyPolicyFR: React.FC = () => {
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
-          <div className="flex justify-between items-start mb-4">
+          <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
             <Button
               variant="ghost"
               onClick={() => window.history.back()}
@@ -22,23 +23,49 @@ const PrivacyPolicyFR: React.FC = () => {
               <ArrowLeft className="h-4 w-4" />
               Retour
             </Button>
-            <Button
-              variant="outline"
-              onClick={() =>
-                (window.location.hash = "hymnes-app-privacy-policy")
-              }
-              className="flex items-center gap-2"
-            >
-              <Languages className="h-4 w-4" />
-              English
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="outline"
+                onClick={() =>
+                  navigateTo("/hymnes-app/privacy-policy")
+                }
+                className="flex items-center gap-2"
+              >
+                <Languages className="h-4 w-4" />
+                EN
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  navigateTo("/hymnes-app/privacy-policy-es")
+                }
+              >
+                ES
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  navigateTo("/hymnes-app/privacy-policy-pt")
+                }
+              >
+                PT
+              </Button>
+            </div>
           </div>
           <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
             Politique de Confidentialité
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
-            Hymnes et Louanges Adventiste - Dernière mise à jour le 07 octobre
-            2025
+            Hymnes et Louanges Adventiste - Dernière mise à jour le 4 août 2026
+          </p>
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
+            Consultez nos{" "}
+            <a
+              href="/hymnes-app/terms-of-service"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              Conditions d’utilisation
+            </a>
           </p>
         </div>
 
@@ -110,11 +137,13 @@ const PrivacyPolicyFR: React.FC = () => {
                   Quelles informations personnelles traitons-nous ?
                 </h4>
                 <p>
-                  Lorsque vous visitez, utilisez ou naviguez sur nos Services,
-                  nous pouvons traiter des informations personnelles selon la
-                  façon dont vous interagissez avec nous et les Services, les
-                  choix que vous faites, et les produits et fonctionnalités que
-                  vous utilisez.
+                  Nous collectons les types de données listés dans notre{" "}
+                  <strong>Résumé Data Safety Google Play</strong> ci-dessous —
+                  notamment l'e-mail, le nom, les identifiants utilisateur, les
+                  interactions dans l'application, les commentaires, les
+                  journaux de plantage, les diagnostics et les identifiants
+                  d'appareil. Certaines données sont collectées même sans
+                  compte.
                 </p>
               </div>
 
@@ -139,8 +168,12 @@ const PrivacyPolicyFR: React.FC = () => {
                 </h4>
                 <p>
                   <strong>
-                    Nous ne collectons aucune information auprès de tiers.
-                  </strong>
+                    Nous ne vendons ni ne partageons vos informations
+                    personnelles avec des tiers.
+                  </strong>{" "}
+                  Les données collectées sont utilisées uniquement aux fins
+                  décrites dans cet avis (gestion de compte, analyses,
+                  fonctionnalité de l'application et rapports de plantage).
                 </p>
               </div>
 
@@ -165,8 +198,13 @@ const PrivacyPolicyFR: React.FC = () => {
                   partageons-nous des informations personnelles ?
                 </h4>
                 <p>
-                  Nous pouvons partager des informations dans des situations
-                  spécifiques et avec des tiers spécifiques.
+                  <strong>
+                    Nous ne vendons ni ne partageons vos informations
+                    personnelles avec des tiers.
+                  </strong>{" "}
+                  Les données sont collectées et traitées par nous pour faire
+                  fonctionner l'application, les analyses, les notifications
+                  push et les rapports de plantage.
                 </p>
               </div>
 
@@ -177,13 +215,18 @@ const PrivacyPolicyFR: React.FC = () => {
                 <p>
                   Nous avons mis en place des processus et procédures
                   organisationnels et techniques adéquats pour protéger vos
-                  informations personnelles. Cependant, aucune transmission
-                  électronique sur Internet ou technologie de stockage
-                  d'informations ne peut être garantie à 100% sécurisée, nous ne
-                  pouvons donc pas promettre ou garantir que les pirates,
-                  cybercriminels ou autres tiers non autorisés ne pourront pas
-                  contourner notre sécurité et collecter, accéder, voler ou
-                  modifier vos informations de manière inappropriée.
+                  informations personnelles.{" "}
+                  <strong>
+                    Toutes les données transmises hors de votre appareil sont
+                    chiffrées en transit via HTTPS/TLS.
+                  </strong>{" "}
+                  Cependant, aucune transmission électronique sur Internet ou
+                  technologie de stockage d'informations ne peut être garantie à
+                  100% sécurisée, nous ne pouvons donc pas promettre ou
+                  garantir que les pirates, cybercriminels ou autres tiers non
+                  autorisés ne pourront pas contourner notre sécurité et
+                  collecter, accéder, voler ou modifier vos informations de
+                  manière inappropriée.
                 </p>
               </div>
 
@@ -203,13 +246,217 @@ const PrivacyPolicyFR: React.FC = () => {
                   Comment exercez-vous vos droits ?
                 </h4>
                 <p>
-                  Le moyen le plus simple d'exercer vos droits est de soumettre
-                  une demande d'accès aux données, ou en nous contactant. Nous
-                  examinerons et agirons sur toute demande conformément aux lois
-                  applicables sur la protection des données.
+                  Le moyen le plus simple d'exercer vos droits est de supprimer
+                  votre compte dans l'application (voir Section 13) ou de nous
+                  contacter.{" "}
+                  <strong>
+                    La suppression de compte et des données est disponible.
+                  </strong>{" "}
+                  Nous examinerons et agirons sur toute demande conformément aux
+                  lois applicables sur la protection des données.
                 </p>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Google Play Data Safety Summary */}
+        <Card className="mb-8" id="data-safety-summary">
+          <CardHeader>
+            <CardTitle className="text-2xl text-slate-900 dark:text-slate-100">
+              Résumé Data Safety Google Play
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+            <p>
+              Ce résumé correspond à notre déclaration Data safety Google Play
+              pour <strong>Hymnes et Louanges Adventiste</strong>.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-slate-300 dark:border-slate-600 text-sm">
+                <thead>
+                  <tr className="bg-slate-100 dark:bg-slate-800">
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-left">
+                      Type de données
+                    </th>
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Collecté
+                    </th>
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Partagé
+                    </th>
+                    <th className="border border-slate-300 dark:border-slate-600 p-2 text-left">
+                      Finalité
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Adresse e-mail
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Gestion de compte, Analyses
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Nom
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Gestion de compte, Analyses
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Identifiants utilisateur
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Gestion de compte, Analyses
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Interactions dans l'application
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Analyses
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Autre contenu généré par l'utilisateur (texte de
+                      commentaire)
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Fonctionnalité de l'application
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Journaux de plantage
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Rapports de plantage / Diagnostics
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Diagnostics
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Analyses, Rapports de plantage
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Identifiants d'appareil ou autres
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                      Oui
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2 text-center">
+                      Non
+                    </td>
+                    <td className="border border-slate-300 dark:border-slate-600 p-2">
+                      Analyses, Fonctionnalité (notifications push)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ul className="list-disc pl-6 space-y-2 mt-4">
+              <li>
+                <strong>Chiffré en transit :</strong> Oui — toutes les données
+                envoyées hors de l'appareil utilisent HTTPS/TLS.
+              </li>
+              <li>
+                <strong>Suppression des données disponible :</strong> Oui —
+                vous pouvez supprimer votre compte dans l'application (voir
+                Section 13).
+              </li>
+              <li>
+                <strong>Données vendues :</strong> Non — nous ne vendons pas
+                vos informations personnelles.
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* Purchases, Tips and Donations */}
+        <Card className="mb-8" id="purchases-and-donations">
+          <CardHeader>
+            <CardTitle className="text-2xl text-slate-900 dark:text-slate-100">
+              Achats, Pourboires et Dons
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+            <p>
+              <strong>En bref :</strong> L’application est gratuite. Si vous choisissez de laisser un pourboire volontaire, le paiement est traité par Apple ou Google — nous ne recevons jamais vos données de carte bancaire.
+            </p>
+            <p>Hymnes et Louanges Adventiste propose une « cagnotte » facultative qui vous permet de soutenir le développement. Le pourboire est entièrement volontaire et ne débloque aucune fonctionnalité. Tous les paiements sont effectués par l’App Store (Apple) ou Google Play (Google) sur votre compte de boutique, selon leurs propres conditions et politiques de confidentialité.</p>
+            <p>Nous utilisons RevenueCat, Inc. comme prestataire pour gérer et valider les achats intégrés. À cette fin, les informations suivantes liées à l’achat sont traitées :</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Un identifiant utilisateur pseudonyme de l’application (et, si vous êtes connecté, l’identifiant de votre compte) permettant d’associer un achat à votre installation</li>
+              <li>Les identifiants de transaction de la boutique, l’identifiant du produit et les horodatages d’achat, de renouvellement ou de remboursement</li>
+              <li>Le montant de l’achat, la devise et le pays de la boutique</li>
+              <li>La plateforme de l’appareil, la version de l’application et le pays/la région déduits de la boutique</li>
+            </ul>
+            <p>Nous ne recevons ni ne conservons votre numéro de carte bancaire, vos coordonnées bancaires, votre cryptogramme visuel ou votre adresse de facturation. Ces données sont traitées uniquement par Apple ou Google.</p>
+            <p>Nous utilisons ces informations uniquement pour valider et enregistrer les contributions, assurer le support client, prévenir la fraude et les abus, et respecter nos obligations comptables et fiscales. Lorsque le RGPD s’applique, nos bases légales sont l’exécution d’un contrat et le respect d’une obligation légale. Les enregistrements d’achat ne sont pas utilisés à des fins publicitaires et ne sont pas vendus.</p>
+            <p>Les enregistrements de transactions sont conservés aussi longtemps que l’exigent les lois comptables et fiscales applicables, ce qui peut dépasser les durées de conservation décrites ailleurs dans cet avis et survivre à la suppression de votre compte. Consultez les politiques de confidentialité d’Apple, de Google et de RevenueCat concernant leur traitement des données de paiement en tant que responsables indépendants.</p>
+            <p>
+              Pour les conditions applicables aux pourboires et aux dons, y compris les remboursements, consultez nos{" "}
+              <a
+                href="/hymnes-app/terms-of-service"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                Conditions d’utilisation
+              </a>
+              .
+            </p>
           </CardContent>
         </Card>
 
@@ -246,6 +493,7 @@ const PrivacyPolicyFR: React.FC = () => {
               </li>
               <li>Mettons-Nous À Jour Cet Avis ?</li>
               <li>Comment Pouvez-Vous Nous Contacter Concernant Cet Avis ?</li>
+              <li>Supprimer Votre Compte</li>
               <li>
                 Comment Pouvez-Vous Consulter, Mettre À Jour Ou Supprimer Les
                 Données Que Nous Collectons De Vous ?
@@ -269,15 +517,50 @@ const PrivacyPolicyFR: React.FC = () => {
                   Informations personnelles que vous nous divulguez
                 </h4>
                 <p className="mb-2">
-                  <strong>En bref :</strong> Nous collectons les informations
-                  personnelles que vous nous fournissez.
+                  <strong>En bref :</strong> Nous collectons les types de données
+                  listés dans notre Résumé Data Safety Google Play. Nous ne
+                  vendons ni ne partageons vos informations personnelles avec
+                  des tiers.
                 </p>
                 <p>
-                  Nous collectons les informations personnelles que vous nous
-                  fournissez volontairement lorsque vous exprimez un intérêt à
-                  obtenir des informations sur nous ou nos produits et Services,
-                  lorsque vous participez à des activités sur les Services, ou
-                  autrement lorsque vous nous contactez.
+                  Nous collectons des informations personnelles lorsque vous
+                  créez un compte (e-mail et mot de passe), vous connectez avec
+                  Google ou Apple, mettez à jour votre profil, soumettez des
+                  commentaires ou utilisez l'application.
+                </p>
+                <p className="mt-2">
+                  <strong>Infos personnelles — e-mail, nom, identifiants
+                  utilisateur :</strong> collectées pour la gestion de compte et
+                  les analyses lorsque vous avez un compte ou utilisez la
+                  connexion.
+                </p>
+                <p className="mt-2">
+                  <strong>Interactions dans l'application :</strong> cantiques
+                  consultés, audio écouté, favoris, navigation et événements
+                  d'utilisation connexes — pour les analyses, y compris avant
+                  connexion.
+                </p>
+                <p className="mt-2">
+                  <strong>Autre contenu généré par l'utilisateur :</strong>{" "}
+                  texte de commentaire soumis dans Paramètres — pour la
+                  fonctionnalité de l'application et l'assistance.
+                </p>
+                <p className="mt-2">
+                  <strong>Journaux de plantage et diagnostics :</strong>{" "}
+                  rapports d'erreur, version appareil/OS/application et données
+                  de stabilité — pour les rapports de plantage et les analyses.
+                </p>
+                <p className="mt-2">
+                  <strong>Identifiants d'appareil ou autres :</strong>{" "}
+                  identifiants d'analyse et de notifications push — pour les
+                  analyses et la fonctionnalité (push).
+                </p>
+                <p className="mt-2">
+                  <strong>Localisation facultative (appareil uniquement) :</strong>{" "}
+                  si vous activez les rappels du coucher du soleil du sabbat,
+                  l'application peut utiliser le GPS pour calculer les heures
+                  locales. Ces coordonnées sont stockées uniquement sur votre
+                  appareil et ne sont pas transmises à nos serveurs.
                 </p>
                 <p className="mt-2">
                   <strong>Informations Sensibles.</strong> Nous ne traitons pas
@@ -314,12 +597,30 @@ const PrivacyPolicyFR: React.FC = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>
-                    Pour sauver ou protéger l'intérêt vital d'un individu.
-                  </strong>{" "}
-                  Nous pouvons traiter vos informations lorsque c'est nécessaire
-                  pour sauver ou protéger l'intérêt vital d'un individu, comme
-                  pour prévenir un préjudice.
+                  <strong>Gestion de compte</strong> — créer et gérer votre
+                  compte, synchroniser les favoris et envoyer les notifications
+                  push.
+                </li>
+                <li>
+                  <strong>Analyses</strong> — comprendre l'utilisation de
+                  l'application et améliorer les fonctionnalités (e-mail, nom,
+                  identifiants utilisateur, interactions, diagnostics,
+                  identifiants d'appareil).
+                </li>
+                <li>
+                  <strong>Fonctionnalité de l'application</strong> — traiter les
+                  commentaires que vous soumettez et faire fonctionner les
+                  fonctionnalités principales (y compris le push via les
+                  identifiants d'appareil).
+                </li>
+                <li>
+                  <strong>Rapports de plantage / diagnostics</strong> — détecter,
+                  diagnostiquer et corriger les plantages et problèmes de
+                  stabilité.
+                </li>
+                <li>
+                  <strong>Pour la sécurité, la prévention de la fraude et la
+                  conformité</strong> aux lois applicables.
                 </li>
               </ul>
             </CardContent>
@@ -470,23 +771,21 @@ const PrivacyPolicyFR: React.FC = () => {
             </CardHeader>
             <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
               <p>
-                <strong>En bref :</strong> Nous pouvons partager des
-                informations dans des situations spécifiques décrites dans cette
-                section et/ou avec les tiers suivants.
+                <strong>En bref :</strong> Nous ne vendons ni ne partageons vos
+                informations personnelles avec des tiers.
               </p>
               <p>
-                Nous pouvons avoir besoin de partager vos informations
-                personnelles dans les situations suivantes :
+                Les types de données de notre Résumé Data Safety Google Play
+                sont collectés par nous et utilisés uniquement aux fins décrites
+                dans cet avis. Nous ne vendons pas vos informations personnelles
+                et ne les partageons pas avec des tiers pour leurs propres
+                finalités.
               </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>
-                  <strong>Transferts d'Entreprise.</strong> Nous pouvons
-                  partager ou transférer vos informations en relation avec, ou
-                  pendant les négociations de, toute fusion, vente d'actifs de
-                  l'entreprise, financement, ou acquisition de tout ou partie de
-                  notre entreprise à une autre entreprise.
-                </li>
-              </ul>
+              <p>
+                Nous pouvons transférer des informations uniquement dans le
+                cadre d'une transaction commerciale (fusion ou acquisition), si
+                la loi l'exige, ou avec votre consentement.
+              </p>
             </CardContent>
           </Card>
 
@@ -521,6 +820,33 @@ const PrivacyPolicyFR: React.FC = () => {
                 isolerons de tout traitement ultérieur jusqu'à ce que la
                 suppression soit possible.
               </p>
+              <ul className="list-disc pl-6 space-y-2 mt-2">
+                <li>
+                  <strong>Données de compte et de profil :</strong> supprimées
+                  lorsque vous supprimez votre compte via le flux intégré décrit
+                  ci-dessous.
+                </li>
+                <li>
+                  <strong>Favoris cloud et historique des cantiques :</strong>{" "}
+                  supprimés lors de la suppression du compte ; des copies
+                  résiduelles dans les sauvegardes peuvent persister pendant une
+                  période limitée.
+                </li>
+                <li>
+                  <strong>Analyses et rapports de plantage :</strong> peuvent
+                  être conservés selon nos politiques de rétention, généralement
+                  jusqu'à 90 jours.
+                </li>
+                <li>
+                  <strong>Commentaires déjà soumis :</strong> peuvent être
+                  conservés à des fins d'assistance et de qualité.
+                </li>
+                <li>
+                  <strong>Cache local et historique de recherche sur
+                  l'appareil :</strong> peuvent être effacés dans Paramètres →
+                  Stockage sans supprimer votre compte.
+                </li>
+              </ul>
             </CardContent>
           </Card>
 
@@ -541,8 +867,9 @@ const PrivacyPolicyFR: React.FC = () => {
                 Nous avons mis en place des mesures de sécurité techniques et
                 organisationnelles appropriées et raisonnables conçues pour
                 protéger la sécurité de toute information personnelle que nous
-                traitons. Cependant, malgré nos garanties et nos efforts pour
-                sécuriser vos informations, aucune transmission électronique sur
+                traitons.                 Les données en transit sont chiffrées via HTTPS/TLS.
+                Cependant, malgré nos garanties et nos efforts pour sécuriser
+                vos informations, aucune transmission électronique sur
                 Internet ou technologie de stockage d'informations ne peut être
                 garantie à 100% sécurisée, nous ne pouvons donc pas promettre ou
                 garantir que les pirates, cybercriminels ou autres tiers non
@@ -731,8 +1058,8 @@ const PrivacyPolicyFR: React.FC = () => {
                           personnel unique, identifiant en ligne, adresse de
                           protocole Internet, adresse e-mail et nom de compte
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NON
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          OUI
                         </td>
                       </tr>
                       <tr>
@@ -744,8 +1071,8 @@ const PrivacyPolicyFR: React.FC = () => {
                           Nom, coordonnées, éducation, emploi, historique
                           d'emploi et informations financières
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NON
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          OUI
                         </td>
                       </tr>
                       <tr>
@@ -795,8 +1122,8 @@ const PrivacyPolicyFR: React.FC = () => {
                           interactions avec nos et autres sites web,
                           applications, systèmes et publicités
                         </td>
-                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-red-600">
-                          NON
+                        <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
+                          OUI
                         </td>
                       </tr>
                       <tr>
@@ -904,8 +1231,10 @@ const PrivacyPolicyFR: React.FC = () => {
               </p>
               <p>
                 <strong>
-                  Catégorie H - Aussi longtemps que l'utilisateur a un compte
-                  avec nous
+                  Catégories A et B — Tant que l'utilisateur a un compte, ou
+                  selon les politiques de conservation des fournisseurs
+                  d'analyses/plantages. Catégorie F — Selon les paramètres de
+                  rétention PostHog.
                 </strong>
               </p>
 
@@ -1124,17 +1453,84 @@ const PrivacyPolicyFR: React.FC = () => {
             </CardContent>
           </Card>
 
-          {/* Section 13 */}
+          {/* Section 13 - Delete Account */}
+          <Card id="delete-account">
+            <CardHeader>
+              <CardTitle className="text-xl text-slate-900 dark:text-slate-100">
+                13. Supprimer Votre Compte
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+              <p>
+                <strong>En bref :</strong> Vous pouvez supprimer votre compte
+                directement dans l'application. Cette page documente les étapes
+                requises par Google Play et d'autres boutiques.
+              </p>
+              <p>
+                Pour supprimer votre compte{" "}
+                <strong>Hymnes et Louanges Adventiste</strong> et les données
+                associées :
+              </p>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>
+                  Ouvrez <strong>Hymnes et Louanges Adventiste</strong>
+                </li>
+                <li>
+                  Allez dans <strong>Paramètres</strong>
+                </li>
+                <li>
+                  Ouvrez la section <strong>Compte</strong>
+                </li>
+                <li>
+                  Appuyez sur <strong>Supprimer le compte</strong> /{" "}
+                  <strong>Delete Account</strong>
+                </li>
+                <li>Confirmez dans la boîte de dialogue</li>
+              </ol>
+              <p>
+                <strong>Ce qui est supprimé :</strong> votre compte
+                d'authentification Firebase, les informations de profil, les
+                favoris synchronisés dans le cloud et l'historique des cantiques
+                liés à votre compte.
+              </p>
+              <p>
+                <strong>Ce qui peut être conservé :</strong> les événements
+                d'analyse et rapports de plantage déjà collectés (généralement
+                jusqu'à 90 jours selon les politiques de rétention) ; les
+                commentaires précédemment soumis ; et des copies résiduelles
+                dans les sauvegardes pendant une période limitée. Les données
+                locales uniquement (cantiques en cache, historique de recherche
+                sur l'appareil, coordonnées facultatives des rappels du sabbat)
+                peuvent être effacées séparément dans{" "}
+                <strong>Paramètres → Stockage</strong> sans supprimer votre
+                compte.
+              </p>
+              <p>
+                Il n'existe pas d'option intégrée pour supprimer uniquement les
+                analyses ou les favoris cloud sans supprimer l'ensemble du
+                compte. Vous pouvez également nous contacter à{" "}
+                <a
+                  href="mailto:joemdjossou@outlook.com"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  joemdjossou@outlook.com
+                </a>{" "}
+                pour obtenir de l'aide.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Section 14 */}
           <Card>
             <CardHeader>
               <CardTitle className="text-xl text-slate-900 dark:text-slate-100">
-                13. Comment Pouvez-Vous Consulter, Mettre À Jour Ou Supprimer
+                14. Comment Pouvez-Vous Consulter, Mettre À Jour Ou Supprimer
                 Les Données Que Nous Collectons De Vous ?
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
               <p>
-                Basé sur les lois applicables de votre pays ou état de résidence
+                Selon les lois applicables de votre pays ou état de résidence
                 aux États-Unis, vous pouvez avoir le droit de demander l'accès à
                 vos informations personnelles que nous collectons, des détails
                 sur la façon dont nous les avons traitées, corriger les
@@ -1142,9 +1538,21 @@ const PrivacyPolicyFR: React.FC = () => {
                 pouvez également avoir le droit de retirer votre consentement à
                 notre traitement de vos informations personnelles. Ces droits
                 peuvent être limités dans certaines circonstances par la loi
-                applicable. Pour demander de consulter, mettre à jour ou
-                supprimer vos informations personnelles, veuillez remplir et
-                soumettre une demande d'accès aux données.
+                applicable.
+              </p>
+              <p>
+                Le moyen le plus simple de supprimer votre compte est de suivre
+                les étapes intégrées à la{" "}
+                <strong>Section 13 (Supprimer Votre Compte)</strong> ci-dessus.
+                Pour demander la consultation, la correction ou la suppression
+                d'autres données, envoyez un e-mail à{" "}
+                <a
+                  href="mailto:joemdjossou@outlook.com"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  joemdjossou@outlook.com
+                </a>
+                .
               </p>
             </CardContent>
           </Card>

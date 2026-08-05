@@ -1,3 +1,4 @@
+import { navigateTo } from "@/lib/navigate";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Languages, Mail, MapPin } from "lucide-react";
@@ -26,7 +27,7 @@ const PrivacyPolicyES: React.FC = () => {
               <Button
                 variant="outline"
                 onClick={() =>
-                  (window.location.hash = "hymnes-app-privacy-policy")
+                  navigateTo("/hymnes-app/privacy-policy")
                 }
               >
                 EN
@@ -34,7 +35,7 @@ const PrivacyPolicyES: React.FC = () => {
               <Button
                 variant="outline"
                 onClick={() =>
-                  (window.location.hash = "hymnes-app-privacy-policy-fr")
+                  navigateTo("/hymnes-app/privacy-policy-fr")
                 }
               >
                 FR
@@ -42,7 +43,7 @@ const PrivacyPolicyES: React.FC = () => {
               <Button
                 variant="outline"
                 onClick={() =>
-                  (window.location.hash = "hymnes-app-privacy-policy-pt")
+                  navigateTo("/hymnes-app/privacy-policy-pt")
                 }
               >
                 PT
@@ -53,7 +54,16 @@ const PrivacyPolicyES: React.FC = () => {
             Política de Privacidad
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
-            Hymnes et Louanges Adventiste - Última actualización: 16 de julio de 2026
+            Hymnes et Louanges Adventiste - Última actualización: 4 de agosto de 2026
+          </p>
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
+            Consulte nuestros{" "}
+            <a
+              href="/hymnes-app/terms-of-service"
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              Términos de Servicio
+            </a>
           </p>
         </div>
 
@@ -350,6 +360,41 @@ const PrivacyPolicyES: React.FC = () => {
                 <strong>Datos vendidos:</strong> No: no vendemos su información personal.
               </li>
             </ul>
+          </CardContent>
+        </Card>
+
+        {/* Purchases, Tips and Donations */}
+        <Card className="mb-8" id="purchases-and-donations">
+          <CardHeader>
+            <CardTitle className="text-2xl text-slate-900 dark:text-slate-100">
+              Compras, Propinas y Donaciones
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
+            <p>
+              <strong>En resumen:</strong> La aplicación es gratuita. Si decide dejar una propina voluntaria, el pago lo procesa Apple o Google: nunca recibimos los datos de su tarjeta.
+            </p>
+            <p>Hymnes et Louanges Adventiste incluye un « bote de propinas » opcional que le permite apoyar el desarrollo. La propina es totalmente voluntaria y no desbloquea ninguna función. Todos los cargos los realiza el App Store (Apple) o Google Play (Google) en su cuenta de la tienda, conforme a sus propios términos y políticas de privacidad.</p>
+            <p>Utilizamos RevenueCat, Inc. como proveedor de servicios para gestionar y validar las compras dentro de la aplicación. Para ello se procesa la siguiente información relacionada con la compra:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Un identificador de usuario seudónimo de la aplicación (y, si ha iniciado sesión, el identificador de su cuenta) para asociar una compra con su instalación</li>
+              <li>Identificadores de transacción de la tienda, identificador del producto y marcas de tiempo de compra, renovación o reembolso</li>
+              <li>Importe de la compra, moneda y país de la tienda</li>
+              <li>Plataforma del dispositivo, versión de la aplicación y país/región inferidos de la tienda</li>
+            </ul>
+            <p>No recibimos ni almacenamos el número de su tarjeta de crédito o débito, datos bancarios, CVV ni dirección de facturación. Apple o Google los gestionan exclusivamente.</p>
+            <p>Utilizamos esta información únicamente para validar y registrar las contribuciones, ofrecer atención al cliente, prevenir el fraude y el abuso, y cumplir nuestras obligaciones contables y fiscales. Cuando se aplica el RGPD, nuestras bases legales son la ejecución de un contrato y el cumplimiento de una obligación legal. Los registros de compra no se utilizan con fines publicitarios ni se venden.</p>
+            <p>Los registros de transacciones se conservan durante el tiempo exigido por la legislación contable y fiscal aplicable, que puede superar los plazos descritos en otras secciones de este aviso y persistir tras la eliminación de su cuenta. Consulte las políticas de privacidad de Apple, Google y RevenueCat sobre su tratamiento de los datos de pago como responsables independientes.</p>
+            <p>
+              Para conocer las condiciones aplicables a propinas y donaciones, incluidos los reembolsos, consulte nuestros{" "}
+              <a
+                href="/hymnes-app/terms-of-service"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                Términos de Servicio
+              </a>
+              .
+            </p>
           </CardContent>
         </Card>
 
