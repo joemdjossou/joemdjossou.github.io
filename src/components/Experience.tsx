@@ -33,7 +33,7 @@ const roles: Role[] = [
     title: "Lead Mobile Engineer",
     company: "EdoMatch",
     location: "Lomé, Togo (Hybrid)",
-    period: "FEB 2025 — AUG 2026",
+    period: "FEB 2025 — SEP 2026",
     points: [
       "Improved retention +107% and grew to 70K+ users / 100K+ downloads.",
       "Built high-performance Flutter apps, integrated AWS services and PostHog analytics.",
