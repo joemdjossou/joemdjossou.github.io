@@ -1,123 +1,132 @@
-import { Button } from "@/components/ui/button";
-import { ArrowDown, Download, Linkedin, MapPin } from "lucide-react";
+import Scene3D from "@/components/Scene3D";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowDown, FileText, Github, Instagram, Linkedin, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
 
-const stats = [
-  { value: "6+", label: "Years building" },
-  { value: "200K+", label: "Downloads" },
-  { value: "100K+", label: "Users reached" },
-  { value: "7", label: "Teams shipped for" },
+const roles = ["DEVELOPER", "DATA ENGINEER", "MOBILE DEV", "AI BUILDER"];
+
+const socials = [
+  { icon: Github, href: "https://github.com/joemdjossou", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/joemdjossou", label: "LinkedIn" },
+  { icon: Instagram, href: "https://instagram.com/joemdjossou", label: "Instagram" },
+  { icon: Mail, href: "mailto:joemdjossou@outlook.com", label: "Email" },
 ];
 
 const Hero = () => {
+  const [roleIdx, setRoleIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setRoleIdx((i) => (i + 1) % roles.length), 2400);
+    return () => clearInterval(id);
+  }, []);
+
   const scrollTo = (id: string) =>
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Ambient royal-blue glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full opacity-[0.18] blur-[120px]"
-        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)" }}
-      />
-      {/* ── Main hero ── */}
-      <div className="relative flex-1 px-6 md:px-10 lg:px-14 pt-32 pb-12 flex items-center">
-        <div className="w-full max-w-5xl">
-          {/* Location badge */}
-          <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] border border-border rounded-full px-3.5 py-1.5 text-muted-foreground font-mono">
-            <MapPin className="w-3 h-3 text-primary" />
-            Lomé, Togo · Remote Worldwide 🌍
-          </span>
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Ambient glows */}
+      <div aria-hidden className="glow-blob pointer-events-none absolute top-1/4 left-1/3 w-[38rem] h-[38rem] rounded-full opacity-25" />
+      <div aria-hidden className="glow-blob pointer-events-none absolute -bottom-40 -right-24 w-[34rem] h-[34rem] rounded-full opacity-20" />
 
-          {/* Kicker */}
-          <p className="mt-8 section-label">Senior Software &amp; Data Engineer</p>
+      {/* 3D centerpiece — fills the hero, receives pointer for reactivity */}
+      <div className="absolute inset-0 z-0">
+        <Scene3D />
+      </div>
 
-          {/* Name */}
-          <h1
-            className="mt-4 font-bold leading-[0.9] tracking-tight text-foreground"
-            style={{ fontSize: "clamp(2.75rem, 8vw, 7.5rem)" }}
+      {/* Overlay content — pointer-events off so the canvas stays interactive;
+          individual links re-enable pointer events. */}
+      <div className="pointer-events-none relative z-10 min-h-screen flex flex-col justify-center px-6 md:px-10 lg:px-20">
+        <div className="grid lg:grid-cols-3 items-center gap-8 w-full">
+          {/* Left — intro */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            Emmanuel Josué
-            <br />
-            <span className="text-muted-foreground">Djossou</span>
-            <span className="text-primary">.</span>
-          </h1>
-
-          {/* Tagline */}
-          <p className="mt-8 text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            6+ years building production-scale systems — from{" "}
-            <span className="text-foreground font-medium">ETL/ELT data pipelines</span> and{" "}
-            <span className="text-foreground font-medium">Java &amp; Node.js</span> backends to{" "}
-            <span className="text-foreground font-medium">Flutter</span> apps trusted by 100K+ users
-            across iOS and Android.
-          </p>
-
-          {/* CTAs */}
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <Button
-              className="bg-primary text-primary-foreground rounded-none text-xs font-bold uppercase tracking-[0.14em] px-6 py-5 hover:opacity-90 hover-lift"
-              onClick={() => scrollTo("#work")}
+            <p className="text-primary font-mono text-lg md:text-xl">Hello! I&apos;m</p>
+            <h1
+              className="mt-1 font-bold leading-[0.92] tracking-tight text-foreground text-glow"
+              style={{ fontSize: "clamp(2.5rem, 4.5vw, 4.5rem)" }}
             >
-              View Work
-              <ArrowDown className="w-3.5 h-3.5 ml-2" />
-            </Button>
-            <Button
-              variant="outline"
-              className="rounded-none border-border text-xs font-bold uppercase tracking-[0.14em] px-6 py-5 hover:border-primary hover:text-primary hover-lift"
-              onClick={() => scrollTo("#contact")}
-            >
-              Contact
-            </Button>
+              Emmanuel
+              <br />
+              Josué
+            </h1>
+            <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
+              Senior Software &amp; Data Engineer — Lomé, Togo · Remote worldwide.
+            </p>
+          </motion.div>
 
-            <div className="flex items-center gap-4 pl-2 text-[11px] font-mono">
-              <a
-                href="https://www.linkedin.com/in/joemdjossou"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="accent-link inline-flex items-center gap-1.5"
+          {/* Middle — spacer (the blob renders behind, centered) */}
+          <div className="hidden lg:block" />
+
+          {/* Right — rotating role with ghost text */}
+          <motion.div
+            className="lg:text-right"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="text-lg md:text-xl font-medium text-muted-foreground">A Creative</p>
+            <div className="relative h-[1.1em] mt-1" style={{ fontSize: "clamp(2rem, 4vw, 4rem)" }}>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roles[roleIdx]}
+                  className="absolute inset-0 lg:text-right font-bold tracking-tight text-foreground whitespace-nowrap"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {roles[roleIdx]}
+                </motion.span>
+              </AnimatePresence>
+              {/* ghost duplicate */}
+              <span
+                aria-hidden
+                className="absolute -top-3 right-0 ghost-text font-bold tracking-tight whitespace-nowrap select-none opacity-60"
+                style={{ fontSize: "1.35em" }}
               >
-                <Linkedin className="w-3.5 h-3.5" /> LinkedIn
-              </a>
-              <span className="text-border">/</span>
-              <a
-                href="/resume.pdf"
-                download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
-                className="accent-link inline-flex items-center gap-1.5"
-              >
-                <Download className="w-3.5 h-3.5" /> Resume
-              </a>
+                {roles[roleIdx]}
+              </span>
             </div>
-          </div>
-
-          {/* scroll hint */}
-          <button
-            onClick={() => scrollTo("#work")}
-            className="hidden lg:flex items-center gap-2 mt-14 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground/40 hover:text-primary transition-smooth group font-mono"
-          >
-            scroll for more
-            <ArrowDown className="w-3 h-3 group-hover:translate-y-0.5 transition-smooth" />
-          </button>
+          </motion.div>
         </div>
       </div>
 
-      {/* ── Stats row ── */}
-      <div className="px-6 md:px-10 lg:px-14 py-12 border-y border-border">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-border">
-          {stats.map((stat, i) => (
-            <div key={i} className="md:px-8 first:pl-0 last:pr-0">
-              <div
-                className="font-bold leading-none text-foreground"
-                style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
-              >
-                {stat.value}
-              </div>
-              <div className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground mt-2 font-mono">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Left vertical social rail */}
+      <div className="pointer-events-none absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-20 hidden sm:flex flex-col gap-5">
+        {socials.map(({ icon: Icon, href, label }) => (
+          <a
+            key={label}
+            href={href}
+            aria-label={label}
+            {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="pointer-events-auto text-muted-foreground/60 hover:text-primary hover:-translate-y-0.5 transition-all"
+          >
+            <Icon className="w-5 h-5" />
+          </a>
+        ))}
+        <span className="w-px h-16 bg-border mx-auto mt-2" />
       </div>
+
+      {/* Resume — bottom right */}
+      <a
+        href="/resume.pdf"
+        download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
+        className="pointer-events-auto absolute bottom-6 right-6 md:right-10 z-20 inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.18em] text-muted-foreground hover:text-primary transition-smooth"
+      >
+        Resume <FileText className="w-3.5 h-3.5" />
+      </a>
+
+      {/* Scroll hint — bottom left */}
+      <button
+        onClick={() => scrollTo("#work")}
+        className="pointer-events-auto absolute bottom-6 left-6 md:left-20 z-20 hidden md:flex items-center gap-2 text-[10px] font-mono font-semibold uppercase tracking-[0.16em] text-muted-foreground/50 hover:text-primary transition-smooth group"
+      >
+        Scroll <ArrowDown className="w-3 h-3 group-hover:translate-y-0.5 transition-smooth" />
+      </button>
     </div>
   );
 };

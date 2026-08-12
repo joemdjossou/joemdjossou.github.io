@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+  <ThemeProvider defaultTheme="dark" storageKey="ej-theme-dark-v2">
     <App />
   </ThemeProvider>
 );

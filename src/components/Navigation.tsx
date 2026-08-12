@@ -1,10 +1,7 @@
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { name: "Home", href: "#home" },
   { name: "Work", href: "#work" },
   { name: "Stack", href: "#stack" },
   { name: "About", href: "#about" },
@@ -21,7 +18,7 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const go = (href: string) => {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
   };
@@ -29,66 +26,67 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/96 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+        isScrolled ? "bg-background/70 backdrop-blur-xl border-b border-border/60" : "bg-transparent"
       }`}
     >
       <div className="px-6 md:px-10 lg:px-14">
-        <div className="flex items-center justify-between h-14">
-          {/* Brand mark */}
+        <div className="flex items-center justify-between h-16">
+          {/* Brand */}
           <button
-            onClick={() => scrollToSection("#home")}
-            className="group flex items-center gap-2 text-sm font-bold tracking-[0.05em] text-foreground transition-smooth"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="group flex items-center gap-2 text-sm font-bold tracking-[0.02em] text-foreground"
           >
-            <span className="w-2 h-2 rounded-full bg-primary shrink-0 group-hover:scale-125 transition-smooth" />
+            <span className="w-2 h-2 rounded-full bg-primary group-hover:scale-125 transition-smooth" />
             <span className="group-hover:text-primary transition-smooth">EJ.</span>
+            <span className="text-muted-foreground/60 font-mono font-normal">/ joemdjossou.com</span>
           </button>
 
-          {/* Desktop — dot-separated nav */}
-          <div className="hidden md:flex items-center gap-0">
-            {navItems.map((item, i) => (
-              <span key={item.name} className="flex items-center">
-                <button
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-xs font-medium text-muted-foreground hover:text-primary transition-smooth px-3 py-1"
-                >
-                  {item.name}
-                </button>
-                {i < navItems.length - 1 && (
-                  <span className="text-border text-xs select-none">·</span>
-                )}
-              </span>
+          {/* Center email (desktop) */}
+          <a
+            href="mailto:joemdjossou@outlook.com"
+            className="hidden lg:block absolute left-1/2 -translate-x-1/2 text-xs font-mono text-muted-foreground hover:text-primary transition-smooth tracking-[0.06em]"
+          >
+            joemdjossou@outlook.com
+          </a>
+
+          {/* Links */}
+          <div className="hidden md:flex items-center gap-7">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => go(item.href)}
+                className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-smooth"
+              >
+                {item.name}
+              </button>
             ))}
           </div>
 
-          {/* Right */}
-          <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle />
-          </div>
-
-          {/* Mobile */}
-          <div className="md:hidden flex items-center gap-1">
-            <ThemeToggle />
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-          </div>
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden text-foreground"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
 
-        {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden bg-background border border-border mt-2 p-6 animate-scale-in">
+          <div className="md:hidden bg-card border border-border mt-2 mb-3 p-6 rounded-lg animate-scale-in">
             <div className="space-y-5">
               {navItems.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-smooth py-1"
+                  onClick={() => go(item.href)}
+                  className="block w-full text-left text-sm font-bold uppercase tracking-[0.16em] text-muted-foreground hover:text-primary transition-smooth"
                 >
-                  {item.name} .
+                  {item.name}
                 </button>
               ))}
+              <a href="mailto:joemdjossou@outlook.com" className="block text-xs font-mono text-primary pt-2">
+                joemdjossou@outlook.com
+              </a>
             </div>
           </div>
         )}

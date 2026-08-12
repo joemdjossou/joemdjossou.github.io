@@ -16,16 +16,6 @@ const pillars = [
   },
 ];
 
-const experience = [
-  { title: "Senior Full Stack & Data Engineer", company: "Upwork (Freelance)", location: "Remote", period: "2020 — Present" },
-  { title: "Lead Mobile Engineer", company: "EdoMatch", location: "Lomé, Togo", period: "2025 — 2026" },
-  { title: "AI/ML Technical Trainer", company: "TDEV", location: "Lomé, Togo", period: "2025 — 2026" },
-  { title: "Senior Mobile Engineer", company: "01Supplies", location: "Cotonou, Benin", period: "2024 — 2025" },
-  { title: "Software Engineer", company: "Babcock University Computer Club", location: "Ilishan-Remo, Nigeria", period: "2023 — 2024" },
-  { title: "Mobile Application Engineer", company: "GDSC Babcock", location: "Ilishan-Remo, Nigeria", period: "2023 — 2024" },
-  { title: "Software Engineer", company: "CENTECH-TOGO", location: "Lomé, Togo", period: "2023" },
-];
-
 const About = () => {
   return (
     <section id="about" className="relative px-6 md:px-10 lg:px-14 py-20 md:py-28 bg-secondary/10 overflow-hidden">
@@ -68,26 +58,6 @@ const About = () => {
             </div>
           </Reveal>
         ))}
-      </div>
-
-      {/* Experience */}
-      <div className="mb-20">
-        <p className="section-label mb-8">Experience</p>
-        <div className="divide-y divide-border border-t border-border">
-          {experience.map((e, i) => (
-            <div key={i} className="group flex items-center justify-between gap-4 py-4 transition-smooth hover:px-2">
-              <div className="min-w-0">
-                <p className="font-semibold text-foreground truncate group-hover:text-primary transition-smooth">{e.title}</p>
-                <p className="text-xs text-muted-foreground/70 mt-0.5">
-                  {e.company} <span className="text-muted-foreground/40">· {e.location}</span>
-                </p>
-              </div>
-              <p className="text-xs font-mono text-muted-foreground/60 tracking-[0.08em] shrink-0">
-                {e.period}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Contact CTA */}

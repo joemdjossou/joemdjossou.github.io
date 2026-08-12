@@ -1,197 +1,160 @@
-import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import Reveal from "@/components/Reveal";
 
-const experiences = [
+const stats = [
+  { value: "6+", label: "Years building" },
+  { value: "200K+", label: "Downloads" },
+  { value: "100K+", label: "Users reached" },
+  { value: "7", label: "Teams shipped for" },
+];
+
+interface Role {
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  points: string[];
+  skills: string[];
+}
+
+const roles: Role[] = [
+  {
+    title: "Senior Full Stack & Data Engineer",
+    company: "Upwork (Freelance)",
+    location: "Remote",
+    period: "SEP 2020 — Present",
+    points: [
+      "Built ETL/ELT pipelines ingesting REST APIs, Apps Script and webhook feeds into MongoDB/SQL for reporting & analytics.",
+      "Architected scalable Java (Spring Boot, Hibernate) and Node.js REST/microservice APIs powering high-traffic apps.",
+      "Owned features end-to-end — schema versioning, data QA, TDD and CI/CD workflows.",
+    ],
+    skills: ["Java", "Spring Boot", "Node.js", "ETL/ELT", "MongoDB"],
+  },
   {
     title: "Lead Mobile Engineer",
     company: "EdoMatch",
-    logo: "https://www.edomatch.com/images/logo/logo.png?image_process=quality,Q_80",
-    location: "Hybrid",
-    period: "02/2025 – Present",
-    description:
-      "Leading mobile engineering team to develop high-performance, user-centric mobile applications using Flutter & Dart.",
-    highlights: [
-      "Improved user retention by 104% and grew to 70,000+ users",
-      "Design and build high-performance cross-platform apps",
-      "Research and integrate AI-powered features",
-      "Mentor junior developers",
+    location: "Lomé, Togo (Hybrid)",
+    period: "FEB 2025 — AUG 2026",
+    points: [
+      "Improved retention +107% and grew to 70K+ users / 100K+ downloads.",
+      "Built high-performance Flutter apps, integrated AWS services and PostHog analytics.",
+      "Researched & shipped AI-powered features; mentored junior developers.",
     ],
-    skills: ["Flutter", "Dart", "AWS", "AI Integration", "Team Leadership"],
-    url: "https://edomatch.com",
+    skills: ["Flutter", "Dart", "AWS", "PostHog", "AI"],
+  },
+  {
+    title: "AI/ML Technical Trainer",
+    company: "TDEV",
+    location: "Lomé, Togo",
+    period: "NOV 2025 — JUL 2026",
+    points: [
+      "Designed hands-on AI training for developers — prompt engineering to production deployment.",
+      "Mentored builders on translating AI into locally relevant, shipped prototypes.",
+    ],
+    skills: ["AI/ML", "Prompt Eng.", "Mentoring"],
   },
   {
     title: "Senior Mobile Engineer",
     company: "01Supplies",
-    logo: "https://01supplies.s3.eu-north-1.amazonaws.com/live/01supplies/store/642929bc6677c8f59009d5a0/site_logo.png",
-    location: "Remote",
-    period: "10/2024 – 02/2025",
-    description:
-      "Led development and deployment of 3 mobile applications across iOS and Android.",
-    highlights: [
-      "53% increase in user engagement on store launch",
-      "CI/CD pipeline reduced deploy time from 3 days → 4 hours",
-      "78% code coverage, 43% fewer production issues",
+    location: "Cotonou, Benin (Remote)",
+    period: "OCT 2024 — FEB 2025",
+    points: [
+      "Led development & release of 3 apps across iOS and Android (+53% engagement).",
+      "Built CI/CD cutting deploy time 3 days → 4 hours; 78% coverage, −43% production issues.",
     ],
-    skills: ["Flutter", "Dart", "CI/CD", "iOS", "Android"],
-    url: "https://01supplies.com",
+    skills: ["Flutter", "CI/CD", "iOS", "Android"],
   },
   {
-    title: "Mobile Developer (Freelance)",
-    company: "Upwork",
-    logo: "https://i0.wp.com/www.jenmatos.com/wp-content/uploads/2025/01/upwork-square-black.png",
-    location: "Remote",
-    period: "11/2020 – 10/2024",
-    description:
-      "High-performance cross-platform mobile apps for clients worldwide using Flutter and Dart.",
-    highlights: [
-      "Responsive layouts and high-quality UI components",
-      "Complex backend API integration",
-      "Debugging, testing, and code quality audits",
-    ],
-    skills: ["Flutter", "Dart", "API Integration", "UI/UX"],
-    url: "https://upwork.com",
-  },
-  {
-    title: "Mobile Developer",
+    title: "Software Engineer",
     company: "Babcock University Computer Club",
-    logo: "https://media.licdn.com/dms/image/v2/C560BAQE5iQFVan0Rfw/company-logo_200_200/company-logo_200_200/0/1630611374757",
     location: "Ilishan-Remo, Nigeria",
-    period: "11/2023 – 05/2024",
-    description:
-      "Reviewed and contributed to multiple student-focused mobile applications from the BUCC GitHub.",
-    highlights: [
-      "BUCC Companion App for student information",
-      "BUCC ME App for personalized university hub",
-      "BUCC Ballot App for departmental elections",
+    period: "NOV 2023 — MAY 2024",
+    points: [
+      "Reviewed and contributed to student-facing apps: BUCC Companion, BUCC ME, BUCC Ballot.",
     ],
     skills: ["Flutter", "Dart", "Code Review"],
-    url: "",
   },
   {
-    title: "Mobile Developer",
-    company: "Google Developer Student Clubs Babcock",
-    logo: "https://media.licdn.com/dms/image/v2/C4E0BAQEOP2zOrjI63g/company-logo_200_200/company-logo_200_200/0/1663074680407",
+    title: "Mobile Application Engineer",
+    company: "GDSC Babcock",
     location: "Ilishan-Remo, Nigeria",
-    period: "09/2023 – 05/2024",
-    description:
-      "Workshops and training for students in mobile app development with Flutter and Dart.",
-    highlights: [
-      "Delivered workshops on mobile app development",
-      "Trained beginners in the Flutter framework",
+    period: "SEP 2023 — MAY 2024",
+    points: [
+      "Ran Flutter workshops; co-built & launched Study Stats (GPA analytics) on both stores.",
     ],
-    skills: ["Flutter", "Dart", "Mentoring"],
-    url: "",
+    skills: ["Flutter", "Dart", "Teaching"],
   },
   {
-    title: "Mobile Developer",
+    title: "Software Engineer",
     company: "CENTECH-TOGO",
-    logo: "https://www.centech-togo.com/assets/images/logo.jpg",
     location: "Lomé, Togo",
-    period: "01/2023 – 07/2023",
-    description:
-      "Cross-platform mobile applications with Flutter and Dart for CENTECH's client projects.",
-    highlights: [
-      "Collaborated with product, design, and backend teams",
-      "Integrated backend APIs for complex functionalities",
+    period: "JAN 2023 — JUL 2023",
+    points: [
+      "Built cross-platform Flutter apps and integrated backend APIs for client projects.",
     ],
-    skills: ["Flutter", "Dart", "API Integration"],
-    url: "",
+    skills: ["Flutter", "Dart", "APIs"],
   },
 ];
 
 const Experience = () => {
-  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
-
   return (
-    <section id="experience" className="px-6 md:px-10 lg:px-14 py-20 md:py-28 bg-secondary/10">
+    <section id="experience" className="relative px-6 md:px-10 lg:px-14 py-20 md:py-28 overflow-hidden">
+      <span className="giant-word absolute -top-2 left-4 hidden md:block">Career</span>
 
-      <div className="mb-14">
-        <p className="section-label mb-4">Career</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-          Experience
-        </h2>
-      </div>
-
-      {/* Timeline list */}
-      <div className="divide-y divide-border border-t border-border">
-        {experiences.map((exp, i) => (
-          <div
-            key={i}
-            className="group py-8 md:py-10 flex flex-col md:flex-row gap-6"
-          >
-            {/* Logo + period */}
-            <div className="shrink-0 md:w-52 flex md:flex-col gap-4 md:gap-3">
-              <div className="w-10 h-10 rounded-sm overflow-hidden bg-muted flex items-center justify-center shrink-0">
-                {imageErrors[i] ? (
-                  <span className="text-sm font-bold text-muted-foreground">
-                    {exp.company.charAt(0)}
-                  </span>
-                ) : (
-                  <img
-                    src={exp.logo}
-                    alt={`${exp.company} logo`}
-                    className="w-full h-full object-contain p-1"
-                    onError={() => setImageErrors((p) => ({ ...p, [i]: true }))}
-                  />
-                )}
-              </div>
-              <div>
-                <p className="text-xs font-medium text-muted-foreground/60 tracking-[0.08em]">
-                  {exp.period}
-                </p>
-                <p className="text-xs text-muted-foreground/50 mt-0.5">{exp.location}</p>
-              </div>
+      {/* Stats */}
+      <Reveal className="relative grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-border pb-14 mb-14 border-b border-border">
+        {stats.map((s, i) => (
+          <div key={i} className="md:px-8 first:pl-0">
+            <div className="font-bold leading-none text-foreground" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+              {s.value}
             </div>
-
-            {/* Content */}
-            <div className="flex-1 min-w-0 space-y-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground mb-1">
-                  {exp.company}
-                </p>
-                <h3 className="text-lg md:text-xl font-bold text-foreground leading-snug">
-                  {exp.title}
-                  {exp.url && (
-                    <a
-                      href={exp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block ml-2 align-middle text-muted-foreground/30 hover:text-foreground transition-smooth"
-                    >
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  )}
-                </h3>
-              </div>
-
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {exp.description}
-              </p>
-
-              <ul className="space-y-1.5">
-                {exp.highlights.map((h, hi) => (
-                  <li key={hi} className="text-sm text-muted-foreground/70 flex items-start gap-2">
-                    <span className="text-muted-foreground/30 mt-1 shrink-0 text-[10px]">—</span>
-                    {h}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex flex-wrap gap-2 pt-1">
-                {exp.skills.map((skill, si) => (
-                  <Badge
-                    key={si}
-                    variant="outline"
-                    className="text-[10px] font-semibold uppercase tracking-[0.12em] rounded-none border-border text-muted-foreground/60 hover:text-foreground transition-smooth"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            <div className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground mt-2">{s.label}</div>
           </div>
         ))}
+      </Reveal>
+
+      <Reveal>
+        <p className="section-label mb-4">Career</p>
+        <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight mb-14">
+          My career &amp; experience
+        </h2>
+      </Reveal>
+
+      {/* Timeline */}
+      <div className="relative">
+        <div className="absolute left-0 md:left-52 top-2 bottom-2 w-px bg-border hidden md:block" />
+        <div className="space-y-4">
+          {roles.map((r, i) => (
+            <Reveal key={i} delay={(i % 2) * 0.05}>
+              <div className="group grid md:grid-cols-[13rem_1fr] gap-4 md:gap-8 border border-border bg-card/40 hover:bg-card hover:border-primary/40 transition-smooth p-6 md:p-8 rounded-lg">
+                <div className="relative">
+                  <span className="hidden md:block absolute -left-[calc(2rem+1px)] top-1.5 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-background" />
+                  <p className="text-xs font-mono font-semibold uppercase tracking-[0.12em] text-primary">{r.period}</p>
+                  <p className="text-sm text-muted-foreground/70 mt-1">{r.location}</p>
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground">
+                    {r.title} <span className="text-muted-foreground/60 font-normal">· {r.company}</span>
+                  </h3>
+                  <ul className="mt-3 space-y-1.5">
+                    {r.points.map((p, pi) => (
+                      <li key={pi} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
+                        <span className="text-primary/50 mt-1.5 shrink-0 text-[10px]">▸</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {r.skills.map((sk) => (
+                      <span key={sk} className="text-[10px] font-mono uppercase tracking-[0.1em] text-muted-foreground/70 border border-border px-2 py-1 rounded">
+                        {sk}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

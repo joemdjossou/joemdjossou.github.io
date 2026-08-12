@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,6 +30,7 @@
     <meta name="twitter:image" id="twitter-image" content="https://joemdjossou.com/joemdjossouBG.png" />
 
     <!-- Favicon (href updated per route in script below) -->
+    <link id="favicon-svg" rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link id="favicon-32" rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
     <link id="favicon-192" rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
     <link id="apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -195,10 +196,13 @@
             if (type) el.setAttribute('type', type);
           };
           if (metadata.faviconHref) {
+            // SVG icon wins in browsers, so repoint it to the route icon too.
+            setLink('favicon-svg', metadata.faviconHref, metadata.faviconType);
             setLink('favicon-32', metadata.faviconHref, metadata.faviconType);
             setLink('favicon-192', metadata.faviconHref, metadata.faviconType);
             setLink('apple-touch-icon', metadata.faviconHref, metadata.faviconType);
           } else {
+            setLink('favicon-svg', '/favicon.svg', 'image/svg+xml');
             setLink('favicon-32', '/favicon.png', 'image/png');
             setLink('favicon-192', '/favicon-192.png', 'image/png');
             setLink('apple-touch-icon', '/apple-touch-icon.png', 'image/png');
