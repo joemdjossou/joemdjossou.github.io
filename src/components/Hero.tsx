@@ -3,8 +3,8 @@ import { ArrowDown, Download, Linkedin, MapPin } from "lucide-react";
 
 const stats = [
   { value: "6+", label: "Years building" },
-  { value: "120K+", label: "Downloads" },
-  { value: "85K+", label: "Users reached" },
+  { value: "200K+", label: "Downloads" },
+  { value: "100K+", label: "Users reached" },
   { value: "7", label: "Teams shipped for" },
 ];
 
@@ -48,7 +48,7 @@ const Hero = () => {
             6+ years building production-scale systems — from{" "}
             <span className="text-foreground font-medium">ETL/ELT data pipelines</span> and{" "}
             <span className="text-foreground font-medium">Java &amp; Node.js</span> backends to{" "}
-            <span className="text-foreground font-medium">Flutter</span> apps trusted by 85K+ users
+            <span className="text-foreground font-medium">Flutter</span> apps trusted by 100K+ users
             across iOS and Android.
           </p>
 

@@ -8,7 +8,7 @@ const pillars = [
   },
   {
     title: "Mobile Engineering",
-    body: "End-to-end Flutter & Dart apps — clean architecture, iOS & Android, store launches reaching 120K+ downloads.",
+    body: "End-to-end Flutter & Dart apps — clean architecture, iOS & Android, store launches reaching 200K+ downloads.",
   },
   {
     title: "AI, Cloud & DevOps",
@@ -41,11 +41,11 @@ const About = () => {
           <p className="mt-6 text-base text-muted-foreground leading-relaxed max-w-2xl">
             Yaovi Emmanuel Josué Djossou is a Senior Software Engineer with 6+ years
             building production-scale data and backend systems — ETL/ELT pipelines,
-            Java &amp; Node.js services, and Flutter apps trusted by 85K+ users. Bilingual
+            Java &amp; Node.js services, and Flutter apps trusted by 100K+ users. Bilingual
             (EN / FR / Ewe), based in Lomé, Togo and available worldwide for remote contracts.
           </p>
           <p className="mt-6 text-xs font-mono uppercase tracking-[0.12em] text-primary">
-            Proof — 6+ yrs · 120K+ downloads · 85K+ users · BSc Computer Science 3.39/4, Babcock University
+            Proof — 6+ yrs · 200K+ downloads · 100K+ users · BSc Computer Science 3.39/4, Babcock University
           </p>
         </div>
 

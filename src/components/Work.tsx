@@ -8,6 +8,7 @@ interface Build {
   description: string;
   tech: string[];
   image?: string;
+  iconImage?: string; // square app icon — shown centered, not full-bleed
   caseStudy?: string; // internal clean route or external
   live?: string;
   code?: string;
@@ -21,7 +22,7 @@ const flagship: Build[] = [
     description:
       "Multilingual worship app (FR · Ewe · ES · PT · EN) with SATB audio, musical scores, cloud sync and search — 20K+ downloads and 15K+ users in 9 months. Live on both stores.",
     tech: ["Flutter", "Dart", "Firebase", "i18n"],
-    image: "/hymnes-images/en/03.png",
+    iconImage: "/hymnes-app-icon.jpg",
     caseStudy: "/hymnes-app",
     live: "https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258",
   },
@@ -103,7 +104,16 @@ const linkProps = (href: string) =>
 
 const PreviewTile = ({ build }: { build: Build }) => (
   <div className="relative aspect-[4/3] md:aspect-auto md:h-full min-h-[220px] overflow-hidden border-b md:border-b-0 md:border-r border-border bg-secondary/40">
-    {build.image ? (
+    {build.iconImage ? (
+      <div className="w-full h-full flex items-center justify-center gradient-primary p-8">
+        <img
+          src={build.iconImage}
+          alt={`${build.title} app icon`}
+          loading="lazy"
+          className="w-28 h-28 rounded-[22%] object-cover shadow-2xl ring-1 ring-white/10 transition-transform duration-500 group-hover:scale-[1.06]"
+        />
+      </div>
+    ) : build.image ? (
       <img
         src={build.image}
         alt={build.title}
