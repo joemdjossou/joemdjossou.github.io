@@ -1,27 +1,29 @@
-import { ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import { Download, Github, Linkedin, Mail } from "lucide-react";
 
 const pillars = [
   {
+    title: "Backend & Data Engineering",
+    body: "ETL/ELT pipelines, schema versioning & data QA, plus scalable Java (Spring Boot, Hibernate) and Node.js APIs over MongoDB/SQL.",
+  },
+  {
     title: "Mobile Engineering",
-    body: "End-to-end apps in Flutter & Dart — clean architecture, iOS & Android, App Store & Play Store deployment.",
+    body: "End-to-end Flutter & Dart apps — clean architecture, iOS & Android, store launches reaching 120K+ downloads.",
   },
   {
-    title: "Software Craftsmanship",
-    body: "Tested, maintainable code with attention to UX and performance. 78% coverage, 43% fewer production issues.",
-  },
-  {
-    title: "AI & Automation",
-    body: "On-device LLMs, NLP, and AI-powered features — plus CI/CD pipelines that keep shipping calm.",
+    title: "AI, Cloud & DevOps",
+    body: "AI/ML features & training, NLP, AWS, Docker/Kubernetes, and CI/CD pipelines that cut deploys from 3 days to 4 hours.",
   },
 ];
 
 const experience = [
-  { title: "Lead Mobile Engineer", company: "EdoMatch", period: "2025 — Present" },
-  { title: "Senior Mobile Engineer", company: "01Supplies", period: "2024 — 2025" },
-  { title: "Mobile Developer (Freelance)", company: "Upwork", period: "2020 — 2024" },
-  { title: "Mobile Developer", company: "Babcock Computer Club", period: "2023 — 2024" },
-  { title: "Mobile Developer", company: "GDSC Babcock", period: "2023 — 2024" },
-  { title: "Mobile Developer", company: "CENTECH-TOGO", period: "2023" },
+  { title: "Senior Full Stack & Data Engineer", company: "Upwork (Freelance)", location: "Remote", period: "2020 — Present" },
+  { title: "Lead Mobile Engineer", company: "EdoMatch", location: "Lomé, Togo", period: "2025 — 2026" },
+  { title: "AI/ML Technical Trainer", company: "TDEV", location: "Lomé, Togo", period: "2025 — 2026" },
+  { title: "Senior Mobile Engineer", company: "01Supplies", location: "Cotonou, Benin", period: "2024 — 2025" },
+  { title: "Software Engineer", company: "Babcock University Computer Club", location: "Ilishan-Remo, Nigeria", period: "2023 — 2024" },
+  { title: "Mobile Application Engineer", company: "GDSC Babcock", location: "Ilishan-Remo, Nigeria", period: "2023 — 2024" },
+  { title: "Software Engineer", company: "CENTECH-TOGO", location: "Lomé, Togo", period: "2023" },
 ];
 
 const About = () => {
@@ -37,13 +39,13 @@ const About = () => {
             Engineer &amp; builder
           </h2>
           <p className="mt-6 text-base text-muted-foreground leading-relaxed max-w-2xl">
-            Emmanuel Josué Djossou is a Lead Mobile Engineer specializing in Flutter,
-            clean architecture, and on-device AI. I ship mobile products used by 80K+
-            people — from hymnal apps to job-search platforms — with the reliable
-            pipelines and craft that keep them shipping.
+            Yaovi Emmanuel Josué Djossou is a Senior Software Engineer with 6+ years
+            building production-scale data and backend systems — ETL/ELT pipelines,
+            Java &amp; Node.js services, and Flutter apps trusted by 85K+ users. Bilingual
+            (EN / FR / Ewe), based in Lomé, Togo and available worldwide for remote contracts.
           </p>
           <p className="mt-6 text-xs font-mono uppercase tracking-[0.12em] text-primary">
-            Proof — 120K+ downloads · 80K+ users · 10+ apps shipped · BSc Computer Science, Babcock University
+            Proof — 6+ yrs · 120K+ downloads · 85K+ users · BSc Computer Science 3.39/4, Babcock University
           </p>
         </div>
 
@@ -58,11 +60,13 @@ const About = () => {
 
       {/* Pillars */}
       <div className="grid md:grid-cols-3 border border-border divide-y md:divide-y-0 md:divide-x divide-border mb-16">
-        {pillars.map((p) => (
-          <div key={p.title} className="p-6 md:p-8">
-            <h3 className="text-lg font-bold text-foreground">{p.title}</h3>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
-          </div>
+        {pillars.map((p, i) => (
+          <Reveal key={p.title} delay={i * 0.08} className="h-full">
+            <div className="p-6 md:p-8 h-full">
+              <h3 className="text-lg font-bold text-foreground">{p.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+            </div>
+          </Reveal>
         ))}
       </div>
 
@@ -71,10 +75,12 @@ const About = () => {
         <p className="section-label mb-8">Experience</p>
         <div className="divide-y divide-border border-t border-border">
           {experience.map((e, i) => (
-            <div key={i} className="flex items-center justify-between gap-4 py-4">
+            <div key={i} className="group flex items-center justify-between gap-4 py-4 transition-smooth hover:px-2">
               <div className="min-w-0">
-                <p className="font-semibold text-foreground truncate">{e.title}</p>
-                <p className="text-xs text-muted-foreground/70 mt-0.5">{e.company}</p>
+                <p className="font-semibold text-foreground truncate group-hover:text-primary transition-smooth">{e.title}</p>
+                <p className="text-xs text-muted-foreground/70 mt-0.5">
+                  {e.company} <span className="text-muted-foreground/40">· {e.location}</span>
+                </p>
               </div>
               <p className="text-xs font-mono text-muted-foreground/60 tracking-[0.08em] shrink-0">
                 {e.period}

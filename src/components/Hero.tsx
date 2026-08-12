@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Linkedin, MapPin } from "lucide-react";
 
 const stats = [
+  { value: "6+", label: "Years building" },
   { value: "120K+", label: "Downloads" },
-  { value: "80K+", label: "Users reached" },
-  { value: "10+", label: "Apps shipped" },
-  { value: "23+", label: "Projects" },
+  { value: "85K+", label: "Users reached" },
+  { value: "7", label: "Teams shipped for" },
 ];
 
 const Hero = () => {
@@ -13,18 +13,24 @@ const Hero = () => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Ambient royal-blue glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 -left-32 w-[42rem] h-[42rem] rounded-full opacity-[0.18] blur-[120px]"
+        style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)" }}
+      />
       {/* ── Main hero ── */}
-      <div className="flex-1 px-6 md:px-10 lg:px-14 pt-32 pb-12 flex items-center">
+      <div className="relative flex-1 px-6 md:px-10 lg:px-14 pt-32 pb-12 flex items-center">
         <div className="w-full max-w-5xl">
           {/* Location badge */}
           <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] border border-border rounded-full px-3.5 py-1.5 text-muted-foreground font-mono">
             <MapPin className="w-3 h-3 text-primary" />
-            Remote · Worldwide 🌍
+            Lomé, Togo · Remote Worldwide 🌍
           </span>
 
           {/* Kicker */}
-          <p className="mt-8 section-label">Lead Mobile Engineer</p>
+          <p className="mt-8 section-label">Senior Software &amp; Data Engineer</p>
 
           {/* Name */}
           <h1
@@ -39,10 +45,11 @@ const Hero = () => {
 
           {/* Tagline */}
           <p className="mt-8 text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            I build production mobile apps with{" "}
-            <span className="text-foreground font-medium">Flutter</span> — trusted by{" "}
-            <span className="text-foreground font-medium">80K+ users</span> across iOS
-            and Android, from on-device AI to polished app-store launches.
+            6+ years building production-scale systems — from{" "}
+            <span className="text-foreground font-medium">ETL/ELT data pipelines</span> and{" "}
+            <span className="text-foreground font-medium">Java &amp; Node.js</span> backends to{" "}
+            <span className="text-foreground font-medium">Flutter</span> apps trusted by 85K+ users
+            across iOS and Android.
           </p>
 
           {/* CTAs */}

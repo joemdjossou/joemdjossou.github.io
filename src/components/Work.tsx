@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import { ArrowUpRight, Github } from "lucide-react";
 
 interface Build {
@@ -18,8 +19,8 @@ const flagship: Build[] = [
     status: "Live · App Store & Play Store",
     title: "Hymnes et Louanges",
     description:
-      "A hymnal app with 654 hymns, SATB audio playback, musical scores, and hymn stories. Clean architecture, Forest Green & Gold design — shipped to both stores.",
-    tech: ["Flutter", "Dart", "Clean Architecture"],
+      "Multilingual worship app (FR · Ewe · ES · PT · EN) with SATB audio, musical scores, cloud sync and search — 20K+ downloads and 15K+ users in 9 months. Live on both stores.",
+    tech: ["Flutter", "Dart", "Firebase", "i18n"],
     image: "/hymnes-images/en/03.png",
     caseStudy: "/hymnes-app",
     live: "https://apps.apple.com/us/app/hymnes-et-louanges-adventiste/id6753330258",
@@ -29,8 +30,8 @@ const flagship: Build[] = [
     status: "Live · iOS & Android",
     title: "StudyStats",
     description:
-      "GPA analysis tool with AI-powered study recommendations. Simplifies academic tracking for students — shipped on both platforms.",
-    tech: ["Flutter", "Dart", "AI Integration"],
+      "GPA analysis tool with study recommendations — comprehensive tracking, performance analysis and goal setting. A GDSC Babcock team project, shipped on both platforms.",
+    tech: ["Flutter", "Dart", "Analytics"],
     live: "https://apps.apple.com/ng/app/study-stats-app/id6477740443",
   },
   {
@@ -145,8 +146,8 @@ const Work = () => {
       {/* Flagship cards */}
       <div className="space-y-5">
         {flagship.map((build, i) => (
+          <Reveal key={i} delay={i * 0.06}>
           <article
-            key={i}
             className="group grid md:grid-cols-[38%_1fr] border border-border bg-card overflow-hidden transition-smooth hover:card-shadow-hover"
           >
             <PreviewTile build={build} />
@@ -190,6 +191,7 @@ const Work = () => {
               </div>
             </div>
           </article>
+          </Reveal>
         ))}
       </div>
 

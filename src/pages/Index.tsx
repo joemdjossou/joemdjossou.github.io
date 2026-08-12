@@ -2,6 +2,7 @@ import About from "../components/About";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Navigation from "../components/Navigation";
+import Stack from "../components/Stack";
 import Work from "../components/Work";
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
           <Hero />
         </section>
         <Work />
+        <Stack />
         <About />
       </main>
       <Footer />
