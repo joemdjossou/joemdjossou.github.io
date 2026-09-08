@@ -1,3 +1,4 @@
+import PageHeader from "@/components/site/PageHeader";
 import { Button } from "@/components/ui/button";
 import {
   getHymnesStoreTarget,
@@ -28,19 +29,14 @@ const HymnesAppDownload: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f5f1e8] to-[#e8dcc8] dark:from-[#1a2e1a] dark:to-[#0d1a0d] flex flex-col">
-      <header className="border-b border-[#3b6e4a]/20 bg-[#2d5f3f]/95 backdrop-blur-md">
-        <div className="container mx-auto flex max-w-lg items-center justify-between px-4 py-3">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => (window.location.hash = "hymnes-app")}
-            className="text-white hover:bg-white/10 hover:text-white"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Hymnes
-          </Button>
-        </div>
-      </header>
+      <PageHeader
+        image="/hymnes-images/en/01.png"
+        icon={HYMNES_APP_ICON_SRC}
+        title="Get the app"
+        subtitle="Hymnes et Louanges Adventiste — free on iOS and Android"
+        backHref="/hymnes-app"
+        backLabel="Hymnes"
+      />
 
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-12">
         <div className="w-full max-w-md rounded-2xl border border-[#3b6e4a]/20 bg-white/90 p-8 shadow-xl dark:bg-[#1a2e1a]/90">

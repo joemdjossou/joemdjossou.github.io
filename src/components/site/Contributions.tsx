@@ -54,8 +54,7 @@ const Contributions = () => {
   return (
     <section
       id="github"
-      className="animate-enter card-surface p-4 sm:p-5"
-      style={{ "--enter-delay": "260ms" } as React.CSSProperties}
+      className="reveal card-surface mt-10 p-4 sm:p-5"
     >
       <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <p className="text-sm">

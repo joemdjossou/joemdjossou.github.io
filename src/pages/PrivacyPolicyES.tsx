@@ -1,3 +1,5 @@
+import { HYMNES_APP_ICON_SRC } from "@/constants/hymnes-brand";
+import PageHeader from "@/components/site/PageHeader";
 import { navigateTo } from "@/lib/navigate";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,62 +13,41 @@ const PrivacyPolicyES: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
-            <Button
-              variant="ghost"
-              onClick={() => window.history.back()}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Volver
-            </Button>
-            <div className="flex flex-wrap gap-2">
-              <Button
-                variant="outline"
-                onClick={() =>
-                  navigateTo("/hymnes-app/privacy-policy")
-                }
-              >
-                EN
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  navigateTo("/hymnes-app/privacy-policy-fr")
-                }
-              >
-                FR
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  navigateTo("/hymnes-app/privacy-policy-pt")
-                }
-              >
-                PT
-              </Button>
-            </div>
-          </div>
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-            Política de Privacidad
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400">
-            Hymnes et Louanges Adventiste - Última actualización: 4 de agosto de 2026
-          </p>
-          <p className="mt-2 text-slate-600 dark:text-slate-400">
-            Consulte nuestros{" "}
-            <a
-              href="/hymnes-app/terms-of-service"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              Términos de Servicio
-            </a>
-          </p>
-        </div>
+      <PageHeader
+        image="/hymnes-images/en/03.png"
+        icon={HYMNES_APP_ICON_SRC}
+        title="Política de Privacidad"
+        subtitle="Hymnes et Louanges Adventiste · Actualizada el 4 de agosto de 2026"
+        backHref="/hymnes-app"
+        backLabel="Volver a la app"
+      >
+        <a
+          href="/hymnes-app/privacy-policy"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          English
+        </a>
+        <a
+          href="/hymnes-app/privacy-policy-fr"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          Français
+        </a>
+        <a
+          href="/hymnes-app/privacy-policy-pt"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          Português
+        </a>
+        <a
+          href="/hymnes-app/terms-of-service"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          Términos
+        </a>
+      </PageHeader>
 
+      <div className="container mx-auto max-w-4xl px-4 py-8">
         {/* Main Content */}
         <Card className="mb-8">
           <CardHeader>

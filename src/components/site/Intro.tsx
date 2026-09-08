@@ -1,26 +1,30 @@
 import { githubData } from "@/data/feed";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
+/**
+ * The hero sits on top of the setup footage, so its colours are fixed light —
+ * theme tokens would make it unreadable in light mode.
+ */
 const Intro = () => (
-  <section className="pt-10 pb-8 sm:pt-16 sm:pb-10">
+  <section className="py-6">
     <img
       src={githubData.avatarUrl}
       alt="Emmanuel Josué Djossou"
       width={56}
       height={56}
-      className="animate-enter mb-6 size-14 rounded-full object-cover ring-1 ring-border"
+      className="animate-enter mb-6 size-14 rounded-full object-cover ring-1 ring-white/25"
       style={{ "--enter-delay": "0ms" } as React.CSSProperties}
     />
 
     <h1
-      className="animate-enter text-3xl font-semibold tracking-tight sm:text-4xl"
+      className="animate-enter max-w-3xl text-3xl font-semibold tracking-tight text-white drop-shadow-sm sm:text-5xl"
       style={{ "--enter-delay": "60ms" } as React.CSSProperties}
     >
       I build, ship, and scale software people actually use.
     </h1>
 
     <p
-      className="animate-enter mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+      className="animate-enter mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
       style={{ "--enter-delay": "120ms" } as React.CSSProperties}
     >
       Hey, I&apos;m Josué — a senior engineer who ships the whole thing: Flutter apps
@@ -30,7 +34,7 @@ const Intro = () => (
     </p>
 
     <p
-      className="animate-enter mt-4 text-sm text-muted-foreground"
+      className="animate-enter mt-4 text-sm text-white/65"
       style={{ "--enter-delay": "160ms" } as React.CSSProperties}
     >
       Currently building at{" "}
@@ -38,37 +42,37 @@ const Intro = () => (
         href="https://github.com/VaultSplit"
         target="_blank"
         rel="noopener noreferrer"
-        className="link-underline font-medium text-foreground"
+        className="link-underline font-medium text-white hover:text-white"
       >
         VaultSplit
       </a>{" "}
       and on{" "}
-      <a href="/hymnes-app" className="link-underline font-medium text-foreground">
+      <a href="/hymnes-app" className="link-underline font-medium text-white hover:text-white">
         Hymnes et Louanges
       </a>
       . Based in Lomé, Togo — remote worldwide.
     </p>
 
     <div
-      className="animate-enter mt-7 flex flex-wrap items-center gap-2.5"
+      className="animate-enter mt-8 flex flex-wrap items-center gap-2.5"
       style={{ "--enter-delay": "200ms" } as React.CSSProperties}
     >
       <a
         href="mailto:joemdjossou@outlook.com"
-        className="inline-flex h-10 items-center gap-2 rounded-full bg-foreground px-5 text-sm font-medium text-background transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-5 text-sm font-medium text-neutral-950 transition-transform hover:scale-[1.02] active:scale-[0.98]"
       >
         Start a conversation <ArrowRight className="size-4" />
       </a>
       <a
         href="#work"
-        className="inline-flex h-10 items-center gap-2 rounded-full border px-5 text-sm font-medium transition-colors hover:bg-muted"
+        className="inline-flex h-10 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 text-sm font-medium text-white backdrop-blur-md transition-colors hover:bg-white/20"
       >
         See the work
       </a>
       <a
         href="/resume.pdf"
         download="Yaovi_Emmanuel_Josue_Djossou_Resume.pdf"
-        className="inline-flex h-10 items-center gap-1.5 px-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="inline-flex h-10 items-center gap-1.5 px-3 text-sm text-white/70 transition-colors hover:text-white"
       >
         Résumé <ArrowUpRight className="size-3.5" />
       </a>

@@ -1,3 +1,5 @@
+import { HYMNES_APP_ICON_SRC } from "@/constants/hymnes-brand";
+import PageHeader from "@/components/site/PageHeader";
 import { navigateTo } from "@/lib/navigate";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,64 +13,41 @@ const PrivacyPolicyFR: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
-            <Button
-              variant="ghost"
-              onClick={() => window.history.back()}
-              className="flex items-center gap-2"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Retour
-            </Button>
-            <div className="flex flex-wrap gap-2">
-              <Button
-                variant="outline"
-                onClick={() =>
-                  navigateTo("/hymnes-app/privacy-policy")
-                }
-                className="flex items-center gap-2"
-              >
-                <Languages className="h-4 w-4" />
-                EN
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  navigateTo("/hymnes-app/privacy-policy-es")
-                }
-              >
-                ES
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  navigateTo("/hymnes-app/privacy-policy-pt")
-                }
-              >
-                PT
-              </Button>
-            </div>
-          </div>
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-            Politique de Confidentialité
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400">
-            Hymnes et Louanges Adventiste - Dernière mise à jour le 4 août 2026
-          </p>
-          <p className="mt-2 text-slate-600 dark:text-slate-400">
-            Consultez nos{" "}
-            <a
-              href="/hymnes-app/terms-of-service"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              Conditions d’utilisation
-            </a>
-          </p>
-        </div>
+      <PageHeader
+        image="/hymnes-images/fr/03.png"
+        icon={HYMNES_APP_ICON_SRC}
+        title="Politique de Confidentialité"
+        subtitle="Hymnes et Louanges Adventiste · Mise à jour le 4 août 2026"
+        backHref="/hymnes-app"
+        backLabel="Retour à l’app"
+      >
+        <a
+          href="/hymnes-app/privacy-policy"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          English
+        </a>
+        <a
+          href="/hymnes-app/privacy-policy-es"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          Español
+        </a>
+        <a
+          href="/hymnes-app/privacy-policy-pt"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          Português
+        </a>
+        <a
+          href="/hymnes-app/terms-of-service"
+          className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm text-white backdrop-blur-md transition-colors hover:bg-white/20"
+        >
+          Conditions
+        </a>
+      </PageHeader>
 
+      <div className="container mx-auto max-w-4xl px-4 py-8">
         {/* Main Content */}
         <Card className="mb-8">
           <CardHeader>

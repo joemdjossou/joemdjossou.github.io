@@ -46,12 +46,12 @@
     /* Feed geometry — the gutter between cards and between columns. */
     --card-gap: 1rem;
 
-    /* GitHub heatmap ramp (light). */
-    --heat-0: 38 12% 89%;
-    --heat-1: 212 90% 84%;
-    --heat-2: 212 92% 68%;
-    --heat-3: 212 96% 55%;
-    --heat-4: 214 100% 42%;
+    /* GitHub's own contribution ramp (light): #ebedf0 → #216e39. */
+    --heat-0: 210 18% 87%;
+    --heat-1: 133 61% 76%;
+    --heat-2: 138 54% 51%;
+    --heat-3: 145 45% 41%;
+    --heat-4: 145 53% 28%;
 
     --font-heading: "Geist", "Inter", system-ui, -apple-system, sans-serif;
     --font-body: "Geist", "Inter", system-ui, -apple-system, sans-serif;
@@ -91,11 +91,12 @@
     --input: 0 0% 15%;
     --ring: 212 100% 60%;
 
-    --heat-0: 0 0% 12%;
-    --heat-1: 212 60% 24%;
-    --heat-2: 212 76% 36%;
-    --heat-3: 212 90% 50%;
-    --heat-4: 212 100% 66%;
+    /* GitHub's dark ramp: #161b22 → #39d353. */
+    --heat-0: 215 21% 11%;
+    --heat-1: 148 66% 16%;
+    --heat-2: 148 100% 21%;
+    --heat-3: 137 61% 40%;
+    --heat-4: 135 65% 52%;
   }
 }
 
@@ -183,6 +184,33 @@
     @apply w-full;
   }
 
+  /* Breaks a child out of the centred container to the full viewport width.
+     Used by the tag rail so it scrolls edge to edge on every screen size. */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  /* Fades the tag rail's contents into the page edges instead of cutting them,
+     so a half-visible pill reads as "keep scrolling" rather than as clipping. */
+  .edge-fade {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 2.25rem,
+      #000 calc(100% - 2.25rem),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 2.25rem,
+      #000 calc(100% - 2.25rem),
+      transparent 100%
+    );
+  }
+
   /* Live/status dot. */
   .status-dot {
     @apply inline-block h-1.5 w-1.5 shrink-0 rounded-full;
@@ -201,6 +229,36 @@
 
   .animate-marquee {
     animation: marquee 38s linear infinite;
+  }
+
+  /* Scroll reveal. The element starts hidden and is released by an
+     IntersectionObserver adding `data-visible` (see useReveal). Anything the
+     observer never reaches — JS disabled, unsupported — falls back to visible
+     via the `no-reveal` class the hook sets on <html>. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease-smooth-out), transform 0.7s var(--ease-smooth-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal[data-visible="true"],
+  .no-reveal .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Slow drift over the hero still, so the scene breathes even with no video. */
+  .animate-kenburns {
+    animation: kenburns 28s ease-in-out infinite alternate;
+  }
+
+  @keyframes kenburns {
+    from {
+      transform: scale(1.06) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.16) translate3d(-1.5%, -2.5%, 0);
+    }
   }
 
   @keyframes enter {
@@ -257,8 +315,13 @@
     opacity: 1;
   }
   .animate-marquee,
+  .animate-kenburns,
   .status-dot {
     animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
   .card-hover:hover {
     transform: none;

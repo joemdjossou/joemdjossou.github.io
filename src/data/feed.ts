@@ -55,6 +55,10 @@ export interface RoleCard extends BaseCard {
   location: string;
   body: string;
   current?: boolean;
+  /** Company mark, shown beside the role title. */
+  logo?: string;
+  /** Apps that shipped under this role — rendered as a row of store icons. */
+  apps?: { name: string; icon: string; url?: string }[];
 }
 
 export interface StatCard extends BaseCard {
@@ -145,6 +149,21 @@ const projects: ProjectCard[] = [
     ],
   },
   {
+    id: "ai-fitness",
+    kind: "project",
+    date: "2026-08-20",
+    tags: ["ai", "mobile", "flutter", "go"],
+    weight: 3.8,
+    name: "AI Fitness & Health",
+    title: "Coaching that reads the whole picture",
+    blurb:
+      "A Flutter app over a Go API that turns workout, sleep and nutrition signals into adaptive training plans — with an Apple Watch companion feeding it live.",
+    icon: "/logos/ai-fitness.png",
+    tint: "linear-gradient(140deg, #0b1f14, #050807)",
+    status: "In progress",
+    links: [],
+  },
+  {
     id: "affection",
     kind: "project",
     date: "2025-08-01",
@@ -233,24 +252,50 @@ const roles: RoleCard[] = [
     kind: "role",
     date: "2025-02-01",
     tags: ["mobile", "flutter", "leadership"],
-    weight: 2.4,
+    weight: 2.9,
     title: "Lead Mobile Engineer",
     company: "EdoMatch",
     period: "2025 — 2026",
     location: "Lomé, Togo",
     body: "Led mobile to 100K+ downloads and 70K+ users. AWS integration, PostHog analytics, AI features, and mentoring the junior engineers.",
+    logo: "/logos/edomatch.png",
+    apps: [
+      {
+        name: "EdoMatch",
+        icon: "/logos/edomatch.png",
+        url: "https://apps.apple.com/us/app/edomatch-ai-job-search/id6498934535",
+      },
+    ],
   },
   {
     id: "role-01supplies",
     kind: "role",
     date: "2024-10-01",
     tags: ["mobile", "flutter"],
-    weight: 2.2,
+    weight: 2.7,
     title: "Senior Mobile Engineer",
     company: "01Supplies",
     period: "2024 — 2025",
     location: "Cotonou, Benin",
     body: "Three apps released across iOS and Android, engagement up 53%, and the CI/CD pipeline that made it repeatable.",
+    logo: "/logos/01supplies.png",
+    apps: [
+      {
+        name: "01 Supplies",
+        icon: "/logos/01supplies.png",
+        url: "https://apps.apple.com/us/app/01-supplies/id6476608761",
+      },
+      {
+        name: "01 Vendors",
+        icon: "/logos/01vendors.png",
+        url: "https://apps.apple.com/us/app/01-vendors/id6477450302",
+      },
+      {
+        name: "01 Driver",
+        icon: "/logos/01driver.png",
+        url: "https://apps.apple.com/us/app/01-driver/id6473236113",
+      },
+    ],
   },
 ];
 
@@ -349,15 +394,23 @@ const repos: RepoCard[] = github.repos
 /* -------------------------------------------------------------------------- */
 
 /**
- * Feed order: the pitch and the shipped products lead, because they're the
- * reason anyone is on this page. Everything after that is chronological, so the
- * feed keeps reading as a timeline rather than a ranked list.
+ * Feed order: the pitch, the shipped products, then the roles those products
+ * shipped under — that's the reason anyone is on this page, and it keeps the
+ * store icons above the fold. Everything after is chronological, so the feed
+ * still reads as a timeline rather than a ranked list.
  */
-const featured: Card[] = [pitch, ...projects];
+const withApps = (r: RoleCard) => Boolean(r.apps?.length);
 
-const chronological: Card[] = [...notes, ...roles, ...stats, stack, education, ...repos].sort(
-  (a, b) => (b.date ?? "").localeCompare(a.date ?? "")
-);
+const featured: Card[] = [pitch, ...projects, ...roles.filter(withApps)];
+
+const chronological: Card[] = [
+  ...notes,
+  ...roles.filter((r) => !withApps(r)),
+  ...stats,
+  stack,
+  education,
+  ...repos,
+].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
 export const cards: Card[] = [...featured, ...chronological];
 

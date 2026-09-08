@@ -1,5 +1,6 @@
 import type { Card } from "@/data/feed";
 import { githubData } from "@/data/feed";
+import { useCountUp } from "@/hooks/use-reveal";
 import { ArrowUpRight, Github, Star } from "lucide-react";
 
 const isExternal = (href: string) => !href.startsWith("/") && !href.startsWith("#");
@@ -30,6 +31,60 @@ function ago(iso: string) {
 
 const dateLabel = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+
+/**
+ * Counts a stat like "200K+" up from zero on scroll. The numeric part is
+ * animated and the surrounding characters ("K+", "$") are preserved, so the
+ * card never shows a value that isn't the real one at rest.
+ */
+const CountUpValue = ({ value }: { value: string }) => {
+  const match = value.match(/^(\D*)(\d[\d,.]*)(.*)$/);
+  const target = match ? Number(match[2].replace(/[,.]/g, "")) : 0;
+  const { ref, value: n } = useCountUp(target);
+
+  if (!match) return <>{value}</>;
+  return (
+    <span ref={ref as React.RefObject<HTMLSpanElement>}>
+      {match[1]}
+      {n.toLocaleString()}
+      {match[3]}
+    </span>
+  );
+};
+
+/** Row of store icons for the apps shipped under a role. */
+const AppsRow = ({ apps }: { apps: NonNullable<Extract<Card, { kind: "role" }>["apps"]> }) => (
+  <div className="mt-4 flex flex-wrap items-center gap-2">
+    {apps.map((app) =>
+      app.url ? (
+        <a
+          key={app.name}
+          href={app.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={app.name}
+          className="relative z-10 transition-transform hover:-translate-y-0.5"
+        >
+          <img
+            src={app.icon}
+            alt={app.name}
+            loading="lazy"
+            className="size-9 rounded-[22%] object-cover ring-1 ring-border"
+          />
+        </a>
+      ) : (
+        <img
+          key={app.name}
+          src={app.icon}
+          alt={app.name}
+          title={app.name}
+          loading="lazy"
+          className="size-9 rounded-[22%] object-cover ring-1 ring-border"
+        />
+      )
+    )}
+  </div>
+);
 
 /* -------------------------------------------------------------------------- */
 
@@ -127,7 +182,11 @@ const FeedCard = ({ card }: { card: Card }) => {
             <p className="mt-0.5 text-sm text-muted-foreground">{card.title}</p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.blurb}</p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+            <div
+              className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-sm ${
+                card.links.length ? "mt-4" : ""
+              }`}
+            >
               {card.links.map((l, i) => (
                 <a
                   key={l.label}
@@ -205,11 +264,24 @@ const FeedCard = ({ card }: { card: Card }) => {
               </span>
             )}
           </div>
-          <h3 className="mt-2 font-semibold tracking-tight">{card.title}</h3>
-          <p className="text-sm text-muted-foreground">
-            {card.company} · {card.location}
-          </p>
+          <div className="mt-2 flex items-start gap-3">
+            {card.logo && (
+              <img
+                src={card.logo}
+                alt=""
+                loading="lazy"
+                className="size-9 shrink-0 rounded-[22%] object-cover ring-1 ring-border"
+              />
+            )}
+            <div className="min-w-0">
+              <h3 className="font-semibold tracking-tight">{card.title}</h3>
+              <p className="text-sm text-muted-foreground">
+                {card.company} · {card.location}
+              </p>
+            </div>
+          </div>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.body}</p>
+          {card.apps && <AppsRow apps={card.apps} />}
           <Tags tags={card.tags} />
         </article>
       );
@@ -217,7 +289,9 @@ const FeedCard = ({ card }: { card: Card }) => {
     case "stat":
       return (
         <article className="card-surface card-hover p-4 sm:p-5">
-          <p className="text-4xl font-semibold tracking-tight tabular-nums">{card.value}</p>
+          <p className="text-4xl font-semibold tracking-tight tabular-nums">
+            <CountUpValue value={card.value} />
+          </p>
           <p className="mt-1 text-sm font-medium">{card.label}</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.caption}</p>
         </article>

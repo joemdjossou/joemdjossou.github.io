@@ -1,0 +1,163 @@
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+/** Togo has no DST, so the workshop clock is a fixed UTC+0 render. */
+const LOME = "Africa/Lome";
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
+/**
+ * Live clock at the desk plus a session timer. The elapsed counter starts when
+ * the scene mounts, so it reads as a recording that began the moment you
+ * arrived rather than as a fake statistic.
+ */
+function useClocks() {
+  const [now, setNow] = useState(() => new Date());
+  const startedAt = useRef(Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const elapsed = Math.floor((now.getTime() - startedAt.current) / 1000);
+
+  return {
+    clock: new Intl.DateTimeFormat("en-GB", {
+      timeZone: LOME,
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).format(now),
+    elapsed: `${pad(Math.floor(elapsed / 3600))}:${pad(Math.floor(elapsed / 60) % 60)}:${pad(
+      elapsed % 60
+    )}`,
+  };
+}
+
+const SetupScene = ({ children }: { children?: React.ReactNode }) => {
+  const video = useRef<HTMLVideoElement>(null);
+  // Starts false and flips only once the browser confirms it can decode the
+  // file, so a missing/undecodable setup.mp4 simply leaves the still in place.
+  const [hasVideo, setHasVideo] = useState(false);
+  const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const { clock, elapsed } = useClocks();
+
+  const togglePlay = () => {
+    const el = video.current;
+    if (!el) return;
+    if (el.paused) {
+      void el.play();
+      setPlaying(true);
+    } else {
+      el.pause();
+      setPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const el = video.current;
+    if (!el) return;
+    el.muted = !el.muted;
+    setMuted(el.muted);
+  };
+
+  return (
+    <section
+      aria-label="The desk this gets built at"
+      /* Pulled up under the transparent header so the scene starts at the very
+         top of the page, the way the header's own scroll state expects. */
+      className="full-bleed relative isolate -mt-14 overflow-hidden"
+    >
+      {/* Still frame — always present, and the only visual until the video is
+          confirmed playable. The slow drift keeps it from reading as a dead JPEG. */}
+      <img
+        src="/setup.jpg"
+        alt="Josué's desk setup"
+        className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+          hasVideo ? "opacity-0" : "animate-kenburns opacity-100"
+        }`}
+      />
+
+      <video
+        ref={video}
+        poster="/setup.jpg"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        tabIndex={-1}
+        onCanPlay={() => setHasVideo(true)}
+        onError={() => setHasVideo(false)}
+        className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+          hasVideo ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <source src="/setup.webm" type="video/webm" />
+        <source src="/setup.mp4" type="video/mp4" />
+      </video>
+
+      {/* Scrim, in three layers. The flat wash guarantees contrast for the hero
+          copy at any brightness of footage; the top vignette seats the header;
+          the bottom fade is deliberately short so it blends into the page edge
+          without bleaching the readout that sits just above it. */}
+      <div aria-hidden className="absolute inset-0 bg-black/60" />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/60 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent"
+      />
+
+      <div className="relative flex min-h-[92vh] flex-col justify-between px-4 pb-32 pt-24 sm:px-6">
+        <div className="mx-auto w-full max-w-5xl">{children}</div>
+
+        <div className="mx-auto mt-10 flex w-full max-w-5xl flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="flex items-center gap-2 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
+              <span className="status-dot bg-red-500 text-red-500" />
+              Rec · Lomé, Togo
+            </p>
+            <p className="mt-2 font-mono text-3xl font-medium tabular-nums text-white sm:text-4xl">
+              {clock}
+            </p>
+            <p className="mt-1 font-mono text-xs tabular-nums text-white/60">
+              elapsed {elapsed} · you&apos;ve been here that long
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <p className="max-w-[16rem] text-right text-xs leading-relaxed text-white/70">
+              Where the apps, the pipelines and the 2am debugging actually happen.
+            </p>
+            {hasVideo && (
+              <div className="flex gap-1.5">
+                <button
+                  onClick={togglePlay}
+                  aria-label={playing ? "Pause background video" : "Play background video"}
+                  className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/25"
+                >
+                  {playing ? <Pause className="size-4" /> : <Play className="size-4" />}
+                </button>
+                <button
+                  onClick={toggleMute}
+                  aria-label={muted ? "Unmute background video" : "Mute background video"}
+                  className="inline-flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/25"
+                >
+                  {muted ? <VolumeX className="size-4" /> : <Volume2 className="size-4" />}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SetupScene;

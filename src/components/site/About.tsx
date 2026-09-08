@@ -14,7 +14,7 @@ const links = [
 
 const About = () => (
   <section id="about" className="scroll-mt-20 pt-14 sm:pt-20">
-    <div className="card-surface p-5 sm:p-8">
+    <div className="reveal card-surface p-5 sm:p-8">
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
         <img
           src="/profile-about.jpg"
