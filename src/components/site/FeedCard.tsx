@@ -281,6 +281,20 @@ const FeedCard = ({ card }: { card: Card }) => {
             </div>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.body}</p>
+          {card.links?.length ? (
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+              {card.links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  {...linkAttrs(l.href)}
+                  className="link-underline relative z-10 inline-flex items-center gap-1 font-medium text-foreground"
+                >
+                  {l.label} <ArrowUpRight className="size-3.5" />
+                </a>
+              ))}
+            </div>
+          ) : null}
           {card.apps && <AppsRow apps={card.apps} />}
           <Tags tags={card.tags} />
         </article>

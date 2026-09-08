@@ -19,7 +19,7 @@ const Index = () => {
           <Intro />
         </SetupScene>
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="container-page">
           <Contributions />
           <Feed />
           <About />

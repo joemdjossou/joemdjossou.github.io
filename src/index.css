@@ -139,6 +139,13 @@
 }
 
 @layer components {
+  /* One container for the header, hero, feed and footer so they stay aligned.
+     Wide enough that a 3-column feed fills a desktop screen instead of sitting
+     in a narrow strip. */
+  .container-page {
+    @apply mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10;
+  }
+
   /* The one card recipe the whole feed is built from. */
   .card-surface {
     @apply relative overflow-hidden rounded-2xl border bg-card;

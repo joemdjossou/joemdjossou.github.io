@@ -1,6 +1,6 @@
 import FeedCard from "@/components/site/FeedCard";
 import type { Card } from "@/data/feed";
-import { cards, tagCounts } from "@/data/feed";
+import { cards, leadCardIds, tagCounts } from "@/data/feed";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const PAGE = 12;
@@ -32,36 +32,44 @@ function useColumnCount() {
  * Packs cards into columns using their `weight` height hint, so the layout is
  * balanced on first paint instead of reflowing once images load.
  *
- * Placing cards in feed order and always taking the shortest column leaves big
- * ragged columns — a tall card arriving last has nowhere good to go. Assigning
- * the *tallest* cards first (longest-processing-time first) fixes that, and
- * re-sorting each column by feed position afterwards means each column still
- * reads top-to-bottom in order.
+ * Two passes, because balance alone doesn't respect editorial order:
  *
- * The first card is pinned to column 0 so the pitch always leads the feed.
+ * 1. The lead cards go in first, dealt across the columns left to right. That
+ *    makes them read 1-2-3 along the top rows, which is what "put these first"
+ *    means on a multi-column layout — placing them by height instead would
+ *    scatter the order.
+ * 2. Everything else is placed longest-first (LPT). Assigning the tallest
+ *    remaining card to the shortest column is what keeps the columns even;
+ *    doing it in feed order instead leaves a tall card arriving last with
+ *    nowhere good to go.
+ *
+ * Each column is then sorted by feed position. Lead cards sort above the rest
+ * automatically, since they occupy the lowest indices.
  */
-function balance(items: Card[], cols: number): Card[][] {
+function balance(items: Card[], cols: number, leadCount: number): Card[][] {
   const columns: number[][] = Array.from({ length: cols }, () => []);
   const heights: number[] = new Array(cols).fill(0);
 
-  const shortest = () => {
-    let best = 0;
-    for (let i = 1; i < cols; i++) if (heights[i] < heights[best]) best = i;
-    return best;
+  const place = (index: number, weight: number, column?: number) => {
+    let target = column ?? 0;
+    if (column === undefined) {
+      for (let i = 1; i < cols; i++) if (heights[i] < heights[target]) target = i;
+    }
+    columns[target].push(index);
+    heights[target] += weight;
   };
 
-  const rest = items.map((item, index) => ({ item, index }));
-  const pinned = rest.shift();
-  if (pinned) {
-    columns[0].push(pinned.index);
-    heights[0] += pinned.item.weight;
-  }
+  // Pass 1 — the lead block, dealt round-robin so row order matches feed order.
+  items.slice(0, leadCount).forEach((item, index) => {
+    place(index, item.weight, index % cols);
+  });
 
-  for (const { item, index } of [...rest].sort((a, b) => b.item.weight - a.item.weight)) {
-    const target = shortest();
-    columns[target].push(index);
-    heights[target] += item.weight;
-  }
+  // Pass 2 — everything else, tallest first.
+  items
+    .slice(leadCount)
+    .map((item, i) => ({ item, index: leadCount + i }))
+    .sort((a, b) => b.item.weight - a.item.weight)
+    .forEach(({ item, index }) => place(index, item.weight));
 
   return columns.map((column) => column.sort((a, b) => a - b).map((i) => items[i]));
 }
@@ -78,7 +86,14 @@ const Feed = () => {
   );
 
   const visible = filtered.slice(0, limit);
-  const columns = useMemo(() => balance(visible, cols), [visible, cols]);
+  // Lead cards sit at the front of the feed, so filtering preserves the block —
+  // count how many survived rather than assuming a fixed size.
+  const leadCount = useMemo(() => {
+    let n = 0;
+    while (n < visible.length && leadCardIds.has(visible[n].id)) n++;
+    return n;
+  }, [visible]);
+  const columns = useMemo(() => balance(visible, cols, leadCount), [visible, cols, leadCount]);
 
   const selectTag = (tag: string | null) => {
     setActive(tag);

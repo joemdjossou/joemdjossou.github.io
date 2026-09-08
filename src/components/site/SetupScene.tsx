@@ -13,36 +13,22 @@ const VIDEO_SRC: string | null = null;
 /** Togo has no DST, so the workshop clock is a fixed UTC+0 render. */
 const LOME = "Africa/Lome";
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
-/**
- * Live clock at the desk plus a session timer. The elapsed counter starts when
- * the scene mounts, so it reads as a recording that began the moment you
- * arrived rather than as a fake statistic.
- */
-function useClocks() {
+/** Live local time at the desk, ticking once a second. */
+function useDeskClock() {
   const [now, setNow] = useState(() => new Date());
-  const startedAt = useRef(Date.now());
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
 
-  const elapsed = Math.floor((now.getTime() - startedAt.current) / 1000);
-
-  return {
-    clock: new Intl.DateTimeFormat("en-GB", {
-      timeZone: LOME,
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    }).format(now),
-    elapsed: `${pad(Math.floor(elapsed / 3600))}:${pad(Math.floor(elapsed / 60) % 60)}:${pad(
-      elapsed % 60
-    )}`,
-  };
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: LOME,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).format(now);
 }
 
 const SetupScene = ({ children }: { children?: React.ReactNode }) => {
@@ -52,7 +38,7 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
   const [hasVideo, setHasVideo] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(true);
-  const { clock, elapsed } = useClocks();
+  const clock = useDeskClock();
 
   const togglePlay = () => {
     const el = video.current;
@@ -125,10 +111,10 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
         className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent"
       />
 
-      <div className="relative flex min-h-[92vh] flex-col justify-between px-4 pb-32 pt-24 sm:px-6">
-        <div className="mx-auto w-full max-w-5xl">{children}</div>
+      <div className="relative flex min-h-[92vh] flex-col justify-between pb-32 pt-24">
+        <div className="container-page">{children}</div>
 
-        <div className="mx-auto mt-10 flex w-full max-w-5xl flex-wrap items-end justify-between gap-4">
+        <div className="container-page mt-10 flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="flex items-center gap-2 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
               <span className="status-dot bg-red-500 text-red-500" />
@@ -136,9 +122,6 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
             </p>
             <p className="mt-2 font-mono text-3xl font-medium tabular-nums text-white sm:text-4xl">
               {clock}
-            </p>
-            <p className="mt-1 font-mono text-xs tabular-nums text-white/60">
-              elapsed {elapsed} · you&apos;ve been here that long
             </p>
           </div>
 

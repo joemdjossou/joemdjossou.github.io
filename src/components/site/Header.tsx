@@ -48,7 +48,7 @@ const Header = () => {
           : "border-transparent bg-transparent text-white"
       }`}
     >
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="container-page flex h-14 items-center justify-between gap-4">
         <a href="/" className="group flex items-center gap-2 font-medium tracking-tight">
           <span
             className={`flex size-7 items-center justify-center rounded-lg text-[11px] font-semibold transition-colors ${

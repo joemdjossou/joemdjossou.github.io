@@ -1,6 +1,6 @@
 const Footer = () => (
   <footer className="mt-16 border-t">
-    <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-8 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <div className="container-page flex flex-col gap-3 py-8 text-sm sm:flex-row sm:items-center sm:justify-between">
       <p className="text-muted-foreground">
         © {new Date().getFullYear()} Emmanuel Josué Djossou
       </p>

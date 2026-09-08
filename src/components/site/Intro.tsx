@@ -39,7 +39,7 @@ const Intro = () => (
     >
       Currently building at{" "}
       <a
-        href="https://github.com/VaultSplit"
+        href="https://vaultsplit.co"
         target="_blank"
         rel="noopener noreferrer"
         className="link-underline font-medium text-white hover:text-white"

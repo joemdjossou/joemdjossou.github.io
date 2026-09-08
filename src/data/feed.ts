@@ -59,6 +59,8 @@ export interface RoleCard extends BaseCard {
   logo?: string;
   /** Apps that shipped under this role — rendered as a row of store icons. */
   apps?: { name: string; icon: string; url?: string }[];
+  /** Optional outbound links, e.g. the company's product site. */
+  links?: { label: string; href: string }[];
 }
 
 export interface StatCard extends BaseCard {
@@ -275,13 +277,14 @@ const roles: RoleCard[] = [
     kind: "role",
     date: "2026-09-01",
     tags: ["fintech", "mobile", "flutter"],
-    weight: 2.2,
+    weight: 3.2,
     title: "Senior Mobile Engineer",
     company: "VaultSplit",
     period: "2026 — Present",
     location: "Remote",
-    body: "Shipping the product's mobile surface — release pipeline, accessibility and payments integration.",
+    body: "Autonomous finance for founders — revenue split into vaults on arrival, reconciled in a double-entry ledger, with an AI CFO on top. I ship the mobile surface: release pipeline, accessibility and payments.",
     current: true,
+    links: [{ label: "vaultsplit.co", href: "https://vaultsplit.co" }],
   },
   {
     id: "role-upwork",
@@ -444,25 +447,50 @@ const repos: RepoCard[] = github.repos
 /* -------------------------------------------------------------------------- */
 
 /**
- * Feed order: the pitch, the shipped products, then the roles those products
- * shipped under — that's the reason anyone is on this page, and it keeps the
- * store icons above the fold. Everything after is chronological, so the feed
- * still reads as a timeline rather than a ranked list.
+ * The lead of the feed is hand-ordered rather than sorted — these are the cards
+ * that should be seen first, in this sequence, regardless of date. Everything
+ * not named here falls through to the chronological tail below.
  */
-const withApps = (r: RoleCard) => Boolean(r.apps?.length);
+const LEAD_ORDER = [
+  "hymnes",
+  "role-edomatch",
+  "studystats",
+  "ai-fitness",
+  "role-01supplies",
+  "isdi-dictee",
+  "education",
+];
 
-const featured: Card[] = [pitch, ...projects, ...roles.filter(withApps)];
-
-const chronological: Card[] = [
+const everything: Card[] = [
+  ...projects,
   ...notes,
-  ...roles.filter((r) => !withApps(r)),
+  ...roles,
   ...stats,
   stack,
   education,
   ...repos,
-].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+];
 
-export const cards: Card[] = [...featured, ...chronological];
+const byId = new Map(everything.map((c) => [c.id, c]));
+
+const lead: Card[] = LEAD_ORDER.map((id) => byId.get(id)).filter(
+  (c): c is Card => Boolean(c)
+);
+const leadIds = new Set(lead.map((c) => c.id));
+
+const rest: Card[] = everything
+  .filter((c) => !leadIds.has(c.id))
+  .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+
+// The pitch stays pinned at the very top: it's the call to action, not an
+// entry in the work list.
+export const cards: Card[] = [pitch, ...lead, ...rest];
+
+/**
+ * Ids that must stay at the top of the feed. The masonry packer uses this to
+ * fill the first rows with them before it balances anything else in.
+ */
+export const leadCardIds = new Set<string>([pitch.id, ...lead.map((c) => c.id)]);
 
 export const TAG_LABELS: Record<string, string> = {
   flutter: "flutter",
