@@ -1,14 +1,17 @@
-# Josué Djossou - Digital Portfolio
+# Josué Djossou — Portfolio
 
-A modern, responsive portfolio website showcasing my journey as a Mobile Application Developer specializing in Dart/Flutter & Firebase.
+Personal site of Yaovi Emmanuel Josué Djossou, Senior Software & Data Engineer.
 
-## 🚀 Live Demo
+## 🚀 Live
 
-Visit my portfolio: [https://joemdjossou.github.io](https://joemdjossou.github.io)
+[joemdjossou.com](https://joemdjossou.com)
 
 ## 📋 About
 
-This portfolio showcases my professional experience, projects, skills, and educational background. Built with modern web technologies to provide a seamless user experience across all devices.
+The home page is a single editorial card feed: shipped products, build notes,
+roles, the stack, and live GitHub repositories, all filterable by tag. It also
+hosts the Hymnes et Louanges case study and the legal pages the app stores link
+to (see **Routing** below).
 
 ## 🛠️ Technologies Used
 
@@ -21,13 +24,38 @@ This portfolio showcases my professional experience, projects, skills, and educa
 
 ## ✨ Features
 
-- 🎨 Modern, clean design with dark/light theme toggle
-- 📱 Fully responsive across all devices
-- ⚡ Fast loading with optimized performance
-- 🎯 Smooth scrolling navigation
-- 💼 Professional project showcase
-- 📧 Contact form integration
-- 🎓 Education and experience timeline
+- 🗂️ Tag-filterable card feed with a weight-balanced masonry layout
+- 📊 Live GitHub contribution graph and repo cards, refreshed daily
+- 🎨 Light/dark theme, warm paper vs. true near-black
+- 📱 Responsive from 390px up, with reduced-motion support throughout
+- 🖼️ Auto-generated Open Graph card built from the same data as the page
+- 📄 Hymnes et Louanges case study + multilingual legal pages on clean URLs
+
+## 🔌 Live data
+
+`src/data/github.json` is generated from the GitHub GraphQL API and committed, so
+the site always builds — the checked-in copy is the fallback if a refresh fails.
+
+```bash
+npm run data:github   # regenerate from the API (needs `gh auth login` or GITHUB_TOKEN)
+```
+
+The deploy workflow re-runs this on every push and on a daily cron, so the
+contribution graph and repo cards stay current without anyone pushing a commit.
+
+`public/og.png` is rendered from the same JSON. Regenerate it when the headline
+or the stats change:
+
+```bash
+npm i --no-save playwright && npm run og
+```
+
+## 🧭 Routing
+
+Hash-free client-side routing lives in `src/App.tsx`. Deep links survive GitHub
+Pages via the SPA fallback in `public/404.html` plus the decoder at the top of
+`index.html`. The `/hymnes-app/...` paths are the URLs declared to Apple App
+Review and Google Play — **do not rename them**.
 
 ## 🏃‍♂️ Quick Start
 
@@ -88,6 +116,8 @@ npm run dev
 - `bun run build` - Build for production
 - `bun run preview` - Preview production build
 - `bun run lint` - Run ESLint
+- `bun run data:github` - Refresh the GitHub data snapshot
+- `bun run og` - Re-render the Open Graph card
 - `bun run deploy` - Deploy to GitHub Pages
 
 **With npm:**
@@ -96,16 +126,30 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+- `npm run data:github` - Refresh the GitHub data snapshot
+- `npm run og` - Re-render the Open Graph card
 - `npm run deploy` - Deploy to GitHub Pages
 
-## 🎯 Sections
+## 🗂️ Editing the content
 
-- **Hero** - Introduction and call-to-action
-- **Experience** - Professional work history
-- **Projects** - Showcase of mobile and web applications
-- **Skills** - Technical skills and expertise
-- **Education** - Academic background
-- **Contact** - Get in touch information
+Everything in the feed is a card in `src/data/feed.ts` — projects, build notes,
+roles, stats, the stack and education. Repo cards are generated from
+`github.json`, so pushing a described repo is enough to put it on the site.
+
+Each card carries a `weight`, a height hint (1 unit ≈ 100px) the masonry
+balancer uses to keep columns even without measuring the DOM. If a card renders
+much taller or shorter than its neighbours suggest, adjust its weight.
+
+Page structure lives in `src/components/site/`:
+
+| File | Role |
+| --- | --- |
+| `Header.tsx` | Sticky nav, socials, theme toggle |
+| `Intro.tsx` | Avatar, headline, CTAs |
+| `Contributions.tsx` | GitHub heatmap |
+| `Feed.tsx` | Tag rail, masonry balancer, load-more |
+| `FeedCard.tsx` | One renderer per card kind |
+| `About.tsx` / `Footer.tsx` | Long-form bio and site footer |
 
 ## 🚀 Deployment
 
@@ -136,4 +180,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Made by Josué Djossou using React, TypeScript, Tailwind CSS & Bun
+Built by Josué Djossou with React, TypeScript, Tailwind CSS & Bun

@@ -27,8 +27,6 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ["react", "react-dom"],
           ui: ["@radix-ui/react-slot", "@radix-ui/react-tooltip"],
-          three: ["three", "@react-three/fiber", "@react-three/drei"],
-          motion: ["framer-motion"],
         },
       },
     },

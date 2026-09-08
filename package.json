@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "data:github": "node scripts/fetch-github.mjs",
+    "og": "node scripts/make-og.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",

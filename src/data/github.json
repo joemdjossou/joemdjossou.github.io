@@ -1,0 +1,676 @@
+{
+  "generatedAt": "2026-09-08T14:04:21.189Z",
+  "login": "joemdjossou",
+  "name": "Yaovi Emmanuel Josué Djossou",
+  "avatarUrl": "https://avatars.githubusercontent.com/u/123335804?u=24273076eed1419ff50498a6d70129d95b689c0d&v=4",
+  "bio": "An intuitive software engineer an architect focused on building user centered applications and surfing across all other programming languages 💡",
+  "followers": 27,
+  "publicRepos": 19,
+  "contributions": {
+    "total": 2238,
+    "commits": 307,
+    "pullRequests": 8,
+    "private": 1920,
+    "activeDays": 313,
+    "max": 71,
+    "start": "2025-09-07",
+    "end": "2026-09-08",
+    "weeks": [
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        17,
+        26,
+        8,
+        20,
+        10,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        4,
+        7,
+        3,
+        3
+      ],
+      [
+        71,
+        11,
+        23,
+        3,
+        15,
+        6,
+        2
+      ],
+      [
+        3,
+        6,
+        5,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        6,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        6,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        2,
+        1,
+        8,
+        1,
+        1,
+        1
+      ],
+      [
+        4,
+        19,
+        1,
+        17,
+        22,
+        1,
+        0
+      ],
+      [
+        0,
+        15,
+        20,
+        1,
+        18,
+        21,
+        0
+      ],
+      [
+        0,
+        14,
+        1,
+        19,
+        16,
+        1,
+        0
+      ],
+      [
+        0,
+        22,
+        17,
+        15,
+        20,
+        13,
+        0
+      ],
+      [
+        0,
+        21,
+        18,
+        14,
+        19,
+        17,
+        0
+      ],
+      [
+        0,
+        1,
+        22,
+        15,
+        20,
+        4,
+        0
+      ],
+      [
+        0,
+        16,
+        1,
+        21,
+        1,
+        13,
+        0
+      ],
+      [
+        0,
+        1,
+        19,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        18,
+        1,
+        1,
+        1,
+        22,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        4,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0
+      ],
+      [
+        4,
+        8,
+        6,
+        13,
+        4,
+        3,
+        0
+      ],
+      [
+        14,
+        7,
+        6,
+        6,
+        12,
+        14,
+        0
+      ],
+      [
+        4,
+        13,
+        14,
+        17,
+        11,
+        4,
+        0
+      ],
+      [
+        12,
+        9,
+        3,
+        3,
+        4,
+        6,
+        0
+      ],
+      [
+        6,
+        11,
+        12,
+        3,
+        11,
+        6,
+        0
+      ],
+      [
+        14,
+        13,
+        14,
+        11,
+        9,
+        6,
+        0
+      ],
+      [
+        10,
+        12,
+        7,
+        15,
+        16,
+        3,
+        0
+      ],
+      [
+        15,
+        16,
+        5,
+        14,
+        9,
+        8,
+        0
+      ],
+      [
+        7,
+        5,
+        6,
+        15,
+        8,
+        4,
+        0
+      ],
+      [
+        4,
+        9,
+        4,
+        8,
+        16,
+        8,
+        0
+      ],
+      [
+        12,
+        7,
+        15,
+        3,
+        14,
+        19,
+        0
+      ],
+      [
+        14,
+        9,
+        23,
+        11,
+        5,
+        12,
+        0
+      ],
+      [
+        7,
+        18,
+        13,
+        12,
+        17,
+        18,
+        0
+      ],
+      [
+        8,
+        12,
+        8,
+        14,
+        4,
+        3,
+        0
+      ],
+      [
+        13,
+        6,
+        15,
+        9,
+        4,
+        16,
+        0
+      ],
+      [
+        6,
+        16,
+        4,
+        17,
+        7,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        7,
+        30,
+        31,
+        26,
+        0
+      ],
+      [
+        48,
+        3,
+        9,
+        17,
+        11,
+        25,
+        12
+      ],
+      [
+        5,
+        10,
+        6,
+        15,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        8,
+        0
+      ]
+    ]
+  },
+  "repos": [
+    {
+      "name": "hymnes_voices",
+      "description": "MIDI Channel Extractor",
+      "url": "https://github.com/joemdjossou/hymnes_voices",
+      "homepage": null,
+      "language": "Python",
+      "languageColor": "#3572A5",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2025-11-11T13:34:59Z",
+      "topics": []
+    },
+    {
+      "name": "tic_tac_toe_game",
+      "description": "I created a Tic Tac Toe game app using Flutter/Dart that support both light mode and dark mode",
+      "url": "https://github.com/joemdjossou/tic_tac_toe_game",
+      "homepage": null,
+      "language": "C++",
+      "languageColor": "#f34b7d",
+      "stars": 1,
+      "forks": 0,
+      "pushedAt": "2025-09-15T03:00:29Z",
+      "topics": []
+    },
+    {
+      "name": "shop_now_mobile",
+      "description": "ShopNow is a smart mobile platform designed for global shopping solutions. The project follows an agile methodology with weekly sprints focused on implementing use cases efficiently.",
+      "url": "https://github.com/joemdjossou/shop_now_mobile",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2025-09-15T01:36:59Z",
+      "topics": []
+    },
+    {
+      "name": "business_directory_app",
+      "description": "A Flutter mini-app displaying businesses with search functionality, detail screens, offline persistence, and robust state management using Provider and Dio.",
+      "url": "https://github.com/joemdjossou/business_directory_app",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2025-09-14T23:55:09Z",
+      "topics": []
+    },
+    {
+      "name": "affection_alerts",
+      "description": "💕 Affection Alerts: From AI to Local Love What We Built We created a beautiful mobile app that transforms your WhatsApp chat history into a curated collection of the sweetest, most heartwarming messages from your partner. Think of it as your personal love letter archive, with a multi-weighted algorithm using keyword mapping.",
+      "url": "https://github.com/joemdjossou/affection_alerts",
+      "homepage": null,
+      "language": null,
+      "languageColor": null,
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2025-08-01T02:50:43Z",
+      "topics": []
+    },
+    {
+      "name": "french_bakery_restaurant",
+      "description": "An e-commerce mobile app UI built with Flutter about french breads taste",
+      "url": "https://github.com/joemdjossou/french_bakery_restaurant",
+      "homepage": null,
+      "language": "Objective-C",
+      "languageColor": "#438eff",
+      "stars": 1,
+      "forks": 0,
+      "pushedAt": "2025-02-11T03:58:04Z",
+      "topics": []
+    },
+    {
+      "name": "shoesly_flutter",
+      "description": "A code test mobile application for Priority Soft",
+      "url": "https://github.com/joemdjossou/shoesly_flutter",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 2,
+      "forks": 0,
+      "pushedAt": "2025-01-08T23:41:57Z",
+      "topics": []
+    },
+    {
+      "name": "stroll_ui_test",
+      "description": "A UI test asked to be done by Stroll HR team",
+      "url": "https://github.com/joemdjossou/stroll_ui_test",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2024-12-24T15:45:31Z",
+      "topics": []
+    },
+    {
+      "name": "smooth_page_intro",
+      "description": "A minimalist mobile application that basically displays the introduction pages before getting into the logging screen",
+      "url": "https://github.com/joemdjossou/smooth_page_intro",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2024-03-10T04:31:39Z",
+      "topics": []
+    },
+    {
+      "name": "flutter_chess_game",
+      "description": "I'm building a chess game interface with Dart&Flutter ",
+      "url": "https://github.com/joemdjossou/flutter_chess_game",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2024-02-03T21:22:19Z",
+      "topics": []
+    },
+    {
+      "name": "flutter_clima",
+      "description": "Clima is a minimalist weather app built with Flutter that offers real-time weather updates sourced from OpenWeatherMap.org.",
+      "url": "https://github.com/joemdjossou/flutter_clima",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 2,
+      "forks": 0,
+      "pushedAt": "2024-01-30T22:55:38Z",
+      "topics": []
+    },
+    {
+      "name": "flutter_note_app",
+      "description": "A simple flutter note management app",
+      "url": "https://github.com/joemdjossou/flutter_note_app",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2024-01-23T08:35:04Z",
+      "topics": []
+    },
+    {
+      "name": "nike_app_clone_challenge",
+      "description": "A Nike App Clone Challenge",
+      "url": "https://github.com/joemdjossou/nike_app_clone_challenge",
+      "homepage": null,
+      "language": "Dart",
+      "languageColor": "#00B4AB",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2023-11-20T22:47:51Z",
+      "topics": []
+    },
+    {
+      "name": "bmi_calculator_ui-ux",
+      "description": "This repository contains a simple BMI (Body Mass Index) Calculator app built using Flutter. The app allows users to calculate their BMI based on their height and weight inputs. This README file provides an overview of the project and includes instructions on how to set it up.",
+      "url": "https://github.com/joemdjossou/bmi_calculator_ui-ux",
+      "homepage": null,
+      "language": "C++",
+      "languageColor": "#f34b7d",
+      "stars": 1,
+      "forks": 0,
+      "pushedAt": "2023-11-18T22:43:45Z",
+      "topics": []
+    },
+    {
+      "name": "SnakeGameProject",
+      "description": "I coded a SnakeGame Project using JavaScript linked in a html file",
+      "url": "https://github.com/joemdjossou/SnakeGameProject",
+      "homepage": null,
+      "language": "JavaScript",
+      "languageColor": "#f1e05a",
+      "stars": 0,
+      "forks": 0,
+      "pushedAt": "2023-08-18T03:39:05Z",
+      "topics": []
+    }
+  ]
+}

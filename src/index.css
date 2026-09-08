@@ -2,94 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-/* thony32-inspired portfolio — dark-first, editorial, royal-blue accent */
+/* ---------------------------------------------------------------------------
+   Editorial card-feed portfolio.
+   Warm paper in light mode, true near-black in dark. Everything is a card on a
+   balanced masonry canvas; the only chrome is a hairline border.
+   --------------------------------------------------------------------------- */
 
 @layer base {
   :root {
-    /* Light mode — neutral editorial with royal-blue accent */
-    --background: 0 0% 98%;
-    --foreground: 0 0% 7%;
+    /* Warm paper (#f3f1ed) — the page ground, not the cards. */
+    --background: 40 20% 94%;
+    --foreground: 30 6% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 30 6% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
+    --popover-foreground: 30 6% 10%;
 
-    /* Royal blue */
-    --primary: 226 71% 52%;
+    /* Electric blue — used sparingly: one filled card, links, focus rings. */
+    --primary: 212 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 226 90% 66%;
+    --primary-glow: 212 100% 62%;
 
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 7%;
+    --secondary: 40 14% 90%;
+    --secondary-foreground: 30 6% 10%;
 
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 42%;
+    --muted: 40 14% 91%;
+    --muted-foreground: 35 5% 42%;
 
-    --accent: 226 71% 52%;
+    --accent: 212 100% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 55%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
-    --ring: 226 71% 52%;
+    --border: 38 12% 86%;
+    --input: 38 12% 86%;
+    --ring: 212 100% 50%;
 
-    --radius: 0.25rem;
+    --radius: 1rem;
 
-    --hero-bg: hsl(0 0% 98%);
-    --gradient-primary: linear-gradient(135deg, hsl(226 71% 52%), hsl(226 84% 62%));
-    --gradient-accent: linear-gradient(135deg, hsl(226 84% 62%), hsl(214 90% 60%));
-    --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.06);
-    --card-shadow-hover: 0 12px 40px -8px hsl(226 71% 52% / 0.22);
+    /* Feed geometry — the gutter between cards and between columns. */
+    --card-gap: 1rem;
 
-    --font-heading: 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif;
-    --font-body: 'Geist', 'Inter', system-ui, sans-serif;
-    --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
+    /* GitHub heatmap ramp (light). */
+    --heat-0: 38 12% 89%;
+    --heat-1: 212 90% 84%;
+    --heat-2: 212 92% 68%;
+    --heat-3: 212 96% 55%;
+    --heat-4: 214 100% 42%;
 
-    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --font-heading: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+    --font-body: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-smooth: all 0.25s var(--ease-smooth-out);
   }
 
   .dark {
-    /* Dark mode — deep near-black with faint blue tint, royal-blue accent */
-    --background: 230 18% 4%;
-    --foreground: 220 15% 94%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
 
-    --card: 230 14% 7%;
-    --card-foreground: 220 15% 94%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 230 14% 7%;
-    --popover-foreground: 220 15% 94%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 96%;
 
-    /* Royal blue — brighter on dark */
-    --primary: 225 83% 65%;
+    --primary: 212 100% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 225 95% 74%;
+    --primary-glow: 212 100% 70%;
 
-    --secondary: 230 12% 11%;
-    --secondary-foreground: 220 15% 94%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 230 10% 13%;
-    --muted-foreground: 225 8% 55%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 58%;
 
-    --accent: 225 83% 65%;
+    --accent: 212 100% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 60%;
+    --destructive: 0 72% 58%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 230 12% 15%;
-    --input: 230 12% 15%;
-    --ring: 225 83% 65%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 212 100% 60%;
 
-    --hero-bg: hsl(0 0% 5%);
-    --gradient-primary: linear-gradient(135deg, hsl(225 83% 62%), hsl(225 90% 70%));
-    --gradient-accent: linear-gradient(135deg, hsl(225 90% 70%), hsl(210 92% 66%));
-    --card-shadow: 0 1px 3px hsl(0 0% 0% / 0.5);
-    --card-shadow-hover: 0 12px 40px -8px hsl(225 83% 55% / 0.4);
+    --heat-0: 0 0% 12%;
+    --heat-1: 212 60% 24%;
+    --heat-2: 212 76% 36%;
+    --heat-3: 212 90% 50%;
+    --heat-4: 212 100% 66%;
   }
 }
 
@@ -98,155 +104,168 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-heading tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.85);
+    background: hsl(var(--primary) / 0.9);
     color: hsl(var(--primary-foreground));
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 }
 
 @layer components {
-  .hero-gradient {
-    background: var(--hero-bg);
+  /* The one card recipe the whole feed is built from. */
+  .card-surface {
+    @apply relative overflow-hidden rounded-2xl border bg-card;
   }
 
-  .gradient-primary {
-    background: var(--gradient-primary);
+  .card-hover {
+    transition: border-color 0.2s var(--ease-smooth-out),
+      box-shadow 0.25s var(--ease-smooth-out), transform 0.25s var(--ease-smooth-out);
+  }
+  .card-hover:hover {
+    border-color: hsl(var(--foreground) / 0.22);
+    box-shadow: 0 8px 30px -12px hsl(var(--foreground) / 0.18);
+    transform: translateY(-2px);
   }
 
-  .gradient-accent {
-    background: var(--gradient-accent);
+  /* Tag / filter pill. */
+  .pill {
+    @apply inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-sm;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+  }
+  .pill:active {
+    transform: scale(0.97);
   }
 
-  .card-shadow {
-    box-shadow: var(--card-shadow);
-  }
-
-  .card-shadow-hover {
-    box-shadow: var(--card-shadow-hover);
-  }
-
-  .transition-smooth {
-    transition: var(--transition-smooth);
-  }
-
-  .transition-bounce {
-    transition: var(--transition-bounce);
+  /* Small uppercase meta line used on card headers. */
+  .meta {
+    @apply font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground;
   }
 
   .font-mono {
     font-family: var(--font-mono);
   }
 
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
+  /* Link that underlines from the left on hover. */
+  .link-underline {
+    @apply relative transition-colors hover:text-foreground;
   }
-
-  .animate-slide-up {
-    animation: slide-up 0.6s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scale-in 0.35s ease-out forwards;
-  }
-
-  .hover-lift {
-    @apply transition-smooth;
-  }
-  .hover-lift:hover {
-    transform: translateY(-2px);
-  }
-
-  /* thony32-style section label: "/ WORKS" in accent blue */
-  .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-primary font-mono;
-  }
-  .section-label::before {
-    content: "/ ";
-    @apply text-primary/60;
-  }
-
-  .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-foreground;
-  }
-
-  /* Giant translucent watermark word behind section headers */
-  .giant-word {
-    @apply pointer-events-none select-none font-bold uppercase tracking-tighter leading-none;
-    font-size: clamp(4rem, 16vw, 13rem);
-    color: hsl(var(--primary) / 0.05);
-  }
-
-  /* Underline-on-hover accent link */
-  .accent-link {
-    @apply relative text-muted-foreground hover:text-foreground transition-smooth;
-  }
-  .accent-link::after {
+  .link-underline::after {
     content: "";
-    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-primary transition-all duration-300;
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-current transition-all duration-300;
   }
-  .accent-link:hover::after {
+  .link-underline:hover::after {
     @apply w-full;
   }
 
-  /* Glow + ghost text for the 3D hero */
-  .text-glow {
-    text-shadow: 0 0 40px hsl(var(--primary) / 0.5);
-  }
-  .ghost-text {
-    color: transparent;
-    -webkit-text-stroke: 1.5px hsl(var(--primary) / 0.28);
-  }
-  .glow-blob {
-    background: radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%);
-    filter: blur(120px);
-  }
-
-  /* Marquee */
-  .marquee-track {
-    @apply flex whitespace-nowrap;
-    animation: marquee-scroll 28s linear infinite;
-  }
-  .marquee-track:hover {
-    animation-play-state: paused;
+  /* Live/status dot. */
+  .status-dot {
+    @apply inline-block h-1.5 w-1.5 shrink-0 rounded-full;
+    box-shadow: 0 0 0 0 currentColor;
+    animation: pulse-ring 2.4s ease-out infinite;
   }
 }
 
 @layer utilities {
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* Staggered entrance. Each element sets `--enter-delay` inline; the whole
+     effect collapses to a plain fade when the visitor prefers reduced motion. */
+  .animate-enter {
+    animation: enter 0.6s var(--ease-smooth-out) both;
+    animation-delay: var(--enter-delay, 0ms);
   }
 
-  @keyframes slide-up {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
   }
 
-  @keyframes scale-in {
-    from { opacity: 0; transform: scale(0.98); }
-    to   { opacity: 1; transform: scale(1); }
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(-8px); }
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 currentColor;
+      opacity: 1;
+    }
+    70% {
+      box-shadow: 0 0 0 5px transparent;
+      opacity: 0.85;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+      opacity: 1;
+    }
   }
 
-  @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
-  .animate-float {
-    animation: float 4s ease-in-out infinite;
+  /* Hide scrollbars on the horizontal tag rail without losing scrollability. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-enter {
+    animation: none;
+    opacity: 1;
+  }
+  .animate-marquee,
+  .status-dot {
+    animation: none;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }

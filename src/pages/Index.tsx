@@ -1,29 +1,23 @@
-import About from "../components/About";
-import Experience from "../components/Experience";
-import Footer from "../components/Footer";
-import Hero from "../components/Hero";
-import Marquee from "../components/Marquee";
-import Navigation from "../components/Navigation";
-import Stack from "../components/Stack";
-import Work from "../components/Work";
+import About from "@/components/site/About";
+import Contributions from "@/components/site/Contributions";
+import Feed from "@/components/site/Feed";
+import Footer from "@/components/site/Footer";
+import Header from "@/components/site/Header";
+import Intro from "@/components/site/Intro";
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <Marquee />
-        <Work />
-        <Stack />
-        <Experience />
+const Index = () => (
+  <div className="flex min-h-screen flex-col bg-background">
+    <Header />
+    <main className="flex-1">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <Intro />
+        <Contributions />
+        <Feed />
         <About />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+      </div>
+    </main>
+    <Footer />
+  </div>
+);
 
 export default Index;
