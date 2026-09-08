@@ -99,8 +99,8 @@ const Pitch = () => (
           Hire me to build the thing, not just spec it
         </h2>
         <p className="mt-2 text-sm text-primary-foreground/85">
-          I join your team and own a surface end to end — a mobile app, the API
-          behind it, or the pipeline feeding your reporting.
+          I join your team and own a surface end to end — a web app, a mobile app,
+          the API behind either, or the pipeline feeding your reporting.
         </p>
       </div>
 
@@ -108,7 +108,7 @@ const Pitch = () => (
         <p className="text-xs font-medium text-primary-foreground/70">Who this is for</p>
         <ul className="mt-2 space-y-1.5 text-sm text-primary-foreground/90">
           {[
-            "You need a production app on both stores, not a prototype",
+            "You need a real product shipped — on the web or on both stores",
             "Your data is in five places and nobody trusts the dashboard",
             "You need a senior IC who can also mentor the team",
             "You're not ready for a full-time hire yet",

@@ -30,18 +30,20 @@ const About = () => (
             <p>
               I&apos;m Yaovi Emmanuel Josué Djossou — a senior software and data
               engineer based in Lomé, Togo. Six years in, my work sits in three
-              places that keep turning out to be the same job: mobile apps people
-              use daily, the services behind them, and the pipelines that make the
-              resulting numbers worth acting on.
+              places that keep turning out to be the same job: products people use
+              daily — on the web and on their phones — the services behind them, and
+              the pipelines that make the resulting numbers worth acting on.
             </p>
             <p>
               I started in Flutter and never really left — apps I&apos;ve built or
-              led have crossed 200K downloads and reached 100K+ people. Along the
-              way I picked up the backend (Java, Spring Boot, Node, Go) and the
-              data side (ETL/ELT, schema versioning, the unglamorous QA that stops
-              a dashboard from lying to you). Lately that&apos;s meant a lot of
-              applied AI: on-device NLP, evaluation harnesses, and teaching other
-              developers to ship it rather than demo it.
+              led have crossed 200K downloads and reached 100K+ people. The web
+              half runs in parallel: React and TypeScript most days, Angular and
+              NgRx when the job calls for it, on Supabase, Firebase or a NestJS
+              API I wrote. Behind both sit the backend (Java, Spring Boot, Node,
+              Go) and the data side — ETL/ELT, schema versioning, the unglamorous
+              QA that stops a dashboard from lying to you. Lately that&apos;s meant
+              a lot of applied AI: on-device NLP, evaluation harnesses, and
+              teaching other developers to ship it rather than demo it.
             </p>
             <p>
               I work in English, French and Ewe, and I&apos;m available worldwide

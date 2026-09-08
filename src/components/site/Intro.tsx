@@ -27,10 +27,10 @@ const Intro = () => (
       className="animate-enter mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
       style={{ "--enter-delay": "120ms" } as React.CSSProperties}
     >
-      Hey, I&apos;m Josué — a senior engineer who ships the whole thing: Flutter apps
-      live on both stores, the Java and Node services behind them, and the data
-      pipelines that keep the numbers honest. Six years, 200K+ downloads, and a
-      habit of owning features end to end.
+      Hey, I&apos;m Josué — a senior engineer who ships the whole thing: web apps in
+      React and Angular, Flutter apps live on both stores, the Java, Node and Go
+      services behind them, and the data pipelines that keep the numbers honest.
+      Six years, 200K+ downloads, and a habit of owning features end to end.
     </p>
 
     <p
