@@ -1,6 +1,15 @@
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Background footage for the hero. While this is null the scene runs on
+ * setup.jpg alone and makes no video requests at all — pointing it at a file in
+ * `public/` (e.g. "/setup") is the only change needed to switch the hero to
+ * video; the scene then loads `<src>.webm` and `<src>.mp4` and cross-fades to
+ * whichever the browser can decode.
+ */
+const VIDEO_SRC: string | null = null;
+
 /** Togo has no DST, so the workshop clock is a fixed UTC+0 render. */
 const LOME = "Africa/Lome";
 
@@ -81,24 +90,26 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
         }`}
       />
 
-      <video
-        ref={video}
-        poster="/setup.jpg"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        tabIndex={-1}
-        onCanPlay={() => setHasVideo(true)}
-        onError={() => setHasVideo(false)}
-        className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
-          hasVideo ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <source src="/setup.webm" type="video/webm" />
-        <source src="/setup.mp4" type="video/mp4" />
-      </video>
+      {VIDEO_SRC && (
+        <video
+          ref={video}
+          poster="/setup.jpg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          tabIndex={-1}
+          onCanPlay={() => setHasVideo(true)}
+          onError={() => setHasVideo(false)}
+          className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+            hasVideo ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <source src={`${VIDEO_SRC}.webm`} type="video/webm" />
+          <source src={`${VIDEO_SRC}.mp4`} type="video/mp4" />
+        </video>
+      )}
 
       {/* Scrim, in three layers. The flat wash guarantees contrast for the hero
           copy at any brightness of footage; the top vignette seats the header;

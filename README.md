@@ -50,6 +50,19 @@ or the stats change:
 npm i --no-save playwright && npm run og
 ```
 
+## 🎬 Hero footage
+
+The hero runs on `public/setup.jpg` with a slow drift and a live Lomé clock.
+To switch it to video, drop web-encoded files in `public/` and point
+`VIDEO_SRC` in `src/components/site/SetupScene.tsx` at them (e.g. `"/setup"`
+loads `setup.webm` then `setup.mp4`). While it's `null` the scene issues no
+video requests at all. A reasonable encode:
+
+```bash
+ffmpeg -i raw.MOV -t 20 -an -vf "scale=1920:-2,fps=24" -crf 30 public/setup.mp4
+ffmpeg -i public/setup.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 -an public/setup.webm
+```
+
 ## 🧭 Routing
 
 Hash-free client-side routing lives in `src/App.tsx`. Deep links survive GitHub
@@ -149,6 +162,8 @@ Page structure lives in `src/components/site/`:
 | `Contributions.tsx` | GitHub heatmap |
 | `Feed.tsx` | Tag rail, masonry balancer, load-more |
 | `FeedCard.tsx` | One renderer per card kind |
+| `SetupScene.tsx` | Hero backdrop, live clock, video hooks |
+| `PageHeader.tsx` | Banner for every routed sub-page |
 | `About.tsx` / `Footer.tsx` | Long-form bio and site footer |
 
 ## 🚀 Deployment
