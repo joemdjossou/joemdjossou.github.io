@@ -1,5 +1,5 @@
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 /**
  * Background footage for the hero. While this is null the scene runs on
@@ -10,27 +10,6 @@ import { useEffect, useRef, useState } from "react";
  */
 const VIDEO_SRC: string | null = null;
 
-/** Togo has no DST, so the workshop clock is a fixed UTC+0 render. */
-const LOME = "Africa/Lome";
-
-/** Live local time at the desk, ticking once a second. */
-function useDeskClock() {
-  const [now, setNow] = useState(() => new Date());
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  return new Intl.DateTimeFormat("en-GB", {
-    timeZone: LOME,
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  }).format(now);
-}
-
 const SetupScene = ({ children }: { children?: React.ReactNode }) => {
   const video = useRef<HTMLVideoElement>(null);
   // Starts false and flips only once the browser confirms it can decode the
@@ -38,7 +17,6 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
   const [hasVideo, setHasVideo] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(true);
-  const clock = useDeskClock();
 
   const togglePlay = () => {
     const el = video.current;
@@ -100,7 +78,7 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
       {/* Scrim, in three layers. The flat wash guarantees contrast for the hero
           copy at any brightness of footage; the top vignette seats the header;
           the bottom fade is deliberately short so it blends into the page edge
-          without bleaching the readout that sits just above it. */}
+          without bleaching the caption that sits just above it. */}
       <div aria-hidden className="absolute inset-0 bg-black/60" />
       <div
         aria-hidden
@@ -114,17 +92,7 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
       <div className="relative flex min-h-[92vh] flex-col justify-between pb-32 pt-24">
         <div className="container-page">{children}</div>
 
-        <div className="container-page mt-10 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="flex items-center gap-2 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-white/70">
-              <span className="status-dot bg-red-500 text-red-500" />
-              Rec · Lomé, Togo
-            </p>
-            <p className="mt-2 font-mono text-3xl font-medium tabular-nums text-white sm:text-4xl">
-              {clock}
-            </p>
-          </div>
-
+        <div className="container-page mt-10 flex flex-wrap items-end justify-end gap-4">
           <div className="flex items-center gap-3">
             <p className="max-w-[16rem] text-right text-xs leading-relaxed text-white/70">
               Where the apps, the pipelines and the 2am debugging actually happen.
