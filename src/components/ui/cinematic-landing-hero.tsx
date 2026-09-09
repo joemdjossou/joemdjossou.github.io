@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Heart, Music2, Search, TrendingUp } from "lucide-react";
 import React, { useEffect, useRef } from "react";
 
-/** All strings + demo data for the in-frame phone UI — supply per locale from the page. */
+/** All strings + demo data for the in-frame phone UI, supply per locale from the page. */
 export type CinematicPhoneScreenContent = {
   welcomeLabel: string;
   userDisplayName: string;

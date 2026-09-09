@@ -5,9 +5,9 @@ const REDUCED = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
- * One shared IntersectionObserver drives every `.reveal` on the page — cheaper
- * than an observer per card, and it keeps the reveal order tied to the DOM
- * rather than to render order.
+ * One shared IntersectionObserver drives every `.reveal` on the page. That is
+ * cheaper than an observer per card, and it keeps the reveal order tied to the
+ * DOM rather than to render order.
  *
  * Elements opt in by carrying the `reveal` class; the observer flips
  * `data-visible` once and then stops watching them.
@@ -86,7 +86,7 @@ export function useCountUp(target: number, duration = 1100) {
         const start = performance.now();
         const tick = (now: number) => {
           const t = Math.min((now - start) / duration, 1);
-          // easeOutCubic — fast out of the gate, settles onto the real number.
+          // easeOutCubic: fast out of the gate, settles onto the real number.
           setValue(Math.round(target * (1 - Math.pow(1 - t, 3))));
           if (t < 1) frame = requestAnimationFrame(tick);
         };

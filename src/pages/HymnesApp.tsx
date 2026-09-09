@@ -247,7 +247,7 @@ const HymnesApp: React.FC = () => {
           author: "Utilisateur anonyme",
         },
         {
-          text: "Merci pour l'audio SATB — ça m'aide énormément aux répétitions du chœur.",
+          text: "Merci pour l'audio SATB, ça m'aide énormément aux répétitions du chœur.",
           author: "Utilisateur anonyme",
         },
         {
@@ -279,7 +279,7 @@ const HymnesApp: React.FC = () => {
           author: "Utilisateur anonyme",
         },
         {
-          text: "Simple, gratuit et efficace — je recommande à toute notre chorale.",
+          text: "Simple, gratuit et efficace, je recommande à toute notre chorale.",
           author: "Utilisateur anonyme",
         },
       ],
@@ -450,7 +450,7 @@ const HymnesApp: React.FC = () => {
           author: "Anonymous User",
         },
         {
-          text: "Thank you for the SATB audio — it helps so much at choir rehearsal.",
+          text: "Thank you for the SATB audio, it helps so much at choir rehearsal.",
           author: "Anonymous User",
         },
         {
@@ -462,7 +462,7 @@ const HymnesApp: React.FC = () => {
           author: "Anonymous User",
         },
         {
-          text: "Really polished work — thoughtful design and genuinely complete content.",
+          text: "Really polished work, thoughtful design and genuinely complete content.",
           author: "Anonymous User",
         },
         {
@@ -470,7 +470,7 @@ const HymnesApp: React.FC = () => {
           author: "Anonymous User",
         },
         {
-          text: "Such a blessing of an app — thank you for serving the community.",
+          text: "Such a blessing of an app, thank you for serving the community.",
           author: "Anonymous User",
         },
         {
@@ -482,7 +482,7 @@ const HymnesApp: React.FC = () => {
           author: "Anonymous User",
         },
         {
-          text: "Simple, free, and effective — I've been telling everyone in our choir.",
+          text: "Simple, free, and effective, I've been telling everyone in our choir.",
           author: "Anonymous User",
         },
       ],
@@ -504,7 +504,7 @@ const HymnesApp: React.FC = () => {
     [language],
   );
 
-  /** Only when locale changes — not on every re-render. */
+  /** Only when locale changes, not on every re-render. */
   useLayoutEffect(() => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -688,7 +688,7 @@ const HymnesApp: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f5f1e8] to-[#e8dcc8] dark:from-[#1a2e1a] dark:to-[#0d1a0d]">
-      {/* Header — above cinematic hero */}
+      {/* Header, above the cinematic hero */}
       <header
         className={cn(
           "sticky top-0 z-[60] border-b border-white/10 bg-black/25 backdrop-blur-md transition-transform duration-300 ease-out will-change-transform",
@@ -729,7 +729,7 @@ const HymnesApp: React.FC = () => {
         </div>
       </header>
 
-      {/* Cinematic hero — avoid overflow-x-hidden here: it breaks ScrollTrigger pin/spacer
+      {/* Cinematic hero. Avoid overflow-x-hidden here: it breaks ScrollTrigger pin/spacer
           math on tall pin distances when little content sits below the hero (desktop). */}
       <div className="w-full min-h-screen bg-background">
         <CinematicHero

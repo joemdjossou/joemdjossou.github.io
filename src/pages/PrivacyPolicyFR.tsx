@@ -117,7 +117,7 @@ const PrivacyPolicyFR: React.FC = () => {
                 </h4>
                 <p>
                   Nous collectons les types de données listés dans notre{" "}
-                  <strong>Résumé Data Safety Google Play</strong> ci-dessous —
+                  <strong>Résumé Data Safety Google Play</strong> ci-dessous,
                   notamment l'e-mail, le nom, les identifiants utilisateur, les
                   interactions dans l'application, les commentaires, les
                   journaux de plantage, les diagnostics et les identifiants
@@ -388,16 +388,15 @@ const PrivacyPolicyFR: React.FC = () => {
             </div>
             <ul className="list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>Chiffré en transit :</strong> Oui — toutes les données
+                <strong>Chiffré en transit :</strong> Oui. Toutes les données
                 envoyées hors de l'appareil utilisent HTTPS/TLS.
               </li>
               <li>
-                <strong>Suppression des données disponible :</strong> Oui —
-                vous pouvez supprimer votre compte dans l'application (voir
-                Section 13).
+                <strong>Suppression des données disponible :</strong> Oui. Vous
+                pouvez supprimer votre compte dans l'application (voir Section 13).
               </li>
               <li>
-                <strong>Données vendues :</strong> Non — nous ne vendons pas
+                <strong>Données vendues :</strong> Non. Nous ne vendons pas
                 vos informations personnelles.
               </li>
             </ul>
@@ -413,7 +412,7 @@ const PrivacyPolicyFR: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
             <p>
-              <strong>En bref :</strong> L’application est gratuite. Si vous choisissez de laisser un pourboire volontaire, le paiement est traité par Apple ou Google — nous ne recevons jamais vos données de carte bancaire.
+              <strong>En bref :</strong> L’application est gratuite. Si vous choisissez de laisser un pourboire volontaire, le paiement est traité par Apple ou Google, et nous ne recevons jamais vos données de carte bancaire.
             </p>
             <p>Hymnes et Louanges Adventiste propose une « cagnotte » facultative qui vous permet de soutenir le développement. Le pourboire est entièrement volontaire et ne débloque aucune fonctionnalité. Tous les paiements sont effectués par l’App Store (Apple) ou Google Play (Google) sur votre compte de boutique, selon leurs propres conditions et politiques de confidentialité.</p>
             <p>Nous utilisons RevenueCat, Inc. comme prestataire pour gérer et valider les achats intégrés. À cette fin, les informations suivantes liées à l’achat sont traitées :</p>
@@ -508,30 +507,30 @@ const PrivacyPolicyFR: React.FC = () => {
                   commentaires ou utilisez l'application.
                 </p>
                 <p className="mt-2">
-                  <strong>Infos personnelles — e-mail, nom, identifiants
-                  utilisateur :</strong> collectées pour la gestion de compte et
+                  <strong>Infos personnelles (e-mail, nom, identifiants
+                  utilisateur) :</strong> collectées pour la gestion de compte et
                   les analyses lorsque vous avez un compte ou utilisez la
                   connexion.
                 </p>
                 <p className="mt-2">
                   <strong>Interactions dans l'application :</strong> cantiques
                   consultés, audio écouté, favoris, navigation et événements
-                  d'utilisation connexes — pour les analyses, y compris avant
+                  d'utilisation connexes, pour les analyses, y compris avant
                   connexion.
                 </p>
                 <p className="mt-2">
                   <strong>Autre contenu généré par l'utilisateur :</strong>{" "}
-                  texte de commentaire soumis dans Paramètres — pour la
+                  texte de commentaire soumis dans Paramètres, pour la
                   fonctionnalité de l'application et l'assistance.
                 </p>
                 <p className="mt-2">
                   <strong>Journaux de plantage et diagnostics :</strong>{" "}
                   rapports d'erreur, version appareil/OS/application et données
-                  de stabilité — pour les rapports de plantage et les analyses.
+                  de stabilité, pour les rapports de plantage et les analyses.
                 </p>
                 <p className="mt-2">
                   <strong>Identifiants d'appareil ou autres :</strong>{" "}
-                  identifiants d'analyse et de notifications push — pour les
+                  identifiants d'analyse et de notifications push, pour les
                   analyses et la fonctionnalité (push).
                 </p>
                 <p className="mt-2">
@@ -576,24 +575,24 @@ const PrivacyPolicyFR: React.FC = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Gestion de compte</strong> — créer et gérer votre
+                  <strong>Gestion de compte</strong> : créer et gérer votre
                   compte, synchroniser les favoris et envoyer les notifications
                   push.
                 </li>
                 <li>
-                  <strong>Analyses</strong> — comprendre l'utilisation de
+                  <strong>Analyses</strong> : comprendre l'utilisation de
                   l'application et améliorer les fonctionnalités (e-mail, nom,
                   identifiants utilisateur, interactions, diagnostics,
                   identifiants d'appareil).
                 </li>
                 <li>
-                  <strong>Fonctionnalité de l'application</strong> — traiter les
+                  <strong>Fonctionnalité de l'application</strong> : traiter les
                   commentaires que vous soumettez et faire fonctionner les
                   fonctionnalités principales (y compris le push via les
                   identifiants d'appareil).
                 </li>
                 <li>
-                  <strong>Rapports de plantage / diagnostics</strong> — détecter,
+                  <strong>Rapports de plantage / diagnostics</strong> : détecter,
                   diagnostiquer et corriger les plantages et problèmes de
                   stabilité.
                 </li>
@@ -1210,9 +1209,9 @@ const PrivacyPolicyFR: React.FC = () => {
               </p>
               <p>
                 <strong>
-                  Catégories A et B — Tant que l'utilisateur a un compte, ou
+                  Catégories A et B : tant que l'utilisateur a un compte, ou
                   selon les politiques de conservation des fournisseurs
-                  d'analyses/plantages. Catégorie F — Selon les paramètres de
+                  d'analyses/plantages. Catégorie F : selon les paramètres de
                   rétention PostHog.
                 </strong>
               </p>

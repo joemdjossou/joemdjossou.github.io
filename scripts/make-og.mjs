@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Renders public/og.png — the 1200×630 card social platforms show when the site
+ * Renders public/og.png, the 1200×630 card social platforms show when the site
  * is shared. Built from the same data as the home page, so the contribution
  * strip on the card is the real one.
  *
- * Playwright isn't a project dependency — this is a manual, occasional script.
+ * Playwright isn't a project dependency; this is a manual, occasional script.
  * Run it after the headline or the stats change:
  *   npm i --no-save playwright && node scripts/make-og.mjs
  */

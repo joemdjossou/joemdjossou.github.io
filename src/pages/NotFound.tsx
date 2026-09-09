@@ -4,7 +4,7 @@ const NotFound = () => (
   <div className="flex min-h-screen flex-col bg-background">
     <PageHeader
       image="/setup.jpg"
-      title="404 — nothing here"
+      title="404: nothing here"
       subtitle="That page doesn't exist, or it moved."
       tint="linear-gradient(120deg, rgba(10,10,10,0.86), rgba(10,10,10,0.72))"
       backHref="/"
@@ -18,7 +18,7 @@ const NotFound = () => (
       <ul className="mt-4 space-y-2 text-sm">
         {[
           { href: "/", label: "Home" },
-          { href: "/hymnes-app", label: "Hymnes et Louanges — case study" },
+          { href: "/hymnes-app", label: "Hymnes et Louanges case study" },
           { href: "/hymnes-app/privacy-policy", label: "Privacy Policy" },
           { href: "/hymnes-app/terms-of-service", label: "Terms of Service" },
         ].map((l) => (

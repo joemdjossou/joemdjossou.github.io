@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replay Hymnes changes as 29 Mon–Fri dated commits (Mar 17 – Apr 24, 2026)."""
+"""Replay Hymnes changes as 29 Mon, Fri dated commits (Mar 17, Apr 24, 2026)."""
 from __future__ import annotations
 
 import os
@@ -57,7 +57,7 @@ def main() -> None:
     heads: list[str] = []
     di = 0
 
-    # 1 — dependencies
+    # 1, dependencies
     git("add", "package.json", "package-lock.json")
     heads.append(
         commit(
@@ -68,7 +68,7 @@ def main() -> None:
     )
     di += 1
 
-    # 2 — testimonial stack component
+    # 2, testimonial stack component
     git("add", "src/components/ui/testimonial-cards.tsx")
     heads.append(
         commit(
@@ -79,7 +79,7 @@ def main() -> None:
     )
     di += 1
 
-    # 3–15 — cinematic hero (13 cumulative slices; first slice ends after INJECTED_STYLES)
+    # 3, 15, cinematic hero (13 cumulative slices; first slice ends after INJECTED_STYLES)
     hero_lines = len(hero_full)
     style_end = 224  # closing `;` of INJECTED_STYLES template
     rest_chunks = 12
@@ -100,7 +100,7 @@ def main() -> None:
         )
         di += 1
 
-    # 16–27 — Hymnes page (12 slices)
+    # 16, 27, Hymnes page (12 slices)
     hymnes_lines = len(hymnes_full)
     for part, end in enumerate(chunk_endpoints(hymnes_lines, 12, start=0), start=1):
         HYMNES.write_text("".join(hymnes_full[:end]), encoding="utf-8")
@@ -114,7 +114,7 @@ def main() -> None:
         )
         di += 1
 
-    # 28 — dist index
+    # 28, dist index
     git("add", "dist/index.html")
     heads.append(
         commit(
@@ -125,7 +125,7 @@ def main() -> None:
     )
     di += 1
 
-    # 29 — dist assets (swap JS/CSS bundles)
+    # 29, dist assets (swap JS/CSS bundles)
     git("add", "dist/assets/index-EeTHZIel.js", "dist/assets/index-SAmrrgmP.css")
     for old in ("dist/assets/index-CwsRYV9x.js", "dist/assets/index-g-y3Fiuv.css"):
         p = REPO / old

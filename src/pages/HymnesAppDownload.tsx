@@ -33,7 +33,7 @@ const HymnesAppDownload: React.FC = () => {
         image="/hymnes-images/en/01.png"
         icon={HYMNES_APP_ICON_SRC}
         title="Get the app"
-        subtitle="Hymnes et Louanges Adventiste — free on iOS and Android"
+        subtitle="Hymnes et Louanges Adventiste, free on iOS and Android"
         backHref="/hymnes-app"
         backLabel="Hymnes"
       />

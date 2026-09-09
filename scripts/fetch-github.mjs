@@ -4,7 +4,7 @@
  *
  * Run locally with `gh` logged in (the script borrows its token), or in CI with
  * GITHUB_TOKEN / GH_TOKEN in the environment. The generated file is committed so
- * the site always builds — with or without network access — and the daily
+ * the site always builds, with or without network access, and the daily
  * workflow keeps the numbers fresh.
  *
  *   node scripts/fetch-github.mjs
@@ -29,6 +29,19 @@ const EXCLUDE = new Set([
   "bumentalhealth",
   "joes-digital-glow-up",
 ]);
+
+/**
+ * Repo descriptions are written on GitHub and rendered verbatim on the site.
+ * Em and en dashes are stripped here so a description can never reintroduce one
+ * into the page. Rewriting to a comma keeps the sentence readable.
+ */
+function clean(text) {
+  if (!text) return text;
+  return text
+    .replace(/\s*[\u2014\u2013]\s*/g, ", ")
+    .replace(/,\s*,/g, ",")
+    .trim();
+}
 
 function token() {
   const fromEnv = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
@@ -87,7 +100,7 @@ const payload = {
   login: u.login,
   name: u.name,
   avatarUrl: u.avatarUrl,
-  bio: u.bio,
+  bio: clean(u.bio),
   followers: u.followers.totalCount,
   publicRepos: u.repositories.totalCount,
   contributions: {
@@ -106,7 +119,7 @@ const payload = {
     .filter((r) => !EXCLUDE.has(r.name) && !r.isArchived)
     .map((r) => ({
       name: r.name,
-      description: r.description,
+      description: clean(r.description),
       url: r.url,
       homepage: r.homepageUrl || null,
       language: r.primaryLanguage?.name ?? null,

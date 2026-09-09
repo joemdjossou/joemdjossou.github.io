@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Background footage for the hero. While this is null the scene runs on
- * setup.jpg alone and makes no video requests at all — pointing it at a file in
+ * setup.jpg alone and makes no video requests at all. Pointing it at a file in
  * `public/` (e.g. "/setup") is the only change needed to switch the hero to
  * video; the scene then loads `<src>.webm` and `<src>.mp4` and cross-fades to
  * whichever the browser can decode.
@@ -66,7 +66,7 @@ const SetupScene = ({ children }: { children?: React.ReactNode }) => {
          top of the page, the way the header's own scroll state expects. */
       className="full-bleed relative isolate -mt-14 overflow-hidden"
     >
-      {/* Still frame — always present, and the only visual until the video is
+      {/* Still frame. Always present, and the only visual until the video is
           confirmed playable. The slow drift keeps it from reading as a dead JPEG. */}
       <img
         src="/setup.jpg"

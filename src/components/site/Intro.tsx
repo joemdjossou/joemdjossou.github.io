@@ -2,7 +2,7 @@ import { githubData } from "@/data/feed";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 /**
- * The hero sits on top of the setup footage, so its colours are fixed light —
+ * The hero sits on top of the setup footage, so its colours are fixed light;
  * theme tokens would make it unreadable in light mode.
  */
 const Intro = () => (
@@ -27,7 +27,7 @@ const Intro = () => (
       className="animate-enter mt-5 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
       style={{ "--enter-delay": "120ms" } as React.CSSProperties}
     >
-      Hey, I&apos;m Josué — a senior engineer who ships the whole thing: web apps in
+      Hey, I&apos;m Josué. I&apos;m a senior engineer who ships the whole thing: web apps in
       React and Angular, Flutter apps live on both stores, the Java, Node and Go
       services behind them, and the data pipelines that keep the numbers honest.
       Six years, 200K+ downloads, and a habit of owning features end to end.
@@ -50,7 +50,7 @@ const Intro = () => (
       <a href="/hymnes-app" className="link-underline font-medium text-white hover:text-white">
         Hymnes et Louanges
       </a>
-      . Based in Lomé, Togo — remote worldwide.
+      . Based in Lomé, Togo, available remote worldwide.
     </p>
 
     <div

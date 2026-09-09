@@ -353,7 +353,7 @@ const PrivacyPolicyPT: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
             <p>
-              <strong>Em resumo:</strong> O aplicativo é gratuito. Se você optar por deixar uma gorjeta voluntária, o pagamento é processado pela Apple ou pelo Google — nunca recebemos os dados do seu cartão.
+              <strong>Em resumo:</strong> O aplicativo é gratuito. Se você optar por deixar uma gorjeta voluntária, o pagamento é processado pela Apple ou pelo Google, e nunca recebemos os dados do seu cartão.
             </p>
             <p>O Hymnes et Louanges Adventiste inclui uma «caixinha de gorjetas» opcional que permite apoiar o desenvolvimento. A gorjeta é totalmente voluntária e não desbloqueia nenhum recurso. Todas as cobranças são feitas pela App Store (Apple) ou pelo Google Play (Google) na sua conta da loja, conforme os termos e políticas de privacidade deles.</p>
             <p>Utilizamos a RevenueCat, Inc. como prestadora de serviços para gerenciar e validar as compras no aplicativo. Para isso, as seguintes informações relacionadas à compra são processadas:</p>
@@ -440,7 +440,7 @@ const PrivacyPolicyPT: React.FC = () => {
                   Coletamos informações pessoais quando você cria uma conta (e-mail e senha), faz login com Google ou Apple, atualiza seu perfil, envia comentários ou utiliza o aplicativo.
                 </p>
                 <p className="mt-2">
-                  <strong>Informações pessoais — e-mail, nome, identificadores de usuário:</strong> coletados para gerenciamento de conta e análise quando você tem uma conta ou utiliza o login.
+                  <strong>Informações pessoais (e-mail, nome, identificadores de usuário):</strong> coletados para gerenciamento de conta e análise quando você tem uma conta ou utiliza o login.
                 </p>
                 <p className="mt-2">
                   <strong>Interações no aplicativo:</strong> hinos consultados, áudio reproduzido, favoritos, navegação e eventos de uso relacionados, para análise, inclusive antes de fazer login.
@@ -487,16 +487,16 @@ const PrivacyPolicyPT: React.FC = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Gerenciamento de conta</strong> — criar e gerenciar sua conta, sincronizar favoritos e enviar notificações push.
+                  <strong>Gerenciamento de conta</strong>: criar e gerenciar sua conta, sincronizar favoritos e enviar notificações push.
                 </li>
                 <li>
-                  <strong>Análise</strong> — compreender o uso do aplicativo e melhorar recursos (e-mail, nome, identificadores de usuário, interações, diagnósticos, identificadores do dispositivo).
+                  <strong>Análise</strong>: compreender o uso do aplicativo e melhorar recursos (e-mail, nome, identificadores de usuário, interações, diagnósticos, identificadores do dispositivo).
                 </li>
                 <li>
-                  <strong>Funcionalidade do aplicativo</strong> — processar os comentários que você envia e operar os recursos principais (incluindo push por meio de identificadores do dispositivo).
+                  <strong>Funcionalidade do aplicativo</strong>: processar os comentários que você envia e operar os recursos principais (incluindo push por meio de identificadores do dispositivo).
                 </li>
                 <li>
-                  <strong>Relatórios de falhas / diagnósticos</strong> — detectar, diagnosticar e corrigir falhas e problemas de estabilidade.
+                  <strong>Relatórios de falhas / diagnósticos</strong>: detectar, diagnosticar e corrigir falhas e problemas de estabilidade.
                 </li>
                 <li>
                   <strong>Para segurança, prevenção de fraudes e cumprimento</strong> das leis aplicáveis.
@@ -911,7 +911,7 @@ const PrivacyPolicyPT: React.FC = () => {
               </p>
               <p>
                 <strong>
-                  Categorias A e B — Enquanto o usuário tiver uma conta, ou conforme as políticas de retenção dos provedores de análise/falhas. Categoria F — Conforme a configuração de retenção do PostHog.
+                  Categorias A e B: enquanto o usuário tiver uma conta, ou conforme as políticas de retenção dos provedores de análise/falhas. Categoria F: conforme a configuração de retenção do PostHog.
                 </strong>
               </p>
 

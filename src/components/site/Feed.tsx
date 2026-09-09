@@ -36,7 +36,7 @@ function useColumnCount() {
  *
  * 1. The lead cards go in first, dealt across the columns left to right. That
  *    makes them read 1-2-3 along the top rows, which is what "put these first"
- *    means on a multi-column layout — placing them by height instead would
+ *    means on a multi-column layout. Placing them by height instead would
  *    scatter the order.
  * 2. Everything else is placed longest-first (LPT). Assigning the tallest
  *    remaining card to the shortest column is what keeps the columns even;
@@ -59,12 +59,12 @@ function balance(items: Card[], cols: number, leadCount: number): Card[][] {
     heights[target] += weight;
   };
 
-  // Pass 1 — the lead block, dealt round-robin so row order matches feed order.
+  // Pass 1: the lead block, dealt round-robin so row order matches feed order.
   items.slice(0, leadCount).forEach((item, index) => {
     place(index, item.weight, index % cols);
   });
 
-  // Pass 2 — everything else, tallest first.
+  // Pass 2: everything else, tallest first.
   items
     .slice(leadCount)
     .map((item, i) => ({ item, index: leadCount + i }))
@@ -86,8 +86,8 @@ const Feed = () => {
   );
 
   const visible = filtered.slice(0, limit);
-  // Lead cards sit at the front of the feed, so filtering preserves the block —
-  // count how many survived rather than assuming a fixed size.
+  // Lead cards sit at the front of the feed, so filtering preserves the block.
+  // Count how many survived rather than assuming a fixed size.
   const leadCount = useMemo(() => {
     let n = 0;
     while (n < visible.length && leadCardIds.has(visible[n].id)) n++;
@@ -102,7 +102,7 @@ const Feed = () => {
 
   // Centre the selected pill in the rail. This adjusts the rail's own
   // scrollLeft rather than calling scrollIntoView, which would also scroll the
-  // window — on mount that dragged the whole page past the hero.
+  // window, which on mount dragged the whole page past the hero.
   const mounted = useRef(false);
   useEffect(() => {
     if (!mounted.current) {

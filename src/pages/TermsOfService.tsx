@@ -113,7 +113,7 @@ const TermsOfService: React.FC = () => {
                 only if you can form a binding contract with us under the laws
                 of your country of residence. If you are a minor, you may use
                 the App only with the involvement and consent of a parent or
-                legal guardian, who is responsible for your use of the App —
+                legal guardian, who is responsible for your use of the App,
                 including any tip or donation made from your device.
               </p>
             </CardContent>
@@ -204,8 +204,8 @@ const TermsOfService: React.FC = () => {
                 holders.
               </p>
               <p>
-                The App itself — its software, design, layout, arrangements,
-                recordings we produce, name, and logo — is owned by us and
+                The App itself (its software, design, layout, arrangements,
+                recordings we produce, name, and logo) is owned by us and
                 protected by applicable intellectual property laws.
               </p>
               <p>
@@ -242,7 +242,7 @@ const TermsOfService: React.FC = () => {
               <p>
                 <strong>In Short:</strong> The App is free. Tips and donations
                 are entirely voluntary, give you nothing in return, and are
-                processed by the app store — not by us directly.
+                processed by the app store, not by us directly.
               </p>
 
               <div>
@@ -277,9 +277,9 @@ const TermsOfService: React.FC = () => {
                 </h4>
                 <p>
                   Tips are offered as in-app purchases and are charged by the
-                  platform operating your app store —{" "}
+                  platform operating your app store ({" "}
                   <strong>Apple</strong> on iOS/iPadOS and{" "}
-                  <strong>Google</strong> on Android — to the payment method on
+                  <strong>Google</strong> on Android) to the payment method on
                   your store account, under that store's terms. We use{" "}
                   <strong>RevenueCat, Inc.</strong> to manage and validate
                   in-app purchases. We never see or store your card number or
@@ -289,7 +289,7 @@ const TermsOfService: React.FC = () => {
                   Prices are shown in your local currency before you confirm and
                   may include applicable taxes. Prices may change over time;
                   any change applies only to purchases made after it takes
-                  effect. Amounts are one-time charges — no tip renews
+                  effect. Amounts are one-time charges; no tip renews
                   automatically.
                 </p>
               </div>
@@ -503,9 +503,9 @@ const TermsOfService: React.FC = () => {
               </p>
               <p>
                 Termination does not entitle you to a refund of any tip already
-                made. Sections that by their nature should survive — including
+                made. Sections that by their nature should survive (including
                 intellectual property, disclaimers, limitation of liability, and
-                governing law — survive termination.
+                governing law) survive termination.
               </p>
             </CardContent>
           </Card>
@@ -661,8 +661,8 @@ const TermsOfService: React.FC = () => {
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <p className="text-slate-700 dark:text-slate-300">
-              If anything here is unclear — especially about tips and donations
-              — we're happy to explain.
+              If anything here is unclear, especially about tips and donations,
+              we're happy to explain.
             </p>
             <div className="flex justify-center">
               <Button asChild>

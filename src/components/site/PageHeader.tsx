@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 interface PageHeaderProps {
   /** Full-bleed background image for the banner. */
   image: string;
-  /** Square mark laid over the banner — usually the app icon. */
+  /** Square mark laid over the banner, usually the app icon. */
   icon?: string;
   title: string;
   subtitle?: string;

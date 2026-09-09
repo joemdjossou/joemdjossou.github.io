@@ -2,7 +2,7 @@ import github from "./github.json";
 
 /**
  * Everything on the home page is one card in one feed. A card declares its kind,
- * its tags and a `weight` — a rough height hint the masonry balancer uses to keep
+ * its tags and a `weight`, a rough height hint the masonry balancer uses to keep
  * the columns even without measuring the DOM.
  */
 export type CardKind =
@@ -21,7 +21,7 @@ export interface BaseCard {
   tags: string[];
   /** Relative height hint for the column balancer. ~1 unit ≈ 100px. */
   weight: number;
-  /** Sort key — newest first. */
+  /** Sort key, newest first. */
   date?: string;
 }
 
@@ -57,7 +57,7 @@ export interface RoleCard extends BaseCard {
   current?: boolean;
   /** Company mark, shown beside the role title. */
   logo?: string;
-  /** Apps that shipped under this role — rendered as a row of store icons. */
+  /** Apps that shipped under this role, shown as a row of store icons. */
   apps?: { name: string; icon: string; url?: string }[];
   /** Optional outbound links, e.g. the company's product site. */
   links?: { label: string; href: string }[];
@@ -122,7 +122,7 @@ const projects: ProjectCard[] = [
     name: "Hymnes et Louanges",
     title: "A five-language worship app, live on both stores",
     blurb:
-      "SATB audio, musical scores, offline library, cloud sync and full-text search across French, Ewe, Spanish, Portuguese and English. Shipped solo — design, Flutter app, Firebase backend and both store listings.",
+      "SATB audio, musical scores, offline library, cloud sync and full-text search across French, Ewe, Spanish, Portuguese and English. Shipped solo: design, Flutter app, Firebase backend and both store listings.",
     icon: "/hymnes-app-icon.jpg",
     tint: "linear-gradient(140deg, #1e3a8a, #0f172a)",
     status: "Live",
@@ -178,7 +178,7 @@ const projects: ProjectCard[] = [
     name: "Artisan Connect",
     title: "A marketplace for skilled trades",
     blurb:
-      "React and TypeScript on Supabase — Postgres with row-level security, role-aware auth for clients, artisans and admins, and the vetting and dispute workflows that keep a two-sided marketplace honest.",
+      "React and TypeScript on Supabase: Postgres with row-level security, role-aware auth for clients, artisans and admins, and the vetting and dispute workflows that keep a two-sided marketplace honest.",
     cover: "/covers/artisan.jpg",
     tint: "linear-gradient(140deg, #7c2d12, #1c0a05)",
     status: "Live",
@@ -193,7 +193,7 @@ const projects: ProjectCard[] = [
     name: "Concours de Dictée ISDI",
     title: "Registration for a national dictation contest",
     blurb:
-      "A multi-step French signup — identity, proof of eligibility, then payment declared over T-Money or Flooz — with document upload, on React + Vite over a Node and Express API.",
+      "A multi-step French signup (identity, proof of eligibility, then payment declared over T-Money or Flooz) with document upload, on React + Vite over a Node and Express API.",
     cover: "/covers/isdi.jpg",
     tint: "linear-gradient(140deg, #7f1d1d, #180404)",
     status: "Live",
@@ -208,7 +208,7 @@ const projects: ProjectCard[] = [
     name: "AI Fitness & Health",
     title: "Coaching that reads the whole picture",
     blurb:
-      "A Flutter app over a Go API that turns workout, sleep and nutrition signals into adaptive training plans — with an Apple Watch companion feeding it live.",
+      "A Flutter app over a Go API that turns workout, sleep and nutrition signals into adaptive training plans, with an Apple Watch companion feeding it live.",
     icon: "/logos/ai-fitness.png",
     tint: "linear-gradient(140deg, #0b1f14, #050807)",
     status: "In progress",
@@ -223,7 +223,7 @@ const projects: ProjectCard[] = [
     name: "Affection Alerts",
     title: "On-device NLP over your chat history",
     blurb:
-      "Turns a WhatsApp export into a curated archive of the warmest messages, using a multi-weighted keyword model that runs entirely on the phone — nothing leaves the device.",
+      "Turns a WhatsApp export into a curated archive of the warmest messages, using a multi-weighted keyword model that runs entirely on the phone, so nothing leaves the device.",
     tint: "linear-gradient(140deg, #be123c, #4c0519)",
     status: "In progress",
     links: [{ label: "Code", href: "https://github.com/joemdjossou/affection_alerts" }],
@@ -248,7 +248,7 @@ const notes: NoteCard[] = [
     tags: ["backend", "leadership"],
     weight: 3.2,
     title: "Three days of release work, down to four hours",
-    body: "Automated the whole path from merge to store at 01Supplies — build, sign, test, upload. Test coverage landed at 78% and production incidents dropped 43% over the following quarter.",
+    body: "Automated the whole path from merge to store at 01Supplies: build, sign, test, upload. Test coverage landed at 78% and production incidents dropped 43% over the following quarter.",
     metric: { value: "3d → 4h", label: "deploy time" },
   },
   {
@@ -258,7 +258,7 @@ const notes: NoteCard[] = [
     tags: ["ai", "teaching"],
     weight: 3.9,
     title: "Teaching AI as an engineering practice, not a demo",
-    body: "Built and ran TDEV's applied AI track for working developers in Lomé — prompt design through evaluation, deployment and cost. Every session ended with something running, not a slide.",
+    body: "Built and ran TDEV's applied AI track for working developers in Lomé, covering prompt design through evaluation, deployment and cost. Every session ended with something running, not a slide.",
   },
   {
     id: "note-pipelines",
@@ -280,9 +280,9 @@ const roles: RoleCard[] = [
     weight: 3.2,
     title: "Senior Mobile Engineer",
     company: "VaultSplit",
-    period: "2026 — Present",
+    period: "Since 2026",
     location: "Remote",
-    body: "Autonomous finance for founders — revenue split into vaults on arrival, reconciled in a double-entry ledger, with an AI CFO on top. I ship the mobile surface: release pipeline, accessibility and payments.",
+    body: "Autonomous finance for founders: revenue split into vaults on arrival, reconciled in a double-entry ledger, with an AI CFO on top. I ship the mobile surface: release pipeline, accessibility and payments.",
     current: true,
     links: [{ label: "vaultsplit.co", href: "https://vaultsplit.co" }],
   },
@@ -294,7 +294,7 @@ const roles: RoleCard[] = [
     weight: 2.4,
     title: "Senior Full-Stack & Data Engineer",
     company: "Independent",
-    period: "2020 — Present",
+    period: "Since 2020",
     location: "Remote",
     body: "ETL/ELT pipelines from REST, webhook and Apps Script feeds into MongoDB and SQL, plus Java (Spring Boot) and Node.js services behind them.",
     current: true,
@@ -307,7 +307,7 @@ const roles: RoleCard[] = [
     weight: 2.9,
     title: "Lead Mobile Engineer",
     company: "EdoMatch",
-    period: "2025 — 2026",
+    period: "2025 to 2026",
     location: "Lomé, Togo",
     body: "Led mobile to 100K+ downloads and 70K+ users. AWS integration, PostHog analytics, AI features, and mentoring the junior engineers.",
     logo: "/logos/edomatch.png",
@@ -327,7 +327,7 @@ const roles: RoleCard[] = [
     weight: 2.7,
     title: "Senior Mobile Engineer",
     company: "01Supplies",
-    period: "2024 — 2025",
+    period: "2024 to 2025",
     location: "Cotonou, Benin",
     body: "Three apps released across iOS and Android, engagement up 53%, and the CI/CD pipeline that made it repeatable.",
     logo: "/logos/01supplies.png",
@@ -398,7 +398,7 @@ const education: EducationCard = {
   weight: 2.0,
   degree: "BSc Computer Science",
   institution: "Babcock University",
-  period: "2020 — 2024",
+  period: "2020 to 2024",
   detail: "Information Systems minor · 3.39/4.0 · final year project on a mental health application.",
 };
 
@@ -447,7 +447,7 @@ const repos: RepoCard[] = github.repos
 /* -------------------------------------------------------------------------- */
 
 /**
- * The lead of the feed is hand-ordered rather than sorted — these are the cards
+ * The lead of the feed is hand-ordered rather than sorted. These are the cards
  * that should be seen first, in this sequence, regardless of date. Everything
  * not named here falls through to the chronological tail below.
  */
@@ -507,7 +507,7 @@ export const TAG_LABELS: Record<string, string> = {
   teaching: "teaching",
 };
 
-/** Tags ordered by how many cards carry them — the filter rail's order. */
+/** Tags ordered by how many cards carry them, which is the filter rail's order. */
 export const tagCounts: { tag: string; count: number }[] = Object.entries(
   cards.reduce<Record<string, number>>((acc, card) => {
     for (const tag of card.tags) acc[tag] = (acc[tag] ?? 0) + 1;

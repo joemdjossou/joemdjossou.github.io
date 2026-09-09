@@ -113,7 +113,7 @@ const PrivacyPolicy: React.FC = () => {
                 </h4>
                 <p>
                   We collect the data types listed in our{" "}
-                  <strong>Google Play Data Safety Summary</strong> below—including
+                  <strong>Google Play Data Safety Summary</strong> below, including
                   email, name, user IDs, app interactions, feedback, crash logs,
                   diagnostics, and device identifiers. Some data is collected even
                   if you do not create an account.
@@ -146,7 +146,7 @@ const PrivacyPolicy: React.FC = () => {
                   Collected data is used only for the purposes described in this
                   notice (account management, analytics, app functionality, and
                   crash reporting). If you leave a voluntary tip, we receive
-                  transaction information from Apple, Google, and RevenueCat —
+                  transaction information from Apple, Google, and RevenueCat,
                   never your payment card details. See{" "}
                   <a
                     href="#purchases-and-donations"
@@ -184,7 +184,7 @@ const PrivacyPolicy: React.FC = () => {
                   </strong>{" "}
                   Data is collected and processed by us to operate the app, run
                   analytics, deliver push notifications, and report crashes. We
-                  use service providers acting on our behalf — including
+                  use service providers acting on our behalf, including
                   RevenueCat for in-app purchase management, and Apple and
                   Google as the payment processors for tips.
                 </p>
@@ -385,15 +385,15 @@ const PrivacyPolicy: React.FC = () => {
             </div>
             <ul className="list-disc pl-6 space-y-2 mt-4">
               <li>
-                <strong>Encrypted in transit:</strong> Yes — all data sent off
+                <strong>Encrypted in transit:</strong> Yes. All data sent off
                 your device uses HTTPS/TLS.
               </li>
               <li>
-                <strong>Data deletion available:</strong> Yes — you can delete
+                <strong>Data deletion available:</strong> Yes. You can delete
                 your account in the app (see Section 13).
               </li>
               <li>
-                <strong>Data sold:</strong> No — we do not sell your personal
+                <strong>Data sold:</strong> No. We do not sell your personal
                 information.
               </li>
             </ul>
@@ -409,7 +409,7 @@ const PrivacyPolicy: React.FC = () => {
           </CardHeader>
           <CardContent className="space-y-4 text-slate-700 dark:text-slate-300">
             <p>
-              <strong>In Short:</strong> The app is free. If you choose to leave a voluntary tip, the payment is processed by Apple or Google — we never receive your card details.
+              <strong>In Short:</strong> The app is free. If you choose to leave a voluntary tip, the payment is processed by Apple or Google, and we never receive your card details.
             </p>
             <p>Hymnes et Louanges Adventiste includes an optional “tip jar” that lets you support development. Tipping is entirely voluntary and unlocks no features. All charges are made by the App Store (Apple) or Google Play (Google) to your store account, under their own terms and privacy policies.</p>
             <p>We use RevenueCat, Inc. as a service provider to manage and validate in-app purchases. To do this, the following purchase-related information is processed:</p>
@@ -493,27 +493,27 @@ const PrivacyPolicy: React.FC = () => {
                   profile, submit feedback, or use the app.
                 </p>
                 <p className="mt-2">
-                  <strong>Personal info — email address, name, user IDs:</strong>{" "}
+                  <strong>Personal info (email address, name, user IDs):</strong>{" "}
                   collected for account management and analytics when you have an
                   account or use sign-in.
                 </p>
                 <p className="mt-2">
                   <strong>App interactions:</strong> hymns viewed, audio played,
-                  favorites, navigation, and related usage events—for analytics,
+                  favorites, navigation, and related usage events, for analytics,
                   including before you sign in.
                 </p>
                 <p className="mt-2">
                   <strong>Other user-generated content:</strong> feedback text you
-                  submit in Settings—for app functionality and support.
+                  submit in Settings, for app functionality and support.
                 </p>
                 <p className="mt-2">
                   <strong>Crash logs and diagnostics:</strong> error reports,
-                  device/OS/app version, and stability data—for crash reporting
+                  device/OS/app version, and stability data, for crash reporting
                   and analytics.
                 </p>
                 <p className="mt-2">
                   <strong>Device or other IDs:</strong> analytics and push
-                  notification identifiers—for analytics and app functionality
+                  notification identifiers, for analytics and app functionality
                   (push).
                 </p>
                 <p className="mt-2">
@@ -556,21 +556,21 @@ const PrivacyPolicy: React.FC = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Account management</strong> — create and manage your
+                  <strong>Account management</strong>: create and manage your
                   account, sync favorites, and deliver push notifications.
                 </li>
                 <li>
-                  <strong>Analytics</strong> — understand how the app is used and
+                  <strong>Analytics</strong>: understand how the app is used and
                   improve features (email, name, user IDs, app interactions,
                   diagnostics, device IDs).
                 </li>
                 <li>
-                  <strong>App functionality</strong> — process feedback you
+                  <strong>App functionality</strong>: process feedback you
                   submit and operate core app features (including push via device
                   IDs).
                 </li>
                 <li>
-                  <strong>Crash reporting / diagnostics</strong> — detect,
+                  <strong>Crash reporting / diagnostics</strong>: detect,
                   diagnose, and fix crashes and stability issues.
                 </li>
                 <li>
@@ -1032,7 +1032,7 @@ const PrivacyPolicy: React.FC = () => {
                         <td className="border border-slate-300 dark:border-slate-600 p-2 text-center font-bold text-green-600">
                           YES
                           <span className="block font-normal text-xs">
-                            Tip/donation transaction records only — no card or
+                            Tip/donation transaction records only, no card or
                             bank details
                           </span>
                         </td>
@@ -1160,10 +1160,10 @@ const PrivacyPolicy: React.FC = () => {
               </p>
               <p>
                 <strong>
-                  Category A and B — As long as the user has an account with us,
+                  Category A and B: as long as the user has an account with us,
                   or as retained by analytics/crash providers per their policies.
-                  Category D — Tip/donation transaction records, for as long as
-                  required by applicable accounting and tax law. Category F —
+                  Category D: tip/donation transaction records, for as long as
+                  required by applicable accounting and tax law. Category F:
                   Per PostHog retention settings.
                 </strong>
               </p>

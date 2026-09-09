@@ -26,7 +26,7 @@ type Page =
   | "privacy-pt";
 
 /**
- * Canonical clean path for each page — the URL the address bar should show.
+ * Canonical clean path for each page: the URL the address bar should show.
  * The legal pages live under /hymnes-app/… because those are the URLs
  * declared to Apple App Review and Google Play.
  */
@@ -125,7 +125,7 @@ const App = () => {
       const { page, canonicalPath } = resolve();
       setCurrentPage(page);
       // Drop the #hash (and any 404-fallback query) so the bar shows the clean
-      // path. Hash links keep working — they just get rewritten on arrival.
+      // path. Hash links keep working; they just get rewritten on arrival.
       const current = window.location.pathname + window.location.search + window.location.hash;
       if (current !== canonicalPath) {
         window.history.replaceState(null, "", canonicalPath);

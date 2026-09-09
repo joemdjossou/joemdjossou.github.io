@@ -440,7 +440,7 @@ const PrivacyPolicyES: React.FC = () => {
                   Recopilamos información personal cuando crea una cuenta (correo electrónico y contraseña), inicia sesión con Google o Apple, actualiza su perfil, envía comentarios o utiliza la aplicación.
                 </p>
                 <p className="mt-2">
-                  <strong>Información personal — correo electrónico, nombre, identificadores de usuario:</strong> recopilados para la gestión de cuenta y análisis cuando tiene una cuenta o utiliza el inicio de sesión.
+                  <strong>Información personal (correo electrónico, nombre, identificadores de usuario):</strong> recopilados para la gestión de cuenta y análisis cuando tiene una cuenta o utiliza el inicio de sesión.
                 </p>
                 <p className="mt-2">
                   <strong>Interacciones en la aplicación:</strong> himnos consultados, audio reproducido, favoritos, navegación y eventos de uso relacionados, para análisis, incluso antes de iniciar sesión.
@@ -487,16 +487,16 @@ const PrivacyPolicyES: React.FC = () => {
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Gestión de cuenta</strong> — crear y gestionar su cuenta, sincronizar favoritos y enviar notificaciones push.
+                  <strong>Gestión de cuenta</strong>: crear y gestionar su cuenta, sincronizar favoritos y enviar notificaciones push.
                 </li>
                 <li>
-                  <strong>Análisis</strong> — comprender el uso de la aplicación y mejorar funciones (correo electrónico, nombre, identificadores de usuario, interacciones, diagnósticos, identificadores del dispositivo).
+                  <strong>Análisis</strong>: comprender el uso de la aplicación y mejorar funciones (correo electrónico, nombre, identificadores de usuario, interacciones, diagnósticos, identificadores del dispositivo).
                 </li>
                 <li>
-                  <strong>Funcionalidad de la aplicación</strong> — procesar los comentarios que envía y operar las funciones principales (incluido push mediante identificadores del dispositivo).
+                  <strong>Funcionalidad de la aplicación</strong>: procesar los comentarios que envía y operar las funciones principales (incluido push mediante identificadores del dispositivo).
                 </li>
                 <li>
-                  <strong>Informes de fallos / diagnósticos</strong> — detectar, diagnosticar y corregir fallos y problemas de estabilidad.
+                  <strong>Informes de fallos / diagnósticos</strong>: detectar, diagnosticar y corregir fallos y problemas de estabilidad.
                 </li>
                 <li>
                   <strong>Para la seguridad, prevención del fraude y cumplimiento</strong> de las leyes aplicables.
@@ -912,7 +912,7 @@ const PrivacyPolicyES: React.FC = () => {
               </p>
               <p>
                 <strong>
-                  Categorías A y B — Mientras el usuario tenga una cuenta, o según las políticas de retención de los proveedores de análisis/fallos. Categoría F — Según la configuración de retención de PostHog.
+                  Categorías A y B: mientras el usuario tenga una cuenta, o según las políticas de retención de los proveedores de análisis/fallos. Categoría F: según la configuración de retención de PostHog.
                 </strong>
               </p>
 

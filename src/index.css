@@ -10,7 +10,7 @@
 
 @layer base {
   :root {
-    /* Warm paper (#f3f1ed) — the page ground, not the cards. */
+    /* Warm paper (#f3f1ed), the page ground rather than the cards. */
     --background: 40 20% 94%;
     --foreground: 30 6% 10%;
 
@@ -20,7 +20,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 30 6% 10%;
 
-    /* Electric blue — used sparingly: one filled card, links, focus rings. */
+    /* Electric blue, used sparingly: one filled card, links, focus rings. */
     --primary: 212 100% 50%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 212 100% 62%;
@@ -43,7 +43,7 @@
 
     --radius: 1rem;
 
-    /* Feed geometry — the gutter between cards and between columns. */
+    /* Feed geometry: the gutter between cards and between columns. */
     --card-gap: 1rem;
 
     /* GitHub's own contribution ramp (light): #ebedf0 → #216e39. */
@@ -240,7 +240,7 @@
 
   /* Scroll reveal. The element starts hidden and is released by an
      IntersectionObserver adding `data-visible` (see useReveal). Anything the
-     observer never reaches — JS disabled, unsupported — falls back to visible
+     observer never reaches (JS disabled, unsupported) falls back to visible
      via the `no-reveal` class the hook sets on <html>. */
   .reveal {
     opacity: 0;

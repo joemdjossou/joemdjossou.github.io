@@ -28,19 +28,19 @@ const About = () => (
 
           <div className="mt-3 space-y-3.5 text-sm leading-relaxed text-muted-foreground">
             <p>
-              I&apos;m Yaovi Emmanuel Josué Djossou — a senior software and data
+              I&apos;m Yaovi Emmanuel Josué Djossou, a senior software and data
               engineer based in Lomé, Togo. Six years in, my work sits in three
               places that keep turning out to be the same job: products people use
-              daily — on the web and on their phones — the services behind them, and
+              daily on the web and on their phones; the services behind them; and
               the pipelines that make the resulting numbers worth acting on.
             </p>
             <p>
-              I started in Flutter and never really left — apps I&apos;ve built or
+              I started in Flutter and never really left. Apps I&apos;ve built or
               led have crossed 200K downloads and reached 100K+ people. The web
               half runs in parallel: React and TypeScript most days, Angular and
               NgRx when the job calls for it, on Supabase, Firebase or a NestJS
               API I wrote. Behind both sit the backend (Java, Spring Boot, Node,
-              Go) and the data side — ETL/ELT, schema versioning, the unglamorous
+              Go) and the data side: ETL/ELT, schema versioning, the unglamorous
               QA that stops a dashboard from lying to you. Lately that&apos;s meant
               a lot of applied AI: on-device NLP, evaluation harnesses, and
               teaching other developers to ship it rather than demo it.
@@ -71,7 +71,7 @@ const About = () => (
           </div>
 
           <p className="mt-5 text-xs text-muted-foreground/70">
-            GitHub data on this page refreshes daily — last synced{" "}
+            GitHub data on this page refreshes daily. Last synced{" "}
             {new Date(githubData.generatedAt).toLocaleDateString("en-US", {
               month: "short",
               day: "numeric",

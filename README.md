@@ -1,4 +1,4 @@
-# Josué Djossou — Portfolio
+# Josué Djossou, Portfolio
 
 Personal site of Yaovi Emmanuel Josué Djossou, Senior Software & Data Engineer.
 
@@ -34,7 +34,7 @@ to (see **Routing** below).
 ## 🔌 Live data
 
 `src/data/github.json` is generated from the GitHub GraphQL API and committed, so
-the site always builds — the checked-in copy is the fallback if a refresh fails.
+the site always builds; the checked-in copy is the fallback if a refresh fails.
 
 ```bash
 npm run data:github   # regenerate from the API (needs `gh auth login` or GITHUB_TOKEN)
@@ -68,7 +68,7 @@ ffmpeg -i public/setup.mp4 -c:v libvpx-vp9 -b:v 0 -crf 38 -an public/setup.webm
 Hash-free client-side routing lives in `src/App.tsx`. Deep links survive GitHub
 Pages via the SPA fallback in `public/404.html` plus the decoder at the top of
 `index.html`. The `/hymnes-app/...` paths are the URLs declared to Apple App
-Review and Google Play — **do not rename them**.
+Review and Google Play, so **do not rename them**.
 
 ## 🏃‍♂️ Quick Start
 
@@ -145,7 +145,7 @@ npm run dev
 
 ## 🗂️ Editing the content
 
-Everything in the feed is a card in `src/data/feed.ts` — projects, build notes,
+Everything in the feed is a card in `src/data/feed.ts`: projects, build notes,
 roles, stats, the stack and education. Repo cards are generated from
 `github.json`, so pushing a described repo is enough to put it on the site.
 
