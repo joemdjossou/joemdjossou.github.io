@@ -184,7 +184,7 @@ bun run deploy
 
 ## 📧 Contact
 
-- **Email**: joemdjossou@gmail.com
+- **Email**: josue@joemdjossou.com
 - **Phone**: +228 93 14 27 33
 - **GitHub**: [github.com/joemdjossou](https://github.com/joemdjossou)
 - **LinkedIn**: [linkedin.com/in/joemdjossou](https://linkedin.com/in/joemdjossou)

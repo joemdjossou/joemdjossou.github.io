@@ -19,14 +19,14 @@ const Footer = () => (
         className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5"
         style={{ "--btn-shadow": "var(--cobalt-bright)" } as React.CSSProperties}
       >
-        <a href="mailto:joemdjossou@outlook.com" className="btn-pop h-14 px-7 text-lg">
+        <a href="mailto:josue@joemdjossou.com" className="btn-pop h-14 px-7 text-lg">
           Start a conversation <ArrowRight className="size-5" strokeWidth={2.5} />
         </a>
         <a
-          href="mailto:joemdjossou@outlook.com"
+          href="mailto:josue@joemdjossou.com"
           className="link-underline text-periwinkle hover:text-white"
         >
-          joemdjossou@outlook.com
+          josue@joemdjossou.com
         </a>
       </div>
 

@@ -117,7 +117,7 @@ const Pitch = () => (
       </div>
 
       <a
-        href="mailto:joemdjossou@outlook.com"
+        href="mailto:josue@joemdjossou.com"
         className="btn-pop h-11 w-fit border-2 border-night px-5 text-base"
         style={{ "--btn-shadow": "var(--night)" } as React.CSSProperties}
       >

@@ -81,10 +81,10 @@ const PrivacyPolicy: React.FC = () => {
               and practices, please do not use our Services. If you still have
               any questions or concerns, please contact us at{" "}
               <a
-                href="mailto:joemdjossou@outlook.com"
+                href="mailto:josue@joemdjossou.com"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                joemdjossou@outlook.com
+                josue@joemdjossou.com
               </a>
               .
             </p>
@@ -893,10 +893,10 @@ const PrivacyPolicy: React.FC = () => {
                 If you have questions or comments about your privacy rights, you
                 may email us at{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>
                 .
               </p>
@@ -1211,10 +1211,10 @@ const PrivacyPolicy: React.FC = () => {
                   To exercise these rights, you can contact us by submitting a
                   data subject access request, by emailing us at{" "}
                   <a
-                    href="mailto:joemdjossou@outlook.com"
+                    href="mailto:josue@joemdjossou.com"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    joemdjossou@outlook.com
+                    josue@joemdjossou.com
                   </a>
                   , or by referring to the contact details at the bottom of this
                   document.
@@ -1346,10 +1346,10 @@ const PrivacyPolicy: React.FC = () => {
                 If you have questions or comments about this notice, you may
                 email us at{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>{" "}
                 or contact us by post at:
               </p>
@@ -1413,10 +1413,10 @@ const PrivacyPolicy: React.FC = () => {
                 cloud favorites without deleting your entire account. You may
                 also contact us at{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>{" "}
                 for assistance.
               </p>
@@ -1447,10 +1447,10 @@ const PrivacyPolicy: React.FC = () => {
                 steps in <strong>Section 13 (Delete Your Account)</strong> above.
                 To request review, correction, or deletion of other data, email{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>
                 .
               </p>
@@ -1473,7 +1473,7 @@ const PrivacyPolicy: React.FC = () => {
             <div className="flex justify-center">
               <Button asChild>
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="flex items-center gap-2"
                 >
                   <Mail className="h-4 w-4" />

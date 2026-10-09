@@ -91,7 +91,7 @@ const Header = () => {
           <ThemeButton muted={muted} hover={hover} />
 
           <a
-            href="mailto:joemdjossou@outlook.com"
+            href="mailto:josue@joemdjossou.com"
             className="btn-pop ml-3 h-10 px-4 text-base"
             style={{ "--btn-shadow": "var(--night)" } as React.CSSProperties}
           >

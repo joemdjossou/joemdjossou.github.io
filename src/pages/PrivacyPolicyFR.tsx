@@ -84,10 +84,10 @@ const PrivacyPolicyFR: React.FC = () => {
               vous avez encore des questions ou des préoccupations, veuillez
               nous contacter à{" "}
               <a
-                href="mailto:joemdjossou@outlook.com"
+                href="mailto:josue@joemdjossou.com"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                joemdjossou@outlook.com
+                josue@joemdjossou.com
               </a>
               .
             </p>
@@ -933,10 +933,10 @@ const PrivacyPolicyFR: React.FC = () => {
                 Si vous avez des questions ou des commentaires sur vos droits en
                 matière de confidentialité, vous pouvez nous envoyer un e-mail à{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>
                 .
               </p>
@@ -1266,10 +1266,10 @@ const PrivacyPolicyFR: React.FC = () => {
                   soumettant une demande d'accès aux données, en nous envoyant
                   un e-mail à{" "}
                   <a
-                    href="mailto:joemdjossou@outlook.com"
+                    href="mailto:josue@joemdjossou.com"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    joemdjossou@outlook.com
+                    josue@joemdjossou.com
                   </a>
                   , ou en vous référant aux coordonnées au bas de ce document.
                 </p>
@@ -1410,10 +1410,10 @@ const PrivacyPolicyFR: React.FC = () => {
                 Si vous avez des questions ou des commentaires sur cet avis,
                 vous pouvez nous envoyer un e-mail à{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>{" "}
                 ou nous contacter par courrier à :
               </p>
@@ -1488,10 +1488,10 @@ const PrivacyPolicyFR: React.FC = () => {
                 analyses ou les favoris cloud sans supprimer l'ensemble du
                 compte. Vous pouvez également nous contacter à{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>{" "}
                 pour obtenir de l'aide.
               </p>
@@ -1525,10 +1525,10 @@ const PrivacyPolicyFR: React.FC = () => {
                 Pour demander la consultation, la correction ou la suppression
                 d'autres données, envoyez un e-mail à{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>
                 .
               </p>
@@ -1551,7 +1551,7 @@ const PrivacyPolicyFR: React.FC = () => {
             <div className="flex justify-center">
               <Button asChild>
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="flex items-center gap-2"
                 >
                   <Mail className="h-4 w-4" />

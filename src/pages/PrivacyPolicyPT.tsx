@@ -70,10 +70,10 @@ const PrivacyPolicyPT: React.FC = () => {
             <p>
               <strong>Dúvidas ou preocupações?</strong> A leitura deste Aviso de Privacidade ajudará você a compreender seus direitos e opções em matéria de privacidade. Somos responsáveis por tomar decisões sobre como suas informações pessoais são tratadas. Se não concordar com nossas políticas e práticas, não utilize nossos Serviços. Se ainda tiver dúvidas ou preocupações, entre em contato em{" "}
               <a
-                href="mailto:joemdjossou@outlook.com"
+                href="mailto:josue@joemdjossou.com"
                 className="text-blue-600 dark:text-blue-400 hover:underline"
               >
-                joemdjossou@outlook.com
+                josue@joemdjossou.com
               </a>
               .
             </p>
@@ -693,10 +693,10 @@ const PrivacyPolicyPT: React.FC = () => {
               <p>
                 Se você tiver dúvidas ou comentários sobre seus direitos de privacidade, pode nos enviar um e-mail para{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>
                 .
               </p>
@@ -952,10 +952,10 @@ const PrivacyPolicyPT: React.FC = () => {
                 <p>
                   Para exercer esses direitos, você pode entrar em contato conosco enviando uma solicitação de acesso a dados, escrevendo para{" "}
                   <a
-                    href="mailto:joemdjossou@outlook.com"
+                    href="mailto:josue@joemdjossou.com"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    joemdjossou@outlook.com
+                    josue@joemdjossou.com
                   </a>
                   , ou consultando os dados de contato ao final deste documento.
                 </p>
@@ -1053,10 +1053,10 @@ const PrivacyPolicyPT: React.FC = () => {
               <p>
                 Se você tiver dúvidas ou comentários sobre este aviso, pode nos enviar um e-mail para{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>{" "}
                 ou entrar em contato conosco por correio em:
               </p>
@@ -1112,10 +1112,10 @@ const PrivacyPolicyPT: React.FC = () => {
               <p>
                 Não existe uma opção integrada para excluir apenas análise ou favoritos na nuvem sem excluir toda a conta. Você também pode entrar em contato conosco em{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>{" "}
                 para obter assistência.
               </p>
@@ -1136,10 +1136,10 @@ const PrivacyPolicyPT: React.FC = () => {
               <p>
                 A forma mais simples de excluir sua conta é seguir as etapas integradas na <strong>Seção 13 (Excluir sua conta)</strong> anterior. Para solicitar consulta, correção ou exclusão de outros dados, envie um e-mail para{" "}
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="text-blue-600 dark:text-blue-400 hover:underline"
                 >
-                  joemdjossou@outlook.com
+                  josue@joemdjossou.com
                 </a>
                 .
               </p>
@@ -1161,7 +1161,7 @@ const PrivacyPolicyPT: React.FC = () => {
             <div className="flex justify-center">
               <Button asChild>
                 <a
-                  href="mailto:joemdjossou@outlook.com"
+                  href="mailto:josue@joemdjossou.com"
                   className="flex items-center gap-2"
                 >
                   <Mail className="h-4 w-4" />

@@ -2,7 +2,7 @@ import { githubData } from "@/data/feed";
 import { Download, Github, Linkedin, Mail } from "lucide-react";
 
 const links = [
-  { icon: Mail, label: "joemdjossou@outlook.com", href: "mailto:joemdjossou@outlook.com" },
+  { icon: Mail, label: "josue@joemdjossou.com", href: "mailto:josue@joemdjossou.com" },
   { icon: Github, label: "github.com/joemdjossou", href: "https://github.com/joemdjossou" },
   {
     icon: Linkedin,

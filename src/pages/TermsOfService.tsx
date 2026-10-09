@@ -7,7 +7,7 @@ import { ArrowLeft, Heart, Mail, MapPin, Shield } from "lucide-react";
 import React from "react";
 
 const LAST_UPDATED = "August 4, 2026";
-const SUPPORT_EMAIL = "joemdjossou@outlook.com";
+const SUPPORT_EMAIL = "josue@joemdjossou.com";
 
 const TermsOfService: React.FC = () => {
   const scrollToTop = () => {

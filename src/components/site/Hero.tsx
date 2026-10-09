@@ -95,7 +95,7 @@ const Hero = () => (
           className="animate-enter mt-8 flex flex-wrap items-center gap-x-7 gap-y-5"
           style={{ ...delay(230), "--btn-shadow": "var(--night)" } as React.CSSProperties}
         >
-          <a href="mailto:joemdjossou@outlook.com" className="btn-pop h-14 px-7 text-lg">
+          <a href="mailto:josue@joemdjossou.com" className="btn-pop h-14 px-7 text-lg">
             Start a conversation <ArrowRight className="size-5" strokeWidth={2.5} />
           </a>
           <a
