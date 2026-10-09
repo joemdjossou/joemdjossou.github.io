@@ -54,12 +54,14 @@ const Contributions = () => {
   return (
     <section
       id="github"
-      className="reveal card-surface mt-10 p-4 sm:p-5"
+      className="reveal card-surface mt-12 p-4 sm:mt-16 sm:p-6"
     >
-      <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <p className="text-sm">
-          <span className="font-semibold tabular-nums">{c.total.toLocaleString()}</span>{" "}
-          <span className="text-muted-foreground">contributions in the last year</span>
+      <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <p className="flex flex-wrap items-baseline gap-x-2.5">
+          <span className="display text-4xl tabular-nums sm:text-5xl">
+            {c.total.toLocaleString()}
+          </span>
+          <span className="text-sm text-muted-foreground">contributions in the last year</span>
         </p>
         <a
           href={`https://github.com/${login}`}
@@ -73,11 +75,11 @@ const Contributions = () => {
 
       <div ref={scroller} className="no-scrollbar -mx-1 overflow-x-auto px-1 pb-1">
         <div className="w-max">
-          <div className="mb-1 flex gap-[3px]">
+          <div className="mb-1 flex gap-[3px] xl:gap-[5px]">
             {labels.map((m, i) => (
-              <div key={i} className="w-[10px] shrink-0">
+              <div key={i} className="w-[10px] shrink-0 xl:w-[18px]">
                 {m && (
-                  <span className="block -translate-x-px text-[9px] leading-none text-muted-foreground/70">
+                  <span className="block -translate-x-px text-[9px] leading-none xl:text-[11px] text-muted-foreground">
                     {m}
                   </span>
                 )}
@@ -86,17 +88,17 @@ const Contributions = () => {
           </div>
 
           <div
-            className="flex gap-[3px]"
+            className="flex gap-[3px] xl:gap-[5px]"
             role="img"
             aria-label={`${c.total} GitHub contributions between ${c.start} and ${c.end}`}
           >
             {c.weeks.map((week, wi) => (
-              <div key={wi} className="flex flex-col gap-[3px]">
+              <div key={wi} className="flex flex-col gap-[3px] xl:gap-[5px]">
                 {week.map((count, di) => (
                   <span
                     key={di}
                     title={`${count} contribution${count === 1 ? "" : "s"}`}
-                    className="size-[10px] rounded-[2px]"
+                    className="size-[10px] rounded-[2px] xl:size-[18px]"
                     style={{ background: `hsl(var(--heat-${level(count)}))` }}
                   />
                 ))}
@@ -108,15 +110,15 @@ const Contributions = () => {
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <p className="text-xs text-muted-foreground">
-          <span className="tabular-nums">{c.activeDays}</span> active days ·{" "}
+          <span className="tabular-nums">{c.activeDays}</span> active days,{" "}
           <span className="tabular-nums">{c.private.toLocaleString()}</span> in private repos
         </p>
-        <div className="flex items-center gap-1 text-[10px] text-muted-foreground/70">
+        <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
           Less
           {[0, 1, 2, 3, 4].map((l) => (
             <span
               key={l}
-              className="size-[10px] rounded-[2px]"
+              className="size-[10px] rounded-[2px] xl:size-[18px]"
               style={{ background: `hsl(var(--heat-${l}))` }}
             />
           ))}

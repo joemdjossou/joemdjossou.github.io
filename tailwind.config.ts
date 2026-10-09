@@ -48,10 +48,22 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        pop: {
+          DEFAULT: "hsl(var(--pop))",
+          foreground: "hsl(var(--pop-foreground))",
+        },
+        night: "hsl(var(--night))",
+        cobalt: {
+          DEFAULT: "hsl(var(--cobalt))",
+          bright: "hsl(var(--cobalt-bright))",
+        },
+        periwinkle: "hsl(var(--periwinkle))",
+        hot: "hsl(var(--hot))",
       },
       fontFamily: {
         heading: "var(--font-heading)",
         body: "var(--font-body)",
+        display: "var(--font-display)",
       },
       borderRadius: {
         lg: "var(--radius)",

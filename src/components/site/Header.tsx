@@ -20,7 +20,7 @@ const ThemeButton = ({ muted, hover }: { muted: string; hover: string }) => {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className={`inline-flex size-8 items-center justify-center rounded-full transition-colors ${muted} ${hover}`}
+      className={`inline-flex size-8 items-center justify-center rounded-[3px] transition-colors ${muted} ${hover}`}
     >
       {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
     </button>
@@ -37,58 +37,43 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const muted = scrolled ? "text-muted-foreground" : "text-white/75";
-  const hover = scrolled ? "hover:bg-muted hover:text-foreground" : "hover:bg-white/15 hover:text-white";
+  // Over the hero the header sits on cobalt in both themes; once the page
+  // scrolls it takes the theme's own ground.
+  const muted = scrolled ? "text-muted-foreground" : "text-periwinkle";
+  const hover = scrolled
+    ? "hover:bg-muted hover:text-foreground"
+    : "hover:bg-white/15 hover:text-white";
+  const link = `rounded-[3px] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition-colors ${muted} ${hover}`;
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+      className={`sticky top-0 z-50 border-b-2 transition-colors duration-300 ${
         scrolled
-          ? "border-border bg-background/80 text-foreground backdrop-blur-xl"
+          ? "border-night/80 bg-background/90 text-foreground backdrop-blur-xl"
           : "border-transparent bg-transparent text-white"
       }`}
     >
-      <div className="container-page flex h-14 items-center justify-between gap-4">
-        <a href="/" className="group flex items-center gap-2 font-medium tracking-tight">
-          <span
-            className={`flex size-7 items-center justify-center rounded-lg text-[11px] font-semibold transition-colors ${
-              scrolled ? "bg-foreground text-background" : "bg-white text-neutral-950"
-            }`}
-          >
+      <div className="container-page flex h-16 items-center justify-between gap-4">
+        <a href="/" className="flex items-center gap-3">
+          <span className="display flex size-9 items-center justify-center rounded-[3px] bg-pop text-xl text-pop-foreground shadow-[3px_3px_0_hsl(var(--night))]">
             EJ
           </span>
-          <span className="hidden sm:inline">
-            joemdjossou<span className={scrolled ? "text-muted-foreground" : "text-white/60"}>
-              .com
-            </span>
-          </span>
+          <span className="display hidden text-2xl sm:inline">Josué Djossou</span>
         </a>
 
-        <nav className="flex items-center gap-1 text-sm">
-          <a
-            href="#work"
-            className={`rounded-full px-3 py-1.5 transition-colors ${muted} ${hover}`}
-          >
+        <nav className="flex items-center gap-0.5">
+          <a href="#work" className={link}>
             Work
           </a>
-          <a
-            href="#about"
-            className={`rounded-full px-3 py-1.5 transition-colors ${muted} ${hover}`}
-          >
+          <a href="#about" className={link}>
             About
-          </a>
-          <a
-            href="mailto:joemdjossou@outlook.com"
-            className={`rounded-full px-3 py-1.5 transition-colors ${muted} ${hover}`}
-          >
-            Contact
           </a>
 
           <span
-            className={`mx-1.5 hidden h-4 w-px sm:block ${scrolled ? "bg-border" : "bg-white/25"}`}
+            className={`mx-2 hidden h-4 w-px md:block ${scrolled ? "bg-foreground/25" : "bg-white/25"}`}
           />
 
-          <span className="hidden items-center gap-0.5 sm:flex">
+          <span className="hidden items-center gap-0.5 md:flex">
             {socials.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -96,7 +81,7 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className={`inline-flex size-8 items-center justify-center rounded-full transition-colors ${muted} ${hover}`}
+                className={`inline-flex size-8 items-center justify-center rounded-[3px] transition-colors ${muted} ${hover}`}
               >
                 <Icon className="size-4" />
               </a>
@@ -104,6 +89,14 @@ const Header = () => {
           </span>
 
           <ThemeButton muted={muted} hover={hover} />
+
+          <a
+            href="mailto:joemdjossou@outlook.com"
+            className="btn-pop ml-3 h-10 px-4 text-base"
+            style={{ "--btn-shadow": "var(--night)" } as React.CSSProperties}
+          >
+            Email me
+          </a>
         </nav>
       </div>
     </header>

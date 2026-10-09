@@ -118,19 +118,24 @@ const Feed = () => {
     });
   }, [active]);
 
+  // The selected look lives on `.pill[aria-pressed="true"]`.
   const pill = (selected: boolean) =>
-    `pill ${
-      selected
-        ? "border-foreground bg-foreground text-background"
-        : "border-border bg-card/70 text-muted-foreground hover:bg-muted hover:text-foreground"
-    }`;
+    `pill ${selected ? "" : "bg-card text-muted-foreground hover:bg-muted hover:text-foreground"}`;
 
   return (
-    <section id="work" className="scroll-mt-28">
+    <section id="work" className="scroll-mt-16 pt-14 sm:pt-20">
+      <div className="reveal mb-7 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
+        <h2 className="display text-[clamp(2.75rem,7vw,5.5rem)]">The work</h2>
+        <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Products, roles, repos and build notes in one feed. Filter it by what you
+          came here for.
+        </p>
+      </div>
+
       {/* Full-bleed filter rail. It spans the viewport and scrolls horizontally
           on its own, then sticks under the header so the filter stays reachable
           while you're deep in the feed. */}
-      <div className="full-bleed sticky top-14 z-40 border-y border-border/60 bg-background/80 backdrop-blur-xl">
+      <div className="full-bleed sticky top-16 z-40 border-y-2 border-night/80 bg-background/90 backdrop-blur-xl">
         <nav
           ref={railRef}
           aria-label="Filter by tag"
@@ -161,7 +166,7 @@ const Feed = () => {
 
       {/* Balanced masonry. Keying on the active tag remounts the columns so a
           filter change replays the reveal instead of snapping. */}
-      <div key={active ?? "all"} className="flex items-start gap-[var(--card-gap)] pt-6">
+      <div key={active ?? "all"} className="flex items-start gap-[var(--card-gap)] pt-7">
         {columns.map((column, ci) => (
           <div key={ci} className="flex min-w-0 flex-1 flex-col gap-[var(--card-gap)]">
             {column.map((card, i) => (
@@ -180,15 +185,10 @@ const Feed = () => {
       </div>
 
       {filtered.length > limit && (
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={() => setLimit((n) => n + PAGE)}
-            className="inline-flex h-10 items-center rounded-full border px-5 text-sm font-medium transition-colors hover:bg-muted"
-          >
+        <div className="mt-10 flex justify-center">
+          <button onClick={() => setLimit((n) => n + PAGE)} className="btn-pop h-12 px-6 text-base">
             Load more
-            <span className="ml-2 text-xs tabular-nums text-muted-foreground">
-              {filtered.length - limit}
-            </span>
+            <span className="tabular-nums opacity-70">{filtered.length - limit}</span>
           </button>
         </div>
       )}

@@ -91,14 +91,9 @@ const AppsRow = ({ apps }: { apps: NonNullable<Extract<Card, { kind: "role" }>["
 const Pitch = () => (
   <article className="card-surface bg-primary text-primary-foreground">
     <div className="flex flex-col gap-4 p-4 sm:p-5">
-      <span className="flex size-9 items-center justify-center rounded-lg bg-white/15 text-xs font-semibold ring-1 ring-white/25">
-        EJ
-      </span>
       <div>
-        <h2 className="text-lg font-semibold tracking-tight">
-          Hire me to build the thing, not just spec it
-        </h2>
-        <p className="mt-2 text-sm text-primary-foreground/85">
+        <h2 className="display text-4xl">Hire me to build the thing, not just spec it</h2>
+        <p className="mt-3 text-sm text-primary-foreground/85">
           I join your team and own a surface end to end: a web app, a mobile app,
           the API behind either, or the pipeline feeding your reporting.
         </p>
@@ -114,7 +109,7 @@ const Pitch = () => (
             "You're not ready for a full-time hire yet",
           ].map((line) => (
             <li key={line} className="flex gap-2">
-              <span aria-hidden className="mt-[7px] size-1 shrink-0 rounded-full bg-current" />
+              <span aria-hidden className="mt-[7px] size-1.5 shrink-0 rotate-45 bg-current" />
               {line}
             </li>
           ))}
@@ -123,9 +118,10 @@ const Pitch = () => (
 
       <a
         href="mailto:joemdjossou@outlook.com"
-        className="inline-flex h-9 w-fit items-center gap-1.5 rounded-full bg-white px-4 text-sm font-medium text-primary transition-transform hover:scale-[1.02] active:scale-[0.98]"
+        className="btn-pop h-11 w-fit border-2 border-night px-5 text-base"
+        style={{ "--btn-shadow": "var(--night)" } as React.CSSProperties}
       >
-        Let&apos;s talk <ArrowUpRight className="size-3.5" />
+        Let&apos;s talk <ArrowUpRight className="size-4" strokeWidth={2.5} />
       </a>
     </div>
   </article>
@@ -143,7 +139,7 @@ const FeedCard = ({ card }: { card: Card }) => {
       return (
         <article className="card-surface card-hover group">
           <div
-            className="relative flex h-40 items-center justify-center overflow-hidden"
+            className="relative flex h-40 items-center justify-center overflow-hidden border-b"
             style={{ background: card.tint ?? "hsl(var(--muted))" }}
           >
             {card.cover ? (
@@ -161,11 +157,11 @@ const FeedCard = ({ card }: { card: Card }) => {
                 className="size-20 rounded-[22%] object-cover shadow-2xl ring-1 ring-white/15 transition-transform duration-500 group-hover:scale-[1.06]"
               />
             ) : (
-              <span className="text-5xl font-semibold text-white/90">{card.name.charAt(0)}</span>
+              <span className="display text-7xl text-white/90">{card.name.charAt(0)}</span>
             )}
 
             {card.status && (
-              <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-black/45 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+              <span className="sticker absolute left-3 top-3 bg-night [rotate:-2deg] text-[11px] text-white">
                 {card.status === "Live" && (
                   <span className="status-dot bg-emerald-400 text-emerald-400" />
                 )}
@@ -176,7 +172,7 @@ const FeedCard = ({ card }: { card: Card }) => {
 
           <div className="p-4 sm:p-5">
             <div className="flex items-baseline justify-between gap-2">
-              <h3 className="font-semibold tracking-tight">{card.name}</h3>
+              <h3 className="display text-2xl">{card.name}</h3>
               {card.date && <span className="meta shrink-0">{dateLabel(card.date)}</span>}
             </div>
             <p className="mt-0.5 text-sm text-muted-foreground">{card.title}</p>
@@ -239,8 +235,8 @@ const FeedCard = ({ card }: { card: Card }) => {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.body}</p>
 
           {card.metric && (
-            <div className="mt-4 flex items-baseline gap-2 rounded-xl bg-muted px-3 py-2.5">
-              <span className="text-xl font-semibold tabular-nums tracking-tight">
+            <div className="mt-4 flex items-baseline gap-2 rounded-[3px] bg-muted px-3 py-2.5">
+              <span className="display text-2xl tabular-nums">
                 {card.metric.value}
               </span>
               <span className="text-xs text-muted-foreground">{card.metric.label}</span>
@@ -258,7 +254,7 @@ const FeedCard = ({ card }: { card: Card }) => {
           <div className="flex items-center justify-between gap-2">
             <span className="meta">{card.period}</span>
             {card.current && (
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-300">
                 <span className="status-dot bg-current" />
                 Current
               </span>
@@ -302,12 +298,12 @@ const FeedCard = ({ card }: { card: Card }) => {
 
     case "stat":
       return (
-        <article className="card-surface card-hover p-4 sm:p-5">
-          <p className="text-4xl font-semibold tracking-tight tabular-nums">
+        <article className="card-surface card-stat card-hover p-4 sm:p-5">
+          <p className="display text-7xl tabular-nums">
             <CountUpValue value={card.value} />
           </p>
-          <p className="mt-1 text-sm font-medium">{card.label}</p>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.caption}</p>
+          <p className="display mt-2 text-xl">{card.label}</p>
+          <p className="mt-2 text-sm leading-relaxed opacity-75">{card.caption}</p>
         </article>
       );
 
@@ -355,7 +351,7 @@ const FeedCard = ({ card }: { card: Card }) => {
     case "stack":
       return (
         <article className="card-surface p-4 sm:p-5">
-          <h3 className="font-semibold tracking-tight">The toolbox</h3>
+          <h3 className="display text-2xl">The toolbox</h3>
           <p className="mt-1 text-sm text-muted-foreground">
             What I reach for, from the pipeline to the pixel.
           </p>
@@ -367,7 +363,7 @@ const FeedCard = ({ card }: { card: Card }) => {
                   {g.items.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border px-2.5 py-1 text-xs text-muted-foreground"
+                      className="rounded-[3px] bg-muted px-2.5 py-1 text-xs font-medium"
                     >
                       {item}
                     </span>
